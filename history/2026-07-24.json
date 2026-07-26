@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T15:57:16Z",
+  "generated_at": "2026-07-26T16:15:15Z",
   "as_of": "2026-07-24",
   "regime": {
     "cls": "weak",
@@ -153,10 +153,10 @@
     },
     {
       "name": "PSE",
-      "proxy": true,
-      "level_z": -0.721,
-      "mom_z": -0.852,
-      "blend": -0.773,
+      "proxy": false,
+      "level_z": -0.382,
+      "mom_z": -1.107,
+      "blend": -0.672,
       "rank": 15,
       "arrow": "down",
       "tag": "AVOID"
@@ -267,6 +267,12 @@
         "proxy": false
       },
       {
+        "name": "PSE",
+        "ticker": "^CNXPSE",
+        "ok": true,
+        "proxy": false
+      },
+      {
         "name": "Consumption",
         "ticker": "CONSUMBEES.NS",
         "ok": true,
@@ -281,12 +287,6 @@
       {
         "name": "Healthcare",
         "ticker": "HEALTHIETF.NS",
-        "ok": true,
-        "proxy": true
-      },
-      {
-        "name": "PSE",
-        "ticker": "PSUBNKBEES.NS",
         "ok": true,
         "proxy": true
       },
