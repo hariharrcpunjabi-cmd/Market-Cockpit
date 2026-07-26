@@ -38,6 +38,24 @@ SECTORS_PROXY = [
     {"name": "Oil & Gas",   "ticker": "OILIETF.NS",    "proxy": True},
 ]
 
+# ---- Page 4: macro / cross-asset signals -------------------------------
+# dir "off" = rising reading is risk-OFF; "on" = rising reading is risk-ON.
+# a/b are Yahoo tickers; kind "ratio" uses a/b, "level" uses a only.
+MACRO = [
+    {"name": "Gold / Silver ratio", "kind": "ratio", "a": "GC=F", "b": "SI=F",
+     "dir": "off", "w": 0.8, "show": "ratio",
+     "up": "fear bid — risk-off tilt", "down": "risk appetite returning"},
+    {"name": "Nifty vs Gold", "kind": "ratio", "a": "^NSEI", "b": "GOLDBEES.NS",
+     "dir": "on", "w": 1.0, "show": "change",
+     "up": "equities beating safe-haven — risk-on", "down": "gold outrunning equities — defensive"},
+    {"name": "Breadth · Nifty 500 / Nifty 50", "kind": "ratio", "a": "^CRSLDX", "b": "^NSEI",
+     "dir": "on", "w": 1.0, "show": "change",
+     "up": "broad participation — healthy", "down": "narrowing leadership — caution"},
+    {"name": "US 10Y yield", "kind": "level", "a": "^TNX", "b": None,
+     "dir": "off", "w": 0.5, "show": "change",
+     "up": "yields climbing — equity headwind", "down": "yields easing — tailwind"},
+]
+
 LOOKBACK = 26      # rolling window for z-scores (weeks)
 MOM_ROC  = 4       # momentum measured over N weeks
 W_LEVEL, W_MOM = 0.6, 0.4      # blend weights (leans steady)
@@ -123,6 +141,66 @@ def compute_regime(bench_series, vix_series):
             "pct_vs_ma": round(pct, 2), "trend_up": up,
             "vix": round(vix_val, 2) if vix_val is not None else None, "vix_band": band}
 
+# ------------------------------------------------------------------ MACRO SIGNALS
+def signal_stats(series):
+    """series = list[(t, value)] -> (trend_z, chg13_pct, arrow, last_value)."""
+    vals = [v for _, v in sorted(series)]
+    sm = ema(vals, 5)
+    z = last_z(sm)
+    k = 13
+    chg = (sm[-1] / sm[-1 - k] - 1) * 100 if len(sm) > k else 0.0
+    arrow = "up" if chg > 0.5 else "down" if chg < -0.5 else "flat"
+    return z, chg, arrow, vals[-1]
+
+def compute_macro():
+    diag, signals, score_num, score_den = [], [], 0.0, 0.0
+    cache = {}
+    def get(tk):
+        if tk not in cache:
+            cache[tk] = fetch(tk)
+        return cache[tk]
+
+    for m in MACRO:
+        a = get(m["a"])
+        b = get(m["b"]) if m["b"] else True
+        ok = a is not None and b is not None
+        diag.append({"name": m["name"], "ok": ok})
+        if not ok:
+            continue
+        if m["kind"] == "ratio":
+            ma = {t: c for t, c in a}; mb = {t: c for t, c in b}
+            ts = sorted(set(ma) & set(mb))
+            series = [(t, ma[t] / mb[t]) for t in ts if mb[t]]
+        else:
+            series = a
+        if len(series) < LOOKBACK + 15:
+            diag[-1]["ok"] = False
+            continue
+        z, chg, arrow, val = signal_stats(series)
+        reading = m["up"] if arrow == "up" else m["down"] if arrow == "down" else "flat — no clear tilt"
+        signals.append({
+            "name": m["name"], "show": m["show"], "arrow": arrow,
+            "z": round(z, 2), "chg13": round(chg, 2),
+            "value": round(val, 2), "reading": reading,
+        })
+        contrib = z if m["dir"] == "on" else -z    # risk-on-ness
+        score_num += m["w"] * contrib; score_den += m["w"]
+
+    score = score_num / score_den if score_den else 0.0
+    if score > 0.4:
+        cls, label = "on", "RISK-ON"
+        note = "Cross-asset signals lean risk-on — the sector leaderboard is worth trusting."
+    elif score < -0.4:
+        cls, label = "off", "RISK-OFF"
+        note = "Cross-asset signals lean risk-off — treat equity longs cautiously, respect the regime gate."
+    else:
+        cls, label = "neutral", "NEUTRAL"
+        note = "Mixed cross-asset signals — no strong edge; lean on sector selection and stay nimble."
+
+    return {"verdict": {"cls": cls, "label": label, "note": note, "score": round(score, 2)},
+            "signals": signals,
+            "diagnostics": {"loaded": sum(1 for d in diag if d["ok"]), "total": len(diag), "detail": diag}}
+
 # ------------------------------------------------------------------ MAIN
 def main():
     diag = []
@@ -195,6 +273,18 @@ def main():
     os.makedirs("history", exist_ok=True)
     with open(f"history/{as_of}.json", "w") as f:
         json.dump(payload, f, indent=2)
+
+    # ---- Page 4: macro / cross-asset ----
+    print("\nBuilding macro signals…")
+    macro = compute_macro()
+    macro["generated_at"] = payload["generated_at"]
+    macro["as_of"] = as_of
+    with open("macro.json", "w") as f:
+        json.dump(macro, f, indent=2)
+    with open(f"history/macro-{as_of}.json", "w") as f:
+        json.dump(macro, f, indent=2)
+    print(f"Macro verdict: {macro['verdict']['label']} (score {macro['verdict']['score']})  "
+          f"signals={macro['diagnostics']['loaded']}/{macro['diagnostics']['total']}")
 
     print(f"\nDone. as_of={as_of}  sectors_ranked={n}  "
           f"loaded={payload['diagnostics']['loaded']}/{payload['diagnostics']['total']}")
