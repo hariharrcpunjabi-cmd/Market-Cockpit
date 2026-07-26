@@ -1,0 +1,70 @@
+{
+  "verdict": {
+    "cls": "neutral",
+    "label": "NEUTRAL",
+    "note": "Mixed cross-asset signals \u2014 no strong edge; lean on sector selection and stay nimble.",
+    "score": -0.18
+  },
+  "signals": [
+    {
+      "name": "Gold / Silver ratio",
+      "show": "ratio",
+      "arrow": "up",
+      "z": 2.49,
+      "chg13": 10.66,
+      "value": 69.35,
+      "reading": "fear bid \u2014 risk-off tilt"
+    },
+    {
+      "name": "Nifty vs Gold",
+      "show": "change",
+      "arrow": "up",
+      "z": 1.01,
+      "chg13": 5.49,
+      "value": 202.44,
+      "reading": "equities beating safe-haven \u2014 risk-on"
+    },
+    {
+      "name": "Breadth \u00b7 Nifty 500 / Nifty 50",
+      "show": "change",
+      "arrow": "up",
+      "z": 1.27,
+      "chg13": 2.6,
+      "value": 0.96,
+      "reading": "broad participation \u2014 healthy"
+    },
+    {
+      "name": "US 10Y yield",
+      "show": "change",
+      "arrow": "up",
+      "z": 1.74,
+      "chg13": 6.61,
+      "value": 4.68,
+      "reading": "yields climbing \u2014 equity headwind"
+    }
+  ],
+  "diagnostics": {
+    "loaded": 4,
+    "total": 4,
+    "detail": [
+      {
+        "name": "Gold / Silver ratio",
+        "ok": true
+      },
+      {
+        "name": "Nifty vs Gold",
+        "ok": true
+      },
+      {
+        "name": "Breadth \u00b7 Nifty 500 / Nifty 50",
+        "ok": true
+      },
+      {
+        "name": "US 10Y yield",
+        "ok": true
+      }
+    ]
+  },
+  "generated_at": "2026-07-26T16:33:03Z",
+  "as_of": "2026-07-24"
+}
