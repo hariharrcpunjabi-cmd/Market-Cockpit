@@ -1,37 +1,223 @@
-name: Weekly sector rotation build
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector Rotation · Weekly · NSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10131A; --surface:#171B24; --surface2:#1E2330; --line:#2A2F3C;
+    --text:#E7E9EE; --muted:#8A91A0; --faint:#5B6270;
+    --lead:#3FD69A; --lag:#F1766B; --hold:#8B93A3; --gold:#EBB94D;
+    --lead-dim:rgba(63,214,154,.14); --lag-dim:rgba(241,118,107,.14); --gold-dim:rgba(235,185,77,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%; background:#10131A !important; min-height:100%}
+  body{
+    background:#10131A !important; color:var(--text); min-height:100vh;
+    font-family:'Inter',system-ui,sans-serif; line-height:1.5;
+    padding:20px 16px 48px; max-width:640px; margin:0 auto; -webkit-font-smoothing:antialiased;
+  }
+  .nav{display:flex; gap:8px; margin-bottom:18px}
+  .nav a{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+    text-decoration:none; color:var(--muted); border:1px solid var(--line);
+    padding:7px 13px; border-radius:99px}
+  .nav a.active{color:var(--gold); border-color:var(--gold)}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:6px}
+  h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px;
+    letter-spacing:-.02em; line-height:1.05}
+  .sub{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px}
 
-on:
-  schedule:
-    # 01:30 UTC Saturday = 07:00 IST Saturday (after Friday's close is final)
-    - cron: "30 1 * * 6"
-  workflow_dispatch: {}          # lets you run it manually from the Actions tab
+  .regime{margin:22px 0 8px; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    background:var(--surface)}
+  .regime .bar{height:4px; width:100%; background:var(--faint)}
+  .regime.strong .bar{background:var(--lead)}
+  .regime.sideways .bar{background:var(--gold)}
+  .regime.weak .bar{background:var(--lag)}
+  .regime .body{padding:16px 18px}
+  .regime .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted)}
+  .regime .verdict{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px;
+    letter-spacing:-.01em; margin-top:2px}
+  .regime.strong .verdict{color:var(--lead)}
+  .regime.sideways .verdict{color:var(--gold)}
+  .regime.weak .verdict{color:var(--lag)}
+  .regime .meta{display:flex; gap:18px; margin-top:10px; flex-wrap:wrap}
+  .regime .meta div{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
+  .regime .meta b{color:var(--text); font-weight:600}
+  .regime .note{font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.45}
 
-permissions:
-  contents: write                # allows the Action to commit data.json back
+  .board-head{display:flex; align-items:baseline; justify-content:space-between; margin:26px 2px 12px}
+  .board-head h2{font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:500; letter-spacing:.02em}
+  .board-head .asof{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint)}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+  .row{display:grid; grid-template-columns:34px 1fr auto; align-items:center; gap:12px;
+    padding:12px 14px; border:1px solid var(--line); border-radius:12px; margin-bottom:8px;
+    background:var(--surface); opacity:0; transform:translateY(6px);
+    animation:settle .5s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes settle{to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){.row{animation:none; opacity:1; transform:none}}
+  .rank{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:20px; color:var(--faint); text-align:right}
+  .row.ow .rank{color:var(--lead)} .row.av .rank{color:var(--lag)}
+  .name{font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:16px;
+    display:flex; align-items:center; gap:7px; flex-wrap:wrap}
+  .arrow{font-size:13px; line-height:1}
+  .arrow.up{color:var(--lead)} .arrow.down{color:var(--lag)} .arrow.flat{color:var(--hold)}
+  .px{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; color:var(--faint);
+    border:1px solid var(--line); border-radius:4px; padding:1px 4px; text-transform:uppercase}
+  .track{height:5px; background:var(--surface2); border-radius:99px; margin-top:8px; overflow:hidden}
+  .track .fill{height:100%; border-radius:99px; transition:width .7s ease .2s}
+  .row.ow .fill{background:var(--lead)} .row.av .fill{background:var(--lag)}
+  .row:not(.ow):not(.av) .fill{background:var(--hold)}
+  .zr{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:6px; letter-spacing:.02em}
+  .zr b{color:var(--muted); font-weight:500}
+  .tag{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em;
+    text-transform:uppercase; padding:5px 9px; border-radius:99px; white-space:nowrap;
+    border:1px solid var(--line); color:var(--muted)}
+  .tag.ow{color:var(--lead); background:var(--lead-dim); border-color:transparent}
+  .tag.av{color:var(--lag); background:var(--lag-dim); border-color:transparent}
+  .tag.watch{color:var(--gold); background:var(--gold-dim); border-color:transparent}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+  .legend{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint);
+    margin-top:14px; line-height:1.7}
+  .state{text-align:center; padding:48px 20px; color:var(--muted); font-size:14px}
+  .spinner{width:26px; height:26px; border:2px solid var(--line); border-top-color:var(--gold);
+    border-radius:50%; margin:0 auto 16px; animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .btn{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em;
+    background:var(--surface2); color:var(--text); border:1px solid var(--line);
+    padding:9px 16px; border-radius:99px; cursor:pointer; margin-top:14px}
+  .btn:hover{border-color:var(--gold); color:var(--gold)}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
 
-      - name: Build data.json
-        run: python build_data.py
+  details.diag{margin-top:24px; border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden}
+  details.diag summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);
+    padding:13px 16px; cursor:pointer; list-style:none; display:flex; justify-content:space-between}
+  details.diag summary::-webkit-details-marker{display:none}
+  details.diag[open] summary{border-bottom:1px solid var(--line)}
+  .diag-body{padding:6px 16px 14px}
+  .diag-row{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; padding:6px 0; border-bottom:1px solid var(--surface2)}
+  .diag-row:last-child{border:0}
+  .ok{color:var(--lead)} .fail{color:var(--lag)}
+  footer{margin-top:22px; font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    color:var(--faint); line-height:1.6; text-align:center}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="./index.html" class="active">Sectors</a>
+    <a href="./macro.html">Macro</a>
+  </nav>
+  <header>
+    <div class="eyebrow">Relative Strength · vs Nifty 50</div>
+    <h1>Sector Rotation</h1>
+    <div class="sub" id="sub">Weekly closes · NSE</div>
+  </header>
 
-      - name: Commit if changed
-        run: |
-          git config user.name  "rotation-bot"
-          git config user.email "actions@github.com"
-          git add -A
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "weekly data: $(date -u +%Y-%m-%d)"
-            git push
-          fi
+  <div id="app">
+    <div class="state"><div class="spinner"></div>Loading this week's ranking…</div>
+  </div>
+
+  <footer>
+    Rank = 0.6·RS-level + 0.4·RS-momentum (z-scores vs Nifty 50) · Regime = Nifty vs 30-wk MA + India VIX<br>
+    Not investment advice · built weekly from Yahoo Finance
+  </footer>
+
+<script>
+const fmtDate = s => { try{ return new Date(s).toLocaleDateString('en-IN',
+  {day:'2-digit',month:'short',year:'numeric'}); }catch(e){ return s; } };
+
+async function load(){
+  const app = document.getElementById('app');
+  app.innerHTML = `<div class="state"><div class="spinner"></div>Loading this week's ranking…</div>`;
+  try{
+    const r = await fetch('./data.json?t=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('no data.json');
+    render(await r.json());
+  }catch(e){
+    app.innerHTML = `<div class="state">No data yet.<br><br>
+      Run the <b>Weekly sector rotation build</b> Action once to generate <code>data.json</code>,
+      then reload this page.<br><br>
+      <button class="btn" onclick="load()">Reload</button></div>`;
+  }
+}
+
+function render(d){
+  const app = document.getElementById('app');
+  document.getElementById('sub').textContent =
+    `Weekly closes · NSE · updated ${fmtDate(d.generated_at)}`;
+
+  const rg = d.regime;
+  const maTxt = `${rg.trend_up ? 'above':'below'} 30-wk MA (${rg.pct_vs_ma>=0?'+':''}${rg.pct_vs_ma}%)`;
+  const vixTxt = rg.vix!=null ? `${rg.vix} · ${rg.vix_band}` : 'unavailable';
+
+  const maxAbs = Math.max(...d.sectors.map(s=>Math.abs(s.blend)), 0.5);
+  const n = d.sectors.length;
+
+  const rows = d.sectors.map((s,i)=>{
+    const cls = s.tag==='OVERWEIGHT' ? 'ow' : s.tag==='AVOID' ? 'av' : '';
+    const tagCls = s.tag==='OVERWEIGHT'?'ow':s.tag==='AVOID'?'av':s.tag==='WATCH'?'watch':'';
+    const arrowCh = s.arrow==='up'?'▲':s.arrow==='down'?'▼':'→';
+    const w = Math.round((Math.abs(s.blend)/maxAbs)*100);
+    const px = s.proxy ? `<span class="px" title="ETF proxy">etf</span>` : '';
+    const fmtZ = z => (z>=0?'+':'') + z.toFixed(2);
+    return `<div class="row ${cls}" style="animation-delay:${i*40}ms">
+      <div class="rank">${String(s.rank).padStart(2,'0')}</div>
+      <div>
+        <div class="name">${s.name} <span class="arrow ${s.arrow}">${arrowCh}</span> ${px}</div>
+        <div class="track"><div class="fill" style="width:${w}%"></div></div>
+        <div class="zr"><b>L</b> ${fmtZ(s.level_z)} &nbsp; <b>M</b> ${fmtZ(s.mom_z)} &nbsp; <b>blend</b> ${fmtZ(s.blend)}</div>
+      </div>
+      <div class="tag ${tagCls}">${s.tag}</div>
+    </div>`;
+  }).join('');
+
+  const dg = d.diagnostics;
+  const dgRows = dg.detail.map(x=>`<div class="diag-row">
+    <span>${x.name}${x.ticker?` · ${x.ticker}`:''}${x.proxy?' · etf':''}</span>
+    <span class="${x.ok?'ok':'fail'}">${x.ok?'ok':'failed'}</span></div>`).join('');
+
+  app.innerHTML = `
+    <div class="regime ${rg.cls}">
+      <div class="bar"></div>
+      <div class="body">
+        <div class="label">Market Regime</div>
+        <div class="verdict">${rg.verdict}</div>
+        <div class="meta">
+          <div>Nifty <b>${maTxt}</b></div>
+          <div>India VIX <b>${vixTxt}</b></div>
+        </div>
+        <div class="note">${rg.note}</div>
+      </div>
+    </div>
+
+    <div class="board-head">
+      <h2>Leaderboard</h2>
+      <div class="asof">as of ${fmtDate(d.as_of)}</div>
+    </div>
+    ${rows}
+
+    <div class="legend">
+      L = RS-level z · M = RS-momentum z · ▲ accelerating · ▼ rolling over<br>
+      etf = tracked via sector ETF proxy (index not served directly)
+    </div>
+
+    <details class="diag">
+      <summary><span>Data diagnostic</span><span>${dg.loaded}/${dg.total} loaded ▾</span></summary>
+      <div class="diag-body">${dgRows}
+        <button class="btn" onclick="load()">Reload data</button>
+      </div>
+    </details>`;
+
+  requestAnimationFrame(()=>document.querySelectorAll('.fill').forEach(f=>{ f.style.width=f.style.width; }));
+}
+
+load();
+</script>
+</body>
+</html>
