@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macro · Cross-Asset · NSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10131A; --surface:#171B24; --surface2:#1E2330; --line:#2A2F3C;
+    --text:#E7E9EE; --muted:#8A91A0; --faint:#5B6270;
+    --on:#3FD69A; --off:#F1766B; --neutral:#EBB94D; --gold:#EBB94D;
+    --on-dim:rgba(63,214,154,.14); --off-dim:rgba(241,118,107,.14); --neu-dim:rgba(235,185,77,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%; background:#10131A !important; min-height:100%}
+  body{background:#10131A !important; color:var(--text); min-height:100vh;
+    font-family:'Inter',system-ui,sans-serif; line-height:1.5;
+    padding:20px 16px 48px; max-width:640px; margin:0 auto; -webkit-font-smoothing:antialiased;}
+
+  .nav{display:flex; gap:8px; margin-bottom:18px}
+  .nav a{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+    text-decoration:none; color:var(--muted); border:1px solid var(--line);
+    padding:7px 13px; border-radius:99px}
+  .nav a.active{color:var(--gold); border-color:var(--gold)}
+
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:6px}
+  h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; letter-spacing:-.02em; line-height:1.05}
+  .sub{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px}
+
+  .verdict{margin:22px 0 20px; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+  .verdict .bar{height:4px; width:100%}
+  .verdict.on .bar{background:var(--on)} .verdict.off .bar{background:var(--off)} .verdict.neutral .bar{background:var(--neutral)}
+  .verdict .body{padding:16px 18px}
+  .verdict .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
+  .verdict .big{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; margin-top:2px}
+  .verdict.on .big{color:var(--on)} .verdict.off .big{color:var(--off)} .verdict.neutral .big{color:var(--neutral)}
+  .verdict .score{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); margin-top:4px}
+  .verdict .note{font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.45}
+
+  h2{font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:500; letter-spacing:.02em; margin:0 2px 12px}
+  .card{border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:8px; background:var(--surface);
+    opacity:0; transform:translateY(6px); animation:settle .5s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes settle{to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){.card{animation:none; opacity:1; transform:none}}
+  .card .top{display:flex; justify-content:space-between; align-items:baseline; gap:10px}
+  .card .cname{font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:15px}
+  .metric{font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap}
+  .arrow{font-size:12px}
+  .arrow.up{color:var(--on)} .arrow.down{color:var(--off)} .arrow.flat{color:var(--muted)}
+  .reading{font-size:12.5px; color:var(--muted); margin-top:7px}
+  .zr{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:8px}
+  .zr b{color:var(--muted); font-weight:500}
+
+  .legend{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:14px; line-height:1.7}
+  .state{text-align:center; padding:48px 20px; color:var(--muted); font-size:14px}
+  .spinner{width:26px; height:26px; border:2px solid var(--line); border-top-color:var(--gold); border-radius:50%; margin:0 auto 16px; animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .btn{font-family:'IBM Plex Mono',monospace; font-size:12px; background:var(--surface2); color:var(--text);
+    border:1px solid var(--line); padding:9px 16px; border-radius:99px; cursor:pointer; margin-top:14px}
+  .btn:hover{border-color:var(--gold); color:var(--gold)}
+  details.diag{margin-top:22px; border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden}
+  details.diag summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); padding:13px 16px; cursor:pointer; list-style:none; display:flex; justify-content:space-between}
+  details.diag summary::-webkit-details-marker{display:none}
+  details.diag[open] summary{border-bottom:1px solid var(--line)}
+  .diag-body{padding:6px 16px 14px}
+  .diag-row{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:6px 0; border-bottom:1px solid var(--surface2)}
+  .diag-row:last-child{border:0}
+  .ok{color:var(--on)} .fail{color:var(--off)}
+  footer{margin-top:22px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); line-height:1.6; text-align:center}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="./index.html">Sectors</a>
+    <a href="./macro.html" class="active">Macro</a>
+  </nav>
+  <header>
+    <div class="eyebrow">Cross-Asset · Should I be in equities?</div>
+    <h1>Macro Regime</h1>
+    <div class="sub" id="sub">Weekly · NSE</div>
+  </header>
+
+  <div id="app"><div class="state"><div class="spinner"></div>Reading cross-asset signals…</div></div>
+
+  <footer>
+    Verdict = weighted risk-appetite score across the signals below · trend = 13-wk change, z = position vs 26-wk range<br>
+    Not investment advice · built weekly from Yahoo Finance
+  </footer>
+
+<script>
+const fmtDate = s => { try{ return new Date(s).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;} };
+
+async function load(){
+  const app=document.getElementById('app');
+  app.innerHTML=`<div class="state"><div class="spinner"></div>Reading cross-asset signals…</div>`;
+  try{
+    const r=await fetch('./macro.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('no macro.json');
+    render(await r.json());
+  }catch(e){
+    app.innerHTML=`<div class="state">No macro data yet.<br><br>
+      Run the <b>Weekly sector rotation build</b> Action to generate <code>macro.json</code>, then reload.<br><br>
+      <button class="btn" onclick="load()">Reload</button></div>`;
+  }
+}
+
+function render(d){
+  document.getElementById('sub').textContent=`Weekly · NSE · updated ${fmtDate(d.generated_at)}`;
+  const v=d.verdict;
+  const cards=d.signals.map((s,i)=>{
+    const arrowCh=s.arrow==='up'?'▲':s.arrow==='down'?'▼':'→';
+    const metric = s.show==='ratio'
+      ? s.value.toFixed(1)
+      : (s.chg13>=0?'+':'')+s.chg13.toFixed(1)+'%';
+    const fmtZ=z=>(z>=0?'+':'')+z.toFixed(2);
+    return `<div class="card" style="animation-delay:${i*50}ms">
+      <div class="top">
+        <div class="cname">${s.name}</div>
+        <div class="metric">${metric} <span class="arrow ${s.arrow}">${arrowCh}</span></div>
+      </div>
+      <div class="reading">${s.reading}</div>
+      <div class="zr"><b>13-wk</b> ${(s.chg13>=0?'+':'')+s.chg13.toFixed(1)}% &nbsp; <b>z</b> ${fmtZ(s.z)}</div>
+    </div>`;
+  }).join('');
+
+  const dg=d.diagnostics;
+  const dgRows=dg.detail.map(x=>`<div class="diag-row"><span>${x.name}</span>
+    <span class="${x.ok?'ok':'fail'}">${x.ok?'ok':'failed'}</span></div>`).join('');
+
+  document.getElementById('app').innerHTML=`
+    <div class="verdict ${v.cls}">
+      <div class="bar"></div>
+      <div class="body">
+        <div class="label">Cross-Asset Verdict</div>
+        <div class="big">${v.label}</div>
+        <div class="score">risk-appetite score ${v.score>=0?'+':''}${v.score}</div>
+        <div class="note">${v.note}</div>
+      </div>
+    </div>
+    <h2>Signals</h2>
+    ${cards}
+    <div class="legend">▲ risk-on direction · ▼ risk-off direction · z = standardised position vs recent range</div>
+    <details class="diag">
+      <summary><span>Data diagnostic</span><span>${dg.loaded}/${dg.total} loaded ▾</span></summary>
+      <div class="diag-body">${dgRows}<button class="btn" onclick="load()">Reload data</button></div>
+    </details>`;
+}
+load();
+</script>
+</body>
+</html>
