@@ -26,6 +26,7 @@ SECTORS_DIRECT = [
     {"name": "PSU Bank",     "ticker": "^CNXPSUBANK"},
     {"name": "Infra",        "ticker": "^CNXINFRA"},
     {"name": "Fin Services", "ticker": "NIFTY_FIN_SERVICE.NS"},
+    {"name": "PSE",          "ticker": "^CNXPSE"},
 ]
 
 # Experimental ETF proxies for indices Yahoo won't serve directly.
@@ -34,7 +35,6 @@ SECTORS_PROXY = [
     {"name": "Consumption", "ticker": "CONSUMBEES.NS", "proxy": True},
     {"name": "Pvt Bank",    "ticker": "PVTBANIETF.NS", "proxy": True},
     {"name": "Healthcare",  "ticker": "HEALTHIETF.NS", "proxy": True},
-    {"name": "PSE",         "ticker": "PSUBNKBEES.NS", "proxy": True},  # placeholder proxy
     {"name": "Oil & Gas",   "ticker": "OILIETF.NS",    "proxy": True},
 ]
 
