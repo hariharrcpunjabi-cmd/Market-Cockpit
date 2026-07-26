@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector Rotation · Weekly · NSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10131A; --surface:#171B24; --surface2:#1E2330; --line:#2A2F3C;
+    --text:#E7E9EE; --muted:#8A91A0; --faint:#5B6270;
+    --lead:#3FD69A; --lag:#F1766B; --hold:#8B93A3; --gold:#EBB94D;
+    --lead-dim:rgba(63,214,154,.14); --lag-dim:rgba(241,118,107,.14); --gold-dim:rgba(235,185,77,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%; background:#10131A !important; min-height:100%}
+  body{
+    background:#10131A !important; color:var(--text); min-height:100vh;
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.5; padding:20px 16px 48px; max-width:640px; margin:0 auto;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:6px}
+  h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px;
+    letter-spacing:-.02em; line-height:1.05}
+  .sub{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px}
+
+  /* regime strip */
+  .regime{margin:22px 0 8px; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    background:var(--surface); position:relative}
+  .regime .bar{height:4px; width:100%; background:var(--faint); transition:background .4s}
+  .regime.strong .bar{background:var(--lead)}
+  .regime.sideways .bar{background:var(--gold)}
+  .regime.weak .bar{background:var(--lag)}
+  .regime .body{padding:16px 18px}
+  .regime .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted)}
+  .regime .verdict{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px;
+    letter-spacing:-.01em; margin-top:2px}
+  .regime.strong .verdict{color:var(--lead)}
+  .regime.sideways .verdict{color:var(--gold)}
+  .regime.weak .verdict{color:var(--lag)}
+  .regime .meta{display:flex; gap:18px; margin-top:10px; flex-wrap:wrap}
+  .regime .meta div{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
+  .regime .meta b{color:var(--text); font-weight:600}
+  .regime .note{font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.45}
+
+  /* leaderboard */
+  .board-head{display:flex; align-items:baseline; justify-content:space-between;
+    margin:26px 2px 12px}
+  .board-head h2{font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:500;
+    letter-spacing:.02em}
+  .board-head .asof{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint)}
+
+  .row{display:grid; grid-template-columns:34px 1fr auto; align-items:center; gap:12px;
+    padding:12px 14px; border:1px solid var(--line); border-radius:12px; margin-bottom:8px;
+    background:var(--surface); opacity:0; transform:translateY(6px);
+    animation:settle .5s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes settle{to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){.row{animation:none; opacity:1; transform:none}}
+  .rank{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:20px; color:var(--faint);
+    text-align:right}
+  .row.ow .rank{color:var(--lead)} .row.av .rank{color:var(--lag)}
+  .mid .name{font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:16px;
+    display:flex; align-items:center; gap:8px}
+  .arrow{font-size:13px; line-height:1}
+  .arrow.up{color:var(--lead)} .arrow.dn{color:var(--lag)} .arrow.flat{color:var(--hold)}
+  .track{height:5px; background:var(--surface2); border-radius:99px; margin-top:8px; overflow:hidden;
+    position:relative}
+  .track .fill{height:100%; border-radius:99px; width:0; transition:width .7s ease .2s}
+  .row.ow .fill{background:var(--lead)} .row.av .fill{background:var(--lag)}
+  .row:not(.ow):not(.av) .fill{background:var(--hold)}
+  .tag{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em;
+    text-transform:uppercase; padding:5px 9px; border-radius:99px; white-space:nowrap;
+    border:1px solid var(--line); color:var(--muted)}
+  .tag.ow{color:var(--lead); background:var(--lead-dim); border-color:transparent}
+  .tag.av{color:var(--lag); background:var(--lag-dim); border-color:transparent}
+  .tag.watch{color:var(--gold); background:var(--gold-dim); border-color:transparent}
+
+  /* states */
+  .state{text-align:center; padding:48px 20px; color:var(--muted); font-size:14px}
+  .spinner{width:26px; height:26px; border:2px solid var(--line); border-top-color:var(--gold);
+    border-radius:50%; margin:0 auto 16px; animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .btn{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em;
+    background:var(--surface2); color:var(--text); border:1px solid var(--line);
+    padding:9px 16px; border-radius:99px; cursor:pointer; margin-top:14px}
+  .btn:hover{border-color:var(--gold); color:var(--gold)}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+  /* diagnostic */
+  details.diag{margin-top:26px; border:1px solid var(--line); border-radius:12px;
+    background:var(--surface); overflow:hidden}
+  details.diag summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);
+    padding:13px 16px; cursor:pointer; list-style:none; display:flex; justify-content:space-between}
+  details.diag summary::-webkit-details-marker{display:none}
+  details.diag[open] summary{border-bottom:1px solid var(--line)}
+  .diag-body{padding:6px 16px 14px}
+  .diag-row{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; padding:6px 0; border-bottom:1px solid var(--surface2)}
+  .diag-row:last-child{border:0}
+  .ok{color:var(--lead)} .fail{color:var(--lag)}
+  .diag-path{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint);
+    margin-bottom:8px}
+  footer{margin-top:24px; font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    color:var(--faint); line-height:1.6; text-align:center}
+</style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Relative Strength · vs Nifty 50</div>
+    <h1>Sector Rotation</h1>
+    <div class="sub">Weekly closes · NSE · self-updating</div>
+  </header>
+
+  <div id="app">
+    <div class="state">
+      <div class="spinner"></div>
+      Fetching weekly closes for all sectors…
+    </div>
+  </div>
+
+  <footer>
+    Rank = blend of RS-level + RS-momentum vs Nifty 50 · Regime = Nifty vs 30-wk MA + India VIX<br>
+    Not investment advice · data via Yahoo Finance
+  </footer>
+
+<script>
+/* ============================================================
+   CONFIG — Yahoo tickers (best-guess; diagnostic reveals misses)
+   ============================================================ */
+const BENCH = { key:'nifty', name:'Nifty 50', ticker:'^NSEI' };
+const VIX   = { key:'vix',   name:'India VIX', ticker:'^INDIAVIX' };
+const SECTORS = [
+  { name:'IT',          ticker:'^CNXIT' },
+  { name:'Bank',        ticker:'^NSEBANK' },
+  { name:'Auto',        ticker:'^CNXAUTO' },
+  { name:'Pharma',      ticker:'^CNXPHARMA' },
+  { name:'FMCG',        ticker:'^CNXFMCG' },
+  { name:'Metal',       ticker:'^CNXMETAL' },
+  { name:'Realty',      ticker:'^CNXREALTY' },
+  { name:'Energy',      ticker:'^CNXENERGY' },
+  { name:'Media',       ticker:'^CNXMEDIA' },
+  { name:'PSU Bank',    ticker:'^CNXPSUBANK' },
+  { name:'Infra',       ticker:'^CNXINFRA' },
+  { name:'Fin Services',ticker:'NIFTY_FIN_SERVICE.NS' },
+];
+
+const LOOKBACK = 26;     // rolling window for z-scores (weeks)
+const MOM_ROC  = 4;      // momentum measured over N weeks
+const W_LEVEL  = 0.6, W_MOM = 0.4;   // blend weights (leans steady)
+const OW_COUNT = 4, AV_COUNT = 4;    // top/bottom tag counts
+
+/* ============================================================
+   FETCH — try direct, then CORS proxies. Weekly, 2y range.
+   ============================================================ */
+const PROXIES = [
+  { name:'direct', wrap:u=>u },
+  { name:'allorigins', wrap:u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u) },
+  { name:'corsproxy', wrap:u=>'https://corsproxy.io/?url='+encodeURIComponent(u) },
+];
+let ACTIVE_PROXY = null;
+
+function yurl(t){
+  return 'https://query1.finance.yahoo.com/v8/finance/chart/'+
+    encodeURIComponent(t)+'?range=2y&interval=1wk';
+}
+
+async function fetchOne(ticker){
+  const url = yurl(ticker);
+  // If a proxy already worked, use it first; else probe the chain.
+  const order = ACTIVE_PROXY
+    ? [ACTIVE_PROXY, ...PROXIES.filter(p=>p!==ACTIVE_PROXY)]
+    : PROXIES;
+  for(const p of order){
+    try{
+      const r = await fetch(p.wrap(url), {cache:'no-store'});
+      if(!r.ok) continue;
+      const j = await r.json();
+      const res = j?.chart?.result?.[0];
+      if(!res) continue;
+      const ts = res.timestamp;
+      const cl = res.indicators?.quote?.[0]?.close;
+      if(!ts || !cl) continue;
+      const series = [];
+      for(let i=0;i<ts.length;i++){
+        if(cl[i]==null) continue;
+        series.push({ d: new Date(ts[i]*1000), c: cl[i] });
+      }
+      if(series.length < LOOKBACK+MOM_ROC+2) continue;
+      ACTIVE_PROXY = p;
+      return { ok:true, via:p.name, series };
+    }catch(e){ /* try next proxy */ }
+  }
+  return { ok:false };
+}
+
+/* ============================================================
+   MATH helpers
+   ============================================================ */
+function mean(a){ return a.reduce((s,x)=>s+x,0)/a.length; }
+function std(a){ const m=mean(a); return Math.sqrt(mean(a.map(x=>(x-m)**2))); }
+function ema(arr, span){
+  const k = 2/(span+1); let prev = arr[0]; const out=[prev];
+  for(let i=1;i<arr.length;i++){ prev = arr[i]*k + prev*(1-k); out.push(prev); }
+  return out;
+}
+// z-score of the last point vs the prior LOOKBACK window
+function lastZ(series){
+  const w = series.slice(-LOOKBACK);
+  const s = std(w); if(s===0) return 0;
+  return (series[series.length-1]-mean(w))/s;
+}
+// build date->close map
+function toMap(series){ const m=new Map(); series.forEach(p=>m.set(+p.d, p.c)); return m; }
+
+/* ============================================================
+   ORCHESTRATION
+   ============================================================ */
+async function run(){
+  const app = document.getElementById('app');
+  app.innerHTML = `<div class="state"><div class="spinner"></div>Fetching weekly closes…</div>`;
+
+  const diag = [];
+  const bench = await fetchOne(BENCH.ticker);
+  diag.push({ name:BENCH.name, ok:bench.ok, via:bench.via });
+  if(!bench.ok){
+    app.innerHTML = `<div class="state">Couldn't reach the benchmark (Nifty 50) through any route.
+      Yahoo may be blocking requests right now.<br><br>
+      <button class="btn" onclick="run()">Try again</button></div>`;
+    return;
+  }
+  const benchMap = toMap(bench.series);
+  const dates = bench.series.map(p=>+p.d); // master timeline
+
+  const vix = await fetchOne(VIX.ticker);
+  diag.push({ name:VIX.name, ok:vix.ok, via:vix.via });
+
+  const results = [];
+  for(const s of SECTORS){
+    const r = await fetchOne(s.ticker);
+    diag.push({ name:s.name, ok:r.ok, via:r.via, ticker:s.ticker });
+    if(!r.ok) continue;
+    const map = toMap(r.series);
+    // align on common dates with benchmark
+    const rs=[]; const keptDates=[];
+    for(const d of dates){
+      if(map.has(d)){ rs.push(map.get(d)/benchMap.get(d)); keptDates.push(d); }
+    }
+    if(rs.length < LOOKBACK+MOM_ROC+2) continue;
+    const rsSmooth = ema(rs, 5);
+    const levelZ = lastZ(rsSmooth);                        // RS-level
+    const roc = rsSmooth.map((v,i)=> i>=MOM_ROC ? (v/rsSmooth[i-MOM_ROC]-1) : 0);
+    const momZ = lastZ(roc.slice(MOM_ROC));                // RS-momentum
+    const blend = W_LEVEL*levelZ + W_MOM*momZ;
+    results.push({ name:s.name, levelZ, momZ, blend });
+  }
+
+  if(!results.length){
+    app.innerHTML = `<div class="state">Benchmark loaded, but no sector series came back clean.
+      Open the diagnostic to see which tickers failed.<br><br>
+      <button class="btn" onclick="run()">Try again</button></div>`;
+    renderDiag(app, diag);
+    return;
+  }
+
+  results.sort((a,b)=> b.blend - a.blend);
+  const maxAbs = Math.max(...results.map(r=>Math.abs(r.blend)), 0.5);
+
+  const regime = computeRegime(bench.series, benchMap, dates, vix);
+  const asof = new Date(dates[dates.length-1]).toLocaleDateString('en-IN',
+    {day:'2-digit', month:'short', year:'numeric'});
+
+  render(app, regime, results, maxAbs, asof, diag);
+}
+
+/* ============================================================
+   REGIME — Nifty vs 30-wk MA + India VIX (user-calibrated bands)
+   ============================================================ */
+function computeRegime(benchSeries, benchMap, dates, vix){
+  const closes = benchSeries.map(p=>p.c);
+  const ma = mean(closes.slice(-30));
+  const last = closes[closes.length-1];
+  const pctVsMa = (last/ma - 1)*100;
+  const trendUp = last > ma;
+
+  let vixVal = null, vixBand = 'n/a', vixNote = '';
+  if(vix.ok){
+    vixVal = vix.series[vix.series.length-1].c;
+    if(vixVal < 11){ vixBand='very low'; vixNote='sub-11: complacent — slow profit-booking risk'; }
+    else if(vixVal < 16){ vixBand='calm'; }
+    else if(vixVal < 20){ vixBand='elevated'; }
+    else if(vixVal < 29){ vixBand='high'; }
+    else if(vixVal <= 30){ vixBand='extreme'; }
+    else { vixBand='crash-like'; }
+  }
+
+  // verdict
+  let cls, verdict, note;
+  const vixCalm = vixVal==null || vixVal < 20;
+  const vixHot  = vixVal!=null && vixVal >= 29;
+  if(trendUp && vixCalm && !vixHot){
+    cls='strong'; verdict='STRONG';
+    note='Trust the ranking — overweight the top sectors.';
+    if(vixVal!=null && vixVal<11) note='Trust the ranking, but sub-11 VIX means stay alert for profit-booking.';
+  } else if(!trendUp || vixHot){
+    cls='weak'; verdict='WEAK';
+    note='Ranking still shows relative leadership, but size down or sit out — "best of a falling field" isn\'t a real long.';
+  } else {
+    cls='sideways'; verdict='SIDEWAYS';
+    note='Leadership is readable but choppy — favour the top 2-3 only, keep sizing modest.';
+  }
+  return { cls, verdict, note, pctVsMa, trendUp, vixVal, vixBand };
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function render(app, rg, results, maxAbs, asof, diag){
+  const n = results.length;
+  const rows = results.map((r,i)=>{
+    let cls='', tag='HOLDING', tagCls='';
+    const rankNum = String(i+1).padStart(2,'0');
+    // gating by regime
+    if(i < OW_COUNT && r.blend > 0){
+      if(rg.cls==='weak'){ tag='WATCH'; tagCls='watch'; }
+      else { cls='ow'; tag='OVERWEIGHT'; tagCls='ow'; }
+    } else if(i >= n-AV_COUNT && r.blend < 0){
+      cls='av'; tag='AVOID'; tagCls='av';
+    }
+    let arrow='→', aCls='flat';
+    if(r.momZ > 0.3){ arrow='▲'; aCls='up'; }
+    else if(r.momZ < -0.3){ arrow='▼'; aCls='dn'; }
+    const w = Math.round((Math.abs(r.blend)/maxAbs)*100);
+    return `<div class="row ${cls}" style="animation-delay:${i*45}ms">
+      <div class="rank">${rankNum}</div>
+      <div class="mid">
+        <div class="name">${r.name} <span class="arrow ${aCls}">${arrow}</span></div>
+        <div class="track"><div class="fill" style="width:${w}%"></div></div>
+      </div>
+      <div class="tag ${tagCls}">${tag}</div>
+    </div>`;
+  }).join('');
+
+  const vixTxt = rg.vixVal!=null ? `${rg.vixVal.toFixed(1)} · ${rg.vixBand}` : 'unavailable';
+  const maTxt = `${rg.trendUp?'above':'below'} 30-wk MA (${rg.pctVsMa>=0?'+':''}${rg.pctVsMa.toFixed(1)}%)`;
+
+  app.innerHTML = `
+    <div class="regime ${rg.cls}">
+      <div class="bar"></div>
+      <div class="body">
+        <div class="label">Market Regime</div>
+        <div class="verdict">${rg.verdict}</div>
+        <div class="meta">
+          <div>Nifty <b>${maTxt}</b></div>
+          <div>India VIX <b>${vixTxt}</b></div>
+        </div>
+        <div class="note">${rg.note}</div>
+      </div>
+    </div>
+
+    <div class="board-head">
+      <h2>Leaderboard</h2>
+      <div class="asof">as of ${asof}</div>
+    </div>
+    ${rows}
+    <div id="diag-mount"></div>`;
+
+  renderDiag(document.getElementById('diag-mount'), diag);
+  requestAnimationFrame(()=>document.querySelectorAll('.fill').forEach(f=>{
+    f.style.width = f.style.width; // trigger transition
+  }));
+}
+
+function renderDiag(mount, diag){
+  const okCount = diag.filter(d=>d.ok).length;
+  const rows = diag.map(d=>`<div class="diag-row">
+    <span>${d.name}${d.ticker?` · ${d.ticker}`:''}</span>
+    <span class="${d.ok?'ok':'fail'}">${d.ok?('ok · '+(d.via||'')):'failed'}</span>
+  </div>`).join('');
+  const path = ACTIVE_PROXY
+    ? `route: ${ACTIVE_PROXY.name==='direct'?'direct (no CORS block)':ACTIVE_PROXY.name+' proxy'}`
+    : 'route: none';
+  mount.insertAdjacentHTML('beforeend', `
+    <details class="diag">
+      <summary><span>Data diagnostic</span><span>${okCount}/${diag.length} loaded ▾</span></summary>
+      <div class="diag-body">
+        <div class="diag-path">${path}</div>
+        ${rows}
+        <button class="btn" onclick="run()">Refresh data</button>
+      </div>
+    </details>`);
+}
+
+run();
+</script>
+</body>
+</html>
