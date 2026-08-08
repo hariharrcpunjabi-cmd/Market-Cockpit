@@ -286,9 +286,12 @@ def fetch_ohlcv(ticker, rng="1y", interval="1d", retries=3):
             res = res[0]; ts = res.get("timestamp")
             q = res.get("indicators", {}).get("quote", [{}])[0]
             cl, vol = q.get("close"), q.get("volume")
+            hi, lo = q.get("high"), q.get("low")
             if not ts or not cl:
                 continue
-            out = [(ts[i], cl[i], (vol[i] if vol else None))
+            out = [(ts[i], (hi[i] if hi and hi[i] is not None else cl[i]),
+                    (lo[i] if lo and lo[i] is not None else cl[i]),
+                    cl[i], (vol[i] if vol else None))
                    for i in range(len(ts)) if cl[i] is not None]
             return out or None
         except Exception:
@@ -314,15 +317,25 @@ def rsi_wilder(closes, period=14):
     return 100 - 100 / (1 + rs)
 
 def resample_weekly_close(daily):
-    """daily = list[(t, close, vol)] chronological -> list of weekly closes."""
+    """daily = list[(t, high, low, close, vol)] chronological -> list of weekly closes."""
     weeks = {}
     order = []
-    for t, c, _ in daily:
+    for t, _h, _l, c, _v in daily:
         key = datetime.datetime.utcfromtimestamp(t).isocalendar()[:2]
         if key not in weeks:
             order.append(key)
         weeks[key] = c
     return [weeks[k] for k in order]
+
+def atr14(highs, lows, closes, period=14):
+    if len(closes) < period + 1:
+        return None
+    trs = []
+    for i in range(1, len(closes)):
+        trs.append(max(highs[i] - lows[i],
+                       abs(highs[i] - closes[i-1]),
+                       abs(lows[i] - closes[i-1])))
+    return sum(trs[-period:]) / period
 
 def pct_return(closes, days):
     if not closes or len(closes) <= days:
@@ -332,18 +345,21 @@ def pct_return(closes, days):
 def scan_stage2():
     print("Scanning Nifty 200 for Stage 2…")
     nd = fetch_ohlcv("^NSEI", "1y", "1d")
-    nifty_closes = [c for _, c, _ in nd] if nd else None
+    nifty_closes = [c for _, _, _, c, _ in nd] if nd else None
     nifty_ret = pct_return(nifty_closes, 65) if nifty_closes else 0.0
 
     passed, scanned, failed = [], 0, 0
+    grade_count = {"Prime": 0, "Healthy": 0, "Late": 0}
     for tk in NIFTY200:
         d = fetch_ohlcv(tk, "1y", "1d")
         time.sleep(STAGE2_SLEEP)
         if not d or len(d) < 160:
             failed += 1; continue
         scanned += 1
-        closes = [c for _, c, _ in d]
-        vols = [v for _, _, v in d if v is not None]
+        highs  = [h for _, h, _, _, _ in d]
+        lows   = [l for _, _, l, _, _ in d]
+        closes = [c for _, _, _, c, _ in d]
+        vols   = [v for _, _, _, _, v in d if v is not None]
         wk = resample_weekly_close(d)
         dSMA30 = sma(closes, 30); dVolSMA50 = sma(vols, 50)
         if dSMA30 is None or dVolSMA50 is None or len(wk) < 32:
@@ -360,21 +376,84 @@ def scan_stage2():
         ext = (wClose / wSMA30 - 1) * 100
         vol_surge = dVol / dVolSMA50 if dVolSMA50 else 1.0
         rs13 = pct_return(closes, 65) - nifty_ret
-        penalty = 0 if ext <= 25 else (ext - 25) * 0.5   # user dislikes over-extended entries
+
+        # ---- proper trading stop: tighter of (2x ATR) and (8% below) ----
+        a = atr14(highs, lows, closes, 14)
+        atr_stop = dClose - 2 * a if a else None
+        pct_stop = dClose * 0.92
+        stop = max(atr_stop, pct_stop) if atr_stop else pct_stop   # tighter = closer to price
+        risk_pct = (dClose - stop) / dClose * 100
+
+        # ---- Prime / Healthy / Late grade by extension above 30-wk MA ----
+        grade = "Prime" if ext <= 8 else "Healthy" if ext <= 20 else "Late"
+        grade_count[grade] += 1
+
+        penalty = 0 if ext <= 25 else (ext - 25) * 0.5
         score = rs13 * 1.0 + min(vol_surge, 3) * 3.0 - penalty
         passed.append({
             "symbol": tk.replace(".NS", ""),
             "close": round(dClose, 2),
+            "grade": grade,
             "ext_above_30wma": round(ext, 1),
             "vol_surge": round(vol_surge, 2),
             "rs_vs_nifty": round(rs13, 1),
-            "stop_ref": round(wSMA30, 2),   # weekly 30-MA = Stage-2-end stop reference
+            "atr": round(a, 2) if a else None,
+            "stop": round(stop, 2),            # trading stop-loss (ATR/% mix)
+            "risk_pct": round(risk_pct, 1),    # % risk from close to stop
+            "stage2_exit": round(wSMA30, 2),   # structural: weekly close below 30-wk MA
             "score": round(score, 2),
         })
     passed.sort(key=lambda x: x["score"], reverse=True)
-    print(f"  scanned={scanned} failed={failed} qualified={len(passed)}")
+    print(f"  scanned={scanned} failed={failed} qualified={len(passed)} "
+          f"(Prime {grade_count['Prime']} / Healthy {grade_count['Healthy']} / Late {grade_count['Late']})")
     return {"universe": "Nifty 200", "scanned": scanned, "failed": failed,
-            "qualified": len(passed), "stocks": passed[:STAGE2_TOP]}
+            "qualified": len(passed), "grades": grade_count,
+            "stocks": passed[:STAGE2_TOP]}
+
+# ------------------------------------------------------------------ CHARTINK CSV
+CHARTINK_CSV = "chartink_trading.csv"   # committed to repo (manually for now, bridge later)
+
+def _cnum(s):
+    if s is None: return None
+    s = str(s).replace(',', '').replace('%', '').strip().strip('"')
+    try: return float(s)
+    except: return None
+
+def _tier(mcap_cr):
+    if mcap_cr is None: return "—"
+    if mcap_cr >= 20000: return "Large"
+    if mcap_cr >= 5000:  return "Mid"
+    return "Small"
+
+def _grade(ext):
+    return "Prime" if ext <= 8 else "Healthy" if ext <= 20 else "Late"
+
+def parse_chartink_csv(path):
+    import csv
+    rows, gc, tc = [], {"Prime":0,"Healthy":0,"Late":0}, {"Large":0,"Mid":0,"Small":0,"—":0}
+    with open(path, encoding='utf-8-sig') as f:
+        for r in csv.DictReader(f):
+            sym = (r.get('Symbol') or '').strip()
+            close = _cnum(r.get('close')); sma150 = _cnum(r.get('sma150'))
+            atr = _cnum(r.get('atr14')); mcap = _cnum(r.get('market_cap'))
+            if not sym or not close or not sma150: continue
+            ext = (close / sma150 - 1) * 100
+            atr_stop = close - 2*atr if atr else None
+            stop = max(atr_stop, close*0.92) if atr_stop else close*0.92
+            g = _grade(ext); t = _tier(mcap); gc[g] += 1; tc[t] += 1
+            rows.append({
+                "symbol": sym, "name": (r.get('Stock Name') or '').strip(),
+                "close": round(close, 2), "pct_change": _cnum(r.get('%_change')),
+                "grade": g, "ext_above_30wma": round(ext, 1),
+                "mcap_cr": round(mcap) if mcap else None, "tier": t,
+                "stop": round(stop, 2), "risk_pct": round((close-stop)/close*100, 1),
+                "stage2_exit": round(sma150, 2),
+            })
+    grank = {"Prime":0,"Healthy":1,"Late":2}
+    rows.sort(key=lambda x: (grank[x["grade"]], x["ext_above_30wma"]))
+    return {"universe": "Chartink · CLAUDE PROJECT_TRADING", "source": "chartink",
+            "scanned": len(rows), "failed": 0, "qualified": len(rows),
+            "grades": gc, "tiers": tc, "stocks": rows}
 
 # ------------------------------------------------------------------ MAIN
 def main():
@@ -461,8 +540,20 @@ def main():
     print(f"Macro verdict: {macro['verdict']['label']} (score {macro['verdict']['score']})  "
           f"signals={macro['diagnostics']['loaded']}/{macro['diagnostics']['total']}")
 
-    # ---- Page 1: native Stage 2 stock scan ----
-    stage2 = scan_stage2()
+    # ---- Page 1: stocks — any Chartink CSV in the repo, else native Yahoo scan ----
+    import glob
+    stage2 = None
+    for csv_path in sorted(glob.glob("*.csv")):
+        try:
+            r = parse_chartink_csv(csv_path)
+            if r["qualified"] > 0:
+                print(f"Using Chartink CSV: {csv_path}")
+                stage2 = r; break
+        except Exception as e:
+            print(f"  skip {csv_path}: {e}")
+    if stage2 is None:
+        print("No usable Chartink CSV — running native Yahoo Stage 2 scan.")
+        stage2 = scan_stage2()
     stage2["generated_at"] = payload["generated_at"]
     stage2["as_of"] = as_of
     with open("stage2.json", "w") as f:
