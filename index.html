@@ -103,6 +103,17 @@
   .stock .stop{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--faint); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2)}
   .stock .stop b{color:var(--muted)}
   .stock .extpill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:99px; margin-left:8px; color:var(--bad); background:var(--bad-dim)}
+  .stock .gpill{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:99px; margin-left:2px}
+  .stock .gpill.good{color:var(--good); background:var(--good-dim)}
+  .stock .gpill.mid{color:var(--mid); background:var(--mid-dim)}
+  .stock .gpill.bad{color:var(--bad); background:var(--bad-dim)}
+  .stock .s2exit{display:block; color:var(--faint); margin-top:4px}
+  .gradebar{display:flex; gap:7px; margin:0 2px 14px; flex-wrap:wrap}
+  .gradebar span{font-family:'IBM Plex Mono',monospace; font-size:11px; padding:5px 11px; border-radius:99px; border:1px solid var(--line)}
+  .gradebar .g-good{color:var(--good)} .gradebar .g-mid{color:var(--mid)} .gradebar .g-bad{color:var(--bad)}
+  .tierbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:4px; border:1px solid var(--line); color:var(--muted); margin-left:2px}
+  .stock .sname{font-size:12px; color:var(--muted); margin-top:2px}
+  .stock .mcap{color:var(--faint)}
 
   .lead{font-size:12.5px; color:var(--muted); margin:0 2px 12px; line-height:1.5}
   .note{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:10px; line-height:1.6}
@@ -206,24 +217,43 @@ function render(macro,sect,st2){
   // ---- section 4: stage 2 stocks ----
   let s4='<div class="miss">Stock scan unavailable.</div>', s4cnt='';
   if(st2){
-    s4cnt=`${st2.qualified} qualified · ${st2.scanned} scanned`;
-    s4=`<div class="lead">Every name below passes all six Weinstein Stage 2 conditions, ranked by RS + volume, penalising over-extension:</div>`
+    const src = st2.source==='chartink' ? 'Chartink' : 'Yahoo scan';
+    s4cnt=`${st2.qualified} names · ${src}`;
+    const g=st2.grades||{}, ti=st2.tiers||{};
+    const gbar=g.Prime!=null?`<div class="gradebar">
+      <span class="g-good">Prime ${g.Prime}</span>
+      <span class="g-mid">Healthy ${g.Healthy}</span>
+      <span class="g-bad">Late ${g.Late}</span></div>`:'';
+    const tbar=ti.Large!=null?`<div class="gradebar">
+      <span>Large ${ti.Large}</span><span>Mid ${ti.Mid}</span><span>Small ${ti.Small}</span></div>`:'';
+    const gmap={Prime:'clean',Healthy:'watch',Late:'ext'};
+    const gp={Prime:'good',Healthy:'mid',Late:'bad'};
+    const mcapTxt=x=> x.mcap_cr!=null ? `₹${Number(x.mcap_cr).toLocaleString('en-IN')} Cr` : '';
+    s4=gbar+tbar+`<div class="lead">Weinstein Stage 2 names, graded by extension above the 150-day MA. Stop = tighter of 2×ATR and 8%.</div>`
       + st2.stocks.map((x,i)=>{
-      const cls=x.ext_above_30wma>30?'ext':x.ext_above_30wma>15?'watch':'clean';
-      const extpill=x.ext_above_30wma>30?'<span class="extpill">over-extended</span>':'';
-      const rsCls=x.rs_vs_nifty>=0?'pos':'neg';
+      const cls=gmap[x.grade]||'watch';
+      const stat=[];
+      if(x.mcap_cr!=null) stat.push(`<span class="mcap">${mcapTxt(x)}</span>`);
+      if(x.pct_change!=null) stat.push(`${x.pct_change>=0?'+':''}${x.pct_change}% today`);
+      if(x.rs_vs_nifty!=null) stat.push(`RS <b class="${x.rs_vs_nifty>=0?'pos':'neg'}">${x.rs_vs_nifty>=0?'+':''}${x.rs_vs_nifty}%</b>`);
+      if(x.vol_surge!=null) stat.push(`Vol <b>${x.vol_surge}×</b>`);
+      stat.push(`+${x.ext_above_30wma}% vs MA`);
+      const exit = x.stage2_exit!=null?x.stage2_exit:x.stop_ref;
+      const stopLine = x.stop!=null
+        ? `<b>Stop:</b> ${inr(x.stop)} · risk <b>${x.risk_pct}%</b><span class="s2exit">Stage 2 ends below ${inr(exit)}</span>`
+        : `<b>Stop:</b> weekly close below ${inr(x.stop_ref)}`;
       return `<div class="stock ${cls}">
         <div class="st-top"><div class="srank">${String(i+1).padStart(2,'0')}</div>
-          <div class="ssym">${x.symbol}</div><div class="sclose">${inr(x.close)}</div></div>
-        <div class="stats">
-          <span>RS vs Nifty <b class="${rsCls}">${x.rs_vs_nifty>=0?'+':''}${x.rs_vs_nifty}%</b></span>
-          <span>Vol <b>${x.vol_surge}×</b></span>
-          <span>vs 30wk-MA <b>+${x.ext_above_30wma}%</b>${extpill}</span>
-        </div>
-        <div class="stop"><b>Stop:</b> weekly close below ${inr(x.stop_ref)} (30-wk MA)</div>
+          <div class="ssym">${x.symbol}</div>
+          ${x.grade?`<span class="gpill ${gp[x.grade]}">${x.grade}</span>`:''}
+          ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
+          <div class="sclose">${inr(x.close)}</div></div>
+        ${x.name?`<div class="sname">${x.name}</div>`:''}
+        <div class="stats">${stat.map(s=>`<span>${s}</span>`).join('')}</div>
+        <div class="stop">${stopLine}</div>
       </div>`;
     }).join('')
-      + `<div class="note">Exit-tracking ("weeks in Stage 2" + exit flags) starts accumulating from now via weekly snapshots.</div>`;
+      + `<div class="note">${st2.source==='chartink'?'Live from your Chartink CLAUDE PROJECT_TRADING scan. Sector tags coming next.':'Native Yahoo scan. Chartink feed adds names, market cap &amp; sector.'}</div>`;
   }
 
   document.getElementById('app').innerHTML=`
