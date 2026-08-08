@@ -1,46 +1,50 @@
 {
   "verdict": {
     "cls": "neutral",
-    "label": "NEUTRAL",
-    "note": "Mixed cross-asset signals \u2014 no strong edge; lean on sector selection and stay nimble.",
-    "score": -0.0
+    "label": "MIXED",
+    "action": "No clear macro edge. Stay invested but selective \u2014 let the sector leaderboard pick your spots and keep sizing normal. Don't force new risk.",
+    "score": -0.02
   },
   "signals": [
     {
-      "name": "Gold / Silver ratio",
-      "show": "ratio",
+      "name": "Gold vs Silver",
+      "headline": "68.5",
       "arrow": "up",
-      "z": 2.07,
-      "chg13": 13.67,
-      "value": 68.54,
-      "reading": "fear bid \u2014 risk-off tilt"
+      "status": "bad",
+      "plain": "Gold is pulling ahead of silver \u2014 a classic fear signal. Mild caution for stocks.",
+      "why": "The gold-to-silver ratio climbs when investors turn defensive.",
+      "chg13": 13.7,
+      "z": 2.07
     },
     {
-      "name": "Nifty vs Gold",
-      "show": "change",
+      "name": "Indian Stocks vs Gold",
+      "headline": "+4.7%",
       "arrow": "up",
-      "z": 1.25,
+      "status": "good",
+      "plain": "Indian stocks are beating gold \u2014 money prefers equities over safe-havens. Good sign.",
+      "why": "When stocks outrun gold, risk appetite is healthy.",
+      "chg13": 4.7,
+      "z": 1.18
+    },
+    {
+      "name": "Market Breadth",
+      "headline": "+2.0%",
+      "arrow": "up",
+      "status": "good",
+      "plain": "The broader market is keeping pace with large-caps \u2014 healthy, broad participation.",
+      "why": "Nifty 500 vs Nifty 50 \u2014 broad participation signals a durable move.",
+      "chg13": 2.0,
+      "z": 1.21
+    },
+    {
+      "name": "US 10-Year Yield",
+      "headline": "4.66%",
+      "arrow": "up",
+      "status": "bad",
+      "plain": "US bond yields are rising \u2014 global money gets pricier, a headwind for Indian equities.",
+      "why": "High US yields pull foreign money out of emerging markets like India.",
       "chg13": 5.0,
-      "value": 200.61,
-      "reading": "equities beating safe-haven \u2014 risk-on"
-    },
-    {
-      "name": "Breadth \u00b7 Nifty 500 / Nifty 50",
-      "show": "change",
-      "arrow": "up",
-      "z": 1.21,
-      "chg13": 2.01,
-      "value": 0.97,
-      "reading": "broad participation \u2014 healthy"
-    },
-    {
-      "name": "US 10Y yield",
-      "show": "change",
-      "arrow": "up",
-      "z": 1.63,
-      "chg13": 5.01,
-      "value": 4.66,
-      "reading": "yields climbing \u2014 equity headwind"
+      "z": 1.63
     }
   ],
   "diagnostics": {
@@ -48,23 +52,23 @@
     "total": 4,
     "detail": [
       {
-        "name": "Gold / Silver ratio",
+        "name": "Gold vs Silver",
         "ok": true
       },
       {
-        "name": "Nifty vs Gold",
+        "name": "Indian Stocks vs Gold",
         "ok": true
       },
       {
-        "name": "Breadth \u00b7 Nifty 500 / Nifty 50",
+        "name": "Market Breadth",
         "ok": true
       },
       {
-        "name": "US 10Y yield",
+        "name": "US 10-Year Yield",
         "ok": true
       }
     ]
   },
-  "generated_at": "2026-08-08T04:41:15Z",
+  "generated_at": "2026-08-08T17:17:34Z",
   "as_of": "2026-08-07"
 }

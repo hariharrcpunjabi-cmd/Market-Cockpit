@@ -1,0 +1,190 @@
+{
+  "universe": "Nifty 200",
+  "scanned": 229,
+  "failed": 7,
+  "qualified": 27,
+  "stocks": [
+    {
+      "symbol": "SONACOMS",
+      "close": 818.05,
+      "ext_above_30wma": 40.6,
+      "vol_surge": 1.54,
+      "rs_vs_nifty": 40.2,
+      "stop_ref": 581.8,
+      "score": 37.04
+    },
+    {
+      "symbol": "MOTHERSON",
+      "close": 168.5,
+      "ext_above_30wma": 28.5,
+      "vol_surge": 5.34,
+      "rs_vs_nifty": 26.6,
+      "stop_ref": 131.11,
+      "score": 33.88
+    },
+    {
+      "symbol": "EXIDEIND",
+      "close": 490.0,
+      "ext_above_30wma": 35.3,
+      "vol_surge": 1.59,
+      "rs_vs_nifty": 33.5,
+      "stop_ref": 362.19,
+      "score": 33.1
+    },
+    {
+      "symbol": "TECHM",
+      "close": 1635.0,
+      "ext_above_30wma": 10.1,
+      "vol_surge": 2.19,
+      "rs_vs_nifty": 10.8,
+      "stop_ref": 1484.41,
+      "score": 17.33
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "close": 1078.0,
+      "ext_above_30wma": 13.0,
+      "vol_surge": 1.6,
+      "rs_vs_nifty": 11.9,
+      "stop_ref": 953.97,
+      "score": 16.65
+    },
+    {
+      "symbol": "GRASIM",
+      "close": 3323.0,
+      "ext_above_30wma": 13.9,
+      "vol_surge": 1.75,
+      "rs_vs_nifty": 11.3,
+      "stop_ref": 2916.95,
+      "score": 16.52
+    },
+    {
+      "symbol": "BHARATFORG",
+      "close": 2265.2,
+      "ext_above_30wma": 20.8,
+      "vol_surge": 1.08,
+      "rs_vs_nifty": 12.9,
+      "stop_ref": 1875.01,
+      "score": 16.11
+    },
+    {
+      "symbol": "AUROPHARMA",
+      "close": 1658.0,
+      "ext_above_30wma": 19.6,
+      "vol_surge": 1.58,
+      "rs_vs_nifty": 11.1,
+      "stop_ref": 1386.57,
+      "score": 15.87
+    },
+    {
+      "symbol": "BAJAJFINSV",
+      "close": 2008.9,
+      "ext_above_30wma": 8.7,
+      "vol_surge": 1.83,
+      "rs_vs_nifty": 9.5,
+      "stop_ref": 1847.49,
+      "score": 14.99
+    },
+    {
+      "symbol": "SBIN",
+      "close": 1097.2,
+      "ext_above_30wma": 3.9,
+      "vol_surge": 2.45,
+      "rs_vs_nifty": 6.7,
+      "stop_ref": 1055.52,
+      "score": 14.02
+    },
+    {
+      "symbol": "BIOCON",
+      "close": 426.35,
+      "ext_above_30wma": 8.2,
+      "vol_surge": 1.07,
+      "rs_vs_nifty": 10.6,
+      "stop_ref": 394.07,
+      "score": 13.76
+    },
+    {
+      "symbol": "UNIONBANK",
+      "close": 183.6,
+      "ext_above_30wma": 4.8,
+      "vol_surge": 1.37,
+      "rs_vs_nifty": 8.8,
+      "stop_ref": 175.21,
+      "score": 12.88
+    },
+    {
+      "symbol": "TITAN",
+      "close": 4941.0,
+      "ext_above_30wma": 14.4,
+      "vol_surge": 1.34,
+      "rs_vs_nifty": 8.6,
+      "stop_ref": 4319.15,
+      "score": 12.63
+    },
+    {
+      "symbol": "360ONE",
+      "close": 1168.1,
+      "ext_above_30wma": 7.1,
+      "vol_surge": 1.38,
+      "rs_vs_nifty": 4.1,
+      "stop_ref": 1090.96,
+      "score": 8.24
+    },
+    {
+      "symbol": "CASTROLIND",
+      "close": 192.08,
+      "ext_above_30wma": 4.3,
+      "vol_surge": 1.83,
+      "rs_vs_nifty": 2.6,
+      "stop_ref": 184.14,
+      "score": 8.05
+    },
+    {
+      "symbol": "SUNPHARMA",
+      "close": 1945.0,
+      "ext_above_30wma": 8.7,
+      "vol_surge": 1.06,
+      "rs_vs_nifty": 4.3,
+      "stop_ref": 1789.5,
+      "score": 7.45
+    },
+    {
+      "symbol": "FORTIS",
+      "close": 955.15,
+      "ext_above_30wma": 4.6,
+      "vol_surge": 2.4,
+      "rs_vs_nifty": -0.2,
+      "stop_ref": 913.5,
+      "score": 7.01
+    },
+    {
+      "symbol": "POONAWALLA",
+      "close": 480.05,
+      "ext_above_30wma": 11.9,
+      "vol_surge": 1.12,
+      "rs_vs_nifty": 2.9,
+      "stop_ref": 429.18,
+      "score": 6.22
+    },
+    {
+      "symbol": "INDIANB",
+      "close": 889.5,
+      "ext_above_30wma": 1.8,
+      "vol_surge": 1.17,
+      "rs_vs_nifty": 2.4,
+      "stop_ref": 873.37,
+      "score": 5.87
+    },
+    {
+      "symbol": "HAL",
+      "close": 4910.0,
+      "ext_above_30wma": 14.7,
+      "vol_surge": 1.34,
+      "rs_vs_nifty": 1.6,
+      "stop_ref": 4280.56,
+      "score": 5.58
+    }
+  ],
+  "generated_at": "2026-08-08T17:17:34Z",
+  "as_of": "2026-08-07"
+}

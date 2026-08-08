@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T04:41:15Z",
+  "generated_at": "2026-08-08T17:17:34Z",
   "as_of": "2026-08-07",
   "regime": {
     "cls": "strong",
@@ -174,11 +174,11 @@
     {
       "name": "Oil & Gas",
       "proxy": true,
-      "level_z": -1.622,
-      "mom_z": -0.267,
-      "blend": -1.08,
+      "level_z": -1.682,
+      "mom_z": -0.315,
+      "blend": -1.135,
       "rank": 17,
-      "arrow": "flat",
+      "arrow": "down",
       "tag": "AVOID"
     }
   ],
