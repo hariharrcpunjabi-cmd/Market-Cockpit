@@ -423,14 +423,20 @@ def _tier(mcap_cr):
     if mcap_cr is None: return "—"
     if mcap_cr >= 20000: return "Large"
     if mcap_cr >= 5000:  return "Mid"
-    return "Small"
+    if mcap_cr >= 500:   return "Small"
+    return "Micro"
 
 def _grade(ext):
-    return "Prime" if ext <= 8 else "Healthy" if ext <= 20 else "Late"
+    return "Prime" if ext <= 10 else "Healthy" if ext <= 20 else "Late"
+
+def _sec_norm(s):
+    if not s: return ""
+    s = s.strip().title()
+    return {"Fmcg": "FMCG", "It": "IT", "Nbfc": "NBFC"}.get(s, s)
 
 def parse_chartink_csv(path):
     import csv
-    rows, gc, tc = [], {"Prime":0,"Healthy":0,"Late":0}, {"Large":0,"Mid":0,"Small":0,"—":0}
+    rows, gc, tc, sc = [], {"Prime":0,"Healthy":0,"Late":0}, {"Large":0,"Mid":0,"Small":0,"Micro":0,"—":0}, {}
     with open(path, encoding='utf-8-sig') as f:
         for r in csv.DictReader(f):
             sym = (r.get('Symbol') or '').strip()
@@ -438,22 +444,28 @@ def parse_chartink_csv(path):
             atr = _cnum(r.get('atr14')); mcap = _cnum(r.get('market_cap'))
             if not sym or not close or not sma150: continue
             ext = (close / sma150 - 1) * 100
-            atr_stop = close - 2*atr if atr else None
-            stop = max(atr_stop, close*0.92) if atr_stop else close*0.92
-            g = _grade(ext); t = _tier(mcap); gc[g] += 1; tc[t] += 1
+            g = _grade(ext); t = _tier(mcap); sec = _sec_norm(r.get('Sector') or r.get('sector'))
+            # grade-dependent stop (Hariskill rule)
+            if g == "Prime":
+                stop = sma150 * 0.97; stop_type = "150-MA line"
+            else:
+                stop = (close - 2*atr) if atr else close * 0.92; stop_type = "2×ATR"
+            gc[g] += 1; tc[t] += 1
+            if sec: sc[sec] = sc.get(sec, 0) + 1
             rows.append({
                 "symbol": sym, "name": (r.get('Stock Name') or '').strip(),
                 "close": round(close, 2), "pct_change": _cnum(r.get('%_change')),
                 "grade": g, "ext_above_30wma": round(ext, 1),
-                "mcap_cr": round(mcap) if mcap else None, "tier": t,
-                "stop": round(stop, 2), "risk_pct": round((close-stop)/close*100, 1),
+                "mcap_cr": round(mcap) if mcap else None, "tier": t, "sector": sec,
+                "stop": round(stop, 2), "stop_type": stop_type,
+                "risk_pct": round((close-stop)/close*100, 1),
                 "stage2_exit": round(sma150, 2),
             })
     grank = {"Prime":0,"Healthy":1,"Late":2}
     rows.sort(key=lambda x: (grank[x["grade"]], x["ext_above_30wma"]))
     return {"universe": "Chartink · CLAUDE PROJECT_TRADING", "source": "chartink",
             "scanned": len(rows), "failed": 0, "qualified": len(rows),
-            "grades": gc, "tiers": tc, "stocks": rows}
+            "grades": gc, "tiers": tc, "sector_mix": sc, "stocks": rows}
 
 # ------------------------------------------------------------------ MAIN
 def main():
