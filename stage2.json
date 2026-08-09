@@ -28,7 +28,8 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 2436.23,
-          "rank": 1
+          "rank": 1,
+          "fundamental": "Zero-debt defence-shipbuilding PSU. FY26 revenue +12%, and Q1 FY27 PAT jumped ~21% with margins expanding; analysts model ~20% earnings CAGR and ~28% ROE. Watch: order book slipped to ~\u20b920,500cr as flagship warship projects complete \u2014 the next leg depends on new large contracts (P75I, LPD) and the Colombo Dockyard / Tuticorin commercial push."
         },
         {
           "symbol": "CASTROLIND",
@@ -51,7 +52,8 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 184.63,
-          "rank": 2
+          "rank": 2,
+          "fundamental": "Near debt-free lubricants leader \u2014 ~43% ROE, ~4.5% dividend yield. Q2 CY26 revenue +25%, PAT +43%, EBITDA +41%, and the interim dividend was raised to \u20b96.25. Targeting ~2x market volume growth via rural + premium expansion. Overhang: parent bp is selling its global Castrol business to Stonepeak."
         },
         {
           "symbol": "ATUL",
@@ -74,7 +76,8 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 6473.56,
-          "rank": 3
+          "rank": 3,
+          "fundamental": "Near debt-free specialty-chemicals maker. Q1 FY27 net profit nearly doubled (+92%) on +25% revenue, led by Performance Chemicals (+34%); a new \u20b9167cr downstream-integration capex adds high-margin capacity. Rides the 12\u201318% specialty-chemicals sector tailwind \u2014 key risk is US tariffs / global oversupply."
         },
         {
           "symbol": "ORIENTELEC",
@@ -97,7 +100,8 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 176.25,
-          "rank": 4
+          "rank": 4,
+          "fundamental": "CK Birla consumer-electricals (fans, lighting, appliances), net-cash balance sheet. Q1 FY27 revenue +23.5% and PAT +80%, with the premium BLDC-fan range +36%. Premiumisation plus a cost program is driving the turnaround; watch commodity-led gross-margin pressure."
         },
         {
           "symbol": "MUKANDLTD",
@@ -120,7 +124,8 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 133.34,
-          "rank": 5
+          "rank": 5,
+          "fundamental": "Bajaj-group specialty alloy steel. The real story is deleveraging \u2014 large land-sale monetisation (Dighe \u20b9555cr, Kalwa \u20b9112cr) cut debt sharply and earned an ICRA upgrade (JV debt/EBITDA ~0.9x). Honest caveat: recent profits lean heavily on one-off land gains and FY26 core operating cash flow was negative \u2014 Q1 FY27 results (12 Aug) reveal the true core trend. More a balance-sheet-repair play than an earnings-growth one."
         },
         {
           "symbol": "BAJAJFINSV",
@@ -2123,7 +2128,7 @@
       }
     }
   },
-  "generated_at": "2026-08-09T18:03:45Z",
+  "generated_at": "2026-08-09T18:08:08Z",
   "as_of": "2026-08-07",
   "tracker": {
     "as_of": "2026-08-07",
