@@ -445,11 +445,13 @@ def parse_chartink_csv(path):
             if not sym or not close or not sma150: continue
             ext = (close / sma150 - 1) * 100
             g = _grade(ext); t = _tier(mcap); sec = _sec_norm(r.get('Sector') or r.get('sector'))
-            # grade-dependent stop (Hariskill rule)
-            if g == "Prime":
-                stop = sma150 * 0.97; stop_type = "150-MA line"
-            else:
-                stop = (close - 2*atr) if atr else close * 0.92; stop_type = "2×ATR"
+            # two stops, reader picks
+            stop_ma = sma150 * 0.97
+            risk_ma = (close - stop_ma) / close * 100
+            stop_atr = (close - 2*atr) if atr else None
+            risk_atr = (close - stop_atr) / close * 100 if stop_atr else None
+            suggested = "ma" if g == "Prime" else "atr"
+            sugg_stop = stop_ma if (suggested == "ma" or stop_atr is None) else stop_atr
             gc[g] += 1; tc[t] += 1
             if sec: sc[sec] = sc.get(sec, 0) + 1
             rows.append({
@@ -457,12 +459,15 @@ def parse_chartink_csv(path):
                 "close": round(close, 2), "pct_change": _cnum(r.get('%_change')),
                 "grade": g, "ext_above_30wma": round(ext, 1),
                 "mcap_cr": round(mcap) if mcap else None, "tier": t, "sector": sec,
-                "stop": round(stop, 2), "stop_type": stop_type,
-                "risk_pct": round((close-stop)/close*100, 1),
+                "stop_ma": round(stop_ma, 2), "risk_ma": round(risk_ma, 1),
+                "stop_atr": round(stop_atr, 2) if stop_atr else None,
+                "risk_atr": round(risk_atr, 1) if risk_atr else None,
+                "suggested": suggested, "sugg_stop": round(sugg_stop, 2),
                 "stage2_exit": round(sma150, 2),
             })
     grank = {"Prime":0,"Healthy":1,"Late":2}
-    rows.sort(key=lambda x: (grank[x["grade"]], x["ext_above_30wma"]))
+    rows.sort(key=lambda x: (grank[x["grade"]], x["risk_ma"] if x["suggested"]=="ma" else (x["risk_atr"] or 99), x["ext_above_30wma"]))
+    for i, x in enumerate(rows): x["rank"] = i + 1
     return {"universe": "Chartink · CLAUDE PROJECT_TRADING", "source": "chartink",
             "scanned": len(rows), "failed": 0, "qualified": len(rows),
             "grades": gc, "tiers": tc, "sector_mix": sc, "stocks": rows}
