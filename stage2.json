@@ -5,15 +5,32 @@
   "failed": 0,
   "qualified": 48,
   "grades": {
-    "Prime": 7,
-    "Healthy": 24,
+    "Prime": 11,
+    "Healthy": 20,
     "Late": 17
   },
   "tiers": {
     "Large": 17,
     "Mid": 18,
     "Small": 13,
+    "Micro": 0,
     "\u2014": 0
+  },
+  "sector_mix": {
+    "Auto": 6,
+    "Realty": 2,
+    "Consumer Discretionary": 7,
+    "FMCG": 3,
+    "Healthcare": 9,
+    "Chemicals": 6,
+    "Metals & Mining": 4,
+    "Industrials": 2,
+    "Power & Utilities": 1,
+    "I.T": 2,
+    "Bank": 1,
+    "Aerospace & Defence": 2,
+    "Plastic Products": 1,
+    "Financials": 2
   },
   "stocks": [
     {
@@ -25,8 +42,10 @@
       "ext_above_30wma": 3.2,
       "mcap_cr": 101446,
       "tier": "Large",
-      "stop": 2380.32,
-      "risk_pct": 5.4,
+      "sector": "Aerospace & Defence",
+      "stop": 2363.14,
+      "stop_type": "150-MA line",
+      "risk_pct": 6.0,
       "stage2_exit": 2436.23
     },
     {
@@ -38,8 +57,10 @@
       "ext_above_30wma": 4.0,
       "mcap_cr": 18999,
       "tier": "Mid",
-      "stop": 186.38,
-      "risk_pct": 3.0,
+      "sector": "Chemicals",
+      "stop": 179.09,
+      "stop_type": "150-MA line",
+      "risk_pct": 6.8,
       "stage2_exit": 184.63
     },
     {
@@ -51,8 +72,10 @@
       "ext_above_30wma": 4.6,
       "mcap_cr": 19944,
       "tier": "Mid",
-      "stop": 6386.92,
-      "risk_pct": 5.7,
+      "sector": "Chemicals",
+      "stop": 6279.35,
+      "stop_type": "150-MA line",
+      "risk_pct": 7.3,
       "stage2_exit": 6473.56
     },
     {
@@ -64,8 +87,10 @@
       "ext_above_30wma": 7.3,
       "mcap_cr": 4036,
       "tier": "Small",
-      "stop": 174.05,
-      "risk_pct": 8.0,
+      "sector": "Consumer Discretionary",
+      "stop": 170.96,
+      "stop_type": "150-MA line",
+      "risk_pct": 9.6,
       "stage2_exit": 176.25
     },
     {
@@ -77,8 +102,10 @@
       "ext_above_30wma": 7.4,
       "mcap_cr": 2069,
       "tier": "Small",
-      "stop": 135.54,
-      "risk_pct": 5.4,
+      "sector": "Metals & Mining",
+      "stop": 129.34,
+      "stop_type": "150-MA line",
+      "risk_pct": 9.7,
       "stage2_exit": 133.34
     },
     {
@@ -90,8 +117,10 @@
       "ext_above_30wma": 7.7,
       "mcap_cr": 321534,
       "tier": "Large",
-      "stop": 1900.62,
-      "risk_pct": 5.4,
+      "sector": "Financials",
+      "stop": 1808.71,
+      "stop_type": "150-MA line",
+      "risk_pct": 10.0,
       "stage2_exit": 1864.65
     },
     {
@@ -103,8 +132,10 @@
       "ext_above_30wma": 7.9,
       "mcap_cr": 1615,
       "tier": "Small",
-      "stop": 208.09,
-      "risk_pct": 7.1,
+      "sector": "Consumer Discretionary",
+      "stop": 201.36,
+      "stop_type": "150-MA line",
+      "risk_pct": 10.1,
       "stage2_exit": 207.59
     },
     {
@@ -112,12 +143,14 @@
       "name": "Hindalco Industries Limited",
       "close": 1059.6,
       "pct_change": 3.17,
-      "grade": "Healthy",
+      "grade": "Prime",
       "ext_above_30wma": 8.1,
       "mcap_cr": 238116,
       "tier": "Large",
-      "stop": 1011.0,
-      "risk_pct": 4.6,
+      "sector": "Metals & Mining",
+      "stop": 950.85,
+      "stop_type": "150-MA line",
+      "risk_pct": 10.3,
       "stage2_exit": 980.26
     },
     {
@@ -125,12 +158,14 @@
       "name": "Tech Mahindra Limited",
       "close": 1635.0,
       "pct_change": 0.17,
-      "grade": "Healthy",
+      "grade": "Prime",
       "ext_above_30wma": 9.1,
       "mcap_cr": 160239,
       "tier": "Large",
-      "stop": 1552.5,
-      "risk_pct": 5.0,
+      "sector": "I.T",
+      "stop": 1453.11,
+      "stop_type": "150-MA line",
+      "risk_pct": 11.1,
       "stage2_exit": 1498.05
     },
     {
@@ -138,12 +173,14 @@
       "name": "P N Gadgil Jewellers Ltd",
       "close": 642.85,
       "pct_change": 1.2,
-      "grade": "Healthy",
+      "grade": "Prime",
       "ext_above_30wma": 9.4,
       "mcap_cr": 8724,
       "tier": "Mid",
-      "stop": 591.42,
-      "risk_pct": 8.0,
+      "sector": "Consumer Discretionary",
+      "stop": 570.15,
+      "stop_type": "150-MA line",
+      "risk_pct": 11.3,
       "stage2_exit": 587.78
     },
     {
@@ -151,12 +188,14 @@
       "name": "Sharda Motor Industries Limited",
       "close": 941.3,
       "pct_change": 0.77,
-      "grade": "Healthy",
+      "grade": "Prime",
       "ext_above_30wma": 9.4,
       "mcap_cr": 5404,
       "tier": "Mid",
-      "stop": 873.16,
-      "risk_pct": 7.2,
+      "sector": "Auto",
+      "stop": 834.59,
+      "stop_type": "150-MA line",
+      "risk_pct": 11.3,
       "stage2_exit": 860.4
     },
     {
@@ -168,7 +207,9 @@
       "ext_above_30wma": 10.3,
       "mcap_cr": 7738,
       "tier": "Mid",
+      "sector": "Consumer Discretionary",
       "stop": 131.07,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.4,
       "stage2_exit": 126.94
     },
@@ -181,7 +222,9 @@
       "ext_above_30wma": 10.7,
       "mcap_cr": 42268,
       "tier": "Large",
+      "sector": "Financials",
       "stop": 446.97,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.9,
       "stage2_exit": 433.75
     },
@@ -194,7 +237,9 @@
       "ext_above_30wma": 10.8,
       "mcap_cr": 24503,
       "tier": "Large",
+      "sector": "Chemicals",
       "stop": 1675.66,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.7,
       "stage2_exit": 1621.44
     },
@@ -207,8 +252,10 @@
       "ext_above_30wma": 11.0,
       "mcap_cr": 1323,
       "tier": "Small",
-      "stop": 113.34,
-      "risk_pct": 8.0,
+      "sector": "Consumer Discretionary",
+      "stop": 113.22,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.1,
       "stage2_exit": 111.04
     },
     {
@@ -220,8 +267,10 @@
       "ext_above_30wma": 11.4,
       "mcap_cr": 13360,
       "tier": "Mid",
-      "stop": 510.09,
-      "risk_pct": 8.0,
+      "sector": "Healthcare",
+      "stop": 509.41,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.1,
       "stage2_exit": 497.84
     },
     {
@@ -233,7 +282,9 @@
       "ext_above_30wma": 11.9,
       "mcap_cr": 10114,
       "tier": "Mid",
+      "sector": "Plastic Products",
       "stop": 190.02,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 7.3,
       "stage2_exit": 183.08
     },
@@ -246,7 +297,9 @@
       "ext_above_30wma": 12.4,
       "mcap_cr": 2985,
       "tier": "Small",
-      "stop": 598.69,
+      "sector": "Realty",
+      "stop": 598.47,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 8.0,
       "stage2_exit": 578.92
     },
@@ -259,7 +312,9 @@
       "ext_above_30wma": 13.2,
       "mcap_cr": 5114,
       "tier": "Mid",
+      "sector": "I.T",
       "stop": 810.27,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.3,
       "stage2_exit": 764.21
     },
@@ -272,8 +327,10 @@
       "ext_above_30wma": 13.8,
       "mcap_cr": 7762,
       "tier": "Mid",
-      "stop": 155.68,
-      "risk_pct": 8.0,
+      "sector": "FMCG",
+      "stop": 152.56,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 9.8,
       "stage2_exit": 148.73
     },
     {
@@ -285,8 +342,10 @@
       "ext_above_30wma": 14.2,
       "mcap_cr": 2935,
       "tier": "Small",
-      "stop": 1129.21,
-      "risk_pct": 8.0,
+      "sector": "FMCG",
+      "stop": 1127.22,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.2,
       "stage2_exit": 1075.13
     },
     {
@@ -298,7 +357,9 @@
       "ext_above_30wma": 14.2,
       "mcap_cr": 328369,
       "tier": "Large",
+      "sector": "Aerospace & Defence",
       "stop": 4692.38,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 4.4,
       "stage2_exit": 4299.41
     },
@@ -311,7 +372,9 @@
       "ext_above_30wma": 14.5,
       "mcap_cr": 6018,
       "tier": "Mid",
+      "sector": "Power & Utilities",
       "stop": 190.78,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.2,
       "stage2_exit": 177.56
     },
@@ -324,7 +387,9 @@
       "ext_above_30wma": 14.6,
       "mcap_cr": 18011,
       "tier": "Mid",
+      "sector": "Consumer Discretionary",
       "stop": 582.21,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 7.7,
       "stage2_exit": 550.47
     },
@@ -337,8 +402,10 @@
       "ext_above_30wma": 14.6,
       "mcap_cr": 4950,
       "tier": "Small",
-      "stop": 620.08,
-      "risk_pct": 8.0,
+      "sector": "Chemicals",
+      "stop": 618.4,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.2,
       "stage2_exit": 587.9
     },
     {
@@ -350,7 +417,9 @@
       "ext_above_30wma": 14.7,
       "mcap_cr": 9770,
       "tier": "Mid",
+      "sector": "FMCG",
       "stop": 1537.78,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.0,
       "stage2_exit": 1426.63
     },
@@ -363,7 +432,9 @@
       "ext_above_30wma": 15.0,
       "mcap_cr": 438655,
       "tier": "Large",
+      "sector": "Consumer Discretionary",
       "stop": 4757.42,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 3.7,
       "stage2_exit": 4296.84
     },
@@ -376,7 +447,9 @@
       "ext_above_30wma": 15.8,
       "mcap_cr": 6791,
       "tier": "Mid",
+      "sector": "Auto",
       "stop": 2413.58,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.5,
       "stage2_exit": 2228.68
     },
@@ -389,7 +462,9 @@
       "ext_above_30wma": 16.6,
       "mcap_cr": 7158,
       "tier": "Mid",
+      "sector": "Auto",
       "stop": 487.26,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.6,
       "stage2_exit": 447.54
     },
@@ -402,7 +477,9 @@
       "ext_above_30wma": 17.7,
       "mcap_cr": 38677,
       "tier": "Large",
+      "sector": "Healthcare",
       "stop": 2278.14,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 5.4,
       "stage2_exit": 2046.38
     },
@@ -415,8 +492,10 @@
       "ext_above_30wma": 18.4,
       "mcap_cr": 17315,
       "tier": "Mid",
-      "stop": 502.55,
-      "risk_pct": 8.0,
+      "sector": "Healthcare",
+      "stop": 498.23,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.8,
       "stage2_exit": 461.42
     },
     {
@@ -428,8 +507,10 @@
       "ext_above_30wma": 20.1,
       "mcap_cr": 3703,
       "tier": "Small",
-      "stop": 262.75,
-      "risk_pct": 8.0,
+      "sector": "Chemicals",
+      "stop": 256.52,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 10.2,
       "stage2_exit": 237.73
     },
     {
@@ -441,7 +522,9 @@
       "ext_above_30wma": 21.2,
       "mcap_cr": 95398,
       "tier": "Large",
+      "sector": "Healthcare",
       "stop": 1561.76,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 5.8,
       "stage2_exit": 1368.38
     },
@@ -454,8 +537,10 @@
       "ext_above_30wma": 21.7,
       "mcap_cr": 3947,
       "tier": "Small",
-      "stop": 409.49,
-      "risk_pct": 8.0,
+      "sector": "Realty",
+      "stop": 406.02,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.8,
       "stage2_exit": 365.64
     },
     {
@@ -467,7 +552,9 @@
       "ext_above_30wma": 22.5,
       "mcap_cr": 39137,
       "tier": "Large",
+      "sector": "Healthcare",
       "stop": 1364.28,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.3,
       "stage2_exit": 1188.64
     },
@@ -480,7 +567,9 @@
       "ext_above_30wma": 22.8,
       "mcap_cr": 108297,
       "tier": "Large",
+      "sector": "Industrials",
       "stop": 2166.12,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 4.4,
       "stage2_exit": 1844.36
     },
@@ -493,8 +582,10 @@
       "ext_above_30wma": 22.8,
       "mcap_cr": 42423,
       "tier": "Large",
-      "stop": 7609.32,
-      "risk_pct": 8.0,
+      "sector": "Chemicals",
+      "stop": 7580.72,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.3,
       "stage2_exit": 6735.57
     },
     {
@@ -506,8 +597,10 @@
       "ext_above_30wma": 23.8,
       "mcap_cr": 2343,
       "tier": "Small",
-      "stop": 821.1,
-      "risk_pct": 8.0,
+      "sector": "Industrials",
+      "stop": 815.1,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.7,
       "stage2_exit": 721.0
     },
     {
@@ -519,8 +612,10 @@
       "ext_above_30wma": 24.0,
       "mcap_cr": 1601,
       "tier": "Small",
-      "stop": 530.75,
-      "risk_pct": 8.0,
+      "sector": "Auto",
+      "stop": 528.52,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.4,
       "stage2_exit": 465.38
     },
     {
@@ -532,7 +627,9 @@
       "ext_above_30wma": 24.4,
       "mcap_cr": 75809,
       "tier": "Large",
+      "sector": "Healthcare",
       "stop": 808.46,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 7.0,
       "stage2_exit": 699.03
     },
@@ -545,7 +642,9 @@
       "ext_above_30wma": 24.7,
       "mcap_cr": 5007,
       "tier": "Mid",
+      "sector": "Healthcare",
       "stop": 292.52,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 7.5,
       "stage2_exit": 253.59
     },
@@ -558,7 +657,9 @@
       "ext_above_30wma": 26.2,
       "mcap_cr": 21654,
       "tier": "Large",
+      "sector": "Healthcare",
       "stop": 817.17,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.5,
       "stage2_exit": 692.21
     },
@@ -571,8 +672,10 @@
       "ext_above_30wma": 27.0,
       "mcap_cr": 1472,
       "tier": "Small",
-      "stop": 189.61,
-      "risk_pct": 8.0,
+      "sector": "Metals & Mining",
+      "stop": 180.8,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 12.3,
       "stage2_exit": 162.26
     },
     {
@@ -584,8 +687,10 @@
       "ext_above_30wma": 27.5,
       "mcap_cr": 3305,
       "tier": "Small",
-      "stop": 314.5,
-      "risk_pct": 8.0,
+      "sector": "Metals & Mining",
+      "stop": 311.33,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.9,
       "stage2_exit": 268.09
     },
     {
@@ -597,7 +702,9 @@
       "ext_above_30wma": 28.1,
       "mcap_cr": 28981,
       "tier": "Large",
+      "sector": "Healthcare",
       "stop": 1270.74,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.9,
       "stage2_exit": 1065.46
     },
@@ -610,8 +717,10 @@
       "ext_above_30wma": 28.6,
       "mcap_cr": 7829,
       "tier": "Mid",
-      "stop": 2250.41,
-      "risk_pct": 8.0,
+      "sector": "Auto",
+      "stop": 2231.16,
+      "stop_type": "2\u00d7ATR",
+      "risk_pct": 8.8,
       "stage2_exit": 1902.2
     },
     {
@@ -623,7 +732,9 @@
       "ext_above_30wma": 29.4,
       "mcap_cr": 11724,
       "tier": "Mid",
+      "sector": "Bank",
       "stop": 288.9,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 6.8,
       "stage2_exit": 239.63
     },
@@ -636,11 +747,13 @@
       "ext_above_30wma": 29.6,
       "mcap_cr": 177842,
       "tier": "Large",
+      "sector": "Auto",
       "stop": 156.08,
+      "stop_type": "2\u00d7ATR",
       "risk_pct": 7.4,
       "stage2_exit": 129.97
     }
   ],
-  "generated_at": "2026-08-08T18:35:53Z",
+  "generated_at": "2026-08-09T03:31:12Z",
   "as_of": "2026-08-07"
 }
