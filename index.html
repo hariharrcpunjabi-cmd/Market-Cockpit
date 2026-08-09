@@ -104,7 +104,18 @@
   .stock .stats b{color:var(--text); font-weight:600} .stock .stats .mcap{color:var(--faint)}
   .stock .stops{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2); line-height:1.8}
   .stock .stops b{color:var(--muted)} .stock .stops .sug{color:var(--good); font-weight:600}
-  .stock .qty{color:var(--good); font-weight:600}
+  .stock .qty{color:var(--good); font-weight:600; font-size:11px}
+  .stock .slhead{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-bottom:6px}
+  .stock .slrow{display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text); margin:3px 0}
+  .stock .slrow b{color:var(--text); font-weight:600; min-width:64px}
+  .stock .sllabel{color:var(--muted); min-width:52px; font-size:11px}
+  .stock .slpct{color:var(--bad); min-width:42px}
+  .stock .slbar{flex:0 0 70px; height:5px; background:var(--surface2); border-radius:99px; overflow:hidden}
+  .stock .slbar i{display:block; height:100%; background:var(--bad); border-radius:99px; opacity:.65}
+
+  .stock .stopmain{color:var(--text)} .stock .stopmain b{color:var(--text)}
+  .stock .stoptype{color:var(--faint); font-size:10px; margin-left:3px}
+  .stock .stopalt{color:var(--faint); margin-top:5px}
   .stock .s2exit{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint); margin-top:6px}
   .stock .watchline{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:8px}
   .stock .fund{font-size:12.5px; color:var(--text); background:var(--mid-dim); border-radius:8px; padding:8px 11px; margin-top:8px; line-height:1.45}
@@ -171,27 +182,26 @@ function buyCard(x, isMomentum){
   const cls=gmap[x.grade]||'watch';
   const chase = isMomentum && x.grade==='Late' ? `<span class="chase">chase risk</span>` : '';
   const stat=[];
-  if(x.mcap_cr!=null) stat.push(`<span class="mcap">₹${Number(x.mcap_cr).toLocaleString('en-IN')} Cr</span>`);
+  if(x.mcap_cr!=null) stat.push(`<span class="mcap">\u20b9${Number(x.mcap_cr).toLocaleString('en-IN')} Cr</span>`);
   if(x.pct_change!=null) stat.push(`${x.pct_change>=0?'+':''}${x.pct_change}% today`);
   stat.push(`+${x.ext_above_30wma}% vs MA`);
-  const s=[];
-  const mk=(lbl,stop,risk,key)=> stop!=null?`<span class="${x.suggested===key?'sug':''}">${lbl} ${inr(stop)}·${risk}%${x.suggested===key?' ✓':''}</span>`:'';
-  s.push(mk('150-MA',x.stop_ma,x.risk_ma,'ma'));
-  s.push(mk('2×ATR',x.stop_atr,x.risk_atr,'atr'));
-  s.push(mk('21-EMA',x.stop_ema,x.risk_ema,'ema'));
-  const rps=(x.close - x.sugg_stop);
+  // three stops, sorted tight->wide, logic hidden
+  const trip=[[x.stop_ma,x.risk_ma],[x.stop_atr,x.risk_atr],[x.stop_ema,x.risk_ema]].filter(s=>s[0]!=null && s[1]>0).sort((a,b)=>a[1]-b[1]);
+  const lbl=['Tight','Medium','Wide'];
+  const maxR=Math.max(...trip.map(s=>s[1]),1);
+  const slrows=trip.map((s,i)=>`<div class="slrow"><span class="sllabel">${lbl[i]||''}</span><b>${inr(s[0])}</b><span class="slpct">\u2212${s[1]}%</span><span class="slbar"><i style="width:${Math.round(s[1]/maxR*100)}%"></i></span><span class="qty" data-rps="${(x.close-s[0]).toFixed(2)}"></span></div>`).join('');
   return `<div class="stock ${cls}">
     <div class="st-top"><div class="srank">${String(x.rank).padStart(2,'0')}</div>
       <div class="ssym">${x.symbol}</div>
       <span class="gpill ${gp[x.grade]}">${x.grade}</span>${chase}
-      ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
+      ${x.tier&&x.tier!=='\u2014'?`<span class="tierbadge">${x.tier}</span>`:''}
       ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
       <div class="sclose">${inr(x.close)}</div></div>
     ${x.name?`<div class="sname">${x.name}</div>`:''}
-    ${x.fundamental?`<div class="fund">${x.fundamental}</div>`:''}
+    ${x.fundamental?`<div class="fund">\ud83d\udca1 ${x.fundamental}</div>`:''}
     <div class="stats">${stat.map(z=>`<span>${z}</span>`).join('')}</div>
-    <div class="stops"><b>Stops:</b> ${s.filter(Boolean).join(' &nbsp;·&nbsp; ')}<span class="qty" data-rps="${rps.toFixed(2)}"></span></div>
-    <div class="s2exit">Exit if weekly close below ${inr(x.stage2_exit)} (WCB)</div></div>`;
+    <div class="stops"><div class="slhead">Stop-loss options (pick your risk)</div>${slrows}
+      <div class="s2exit">Full exit if weekly close below ${inr(x.stage2_exit)} (WCB)</div></div></div>`;
 }
 
 // light WATCHLIST card (Accumulation, Kissing-MA)
@@ -216,17 +226,20 @@ function scannerPanel(sc){
   if(sc.style==='watch'){
     return `<div class="lead">${sc.note}</div>`+sc.stocks.map(watchCard).join('');
   }
-  // buy style: risk box + three tiers
+  // buy style: risk box + focused tiers (drop Late, cap 15)
   const isMom = sc.label==='Momentum';
-  const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity on suggested stop</label><input class="riskInput" type="number" inputmode="numeric" placeholder="e.g. 2000"></div>`;
-  const all=(sc.stocks||[]).filter(x=>x&&x.symbol);
-  const top5=all.slice(0,5), next5=all.slice(5,10), rest=all.slice(10);
+  const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity at each stop</label><input class="riskInput" type="number" inputmode="numeric" placeholder="e.g. 2000"></div>`;
+  const clean=(sc.stocks||[]).filter(x=>x&&x.symbol&&x.grade!=='Late');
+  const lateN=(sc.stocks||[]).filter(x=>x&&x.symbol&&x.grade==='Late').length;
+  const top5=clean.slice(0,5), next=clean.slice(5,15), rest=clean.slice(15);
   const grp=(title,sub,arr)=> arr.length?`<div class="tierhd"><b>${title}</b> ${sub}</div>`+arr.map(x=>buyCard(x,isMom)).join(''):'';
+  const excl=lateN?`<div class="note">${lateN} extended / below-MA name${lateN>1?'s':''} hidden — too stretched to buy safely.</div>`:'';
   return `<div class="lead">${sc.note}</div>`+gbar+riskbox
     + grp('Top 5','highest conviction — best risk/reward', top5)
-    + grp('Top 6–10','strong follow-ups', next5)
-    + (rest.length?`<details class="more"><summary>Full list · ${rest.length} more names ▾</summary>${rest.map(x=>buyCard(x,isMom)).join('')}</details>`:'')
-    + `<div class="note">Three stops per name — pick your risk. ✓ = grade-suggested (Prime→150-MA, Healthy→ATR, Late/runner→21-EMA). Qty = risk ÷ (entry − suggested stop).</div>`;
+    + grp('6–15','strong follow-ups', next)
+    + (rest.length?`<details class="more"><summary>More · ${rest.length} additional Prime/Healthy names ▾</summary>${rest.map(x=>buyCard(x,isMom)).join('')}</details>`:'')
+    + excl
+    + `<div class="note">Three stop-loss options per name, tight to wide — pick your comfort. Enter risk-per-trade above to size each.</div>`;
 }
 
 
