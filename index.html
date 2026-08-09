@@ -119,8 +119,14 @@
   .stock .stop{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--faint); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2)}
   .stock .stop b{color:var(--muted)}
   .stock .s2exit{display:block; color:var(--faint); margin-top:4px}
-  .stock .stype{color:var(--faint); font-size:10.5px}
-  .stock .qty{color:var(--good); font-weight:600}
+  .stock .stops{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2); line-height:1.7}
+  .stock .stops b{color:var(--muted)}
+  .stock .stops .sug{color:var(--good); font-weight:600}
+  .stock .fund{font-size:12.5px; color:var(--text); background:var(--mid-dim); border-radius:8px; padding:8px 11px; margin-top:8px; line-height:1.45}
+  .tierhd{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:18px 2px 10px}
+  .tierhd b{color:var(--gold); font-weight:600}
+  details.more{margin-top:8px} details.more>summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); cursor:pointer; padding:11px 2px; list-style:none}
+  details.more>summary::-webkit-details-marker{display:none}
   .riskbox{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:12px 15px; margin-bottom:12px}
   .riskbox label{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
   .riskbox input{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:14px}
@@ -145,7 +151,7 @@
 
   <footer>WCB = weekly close below · CMP = current market price · Stop on a weekly-closing basis<br>
     Holding 15 days–3 months · book partial &amp; move SL to entry at Target 1<br>
-    Educational only · not SEBI-registered · rebuilt every Saturday from Yahoo + your Chartink scan</footer>
+    Educational only · not SEBI-registered · updated weekly</footer>
 
 <script>
 const fmtDate = s => { try{ return new Date(s).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;} };
@@ -228,41 +234,47 @@ function render(macro,sect,st2){
   }
 
   // ---- STOCKS panel ----
-  let stockHtml='<div class="miss">Stock scan unavailable.</div>';
+  let stockHtml='<div class="miss">Stock list unavailable.</div>';
   if(st2){
-    const g=st2.grades||{}, ti=st2.tiers||{};
+    const g=st2.grades||{};
     const gp={Prime:'good',Healthy:'mid',Late:'bad'}, gmap={Prime:'clean',Healthy:'watch',Late:'ext'};
     const mcapTxt=x=> x.mcap_cr!=null ? `₹${Number(x.mcap_cr).toLocaleString('en-IN')} Cr` : '';
     const gbar=g.Prime!=null?`<div class="gradebar"><span class="g-good">Prime ${g.Prime}</span><span class="g-mid">Healthy ${g.Healthy}</span><span class="g-bad">Late ${g.Late}</span></div>`:'';
-    const cards=st2.stocks.map((x,i)=>{
+    const stockCard=(x)=>{
       const cls=gmap[x.grade]||'watch';
       const stat=[];
       if(x.mcap_cr!=null) stat.push(`<span class="mcap">${mcapTxt(x)}</span>`);
       if(x.pct_change!=null) stat.push(`${x.pct_change>=0?'+':''}${x.pct_change}% today`);
-      if(x.rs_vs_nifty!=null) stat.push(`RS <b class="${x.rs_vs_nifty>=0?'pos':'neg'}">${x.rs_vs_nifty>=0?'+':''}${x.rs_vs_nifty}%</b>`);
-      if(x.vol_surge!=null) stat.push(`Vol <b>${x.vol_surge}×</b>`);
       stat.push(`+${x.ext_above_30wma}% vs MA`);
-      const exit = x.stage2_exit!=null?x.stage2_exit:x.stop_ref;
-      const rps = (x.stop!=null)? (x.close - x.stop) : 0;
-      const stopLine = x.stop!=null
-        ? `<b>Stop:</b> ${inr(x.stop)} <span class="stype">${x.stop_type||''}</span> · risk <b>${x.risk_pct}%</b><span class="qty" data-rps="${rps.toFixed(2)}"></span><span class="s2exit">Exit if weekly close below ${inr(exit)} (WCB)</span>`
-        : `<b>Stop:</b> weekly close below ${inr(x.stop_ref)}`;
+      // two stops, suggested highlighted
+      const maSug=x.suggested==='ma', atrSug=x.suggested==='atr';
+      const stops=[];
+      stops.push(`<span class="${maSug?'sug':''}">150-MA ${inr(x.stop_ma)} · ${x.risk_ma}%${maSug?' ✓':''}</span>`);
+      if(x.stop_atr!=null) stops.push(`<span class="${atrSug?'sug':''}">2×ATR ${inr(x.stop_atr)} · ${x.risk_atr}%${atrSug?' ✓':''}</span>`);
+      const rps=(x.close - x.sugg_stop);
       return `<div class="stock ${cls}">
-        <div class="st-top"><div class="srank">${String(i+1).padStart(2,'0')}</div>
+        <div class="st-top"><div class="srank">${String(x.rank).padStart(2,'0')}</div>
           <div class="ssym">${x.symbol}</div>
           ${x.grade?`<span class="gpill ${gp[x.grade]}">${x.grade}</span>`:''}
           ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
           ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
           <div class="sclose">${inr(x.close)}</div></div>
         ${x.name?`<div class="sname">${x.name}</div>`:''}
+        ${x.fundamental?`<div class="fund">${x.fundamental}</div>`:''}
         <div class="stats">${stat.map(s=>`<span>${s}</span>`).join('')}</div>
-        <div class="stop">${stopLine}</div></div>`;
-    }).join('');
-    const src = st2.source==='chartink' ? 'from your Chartink CLAUDE PROJECT_TRADING scan' : 'native Yahoo scan';
-    const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity</label>
+        <div class="stops"><b>Stops:</b> ${stops.join(' &nbsp;·&nbsp; ')}<span class="qty" data-rps="${rps.toFixed(2)}"></span></div>
+        <div class="s2exit">Exit if weekly close below ${inr(x.stage2_exit)} (WCB)</div></div>`;
+    };
+    const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity on suggested stop</label>
       <input id="riskInput" type="number" inputmode="numeric" placeholder="e.g. 2000"></div>`;
-    stockHtml=gbar+riskbox+`<div class="lead">Weinstein Stage 2 names, ${src}. Prime = 0–10% above 150-MA (stop at 150-MA×0.97); Healthy/Late stop at 2×ATR.</div>`+cards
-      +`<div class="note">${st2.source==='chartink'?'Live from your Chartink scan. Qty = risk ÷ (entry − stop).':'Chartink feed adds names, market cap &amp; sector.'}</div>`;
+    const all=st2.stocks;
+    const top5=all.slice(0,5), next5=all.slice(5,10), rest=all.slice(10);
+    const grp=(title,sub,arr)=> arr.length?`<div class="tierhd"><b>${title}</b> ${sub}</div>`+arr.map(stockCard).join(''):'';
+    stockHtml=gbar+riskbox
+      + grp('Top 5','highest conviction — best risk/reward', top5)
+      + grp('Top 6–10','strong follow-ups', next5)
+      + (rest.length?`<details class="more"><summary>Full list · ${rest.length} more names ▾</summary>${rest.map(stockCard).join('')}</details>`:'')
+      + `<div class="note">Two stops shown per name — pick the one that fits your risk. ✓ = the grade-suggested stop. Qty = risk ÷ (entry − suggested stop).</div>`;
   }
 
   // ---- OVERVIEW panel (summary + donuts) ----
@@ -282,7 +294,7 @@ function render(macro,sect,st2){
       secHtml=`<div class="donutcard" style="min-width:100%"><h3>Sector leadership</h3>${donut(segs)}</div>`;
     }
     ovHtml=`<div class="lead">Snapshot of this week's Stage 2 list.</div><div class="dwrap">${dd}${secHtml}</div>`;
-  } else ovHtml='<div class="miss">Charts appear once the Chartink list is loaded.</div>';
+  } else ovHtml='<div class="miss">Charts appear once the stock list is loaded.</div>';
 
   document.getElementById('app').innerHTML=`
     <div class="summary">${sum||'No data yet — run the Action.'}</div>
