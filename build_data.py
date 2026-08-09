@@ -444,6 +444,7 @@ def _tier(mcap_cr):
     return "Micro"
 
 def _grade(ext):
+    if ext < 0: return "Late"          # below the 150-MA — not a clean entry, avoid
     return "Prime" if ext <= 10 else "Healthy" if ext <= 20 else "Late"
 
 def _sec_norm(s):
@@ -668,6 +669,17 @@ def main():
         scanners[sc["id"]] = entry
 
     stage2 = {"scanners": scanners, "generated_at": payload["generated_at"], "as_of": as_of}
+    # merge persisted Top-5 fundamental notes (written via /hariskill), if present
+    if os.path.exists("fundamentals.json"):
+        try:
+            funds = json.load(open("fundamentals.json"))
+            for scv in scanners.values():
+                for st in scv.get("stocks", []):
+                    if st["symbol"] in funds:
+                        st["fundamental"] = funds[st["symbol"]]
+            print(f"  merged {len(funds)} fundamental notes")
+        except Exception as e:
+            print(f"  fundamentals merge skipped: {e}")
     os.makedirs("history", exist_ok=True)
     # snapshot first so this week is in the aging timeline
     with open(f"history/stage2-{as_of}.json", "w") as f:
