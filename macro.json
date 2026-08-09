@@ -3,28 +3,44 @@
     "cls": "neutral",
     "label": "MIXED",
     "action": "No clear macro edge. Stay invested but selective \u2014 let the sector leaderboard pick your spots and keep sizing normal. Don't force new risk.",
-    "score": -0.02
+    "score": -0.07
   },
   "signals": [
     {
       "name": "Gold vs Silver",
       "headline": "68.5",
       "arrow": "up",
-      "status": "bad",
+      "status": "good",
       "plain": "Gold is pulling ahead of silver \u2014 a classic fear signal. Mild caution for stocks.",
       "why": "The gold-to-silver ratio climbs when investors turn defensive.",
+      "context": "At the 12th percentile \u2014 near the bottom of its 5-year range.",
+      "percentile": 12,
       "chg13": 13.7,
       "z": 2.07
     },
     {
-      "name": "Indian Stocks vs Gold",
+      "name": "Nifty 50 vs Gold",
       "headline": "+4.7%",
       "arrow": "up",
-      "status": "good",
-      "plain": "Indian stocks are beating gold \u2014 money prefers equities over safe-havens. Good sign.",
-      "why": "When stocks outrun gold, risk appetite is healthy.",
+      "status": "bad",
+      "plain": "Large-cap stocks are beating gold \u2014 money prefers equities over safe-havens. Good sign.",
+      "why": "Large-caps vs gold \u2014 when stocks outrun gold, risk appetite is healthy.",
+      "context": "At the 8th percentile \u2014 near the bottom of its 5-year range.",
+      "percentile": 8,
       "chg13": 4.7,
       "z": 1.18
+    },
+    {
+      "name": "Nifty 500 vs Gold",
+      "headline": "+6.8%",
+      "arrow": "up",
+      "status": "bad",
+      "plain": "The broad market is beating gold \u2014 risk appetite is broad-based. Good sign.",
+      "why": "Whole market vs gold \u2014 broad risk appetite across all caps.",
+      "context": "At the 10th percentile \u2014 near the bottom of its 5-year range.",
+      "percentile": 10,
+      "chg13": 6.8,
+      "z": 1.61
     },
     {
       "name": "Market Breadth",
@@ -33,6 +49,8 @@
       "status": "good",
       "plain": "The broader market is keeping pace with large-caps \u2014 healthy, broad participation.",
       "why": "Nifty 500 vs Nifty 50 \u2014 broad participation signals a durable move.",
+      "context": "At the 100th percentile \u2014 near the top of its 5-year range.",
+      "percentile": 100,
       "chg13": 2.0,
       "z": 1.21
     },
@@ -43,20 +61,26 @@
       "status": "bad",
       "plain": "US bond yields are rising \u2014 global money gets pricier, a headwind for Indian equities.",
       "why": "High US yields pull foreign money out of emerging markets like India.",
+      "context": "At the 98th percentile \u2014 near the top of its 5-year range.",
+      "percentile": 98,
       "chg13": 5.0,
       "z": 1.63
     }
   ],
   "diagnostics": {
-    "loaded": 4,
-    "total": 4,
+    "loaded": 5,
+    "total": 5,
     "detail": [
       {
         "name": "Gold vs Silver",
         "ok": true
       },
       {
-        "name": "Indian Stocks vs Gold",
+        "name": "Nifty 50 vs Gold",
+        "ok": true
+      },
+      {
+        "name": "Nifty 500 vs Gold",
         "ok": true
       },
       {
@@ -69,6 +93,6 @@
       }
     ]
   },
-  "generated_at": "2026-08-09T06:14:38Z",
+  "generated_at": "2026-08-09T09:45:50Z",
   "as_of": "2026-08-07"
 }
