@@ -1149,29 +1149,6 @@
       "qualified": 41,
       "stocks": [
         {
-          "symbol": "ABAN",
-          "name": "Aban Offshore Limited",
-          "close": 19.99,
-          "pct_change": 4.33,
-          "grade": "Prime",
-          "ext_above_30wma": -15.5,
-          "mcap_cr": 117,
-          "tier": "Micro",
-          "sector": "Energy",
-          "stop_ma": 22.94,
-          "risk_ma": -14.8,
-          "stop_atr": 18.21,
-          "risk_atr": 8.9,
-          "stop_ema": 16.44,
-          "risk_ema": 17.8,
-          "suggested": "ma",
-          "sugg_stop": 22.94,
-          "hva": false,
-          "hve": false,
-          "stage2_exit": 23.65,
-          "rank": 1
-        },
-        {
           "symbol": "LIQUIDBETF",
           "name": "Bajaj Finserv Nifty 1D Rate Liquid ETF",
           "close": 1093.82,
@@ -1192,7 +1169,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 1078.22,
-          "rank": 2
+          "rank": 1
         },
         {
           "symbol": "CASHIETF",
@@ -1215,7 +1192,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 1058.73,
-          "rank": 3
+          "rank": 2
         },
         {
           "symbol": "HINDZINC",
@@ -1238,7 +1215,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 587.14,
-          "rank": 4
+          "rank": 3
         },
         {
           "symbol": "ASHOKLEY",
@@ -1261,7 +1238,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 172.7,
-          "rank": 5
+          "rank": 4
         },
         {
           "symbol": "HERITGFOOD",
@@ -1284,7 +1261,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 348.52,
-          "rank": 6
+          "rank": 5
         },
         {
           "symbol": "KUANTUM",
@@ -1307,7 +1284,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 81.46,
-          "rank": 7
+          "rank": 6
         },
         {
           "symbol": "KNRCON",
@@ -1330,7 +1307,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 131.66,
-          "rank": 8
+          "rank": 7
         },
         {
           "symbol": "MATRIMONY",
@@ -1353,7 +1330,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 449.79,
-          "rank": 9
+          "rank": 8
         },
         {
           "symbol": "LTFOODS",
@@ -1376,7 +1353,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 392.7,
-          "rank": 10
+          "rank": 9
         },
         {
           "symbol": "KEI",
@@ -1399,7 +1376,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 4796.97,
-          "rank": 11
+          "rank": 10
         },
         {
           "symbol": "PTC",
@@ -1422,7 +1399,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 177.56,
-          "rank": 12
+          "rank": 11
         },
         {
           "symbol": "FIEMIND",
@@ -1445,7 +1422,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 2228.68,
-          "rank": 13
+          "rank": 12
         },
         {
           "symbol": "DEVYANI",
@@ -1468,7 +1445,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 117.68,
-          "rank": 14
+          "rank": 13
         },
         {
           "symbol": "AGARWALEYE",
@@ -1491,7 +1468,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 461.42,
-          "rank": 15
+          "rank": 14
         },
         {
           "symbol": "GMMPFAUDLR",
@@ -1514,7 +1491,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 888.61,
-          "rank": 16
+          "rank": 15
         },
         {
           "symbol": "MANYAVAR",
@@ -1537,7 +1514,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 432.07,
-          "rank": 17
+          "rank": 16
         },
         {
           "symbol": "CENTEXT",
@@ -1560,7 +1537,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 20.43,
-          "rank": 18
+          "rank": 17
         },
         {
           "symbol": "SAPPHIRE",
@@ -1583,7 +1560,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 189.29,
-          "rank": 19
+          "rank": 18
         },
         {
           "symbol": "BIRLANU",
@@ -1606,7 +1583,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 1457.67,
-          "rank": 20
+          "rank": 19
         },
         {
           "symbol": "A2ZINFRA",
@@ -1629,7 +1606,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 15.13,
-          "rank": 21
+          "rank": 20
         },
         {
           "symbol": "SUPREMEENG",
@@ -1652,7 +1629,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 1.24,
-          "rank": 22
+          "rank": 21
         },
         {
           "symbol": "VIJIFIN",
@@ -1675,7 +1652,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 4.27,
-          "rank": 23
+          "rank": 22
         },
         {
           "symbol": "TVSMOTOR",
@@ -1698,7 +1675,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 3651.47,
-          "rank": 24
+          "rank": 23
         },
         {
           "symbol": "ATALREAL",
@@ -1721,7 +1698,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 27.29,
-          "rank": 25
+          "rank": 24
         },
         {
           "symbol": "SANSERA",
@@ -1744,7 +1721,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 2503.72,
-          "rank": 26
+          "rank": 25
         },
         {
           "symbol": "ASTERDM",
@@ -1767,7 +1744,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 699.03,
-          "rank": 27
+          "rank": 26
         },
         {
           "symbol": "BOSCH-HCIL",
@@ -1790,7 +1767,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 1361.91,
-          "rank": 28
+          "rank": 27
         },
         {
           "symbol": "TFCILTD",
@@ -1813,7 +1790,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 74.02,
-          "rank": 29
+          "rank": 28
         },
         {
           "symbol": "HAPPYFORGE",
@@ -1836,7 +1813,7 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 1342.26,
-          "rank": 30
+          "rank": 29
         },
         {
           "symbol": "APARINDS",
@@ -1859,6 +1836,29 @@
           "hva": false,
           "hve": false,
           "stage2_exit": 11632.69,
+          "rank": 30
+        },
+        {
+          "symbol": "ABAN",
+          "name": "Aban Offshore Limited",
+          "close": 19.99,
+          "pct_change": 4.33,
+          "grade": "Late",
+          "ext_above_30wma": -15.5,
+          "mcap_cr": 117,
+          "tier": "Micro",
+          "sector": "Energy",
+          "stop_ma": 22.94,
+          "risk_ma": -14.8,
+          "stop_atr": 18.21,
+          "risk_atr": 8.9,
+          "stop_ema": 16.44,
+          "risk_ema": 17.8,
+          "suggested": "ema",
+          "sugg_stop": 16.44,
+          "hva": false,
+          "hve": false,
+          "stage2_exit": 23.65,
           "rank": 31
         },
         {
@@ -2093,9 +2093,9 @@
         }
       ],
       "grades": {
-        "Prime": 10,
+        "Prime": 9,
         "Healthy": 11,
-        "Late": 20
+        "Late": 21
       },
       "tiers": {
         "Large": 9,
@@ -2123,7 +2123,7 @@
       }
     }
   },
-  "generated_at": "2026-08-09T17:35:32Z",
+  "generated_at": "2026-08-09T18:03:45Z",
   "as_of": "2026-08-07",
   "tracker": {
     "as_of": "2026-08-07",
