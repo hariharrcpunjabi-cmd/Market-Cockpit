@@ -11,51 +11,41 @@
   :root{
     --ink:#10131A; --surface:#171B24; --surface2:#1E2330; --line:#2A2F3C;
     --text:#E7E9EE; --muted:#8A91A0; --faint:#5B6270;
-    --good:#3FD69A; --bad:#F1766B; --mid:#EBB94D; --hold:#8B93A3; --gold:#EBB94D;
-    --blue:#5B8DEF;
+    --good:#3FD69A; --bad:#F1766B; --mid:#EBB94D; --hold:#8B93A3; --gold:#EBB94D; --blue:#5B8DEF;
     --good-dim:rgba(63,214,154,.13); --bad-dim:rgba(241,118,107,.13); --mid-dim:rgba(235,185,77,.12);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%; background:#10131A !important; min-height:100%}
-  body{background:#10131A !important; color:var(--text); min-height:100vh;
-    font-family:'Inter',system-ui,sans-serif; line-height:1.5;
-    padding:18px 16px 56px; max-width:660px; margin:0 auto; -webkit-font-smoothing:antialiased;}
-
+  body{background:#10131A !important; color:var(--text); min-height:100vh; font-family:'Inter',system-ui,sans-serif;
+    line-height:1.5; padding:18px 16px 56px; max-width:660px; margin:0 auto; -webkit-font-smoothing:antialiased;}
   .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px}
   h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; letter-spacing:-.02em; line-height:1.05}
   .updated{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:5px}
 
-  /* persistent verdict strip */
   .summary{margin:16px 0 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface2); padding:12px 15px;
     font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text); line-height:1.7}
   .summary .k{color:var(--muted)}
-  .summary b.on,.summary b.strong{color:var(--good)}
-  .summary b.off,.summary b.weak{color:var(--bad)}
+  .summary b.on,.summary b.strong{color:var(--good)} .summary b.off,.summary b.weak{color:var(--bad)}
   .summary b.mid,.summary b.neutral,.summary b.sideways{color:var(--mid)}
 
-  /* tab bar */
   .tabs{display:flex; gap:6px; margin-bottom:18px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px}
-  .tabs button{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; white-space:nowrap;
-    background:var(--surface); color:var(--muted); border:1px solid var(--line); padding:9px 15px; border-radius:99px; cursor:pointer}
+  .tabs button{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.03em; white-space:nowrap;
+    background:var(--surface); color:var(--muted); border:1px solid var(--line); padding:9px 14px; border-radius:99px; cursor:pointer; display:flex; align-items:center; gap:5px}
   .tabs button.active{color:var(--ink); background:var(--gold); border-color:var(--gold); font-weight:600}
+  .tabs button .lock{font-size:9px; opacity:.7}
   .panel{display:none} .panel.active{display:block; animation:fade .25s ease}
   @keyframes fade{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
+  .shead{font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600; letter-spacing:-.01em; margin:0 2px 6px}
+  .personal-tag{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); background:var(--mid-dim); padding:3px 8px; border-radius:99px; margin-left:8px; vertical-align:middle}
+  .lead{font-size:12.5px; color:var(--muted); margin:8px 2px 14px; line-height:1.5}
 
-  .shead{font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600; letter-spacing:-.01em; margin:0 2px 14px}
-  .lead{font-size:12.5px; color:var(--muted); margin:0 2px 12px; line-height:1.5}
-
-  /* verdict blocks */
   .verdict{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); margin-bottom:12px}
   .verdict .bar{height:4px; width:100%}
-  .verdict.on .bar,.verdict.strong .bar{background:var(--good)}
-  .verdict.off .bar,.verdict.weak .bar{background:var(--bad)}
-  .verdict.neutral .bar,.verdict.sideways .bar{background:var(--mid)}
+  .verdict.on .bar,.verdict.strong .bar{background:var(--good)} .verdict.off .bar,.verdict.weak .bar{background:var(--bad)} .verdict.neutral .bar,.verdict.sideways .bar{background:var(--mid)}
   .verdict .body{padding:16px 18px}
   .verdict .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
   .verdict .big{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:25px; margin-top:2px}
-  .verdict.on .big,.verdict.strong .big{color:var(--good)}
-  .verdict.off .big,.verdict.weak .big{color:var(--bad)}
-  .verdict.neutral .big,.verdict.sideways .big{color:var(--mid)}
+  .verdict.on .big,.verdict.strong .big{color:var(--good)} .verdict.off .big,.verdict.weak .big{color:var(--bad)} .verdict.neutral .big,.verdict.sideways .big{color:var(--mid)}
   .verdict .action{font-size:13.5px; color:var(--text); margin-top:9px; line-height:1.5}
   .verdict .meta{display:flex; gap:16px; margin-top:9px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
   .verdict .meta b{color:var(--text); font-weight:600}
@@ -65,15 +55,14 @@
   .card .top{display:flex; justify-content:space-between; align-items:center; gap:10px}
   .card .cname{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px}
   .card .num{font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:600; display:flex; align-items:center; gap:6px; white-space:nowrap}
-  .arrow{font-size:12px}
-  .arrow.up{color:var(--good)} .arrow.down{color:var(--bad)} .arrow.flat{color:var(--muted)}
+  .arrow{font-size:12px} .arrow.up{color:var(--good)} .arrow.down{color:var(--bad)} .arrow.flat{color:var(--muted)}
   .plain{font-size:13px; color:var(--text); line-height:1.5; margin-top:5px}
+  .ctx{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--gold); margin-top:7px; line-height:1.4}
   .why{font-size:11px; color:var(--faint); margin-top:6px; line-height:1.45}
   .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:99px; margin-top:9px}
   .pill.good{color:var(--good); background:var(--good-dim)} .pill.mid{color:var(--mid); background:var(--mid-dim)} .pill.bad{color:var(--bad); background:var(--bad-dim)}
 
-  .row{display:grid; grid-template-columns:32px 1fr auto; align-items:center; gap:12px; padding:12px 14px;
-    border:1px solid var(--line); border-radius:12px; margin-bottom:8px; background:var(--surface)}
+  .row{display:grid; grid-template-columns:32px 1fr auto; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; margin-bottom:8px; background:var(--surface)}
   .rank{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:19px; color:var(--faint); text-align:right}
   .row.ow .rank{color:var(--good)} .row.av .rank{color:var(--bad)}
   .rname{font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:15px; display:flex; align-items:center; gap:7px; flex-wrap:wrap}
@@ -81,14 +70,10 @@
   .track{height:5px; background:var(--surface2); border-radius:99px; margin-top:7px; overflow:hidden}
   .fill{height:100%; border-radius:99px}
   .row.ow .fill{background:var(--good)} .row.av .fill{background:var(--bad)} .row:not(.ow):not(.av) .fill{background:var(--hold)}
-  .zr{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--faint); margin-top:6px}
-  .zr b{color:var(--muted); font-weight:500}
+  .zr{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--faint); margin-top:6px} .zr b{color:var(--muted); font-weight:500}
   .tag{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; padding:5px 9px; border-radius:99px; white-space:nowrap; border:1px solid var(--line); color:var(--muted)}
-  .tag.ow{color:var(--good); background:var(--good-dim); border-color:transparent}
-  .tag.av{color:var(--bad); background:var(--bad-dim); border-color:transparent}
-  .tag.watch{color:var(--mid); background:var(--mid-dim); border-color:transparent}
+  .tag.ow{color:var(--good); background:var(--good-dim); border-color:transparent} .tag.av{color:var(--bad); background:var(--bad-dim); border-color:transparent} .tag.watch{color:var(--mid); background:var(--mid-dim); border-color:transparent}
 
-  /* donuts */
   .dwrap{display:flex; gap:18px; flex-wrap:wrap; margin-bottom:14px}
   .donutcard{flex:1; min-width:150px; border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:16px}
   .donutcard h3{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:12px}
@@ -113,26 +98,29 @@
   .stock .sname{font-size:12px; color:var(--muted); margin-top:3px}
   .stock .gpill{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:99px}
   .stock .gpill.good{color:var(--good); background:var(--good-dim)} .stock .gpill.mid{color:var(--mid); background:var(--mid-dim)} .stock .gpill.bad{color:var(--bad); background:var(--bad-dim)}
+  .stock .chase{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--bad); background:var(--bad-dim); padding:3px 8px; border-radius:99px}
+  .stock .hv{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; color:var(--gold); background:var(--mid-dim); padding:3px 8px; border-radius:99px}
   .stock .stats{display:flex; gap:15px; flex-wrap:wrap; margin-top:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
-  .stock .stats b{color:var(--text); font-weight:600}
-  .stock .stats .pos{color:var(--good)} .stock .stats .neg{color:var(--bad)} .stock .stats .mcap{color:var(--faint)}
-  .stock .stop{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--faint); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2)}
-  .stock .stop b{color:var(--muted)}
-  .stock .s2exit{display:block; color:var(--faint); margin-top:4px}
-  .stock .stops{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2); line-height:1.7}
-  .stock .stops b{color:var(--muted)}
-  .stock .stops .sug{color:var(--good); font-weight:600}
+  .stock .stats b{color:var(--text); font-weight:600} .stock .stats .mcap{color:var(--faint)}
+  .stock .stops{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2); line-height:1.8}
+  .stock .stops b{color:var(--muted)} .stock .stops .sug{color:var(--good); font-weight:600}
+  .stock .qty{color:var(--good); font-weight:600}
+  .stock .s2exit{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint); margin-top:6px}
+  .stock .watchline{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:8px}
   .stock .fund{font-size:12.5px; color:var(--text); background:var(--mid-dim); border-radius:8px; padding:8px 11px; margin-top:8px; line-height:1.45}
-  .tierhd{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:18px 2px 10px}
-  .tierhd b{color:var(--gold); font-weight:600}
-  details.more{margin-top:8px} details.more>summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); cursor:pointer; padding:11px 2px; list-style:none}
-  details.more>summary::-webkit-details-marker{display:none}
+  .agebadge{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); background:var(--mid-dim); padding:3px 8px; border-radius:99px}
+  .newbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--good); background:var(--good-dim); padding:3px 8px; border-radius:99px}
+  .exitbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--bad); background:var(--bad-dim); padding:3px 8px; border-radius:99px}
+  .ret{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px} .ret.pos{color:var(--good)} .ret.neg{color:var(--bad)}
+
+  .tierhd{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:18px 2px 10px} .tierhd b{color:var(--gold); font-weight:600}
+  details.more{margin-top:8px} details.more>summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); cursor:pointer; padding:11px 2px; list-style:none} details.more>summary::-webkit-details-marker{display:none}
   .riskbox{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:12px 15px; margin-bottom:12px}
   .riskbox label{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
   .riskbox input{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:14px}
   .riskbox input:focus{outline:2px solid var(--gold); outline-offset:1px}
-
-  .note{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:10px; line-height:1.6}
+  .empty{border:1px dashed var(--line); border-radius:12px; padding:24px 20px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6}
+  .empty b{color:var(--text)}
   .miss{border:1px dashed var(--line); border-radius:12px; padding:20px; text-align:center; color:var(--muted); font-size:13px}
   .state{text-align:center; padding:56px 20px; color:var(--muted); font-size:14px}
   .spinner{width:26px; height:26px; border:2px solid var(--line); border-top-color:var(--gold); border-radius:50%; margin:0 auto 16px; animation:spin .8s linear infinite}
@@ -146,19 +134,15 @@
     <h1>Market Cockpit</h1>
     <div class="updated" id="updated">Loading…</div>
   </header>
-
   <div id="app"><div class="state"><div class="spinner"></div>Loading the cockpit…</div></div>
-
-  <footer>WCB = weekly close below · CMP = current market price · Stop on a weekly-closing basis<br>
-    Holding 15 days–3 months · book partial &amp; move SL to entry at Target 1<br>
-    Educational only · not SEBI-registered · updated weekly</footer>
+  <footer>WCB = weekly close below · CMP = current market price · stops on a weekly-closing basis<br>
+    Holding 15 days–3 months · book partial &amp; move SL to entry at Target 1<br>Educational only · not SEBI-registered · updated weekly</footer>
 
 <script>
 const fmtDate = s => { try{ return new Date(s).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;} };
 const PILL = {good:'Supportive', mid:'Neutral', bad:'Caution'};
-const inr = n => '₹' + Number(n).toLocaleString('en-IN');
-
-async function J(u){ const r = await fetch(u+'?t='+Date.now(),{cache:'no-store'}); if(!r.ok) throw 0; return r.json(); }
+const inr = n => (n==null||isNaN(n)) ? '—' : '₹' + Number(n).toLocaleString('en-IN');
+async function J(u){ const r=await fetch(u+'?t='+Date.now(),{cache:'no-store'}); if(!r.ok) throw 0; return r.json(); }
 
 async function load(){
   const app=document.getElementById('app');
@@ -167,165 +151,177 @@ async function load(){
   render(m.status==='fulfilled'?m.value:null, s.status==='fulfilled'?s.value:null, t.status==='fulfilled'?t.value:null);
 }
 
-function donut(segs){   // segs=[{label,value,color}]
-  const total = segs.reduce((a,b)=>a+b.value,0) || 1;
-  let acc=0, stops=[];
-  segs.forEach(g=>{ const from=acc/total*100; acc+=g.value; const to=acc/total*100; stops.push(`${g.color} ${from}% ${to}%`); });
-  const legend = segs.map(g=>`<div><span class="dot" style="background:${g.color}"></span><b>${g.label}</b> <span>${g.value}</span></div>`).join('');
+function donut(segs){
+  const total=segs.reduce((a,b)=>a+b.value,0)||1; let acc=0,stops=[];
+  segs.forEach(g=>{const from=acc/total*100; acc+=g.value; const to=acc/total*100; stops.push(`${g.color} ${from}% ${to}%`);});
+  const legend=segs.map(g=>`<div><span class="dot" style="background:${g.color}"></span><b>${g.label}</b> <span>${g.value}</span></div>`).join('');
   return `<div class="donutrow"><div class="donut" style="background:conic-gradient(${stops.join(',')})"></div><div class="dlegend">${legend}</div></div>`;
 }
-
 function sigCard(s){
   const ar=s.arrow==='up'?'▲':s.arrow==='down'?'▼':'→';
   return `<div class="card ${s.status}"><div class="top"><div class="cname">${s.name}</div>
     <div class="num">${s.headline} <span class="arrow ${s.arrow}">${ar}</span></div></div>
-    <div class="plain">${s.plain}</div><div class="why">${s.why}</div>
-    <span class="pill ${s.status}">${PILL[s.status]}</span></div>`;
+    <div class="plain">${s.plain}</div>${s.context?`<div class="ctx">${s.context}</div>`:''}
+    <div class="why">${s.why}</div><span class="pill ${s.status}">${PILL[s.status]}</span></div>`;
+}
+
+// full BUY card (Trading, Momentum)
+function buyCard(x, isMomentum){
+  const gp={Prime:'good',Healthy:'mid',Late:'bad'}, gmap={Prime:'clean',Healthy:'watch',Late:'ext'};
+  const cls=gmap[x.grade]||'watch';
+  const chase = isMomentum && x.grade==='Late' ? `<span class="chase">chase risk</span>` : '';
+  const stat=[];
+  if(x.mcap_cr!=null) stat.push(`<span class="mcap">₹${Number(x.mcap_cr).toLocaleString('en-IN')} Cr</span>`);
+  if(x.pct_change!=null) stat.push(`${x.pct_change>=0?'+':''}${x.pct_change}% today`);
+  stat.push(`+${x.ext_above_30wma}% vs MA`);
+  const s=[];
+  const mk=(lbl,stop,risk,key)=> stop!=null?`<span class="${x.suggested===key?'sug':''}">${lbl} ${inr(stop)}·${risk}%${x.suggested===key?' ✓':''}</span>`:'';
+  s.push(mk('150-MA',x.stop_ma,x.risk_ma,'ma'));
+  s.push(mk('2×ATR',x.stop_atr,x.risk_atr,'atr'));
+  s.push(mk('21-EMA',x.stop_ema,x.risk_ema,'ema'));
+  const rps=(x.close - x.sugg_stop);
+  return `<div class="stock ${cls}">
+    <div class="st-top"><div class="srank">${String(x.rank).padStart(2,'0')}</div>
+      <div class="ssym">${x.symbol}</div>
+      <span class="gpill ${gp[x.grade]}">${x.grade}</span>${chase}
+      ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
+      ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
+      <div class="sclose">${inr(x.close)}</div></div>
+    ${x.name?`<div class="sname">${x.name}</div>`:''}
+    ${x.fundamental?`<div class="fund">${x.fundamental}</div>`:''}
+    <div class="stats">${stat.map(z=>`<span>${z}</span>`).join('')}</div>
+    <div class="stops"><b>Stops:</b> ${s.filter(Boolean).join(' &nbsp;·&nbsp; ')}<span class="qty" data-rps="${rps.toFixed(2)}"></span></div>
+    <div class="s2exit">Exit if weekly close below ${inr(x.stage2_exit)} (WCB)</div></div>`;
+}
+
+// light WATCHLIST card (Accumulation, Kissing-MA)
+function watchCard(x){
+  const hv=[]; if(x.hve) hv.push('⚡ HVE (highest vol ever)'); else if(x.hva) hv.push('⚡ HVA (highest vol ~6mo)');
+  return `<div class="stock watch">
+    <div class="st-top"><div class="ssym">${x.symbol}</div>
+      ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
+      ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
+      ${hv.length?`<span class="hv">${hv[0]}</span>`:''}
+      <div class="sclose">${inr(x.close)}</div></div>
+    ${x.name?`<div class="sname">${x.name}</div>`:''}
+    <div class="watchline">Basing +${x.ext_above_30wma}% above 150-MA · watch for breakout into the buy list</div></div>`;
+}
+
+function scannerPanel(sc){
+  if(!sc || !sc.qualified){
+    return `<div class="empty">${sc&&sc.note?sc.note:'No names this week.'}<br><br><b>Nothing here right now — in a strong market, that's normal.</b></div>`;
+  }
+  const g=sc.grades||{};
+  const gbar=g.Prime!=null?`<div class="gradebar"><span class="g-good">Prime ${g.Prime}</span><span class="g-mid">Healthy ${g.Healthy}</span><span class="g-bad">Late ${g.Late}</span></div>`:'';
+  if(sc.style==='watch'){
+    return `<div class="lead">${sc.note}</div>`+sc.stocks.map(watchCard).join('');
+  }
+  // buy style: risk box + three tiers
+  const isMom = sc.label==='Momentum';
+  const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity on suggested stop</label><input class="riskInput" type="number" inputmode="numeric" placeholder="e.g. 2000"></div>`;
+  const all=(sc.stocks||[]).filter(x=>x&&x.symbol);
+  const top5=all.slice(0,5), next5=all.slice(5,10), rest=all.slice(10);
+  const grp=(title,sub,arr)=> arr.length?`<div class="tierhd"><b>${title}</b> ${sub}</div>`+arr.map(x=>buyCard(x,isMom)).join(''):'';
+  return `<div class="lead">${sc.note}</div>`+gbar+riskbox
+    + grp('Top 5','highest conviction — best risk/reward', top5)
+    + grp('Top 6–10','strong follow-ups', next5)
+    + (rest.length?`<details class="more"><summary>Full list · ${rest.length} more names ▾</summary>${rest.map(x=>buyCard(x,isMom)).join('')}</details>`:'')
+    + `<div class="note">Three stops per name — pick your risk. ✓ = grade-suggested (Prime→150-MA, Healthy→ATR, Late/runner→21-EMA). Qty = risk ÷ (entry − suggested stop).</div>`;
+}
+
+
+function trackerPanel(tr){
+  if(!tr || !tr.stocks || !tr.stocks.length) return `<div class="empty">The Tracker fills in once the buy list has run at least once.</div>`;
+  const note = tr.first_run
+    ? `<div class="lead">Aging starts now — every name is a <b>Fresh</b> entry this week. From next week, names that stay on the list become Week 1, Week 2\u2026 so you can see how long each has held Stage 2.</div>`
+    : `<div class="lead">How long each buy-list name has held Stage 2, newest and dropped names, and return since first seen.</div>`;
+  const cards = tr.stocks.map(s=>{
+    const badges=[`<span class="agebadge">${s.age}</span>`];
+    if(s.new) badges.push(`<span class="newbadge">New</span>`);
+    if(s.sl_hit) badges.push(`<span class="exitbadge">SL hit \u00b7 exit</span>`);
+    const ret = s.ret_pct!=null ? `<span class="ret ${s.ret_pct>=0?'pos':'neg'}">${s.ret_pct>=0?'+':''}${s.ret_pct}%</span>` : '';
+    return `<div class="stock ${s.sl_hit?'ext':'clean'}">
+      <div class="st-top"><div class="ssym">${s.symbol}</div>${badges.join('')}<div class="sclose">${ret}</div></div>
+      ${s.name?`<div class="sname">${s.name}${s.sector?' \u00b7 '+s.sector:''}</div>`:''}</div>`;
+  }).join('');
+  const dropped = (tr.dropped && tr.dropped.length)
+    ? `<div class="tierhd"><b>Dropped this week</b></div><div class="lead">${tr.dropped.join(', ')} \u2014 fell off the buy list.</div>` : '';
+  return note + cards + dropped;
 }
 
 function render(macro,sect,st2){
-  const upd = macro?.generated_at || sect?.generated_at || st2?.generated_at;
-  document.getElementById('updated').textContent = upd ? `updated ${fmtDate(upd)}` : 'no data yet';
+  const upd=macro?.generated_at||sect?.generated_at||st2?.generated_at;
+  document.getElementById('updated').textContent=upd?`updated ${fmtDate(upd)}`:'no data yet';
+  const scn=st2?.scanners||{};
 
-  // summary strip
+  // summary
   let sum='';
   if(macro) sum+=`<span class="k">Backdrop</span> <b class="${macro.verdict.cls}">${macro.verdict.label}</b> `;
   if(sect){ sum+=`&nbsp;·&nbsp; <span class="k">Regime</span> <b class="${sect.regime.cls}">${sect.regime.verdict}</b>`;
     sum+=`<br><span class="k">Leaders</span> <b>${sect.sectors.slice(0,3).map(x=>x.name).join(', ')}</b>`; }
-  if(st2) sum+=` &nbsp;·&nbsp; <span class="k">Stage 2</span> <b>${st2.qualified} names</b>`;
+  if(scn.trading) sum+=` &nbsp;·&nbsp; <span class="k">Buy list</span> <b>${scn.trading.qualified} names</b>`;
 
-  // ---- MACRO panel (equities + breadth) ----
+  // MACRO panel
   let macroHtml='<div class="miss">Macro data unavailable.</div>';
-  if(macro){
-    const v=macro.verdict;
+  if(macro){ const v=macro.verdict;
     const assets=macro.signals.filter(x=>x.name!=='Market Breadth');
     const breadth=macro.signals.find(x=>x.name==='Market Breadth');
-    macroHtml=`<div class="verdict ${v.cls}"><div class="bar"></div><div class="body">
-        <div class="label">Should I be in equities?</div><div class="big">${v.label}</div>
-        <div class="action">${v.action}</div></div></div>`
-      + assets.map(sigCard).join('')
-      + (breadth?`<div class="shead" style="font-size:15px;margin-top:20px">Market breadth</div>`+sigCard(breadth):'');
+    macroHtml=`<div class="verdict ${v.cls}"><div class="bar"></div><div class="body"><div class="label">Should I be in equities?</div><div class="big">${v.label}</div><div class="action">${v.action}</div></div></div>`
+      +assets.map(sigCard).join('')+(breadth?`<div class="shead" style="font-size:15px;margin-top:20px">Market breadth</div>`+sigCard(breadth):'');
   }
 
-  // ---- SECTORS panel ----
+  // SECTORS panel
   let sectHtml='<div class="miss">Sector data unavailable.</div>';
-  if(sect){
-    const rg=sect.regime;
+  if(sect){ const rg=sect.regime;
     const maTxt=`${rg.trend_up?'above':'below'} 30-wk MA (${rg.pct_vs_ma>=0?'+':''}${rg.pct_vs_ma}%)`;
     const vixTxt=rg.vix!=null?`${rg.vix} · ${rg.vix_band}`:'n/a';
     const maxAbs=Math.max(...sect.sectors.map(x=>Math.abs(x.blend)),0.5);
-    const rows=sect.sectors.map(x=>{
-      const cls=x.tag==='OVERWEIGHT'?'ow':x.tag==='AVOID'?'av':'';
-      const tc=x.tag==='OVERWEIGHT'?'ow':x.tag==='AVOID'?'av':x.tag==='WATCH'?'watch':'';
-      const ar=x.arrow==='up'?'▲':x.arrow==='down'?'▼':'→';
-      const w=Math.round(Math.abs(x.blend)/maxAbs*100);
-      const z=v=>(v>=0?'+':'')+v.toFixed(2);
-      return `<div class="row ${cls}"><div class="rank">${String(x.rank).padStart(2,'0')}</div>
-        <div><div class="rname">${x.name} <span class="arrow ${x.arrow}">${ar}</span> ${x.proxy?'<span class="px">etf</span>':''}</div>
-        <div class="track"><div class="fill" style="width:${w}%"></div></div>
-        <div class="zr"><b>L</b> ${z(x.level_z)} <b>M</b> ${z(x.mom_z)} <b>blend</b> ${z(x.blend)}</div></div>
-        <div class="tag ${tc}">${x.tag}</div></div>`;
-    }).join('');
-    sectHtml=`<div class="verdict ${rg.cls}"><div class="bar"></div><div class="body">
-        <div class="label">Market regime</div><div class="big">${rg.verdict}</div>
-        <div class="meta"><div>Nifty <b>${maTxt}</b></div><div>VIX <b>${vixTxt}</b></div></div>
-        <div class="action">${rg.note}</div></div></div>
-        <div class="lead">Sectors ranked by relative strength vs Nifty 50 (level + momentum):</div>${rows}`;
+    const rows=sect.sectors.map(x=>{const cls=x.tag==='OVERWEIGHT'?'ow':x.tag==='AVOID'?'av':'';const tc=x.tag==='OVERWEIGHT'?'ow':x.tag==='AVOID'?'av':x.tag==='WATCH'?'watch':'';const ar=x.arrow==='up'?'▲':x.arrow==='down'?'▼':'→';const w=Math.round(Math.abs(x.blend)/maxAbs*100);const z=v=>(v>=0?'+':'')+v.toFixed(2);
+      return `<div class="row ${cls}"><div class="rank">${String(x.rank).padStart(2,'0')}</div><div><div class="rname">${x.name} <span class="arrow ${x.arrow}">${ar}</span> ${x.proxy?'<span class="px">etf</span>':''}</div><div class="track"><div class="fill" style="width:${w}%"></div></div><div class="zr"><b>L</b> ${z(x.level_z)} <b>M</b> ${z(x.mom_z)} <b>blend</b> ${z(x.blend)}</div></div><div class="tag ${tc}">${x.tag}</div></div>`;}).join('');
+    sectHtml=`<div class="verdict ${rg.cls}"><div class="bar"></div><div class="body"><div class="label">Market regime</div><div class="big">${rg.verdict}</div><div class="meta"><div>Nifty <b>${maTxt}</b></div><div>VIX <b>${vixTxt}</b></div></div><div class="action">${rg.note}</div></div></div><div class="lead">Sectors ranked by relative strength vs Nifty 50 (level + momentum):</div>${rows}`;
   }
 
-  // ---- STOCKS panel ----
-  let stockHtml='<div class="miss">Stock list unavailable.</div>';
-  if(st2){
-    const g=st2.grades||{};
-    const gp={Prime:'good',Healthy:'mid',Late:'bad'}, gmap={Prime:'clean',Healthy:'watch',Late:'ext'};
-    const mcapTxt=x=> x.mcap_cr!=null ? `₹${Number(x.mcap_cr).toLocaleString('en-IN')} Cr` : '';
-    const gbar=g.Prime!=null?`<div class="gradebar"><span class="g-good">Prime ${g.Prime}</span><span class="g-mid">Healthy ${g.Healthy}</span><span class="g-bad">Late ${g.Late}</span></div>`:'';
-    const stockCard=(x)=>{
-      const cls=gmap[x.grade]||'watch';
-      const stat=[];
-      if(x.mcap_cr!=null) stat.push(`<span class="mcap">${mcapTxt(x)}</span>`);
-      if(x.pct_change!=null) stat.push(`${x.pct_change>=0?'+':''}${x.pct_change}% today`);
-      stat.push(`+${x.ext_above_30wma}% vs MA`);
-      // two stops, suggested highlighted
-      const maSug=x.suggested==='ma', atrSug=x.suggested==='atr';
-      const stops=[];
-      stops.push(`<span class="${maSug?'sug':''}">150-MA ${inr(x.stop_ma)} · ${x.risk_ma}%${maSug?' ✓':''}</span>`);
-      if(x.stop_atr!=null) stops.push(`<span class="${atrSug?'sug':''}">2×ATR ${inr(x.stop_atr)} · ${x.risk_atr}%${atrSug?' ✓':''}</span>`);
-      const rps=(x.close - x.sugg_stop);
-      return `<div class="stock ${cls}">
-        <div class="st-top"><div class="srank">${String(x.rank).padStart(2,'0')}</div>
-          <div class="ssym">${x.symbol}</div>
-          ${x.grade?`<span class="gpill ${gp[x.grade]}">${x.grade}</span>`:''}
-          ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
-          ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
-          <div class="sclose">${inr(x.close)}</div></div>
-        ${x.name?`<div class="sname">${x.name}</div>`:''}
-        ${x.fundamental?`<div class="fund">${x.fundamental}</div>`:''}
-        <div class="stats">${stat.map(s=>`<span>${s}</span>`).join('')}</div>
-        <div class="stops"><b>Stops:</b> ${stops.join(' &nbsp;·&nbsp; ')}<span class="qty" data-rps="${rps.toFixed(2)}"></span></div>
-        <div class="s2exit">Exit if weekly close below ${inr(x.stage2_exit)} (WCB)</div></div>`;
-    };
-    const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity on suggested stop</label>
-      <input id="riskInput" type="number" inputmode="numeric" placeholder="e.g. 2000"></div>`;
-    const all=st2.stocks;
-    const top5=all.slice(0,5), next5=all.slice(5,10), rest=all.slice(10);
-    const grp=(title,sub,arr)=> arr.length?`<div class="tierhd"><b>${title}</b> ${sub}</div>`+arr.map(stockCard).join(''):'';
-    stockHtml=gbar+riskbox
-      + grp('Top 5','highest conviction — best risk/reward', top5)
-      + grp('Top 6–10','strong follow-ups', next5)
-      + (rest.length?`<details class="more"><summary>Full list · ${rest.length} more names ▾</summary>${rest.map(stockCard).join('')}</details>`:'')
-      + `<div class="note">Two stops shown per name — pick the one that fits your risk. ✓ = the grade-suggested stop. Qty = risk ÷ (entry − suggested stop).</div>`;
-  }
-
-  // ---- OVERVIEW panel (summary + donuts) ----
-  let ovHtml='';
-  if(st2 && (st2.grades||st2.tiers)){
-    const g=st2.grades||{}, ti=st2.tiers||{}, sm=st2.sector_mix||{};
+  // OVERVIEW donuts from Trading scanner
+  let ovHtml='<div class="miss">Charts appear once the buy list is loaded.</div>';
+  const tr=scn.trading;
+  if(tr && tr.qualified){
+    const g=tr.grades||{}, ti=tr.tiers||{}, sm=tr.sector_mix||{};
     const PAL=['#5B8DEF','#3FD69A','#EBB94D','#F1766B','#A78BFA','#38BDF8','#FB923C','#F472B6','#818CF8','#FBBF24','#4ADE80','#22D3EE','#E879F9','#94A3B8','#FCA5A5','#FDBA74'];
     let dd='';
-    if(g.Prime!=null) dd+=`<div class="donutcard"><h3>Grade mix</h3>${donut([
-      {label:'Prime',value:g.Prime,color:'#3FD69A'},{label:'Healthy',value:g.Healthy,color:'#EBB94D'},{label:'Late',value:g.Late,color:'#F1766B'}])}</div>`;
-    if(ti.Large!=null) dd+=`<div class="donutcard"><h3>Market-cap mix</h3>${donut([
-      {label:'Large',value:ti.Large,color:'#5B8DEF'},{label:'Mid',value:ti.Mid,color:'#3FD69A'},{label:'Small',value:ti.Small,color:'#EBB94D'}])}</div>`;
-    let secHtml='';
-    const secEntries=Object.entries(sm).sort((a,b)=>b[1]-a[1]);
-    if(secEntries.length){
-      const segs=secEntries.map(([label,value],i)=>({label,value,color:PAL[i%PAL.length]}));
-      secHtml=`<div class="donutcard" style="min-width:100%"><h3>Sector leadership</h3>${donut(segs)}</div>`;
-    }
-    ovHtml=`<div class="lead">Snapshot of this week's Stage 2 list.</div><div class="dwrap">${dd}${secHtml}</div>`;
-  } else ovHtml='<div class="miss">Charts appear once the stock list is loaded.</div>';
+    if(g.Prime!=null) dd+=`<div class="donutcard"><h3>Grade mix</h3>${donut([{label:'Prime',value:g.Prime,color:'#3FD69A'},{label:'Healthy',value:g.Healthy,color:'#EBB94D'},{label:'Late',value:g.Late,color:'#F1766B'}])}</div>`;
+    if(ti.Large!=null) dd+=`<div class="donutcard"><h3>Market-cap mix</h3>${donut([{label:'Large',value:ti.Large,color:'#5B8DEF'},{label:'Mid',value:ti.Mid,color:'#3FD69A'},{label:'Small',value:ti.Small,color:'#EBB94D'},{label:'Micro',value:ti.Micro||0,color:'#F1766B'}])}</div>`;
+    const se=Object.entries(sm).sort((a,b)=>b[1]-a[1]);
+    let secD=se.length?`<div class="donutcard" style="min-width:100%"><h3>Sector leadership</h3>${donut(se.map(([label,value],i)=>({label,value,color:PAL[i%PAL.length]})))}</div>`:'';
+    ovHtml=`<div class="lead">Snapshot of this week's buy list.</div><div class="dwrap">${dd}${secD}</div>`;
+  }
 
-  document.getElementById('app').innerHTML=`
-    <div class="summary">${sum||'No data yet — run the Action.'}</div>
-    <div class="tabs">
-      <button data-t="ov" class="active">Overview</button>
-      <button data-t="macro">Macro</button>
-      <button data-t="sect">Sectors</button>
-      <button data-t="stk">Stocks</button>
-    </div>
-    <div class="panel active" id="p-ov">${ovHtml}</div>
+  // build scanner tabs dynamically
+  const order=['trading','accumulation','kissing','momentum'];
+  let tabBtns=`<button data-t="ov" class="active">Overview</button><button data-t="macro">Macro</button><button data-t="sect">Sectors</button>`;
+  let panels=`<div class="panel active" id="p-ov">${ovHtml}</div>
     <div class="panel" id="p-macro"><div class="shead">Should I be in equities?</div>${macroHtml}</div>
-    <div class="panel" id="p-sect"><div class="shead">Where should I be?</div>${sectHtml}</div>
-    <div class="panel" id="p-stk"><div class="shead">Which stocks?</div>${stockHtml}</div>`;
+    <div class="panel" id="p-sect"><div class="shead">Where should I be?</div>${sectHtml}</div>`;
+  order.forEach(id=>{ const sc=scn[id]; if(!sc) return;
+    const lock=sc.personal?`<span class="lock">🔒</span>`:'';
+    tabBtns+=`<button data-t="${id}">${sc.label}${lock}</button>`;
+    panels+=`<div class="panel" id="p-${id}"><div class="shead">${sc.label}${sc.personal?`<span class="personal-tag">personal</span>`:''}</div>${scannerPanel(sc)}</div>`;
+  });
+
+  const tr2 = st2 && st2.tracker;
+  if(tr2){ tabBtns+=`<button data-t="tracker">Tracker</button>`; panels+=`<div class="panel" id="p-tracker"><div class="shead">Aging tracker</div>${trackerPanel(tr2)}</div>`; }
+  document.getElementById('app').innerHTML=`<div class="summary">${sum||'No data yet — run the build.'}</div><div class="tabs">${tabBtns}</div>${panels}`;
 
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    document.getElementById('p-'+b.dataset.t).classList.add('active');
+    b.classList.add('active'); document.getElementById('p-'+b.dataset.t).classList.add('active');
     window.scrollTo({top:0,behavior:'smooth'});
   });
-
-  const ri=document.getElementById('riskInput');
-  if(ri) ri.oninput=()=>{
+  document.querySelectorAll('.riskInput').forEach(ri=>ri.oninput=()=>{
     const risk=parseFloat(ri.value);
-    document.querySelectorAll('.qty').forEach(q=>{
-      const rps=parseFloat(q.dataset.rps);
-      if(risk>0 && rps>0){ q.textContent=' · qty '+Math.floor(risk/rps); }
-      else q.textContent='';
-    });
-  };
+    document.querySelectorAll('.riskInput').forEach(o=>{if(o!==ri) o.value=ri.value;});
+    document.querySelectorAll('.qty').forEach(q=>{const rps=parseFloat(q.dataset.rps); q.textContent=(risk>0&&rps>0)?' · qty '+Math.floor(risk/rps):'';});
+  });
 }
 load();
 </script>
