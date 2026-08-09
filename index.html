@@ -12,39 +12,39 @@
     --ink:#10131A; --surface:#171B24; --surface2:#1E2330; --line:#2A2F3C;
     --text:#E7E9EE; --muted:#8A91A0; --faint:#5B6270;
     --good:#3FD69A; --bad:#F1766B; --mid:#EBB94D; --hold:#8B93A3; --gold:#EBB94D;
+    --blue:#5B8DEF;
     --good-dim:rgba(63,214,154,.13); --bad-dim:rgba(241,118,107,.13); --mid-dim:rgba(235,185,77,.12);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%; background:#10131A !important; min-height:100%; scroll-behavior:smooth}
+  html{-webkit-text-size-adjust:100%; background:#10131A !important; min-height:100%}
   body{background:#10131A !important; color:var(--text); min-height:100vh;
     font-family:'Inter',system-ui,sans-serif; line-height:1.5;
-    padding:20px 16px 56px; max-width:660px; margin:0 auto; -webkit-font-smoothing:antialiased;}
+    padding:18px 16px 56px; max-width:660px; margin:0 auto; -webkit-font-smoothing:antialiased;}
 
   .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:6px}
-  h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; letter-spacing:-.02em; line-height:1.05}
-  .updated{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px}
+  h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; letter-spacing:-.02em; line-height:1.05}
+  .updated{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:5px}
 
-  /* cockpit summary */
-  .summary{margin:18px 0 6px; border:1px solid var(--line); border-radius:12px; background:var(--surface2); padding:13px 16px;
+  /* persistent verdict strip */
+  .summary{margin:16px 0 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface2); padding:12px 15px;
     font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--text); line-height:1.7}
   .summary .k{color:var(--muted)}
-  .summary b.on{color:var(--good)} .summary b.off{color:var(--bad)} .summary b.mid{color:var(--mid)}
-  .summary b.strong{color:var(--good)} .summary b.weak{color:var(--bad)} .summary b.sideways{color:var(--mid)}
+  .summary b.on,.summary b.strong{color:var(--good)}
+  .summary b.off,.summary b.weak{color:var(--bad)}
+  .summary b.mid,.summary b.neutral,.summary b.sideways{color:var(--mid)}
 
-  /* jump nav */
-  .jump{display:flex; gap:7px; flex-wrap:wrap; margin:12px 0 8px}
-  .jump a{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.05em; text-decoration:none;
-    color:var(--muted); border:1px solid var(--line); padding:6px 11px; border-radius:99px}
-  .jump a:hover{border-color:var(--gold); color:var(--gold)}
+  /* tab bar */
+  .tabs{display:flex; gap:6px; margin-bottom:18px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px}
+  .tabs button{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; white-space:nowrap;
+    background:var(--surface); color:var(--muted); border:1px solid var(--line); padding:9px 15px; border-radius:99px; cursor:pointer}
+  .tabs button.active{color:var(--ink); background:var(--gold); border-color:var(--gold); font-weight:600}
+  .panel{display:none} .panel.active{display:block; animation:fade .25s ease}
+  @keyframes fade{from{opacity:0; transform:translateY(4px)}to{opacity:1; transform:none}}
 
-  /* section headers */
-  section{margin-top:30px; scroll-margin-top:12px}
-  .shead{display:flex; align-items:baseline; gap:10px; margin:0 2px 14px}
-  .snum{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--gold); font-weight:600}
-  .shead h2{font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; letter-spacing:-.01em}
-  .shead .cnt{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint)}
+  .shead{font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600; letter-spacing:-.01em; margin:0 2px 14px}
+  .lead{font-size:12.5px; color:var(--muted); margin:0 2px 12px; line-height:1.5}
 
-  /* verdict strip */
+  /* verdict blocks */
   .verdict{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); margin-bottom:12px}
   .verdict .bar{height:4px; width:100%}
   .verdict.on .bar,.verdict.strong .bar{background:var(--good)}
@@ -60,7 +60,6 @@
   .verdict .meta{display:flex; gap:16px; margin-top:9px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
   .verdict .meta b{color:var(--text); font-weight:600}
 
-  /* signal / traffic-light card */
   .card{border:1px solid var(--line); border-left-width:3px; border-radius:12px; padding:14px 16px; margin-bottom:9px; background:var(--surface)}
   .card.good{border-left-color:var(--good)} .card.mid{border-left-color:var(--mid)} .card.bad{border-left-color:var(--bad)}
   .card .top{display:flex; justify-content:space-between; align-items:center; gap:10px}
@@ -73,7 +72,6 @@
   .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:99px; margin-top:9px}
   .pill.good{color:var(--good); background:var(--good-dim)} .pill.mid{color:var(--mid); background:var(--mid-dim)} .pill.bad{color:var(--bad); background:var(--bad-dim)}
 
-  /* sector leaderboard row */
   .row{display:grid; grid-template-columns:32px 1fr auto; align-items:center; gap:12px; padding:12px 14px;
     border:1px solid var(--line); border-radius:12px; margin-bottom:8px; background:var(--surface)}
   .rank{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:19px; color:var(--faint); text-align:right}
@@ -90,42 +88,49 @@
   .tag.av{color:var(--bad); background:var(--bad-dim); border-color:transparent}
   .tag.watch{color:var(--mid); background:var(--mid-dim); border-color:transparent}
 
-  /* stage 2 stock card */
-  .stock{border:1px solid var(--line); border-left-width:3px; border-radius:12px; padding:13px 16px; margin-bottom:9px; background:var(--surface)}
-  .stock.clean{border-left-color:var(--good)} .stock.watch{border-left-color:var(--mid)} .stock.ext{border-left-color:var(--bad)}
-  .stock .st-top{display:flex; align-items:center; gap:10px}
-  .stock .srank{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--faint); font-weight:600; min-width:22px}
-  .stock .ssym{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-.01em}
-  .stock .sclose{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600}
-  .stock .stats{display:flex; gap:16px; flex-wrap:wrap; margin-top:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
-  .stock .stats b{color:var(--text); font-weight:600}
-  .stock .stats .pos{color:var(--good)} .stock .stats .neg{color:var(--bad)}
-  .stock .stop{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--faint); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2)}
-  .stock .stop b{color:var(--muted)}
-  .stock .extpill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:99px; margin-left:8px; color:var(--bad); background:var(--bad-dim)}
-  .stock .gpill{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:99px; margin-left:2px}
-  .stock .gpill.good{color:var(--good); background:var(--good-dim)}
-  .stock .gpill.mid{color:var(--mid); background:var(--mid-dim)}
-  .stock .gpill.bad{color:var(--bad); background:var(--bad-dim)}
-  .stock .s2exit{display:block; color:var(--faint); margin-top:4px}
+  /* donuts */
+  .dwrap{display:flex; gap:18px; flex-wrap:wrap; margin-bottom:14px}
+  .donutcard{flex:1; min-width:150px; border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:16px}
+  .donutcard h3{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:12px}
+  .donutrow{display:flex; align-items:center; gap:14px}
+  .donut{width:96px; height:96px; border-radius:50%; position:relative; flex-shrink:0}
+  .donut::after{content:''; position:absolute; inset:26%; border-radius:50%; background:var(--surface)}
+  .dlegend{font-family:'IBM Plex Mono',monospace; font-size:11.5px; line-height:1.9}
+  .dlegend .dot{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:7px; vertical-align:middle}
+  .dlegend b{color:var(--text)} .dlegend span{color:var(--muted)}
+
   .gradebar{display:flex; gap:7px; margin:0 2px 14px; flex-wrap:wrap}
   .gradebar span{font-family:'IBM Plex Mono',monospace; font-size:11px; padding:5px 11px; border-radius:99px; border:1px solid var(--line)}
   .gradebar .g-good{color:var(--good)} .gradebar .g-mid{color:var(--mid)} .gradebar .g-bad{color:var(--bad)}
   .tierbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:4px; border:1px solid var(--line); color:var(--muted); margin-left:2px}
-  .stock .sname{font-size:12px; color:var(--muted); margin-top:2px}
-  .stock .mcap{color:var(--faint)}
 
-  .lead{font-size:12.5px; color:var(--muted); margin:0 2px 12px; line-height:1.5}
+  .stock{border:1px solid var(--line); border-left-width:3px; border-radius:12px; padding:13px 16px; margin-bottom:9px; background:var(--surface)}
+  .stock.clean{border-left-color:var(--good)} .stock.watch{border-left-color:var(--mid)} .stock.ext{border-left-color:var(--bad)}
+  .stock .st-top{display:flex; align-items:center; gap:9px; flex-wrap:wrap}
+  .stock .srank{font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--faint); font-weight:600; min-width:22px}
+  .stock .ssym{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; letter-spacing:-.01em}
+  .stock .sclose{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600}
+  .stock .sname{font-size:12px; color:var(--muted); margin-top:3px}
+  .stock .gpill{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:99px}
+  .stock .gpill.good{color:var(--good); background:var(--good-dim)} .stock .gpill.mid{color:var(--mid); background:var(--mid-dim)} .stock .gpill.bad{color:var(--bad); background:var(--bad-dim)}
+  .stock .stats{display:flex; gap:15px; flex-wrap:wrap; margin-top:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
+  .stock .stats b{color:var(--text); font-weight:600}
+  .stock .stats .pos{color:var(--good)} .stock .stats .neg{color:var(--bad)} .stock .stats .mcap{color:var(--faint)}
+  .stock .stop{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--faint); margin-top:9px; padding-top:9px; border-top:1px solid var(--surface2)}
+  .stock .stop b{color:var(--muted)}
+  .stock .s2exit{display:block; color:var(--faint); margin-top:4px}
+  .stock .stype{color:var(--faint); font-size:10.5px}
+  .stock .qty{color:var(--good); font-weight:600}
+  .riskbox{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:12px 15px; margin-bottom:12px}
+  .riskbox label{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+  .riskbox input{width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:14px}
+  .riskbox input:focus{outline:2px solid var(--gold); outline-offset:1px}
+
   .note{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:10px; line-height:1.6}
   .miss{border:1px dashed var(--line); border-radius:12px; padding:20px; text-align:center; color:var(--muted); font-size:13px}
   .state{text-align:center; padding:56px 20px; color:var(--muted); font-size:14px}
   .spinner{width:26px; height:26px; border:2px solid var(--line); border-top-color:var(--gold); border-radius:50%; margin:0 auto 16px; animation:spin .8s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
-  details.diag{margin-top:14px; border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden}
-  details.diag summary{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); padding:12px 15px; cursor:pointer; list-style:none; display:flex; justify-content:space-between}
-  details.diag summary::-webkit-details-marker{display:none}
-  details.diag[open] summary{border-bottom:1px solid var(--line)}
-  .diag-body{padding:8px 15px 12px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint); line-height:1.8}
   footer{margin-top:30px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); line-height:1.6; text-align:center}
 </style>
 </head>
@@ -138,10 +143,9 @@
 
   <div id="app"><div class="state"><div class="spinner"></div>Loading the cockpit…</div></div>
 
-  <footer>
-    Top-down funnel · macro → breadth → sectors → stocks · rebuilt every Saturday from Yahoo Finance<br>
-    Not investment advice
-  </footer>
+  <footer>WCB = weekly close below · CMP = current market price · Stop on a weekly-closing basis<br>
+    Holding 15 days–3 months · book partial &amp; move SL to entry at Target 1<br>
+    Educational only · not SEBI-registered · rebuilt every Saturday from Yahoo + your Chartink scan</footer>
 
 <script>
 const fmtDate = s => { try{ return new Date(s).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;} };
@@ -154,83 +158,83 @@ async function load(){
   const app=document.getElementById('app');
   app.innerHTML=`<div class="state"><div class="spinner"></div>Loading the cockpit…</div>`;
   const [m,s,t]=await Promise.allSettled([J('./macro.json'),J('./data.json'),J('./stage2.json')]);
-  const macro=m.status==='fulfilled'?m.value:null;
-  const sect =s.status==='fulfilled'?s.value:null;
-  const st2  =t.status==='fulfilled'?t.value:null;
-  render(macro,sect,st2);
+  render(m.status==='fulfilled'?m.value:null, s.status==='fulfilled'?s.value:null, t.status==='fulfilled'?t.value:null);
+}
+
+function donut(segs){   // segs=[{label,value,color}]
+  const total = segs.reduce((a,b)=>a+b.value,0) || 1;
+  let acc=0, stops=[];
+  segs.forEach(g=>{ const from=acc/total*100; acc+=g.value; const to=acc/total*100; stops.push(`${g.color} ${from}% ${to}%`); });
+  const legend = segs.map(g=>`<div><span class="dot" style="background:${g.color}"></span><b>${g.label}</b> <span>${g.value}</span></div>`).join('');
+  return `<div class="donutrow"><div class="donut" style="background:conic-gradient(${stops.join(',')})"></div><div class="dlegend">${legend}</div></div>`;
+}
+
+function sigCard(s){
+  const ar=s.arrow==='up'?'▲':s.arrow==='down'?'▼':'→';
+  return `<div class="card ${s.status}"><div class="top"><div class="cname">${s.name}</div>
+    <div class="num">${s.headline} <span class="arrow ${s.arrow}">${ar}</span></div></div>
+    <div class="plain">${s.plain}</div><div class="why">${s.why}</div>
+    <span class="pill ${s.status}">${PILL[s.status]}</span></div>`;
 }
 
 function render(macro,sect,st2){
   const upd = macro?.generated_at || sect?.generated_at || st2?.generated_at;
   document.getElementById('updated').textContent = upd ? `updated ${fmtDate(upd)}` : 'no data yet';
 
-  // ---- summary strip ----
+  // summary strip
   let sum='';
-  if(macro){ sum+=`<span class="k">Backdrop</span> <b class="${macro.verdict.cls}">${macro.verdict.label}</b> `; }
-  if(sect){ sum+=`&nbsp;·&nbsp; <span class="k">Regime</span> <b class="${sect.regime.cls}">${sect.regime.verdict}</b> `;
-    const top=sect.sectors.slice(0,3).map(x=>x.name).join(', ');
-    sum+=`<br><span class="k">Leaders</span> <b>${top}</b>`; }
-  if(st2){ sum+=` &nbsp;·&nbsp; <span class="k">Stage 2</span> <b>${st2.qualified} names</b>`; }
+  if(macro) sum+=`<span class="k">Backdrop</span> <b class="${macro.verdict.cls}">${macro.verdict.label}</b> `;
+  if(sect){ sum+=`&nbsp;·&nbsp; <span class="k">Regime</span> <b class="${sect.regime.cls}">${sect.regime.verdict}</b>`;
+    sum+=`<br><span class="k">Leaders</span> <b>${sect.sectors.slice(0,3).map(x=>x.name).join(', ')}</b>`; }
+  if(st2) sum+=` &nbsp;·&nbsp; <span class="k">Stage 2</span> <b>${st2.qualified} names</b>`;
 
-  // ---- section 1: equities? ----
-  let s1='<div class="miss">Macro data unavailable.</div>';
+  // ---- MACRO panel (equities + breadth) ----
+  let macroHtml='<div class="miss">Macro data unavailable.</div>';
   if(macro){
     const v=macro.verdict;
     const assets=macro.signals.filter(x=>x.name!=='Market Breadth');
-    s1=`<div class="verdict ${v.cls}"><div class="bar"></div><div class="body">
-        <div class="label">The verdict</div><div class="big">${v.label}</div>
-        <div class="action">${v.action}</div></div></div>` + assets.map(sigCard).join('');
+    const breadth=macro.signals.find(x=>x.name==='Market Breadth');
+    macroHtml=`<div class="verdict ${v.cls}"><div class="bar"></div><div class="body">
+        <div class="label">Should I be in equities?</div><div class="big">${v.label}</div>
+        <div class="action">${v.action}</div></div></div>`
+      + assets.map(sigCard).join('')
+      + (breadth?`<div class="shead" style="font-size:15px;margin-top:20px">Market breadth</div>`+sigCard(breadth):'');
   }
 
-  // ---- section 2: breadth ----
-  let s2='<div class="miss">Breadth data unavailable.</div>';
-  if(macro){ const b=macro.signals.find(x=>x.name==='Market Breadth'); if(b) s2=sigCard(b); }
-
-  // ---- section 3: sectors ----
-  let s3='<div class="miss">Sector data unavailable.</div>';
+  // ---- SECTORS panel ----
+  let sectHtml='<div class="miss">Sector data unavailable.</div>';
   if(sect){
     const rg=sect.regime;
     const maTxt=`${rg.trend_up?'above':'below'} 30-wk MA (${rg.pct_vs_ma>=0?'+':''}${rg.pct_vs_ma}%)`;
     const vixTxt=rg.vix!=null?`${rg.vix} · ${rg.vix_band}`:'n/a';
     const maxAbs=Math.max(...sect.sectors.map(x=>Math.abs(x.blend)),0.5);
-    const n=sect.sectors.length;
     const rows=sect.sectors.map(x=>{
       const cls=x.tag==='OVERWEIGHT'?'ow':x.tag==='AVOID'?'av':'';
       const tc=x.tag==='OVERWEIGHT'?'ow':x.tag==='AVOID'?'av':x.tag==='WATCH'?'watch':'';
       const ar=x.arrow==='up'?'▲':x.arrow==='down'?'▼':'→';
       const w=Math.round(Math.abs(x.blend)/maxAbs*100);
-      const px=x.proxy?'<span class="px">etf</span>':'';
       const z=v=>(v>=0?'+':'')+v.toFixed(2);
       return `<div class="row ${cls}"><div class="rank">${String(x.rank).padStart(2,'0')}</div>
-        <div><div class="rname">${x.name} <span class="arrow ${x.arrow}">${ar}</span> ${px}</div>
+        <div><div class="rname">${x.name} <span class="arrow ${x.arrow}">${ar}</span> ${x.proxy?'<span class="px">etf</span>':''}</div>
         <div class="track"><div class="fill" style="width:${w}%"></div></div>
         <div class="zr"><b>L</b> ${z(x.level_z)} <b>M</b> ${z(x.mom_z)} <b>blend</b> ${z(x.blend)}</div></div>
         <div class="tag ${tc}">${x.tag}</div></div>`;
     }).join('');
-    s3=`<div class="verdict ${rg.cls}"><div class="bar"></div><div class="body">
+    sectHtml=`<div class="verdict ${rg.cls}"><div class="bar"></div><div class="body">
         <div class="label">Market regime</div><div class="big">${rg.verdict}</div>
         <div class="meta"><div>Nifty <b>${maTxt}</b></div><div>VIX <b>${vixTxt}</b></div></div>
         <div class="action">${rg.note}</div></div></div>
         <div class="lead">Sectors ranked by relative strength vs Nifty 50 (level + momentum):</div>${rows}`;
   }
 
-  // ---- section 4: stage 2 stocks ----
-  let s4='<div class="miss">Stock scan unavailable.</div>', s4cnt='';
+  // ---- STOCKS panel ----
+  let stockHtml='<div class="miss">Stock scan unavailable.</div>';
   if(st2){
-    const src = st2.source==='chartink' ? 'Chartink' : 'Yahoo scan';
-    s4cnt=`${st2.qualified} names · ${src}`;
     const g=st2.grades||{}, ti=st2.tiers||{};
-    const gbar=g.Prime!=null?`<div class="gradebar">
-      <span class="g-good">Prime ${g.Prime}</span>
-      <span class="g-mid">Healthy ${g.Healthy}</span>
-      <span class="g-bad">Late ${g.Late}</span></div>`:'';
-    const tbar=ti.Large!=null?`<div class="gradebar">
-      <span>Large ${ti.Large}</span><span>Mid ${ti.Mid}</span><span>Small ${ti.Small}</span></div>`:'';
-    const gmap={Prime:'clean',Healthy:'watch',Late:'ext'};
-    const gp={Prime:'good',Healthy:'mid',Late:'bad'};
+    const gp={Prime:'good',Healthy:'mid',Late:'bad'}, gmap={Prime:'clean',Healthy:'watch',Late:'ext'};
     const mcapTxt=x=> x.mcap_cr!=null ? `₹${Number(x.mcap_cr).toLocaleString('en-IN')} Cr` : '';
-    s4=gbar+tbar+`<div class="lead">Weinstein Stage 2 names, graded by extension above the 150-day MA. Stop = tighter of 2×ATR and 8%.</div>`
-      + st2.stocks.map((x,i)=>{
+    const gbar=g.Prime!=null?`<div class="gradebar"><span class="g-good">Prime ${g.Prime}</span><span class="g-mid">Healthy ${g.Healthy}</span><span class="g-bad">Late ${g.Late}</span></div>`:'';
+    const cards=st2.stocks.map((x,i)=>{
       const cls=gmap[x.grade]||'watch';
       const stat=[];
       if(x.mcap_cr!=null) stat.push(`<span class="mcap">${mcapTxt(x)}</span>`);
@@ -239,43 +243,77 @@ function render(macro,sect,st2){
       if(x.vol_surge!=null) stat.push(`Vol <b>${x.vol_surge}×</b>`);
       stat.push(`+${x.ext_above_30wma}% vs MA`);
       const exit = x.stage2_exit!=null?x.stage2_exit:x.stop_ref;
+      const rps = (x.stop!=null)? (x.close - x.stop) : 0;
       const stopLine = x.stop!=null
-        ? `<b>Stop:</b> ${inr(x.stop)} · risk <b>${x.risk_pct}%</b><span class="s2exit">Stage 2 ends below ${inr(exit)}</span>`
+        ? `<b>Stop:</b> ${inr(x.stop)} <span class="stype">${x.stop_type||''}</span> · risk <b>${x.risk_pct}%</b><span class="qty" data-rps="${rps.toFixed(2)}"></span><span class="s2exit">Exit if weekly close below ${inr(exit)} (WCB)</span>`
         : `<b>Stop:</b> weekly close below ${inr(x.stop_ref)}`;
       return `<div class="stock ${cls}">
         <div class="st-top"><div class="srank">${String(i+1).padStart(2,'0')}</div>
           <div class="ssym">${x.symbol}</div>
           ${x.grade?`<span class="gpill ${gp[x.grade]}">${x.grade}</span>`:''}
           ${x.tier&&x.tier!=='—'?`<span class="tierbadge">${x.tier}</span>`:''}
+          ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
           <div class="sclose">${inr(x.close)}</div></div>
         ${x.name?`<div class="sname">${x.name}</div>`:''}
         <div class="stats">${stat.map(s=>`<span>${s}</span>`).join('')}</div>
-        <div class="stop">${stopLine}</div>
-      </div>`;
-    }).join('')
-      + `<div class="note">${st2.source==='chartink'?'Live from your Chartink CLAUDE PROJECT_TRADING scan. Sector tags coming next.':'Native Yahoo scan. Chartink feed adds names, market cap &amp; sector.'}</div>`;
+        <div class="stop">${stopLine}</div></div>`;
+    }).join('');
+    const src = st2.source==='chartink' ? 'from your Chartink CLAUDE PROJECT_TRADING scan' : 'native Yahoo scan';
+    const riskbox=`<div class="riskbox"><label>Risk per trade (₹) — optional, shows quantity</label>
+      <input id="riskInput" type="number" inputmode="numeric" placeholder="e.g. 2000"></div>`;
+    stockHtml=gbar+riskbox+`<div class="lead">Weinstein Stage 2 names, ${src}. Prime = 0–10% above 150-MA (stop at 150-MA×0.97); Healthy/Late stop at 2×ATR.</div>`+cards
+      +`<div class="note">${st2.source==='chartink'?'Live from your Chartink scan. Qty = risk ÷ (entry − stop).':'Chartink feed adds names, market cap &amp; sector.'}</div>`;
   }
+
+  // ---- OVERVIEW panel (summary + donuts) ----
+  let ovHtml='';
+  if(st2 && (st2.grades||st2.tiers)){
+    const g=st2.grades||{}, ti=st2.tiers||{}, sm=st2.sector_mix||{};
+    const PAL=['#5B8DEF','#3FD69A','#EBB94D','#F1766B','#A78BFA','#38BDF8','#FB923C','#F472B6','#818CF8','#FBBF24','#4ADE80','#22D3EE','#E879F9','#94A3B8','#FCA5A5','#FDBA74'];
+    let dd='';
+    if(g.Prime!=null) dd+=`<div class="donutcard"><h3>Grade mix</h3>${donut([
+      {label:'Prime',value:g.Prime,color:'#3FD69A'},{label:'Healthy',value:g.Healthy,color:'#EBB94D'},{label:'Late',value:g.Late,color:'#F1766B'}])}</div>`;
+    if(ti.Large!=null) dd+=`<div class="donutcard"><h3>Market-cap mix</h3>${donut([
+      {label:'Large',value:ti.Large,color:'#5B8DEF'},{label:'Mid',value:ti.Mid,color:'#3FD69A'},{label:'Small',value:ti.Small,color:'#EBB94D'}])}</div>`;
+    let secHtml='';
+    const secEntries=Object.entries(sm).sort((a,b)=>b[1]-a[1]);
+    if(secEntries.length){
+      const segs=secEntries.map(([label,value],i)=>({label,value,color:PAL[i%PAL.length]}));
+      secHtml=`<div class="donutcard" style="min-width:100%"><h3>Sector leadership</h3>${donut(segs)}</div>`;
+    }
+    ovHtml=`<div class="lead">Snapshot of this week's Stage 2 list.</div><div class="dwrap">${dd}${secHtml}</div>`;
+  } else ovHtml='<div class="miss">Charts appear once the Chartink list is loaded.</div>';
 
   document.getElementById('app').innerHTML=`
     <div class="summary">${sum||'No data yet — run the Action.'}</div>
-    <div class="jump">
-      <a href="#equities">Equities?</a><a href="#breadth">Breadth</a>
-      <a href="#sectors">Sectors</a><a href="#stocks">Stocks</a>
+    <div class="tabs">
+      <button data-t="ov" class="active">Overview</button>
+      <button data-t="macro">Macro</button>
+      <button data-t="sect">Sectors</button>
+      <button data-t="stk">Stocks</button>
     </div>
+    <div class="panel active" id="p-ov">${ovHtml}</div>
+    <div class="panel" id="p-macro"><div class="shead">Should I be in equities?</div>${macroHtml}</div>
+    <div class="panel" id="p-sect"><div class="shead">Where should I be?</div>${sectHtml}</div>
+    <div class="panel" id="p-stk"><div class="shead">Which stocks?</div>${stockHtml}</div>`;
 
-    <section id="equities"><div class="shead"><span class="snum">01</span><h2>Should I be in equities?</h2></div>${s1}</section>
-    <section id="breadth"><div class="shead"><span class="snum">02</span><h2>Is the market broad?</h2></div>${s2}</section>
-    <section id="sectors"><div class="shead"><span class="snum">03</span><h2>Where should I be?</h2></div>${s3}</section>
-    <section id="stocks"><div class="shead"><span class="snum">04</span><h2>Which stocks?</h2><span class="cnt">${s4cnt}</span></div>${s4}</section>`;
-}
+  document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('p-'+b.dataset.t).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
 
-function sigCard(s){
-  const ar=s.arrow==='up'?'▲':s.arrow==='down'?'▼':'→';
-  return `<div class="card ${s.status}">
-    <div class="top"><div class="cname">${s.name}</div>
-      <div class="num">${s.headline} <span class="arrow ${s.arrow}">${ar}</span></div></div>
-    <div class="plain">${s.plain}</div><div class="why">${s.why}</div>
-    <span class="pill ${s.status}">${PILL[s.status]}</span></div>`;
+  const ri=document.getElementById('riskInput');
+  if(ri) ri.oninput=()=>{
+    const risk=parseFloat(ri.value);
+    document.querySelectorAll('.qty').forEach(q=>{
+      const rps=parseFloat(q.dataset.rps);
+      if(risk>0 && rps>0){ q.textContent=' · qty '+Math.floor(risk/rps); }
+      else q.textContent='';
+    });
+  };
 }
 load();
 </script>
