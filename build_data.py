@@ -49,12 +49,18 @@ MACRO = [
      "up": "Gold is pulling ahead of silver — a classic fear signal. Mild caution for stocks.",
      "down": "Silver is catching up to gold — risk appetite returning. Supportive for stocks.",
      "flat": "Gold and silver moving together — no clear signal."},
-    {"name": "Indian Stocks vs Gold", "kind": "ratio", "a": "^NSEI", "b": "GOLDBEES.NS",
+    {"name": "Nifty 50 vs Gold", "kind": "ratio", "a": "^NSEI", "b": "GOLDBEES.NS",
      "dir": "on", "w": 1.0, "show": "change",
-     "why": "When stocks outrun gold, risk appetite is healthy.",
-     "up": "Indian stocks are beating gold — money prefers equities over safe-havens. Good sign.",
-     "down": "Gold is beating Indian stocks — money is hiding in safe-havens. Defensive sign.",
-     "flat": "Stocks and gold roughly even — no clear preference."},
+     "why": "Large-caps vs gold — when stocks outrun gold, risk appetite is healthy.",
+     "up": "Large-cap stocks are beating gold — money prefers equities over safe-havens. Good sign.",
+     "down": "Gold is beating large-cap stocks — money is hiding in safe-havens. Defensive sign.",
+     "flat": "Large-caps and gold roughly even — no clear preference."},
+    {"name": "Nifty 500 vs Gold", "kind": "ratio", "a": "^CRSLDX", "b": "GOLDBEES.NS",
+     "dir": "on", "w": 0.7, "show": "change",
+     "why": "Whole market vs gold — broad risk appetite across all caps.",
+     "up": "The broad market is beating gold — risk appetite is broad-based. Good sign.",
+     "down": "Gold is beating the broad market — defensive across the board.",
+     "flat": "Broad market and gold roughly even."},
     {"name": "Market Breadth", "kind": "ratio", "a": "^CRSLDX", "b": "^NSEI",
      "dir": "on", "w": 1.0, "show": "change",
      "why": "Nifty 500 vs Nifty 50 — broad participation signals a durable move.",
@@ -121,9 +127,9 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 HOSTS = ["query1.finance.yahoo.com", "query2.finance.yahoo.com"]
 
 # ------------------------------------------------------------------ FETCH
-def fetch(ticker, retries=3):
+def fetch(ticker, retries=3, rng="2y"):
     """Return list[(date_epoch, close)] weekly, or None."""
-    path = f"/v8/finance/chart/{urllib.parse.quote(ticker)}?range=2y&interval=1wk"
+    path = f"/v8/finance/chart/{urllib.parse.quote(ticker)}?range={rng}&interval=1wk"
     for attempt in range(retries):
         host = HOSTS[attempt % len(HOSTS)]
         url = f"https://{host}{path}"
@@ -206,12 +212,16 @@ def signal_stats(series):
     arrow = "up" if chg > 0.5 else "down" if chg < -0.5 else "flat"
     return z, chg, arrow, vals[-1]
 
+def _percentile(vals, current):
+    if not vals: return 50.0
+    return sum(1 for v in vals if v <= current) / len(vals) * 100
+
 def compute_macro():
     diag, signals, score_num, score_den = [], [], 0.0, 0.0
     cache = {}
     def get(tk):
         if tk not in cache:
-            cache[tk] = fetch(tk)
+            cache[tk] = fetch(tk, rng="5y")   # 5 years for percentile context
         return cache[tk]
 
     for m in MACRO:
@@ -231,29 +241,36 @@ def compute_macro():
             diag[-1]["ok"] = False
             continue
         z, chg, arrow, val = signal_stats(series)
+        sm = ema([v for _, v in sorted(series)], 5)
 
-        # US 10Y scale fix: Yahoo ^TNX sometimes quotes yield ×10 (e.g. 46.8 = 4.68%)
+        # US 10Y scale fix: Yahoo ^TNX sometimes quotes yield ×10
         if m["show"] == "yield" and val > 20:
             val = val / 10
 
-        # headline number the user can verify against reality
-        if m["show"] == "ratio":
-            headline = f"{val:.1f}"
-        elif m["show"] == "yield":
-            headline = f"{val:.2f}%"
-        else:  # change
-            headline = f"{chg:+.1f}%"
+        # 5-year percentile of current reading
+        pct = _percentile(sm, sm[-1])
+        if   pct >= 85: pos = "near the top of"
+        elif pct >= 65: pos = "in the upper part of"
+        elif pct <= 15: pos = "near the bottom of"
+        elif pct <= 35: pos = "in the lower part of"
+        else:           pos = "mid-range within"
+        context = f"At the {pct:.0f}th percentile — {pos} its 5-year range."
 
-        # risk-on contribution and green/amber/red status
-        contrib = z if m["dir"] == "on" else -z
-        status = "good" if contrib > 0.7 else "bad" if contrib < -0.7 else "mid"
+        if m["show"] == "ratio":   headline = f"{val:.1f}"
+        elif m["show"] == "yield": headline = f"{val:.2f}%"
+        else:                      headline = f"{chg:+.1f}%"
+
+        # percentile-based risk read (auto-calibrated, per user's choice)
+        ron = (pct - 50) / 50 if m["dir"] == "on" else -(pct - 50) / 50
+        status = "good" if ron > 0.3 else "bad" if ron < -0.3 else "mid"
         plain = m["up"] if arrow == "up" else m["down"] if arrow == "down" else m["flat"]
 
         signals.append({
             "name": m["name"], "headline": headline, "arrow": arrow, "status": status,
-            "plain": plain, "why": m["why"], "chg13": round(chg, 1), "z": round(z, 2),
+            "plain": plain, "why": m["why"], "context": context,
+            "percentile": round(pct), "chg13": round(chg, 1), "z": round(z, 2),
         })
-        score_num += m["w"] * contrib; score_den += m["w"]
+        score_num += m["w"] * ron; score_den += m["w"]
 
     score = score_num / score_den if score_den else 0.0
     if score > 0.4:
@@ -434,6 +451,22 @@ def _sec_norm(s):
     s = s.strip().title()
     return {"Fmcg": "FMCG", "It": "IT", "Nbfc": "NBFC"}.get(s, s)
 
+def _find(row, *needles):
+    """Find a CSV value by fuzzy header match (case/space-insensitive contains-all)."""
+    for k, v in row.items():
+        kl = (k or "").lower().replace(" ", "")
+        if all(n in kl for n in needles):
+            return v
+    return None
+
+# scanner routing — matched against the CSV filename (lowercased)
+SCANNERS = [
+    {"id": "trading", "keywords": ["trading"], "label": "Trading", "style": "buy",
+     "personal": False, "note": "Buy list — Stage 2 names near support."},
+    {"id": "momentum", "keywords": ["hariharr", "momentum"], "label": "Momentum", "style": "buy",
+     "personal": False, "note": "Strongest active trend right now. Aggressive — a Late-grade name here is a chase, not a buy."},
+]
+
 def parse_chartink_csv(path):
     import csv
     rows, gc, tc, sc = [], {"Prime":0,"Healthy":0,"Late":0}, {"Large":0,"Mid":0,"Small":0,"Micro":0,"—":0}, {}
@@ -445,13 +478,23 @@ def parse_chartink_csv(path):
             if not sym or not close or not sma150: continue
             ext = (close / sma150 - 1) * 100
             g = _grade(ext); t = _tier(mcap); sec = _sec_norm(r.get('Sector') or r.get('sector'))
-            # two stops, reader picks
+            ema21 = _cnum(_find(r, "ema", "21"))
+            # three stops, reader picks
             stop_ma = sma150 * 0.97
             risk_ma = (close - stop_ma) / close * 100
             stop_atr = (close - 2*atr) if atr else None
             risk_atr = (close - stop_atr) / close * 100 if stop_atr else None
-            suggested = "ma" if g == "Prime" else "atr"
-            sugg_stop = stop_ma if (suggested == "ma" or stop_atr is None) else stop_atr
+            stop_ema = ema21 if (ema21 and ema21 < close) else None
+            risk_ema = (close - stop_ema) / close * 100 if stop_ema else None
+            # suggested stop by grade: Prime→MA-line, Healthy→ATR, Late→21-EMA (tight trail)
+            if g == "Prime":     suggested = "ma"
+            elif g == "Healthy": suggested = "atr" if stop_atr else "ma"
+            else:                suggested = "ema" if stop_ema else ("atr" if stop_atr else "ma")
+            sugg_stop = {"ma": stop_ma, "atr": stop_atr, "ema": stop_ema}.get(suggested) or stop_ma
+            # optional HVE/HVA volume-footprint flags (Accumulation columns, if present)
+            hva = _find(r, "hva"); hve = _find(r, "hve")
+            hva = str(hva).strip().lower() in ("1", "true", "yes", "y") if hva is not None else False
+            hve = str(hve).strip().lower() in ("1", "true", "yes", "y") if hve is not None else False
             gc[g] += 1; tc[t] += 1
             if sec: sc[sec] = sc.get(sec, 0) + 1
             rows.append({
@@ -462,15 +505,59 @@ def parse_chartink_csv(path):
                 "stop_ma": round(stop_ma, 2), "risk_ma": round(risk_ma, 1),
                 "stop_atr": round(stop_atr, 2) if stop_atr else None,
                 "risk_atr": round(risk_atr, 1) if risk_atr else None,
+                "stop_ema": round(stop_ema, 2) if stop_ema else None,
+                "risk_ema": round(risk_ema, 1) if risk_ema else None,
                 "suggested": suggested, "sugg_stop": round(sugg_stop, 2),
+                "hva": hva, "hve": hve,
                 "stage2_exit": round(sma150, 2),
             })
     grank = {"Prime":0,"Healthy":1,"Late":2}
     rows.sort(key=lambda x: (grank[x["grade"]], x["risk_ma"] if x["suggested"]=="ma" else (x["risk_atr"] or 99), x["ext_above_30wma"]))
     for i, x in enumerate(rows): x["rank"] = i + 1
-    return {"universe": "Chartink · CLAUDE PROJECT_TRADING", "source": "chartink",
-            "scanned": len(rows), "failed": 0, "qualified": len(rows),
-            "grades": gc, "tiers": tc, "sector_mix": sc, "stocks": rows}
+    return {"qualified": len(rows), "grades": gc, "tiers": tc,
+            "sector_mix": sc, "stocks": rows}
+
+# ------------------------------------------------------------------ TRACKER
+def compute_tracker(current_stocks, as_of):
+    """Aging + new/dropped + %return + SL-hit, from committed weekly snapshots."""
+    import glob
+    timeline = []   # (date, {symbol: close})
+    for sp in sorted(glob.glob("history/stage2-*.json")):
+        try:
+            d = json.load(open(sp))
+            date = d.get("as_of") or sp.split("stage2-")[-1].replace(".json", "")
+            if "scanners" in d:
+                stocks = d["scanners"].get("trading", {}).get("stocks", [])
+            else:
+                stocks = d.get("stocks", [])
+            smap = {s["symbol"]: s.get("close") for s in (stocks or []) if s.get("symbol")}
+            timeline.append((date, smap))
+        except Exception:
+            pass
+    timeline.sort()
+    prev_syms = set(timeline[-2][1].keys()) if len(timeline) >= 2 else set()
+
+    cur = {s["symbol"]: s for s in current_stocks if s.get("symbol")}
+    out = []
+    for sym, s in cur.items():
+        weeks, first_close = 0, s.get("close")
+        for _date, smap in reversed(timeline):
+            if sym in smap:
+                weeks += 1; first_close = smap[sym]
+            else:
+                break
+        age = "Fresh" if weeks <= 1 else f"Week {weeks-1}"
+        ret = (s["close"] / first_close - 1) * 100 if (first_close and s.get("close")) else None
+        sl_hit = (s.get("close") is not None and s.get("sugg_stop") is not None
+                  and s["close"] < s["sugg_stop"])
+        out.append({"symbol": sym, "name": s.get("name"), "sector": s.get("sector"),
+                    "grade": s.get("grade"), "close": s.get("close"),
+                    "weeks": weeks, "age": age, "new": sym not in prev_syms,
+                    "ret_pct": round(ret, 1) if ret is not None else None, "sl_hit": sl_hit})
+    out.sort(key=lambda x: -x["weeks"])   # longest-held first
+    dropped = sorted(sym for sym in prev_syms if sym not in cur)
+    return {"as_of": as_of, "stocks": out, "dropped": dropped,
+            "first_run": len(timeline) <= 1}
 
 # ------------------------------------------------------------------ MAIN
 def main():
@@ -557,26 +644,40 @@ def main():
     print(f"Macro verdict: {macro['verdict']['label']} (score {macro['verdict']['score']})  "
           f"signals={macro['diagnostics']['loaded']}/{macro['diagnostics']['total']}")
 
-    # ---- Page 1: stocks — any Chartink CSV in the repo, else native Yahoo scan ----
+    # ---- Page 1: stocks — route each CSV to its scanner by filename ----
     import glob
-    stage2 = None
-    for csv_path in sorted(glob.glob("*.csv")):
-        try:
-            r = parse_chartink_csv(csv_path)
-            if r["qualified"] > 0:
-                print(f"Using Chartink CSV: {csv_path}")
-                stage2 = r; break
-        except Exception as e:
-            print(f"  skip {csv_path}: {e}")
-    if stage2 is None:
-        print("No usable Chartink CSV — running native Yahoo Stage 2 scan.")
-        stage2 = scan_stage2()
-    stage2["generated_at"] = payload["generated_at"]
-    stage2["as_of"] = as_of
-    with open("stage2.json", "w") as f:
-        json.dump(stage2, f, indent=2)
+    csv_files = sorted(glob.glob("*.csv"))
+    scanners = {}
+    for sc in SCANNERS:
+        match = None
+        for f in csv_files:
+            fl = f.lower()
+            if any(k in fl for k in sc["keywords"]):
+                match = f; break
+        entry = {"label": sc["label"], "style": sc["style"],
+                 "personal": sc["personal"], "note": sc["note"], "qualified": 0, "stocks": []}
+        if match:
+            try:
+                parsed = parse_chartink_csv(match)
+                entry.update(parsed)
+                print(f"  {sc['id']:<13} <- {match}  ({parsed['qualified']} names)")
+            except Exception as e:
+                print(f"  {sc['id']:<13} skip {match}: {e}")
+        else:
+            print(f"  {sc['id']:<13} <- (no CSV — empty state)")
+        scanners[sc["id"]] = entry
+
+    stage2 = {"scanners": scanners, "generated_at": payload["generated_at"], "as_of": as_of}
+    os.makedirs("history", exist_ok=True)
+    # snapshot first so this week is in the aging timeline
     with open(f"history/stage2-{as_of}.json", "w") as f:
         json.dump(stage2, f, indent=2)
+    # tracker reads all snapshots (including this one)
+    stage2["tracker"] = compute_tracker(scanners.get("trading", {}).get("stocks", []), as_of)
+    with open("stage2.json", "w") as f:
+        json.dump(stage2, f, indent=2)
+    print(f"  tracker: {len(stage2['tracker']['stocks'])} tracked, "
+          f"{len(stage2['tracker']['dropped'])} dropped, first_run={stage2['tracker']['first_run']}")
 
     print(f"\nDone. as_of={as_of}  sectors_ranked={n}  "
           f"loaded={payload['diagnostics']['loaded']}/{payload['diagnostics']['total']}")
