@@ -560,6 +560,52 @@ def compute_tracker(current_stocks, as_of):
     return {"as_of": as_of, "stocks": out, "dropped": dropped,
             "first_run": len(timeline) <= 1}
 
+# ------------------------------------------------------------------ RRG (sector rotation quadrant)
+def _rolling_z(series, window=26):
+    out = []
+    for i in range(len(series)):
+        w = series[max(0, i-window+1):i+1]
+        if len(w) < 8:
+            out.append(0.0); continue
+        m = mean(w); s = std(w)
+        out.append((series[i]-m)/s if s > 0 else 0.0)
+    return out
+
+def compute_rrg():
+    """Sector rotation vs Nifty 500 — RS-Ratio & RS-Momentum with 12-week trails."""
+    SCALE, TRAIL = 2.0, 12
+    bench = fetch("^CRSLDX"); label = "Nifty 500"
+    if not bench:
+        bench = fetch("^NSEI"); label = "Nifty 50"
+    if not bench:
+        return {"benchmark": "", "trail_weeks": TRAIL, "sectors": []}
+    bmap = {t: c for t, c in bench}
+    dates = [t for t, _ in bench]
+    out = []
+    for s in SECTORS_DIRECT + SECTORS_PROXY:
+        ser = fetch(s["ticker"])
+        if not ser:
+            continue
+        m = {t: c for t, c in ser}
+        rs = [m[d]/bmap[d] for d in dates if d in m and bmap.get(d)]
+        if len(rs) < 40:
+            continue
+        rs_s = ema(rs, 5)
+        lz = _rolling_z(rs_s, 26)
+        roc = [rs_s[i]/rs_s[i-4]-1 if i >= 4 else 0 for i in range(len(rs_s))]
+        mz = _rolling_z(roc, 26)
+        rsr = [round(100 + z*SCALE, 2) for z in lz]
+        rsm = [round(100 + z*SCALE, 2) for z in mz]
+        trail = [[rsr[i], rsm[i]] for i in range(len(rsr))][-TRAIL:]
+        cx, cy = trail[-1]
+        quad = ("Leading" if cx >= 100 and cy >= 100 else
+                "Weakening" if cx >= 100 and cy < 100 else
+                "Lagging" if cx < 100 and cy < 100 else "Improving")
+        out.append({"name": s["name"], "rs_ratio": cx, "rs_mom": cy,
+                    "quadrant": quad, "trail": trail, "proxy": s.get("proxy", False)})
+    out.sort(key=lambda x: -x["rs_ratio"])
+    return {"benchmark": label, "trail_weeks": TRAIL, "sectors": out}
+
 # ------------------------------------------------------------------ MAIN
 def main():
     diag = []
@@ -615,11 +661,15 @@ def main():
         r["tag"] = tag
 
     as_of = datetime.datetime.utcfromtimestamp(dates[-1]).strftime("%Y-%m-%d")
+    print("Building sector RRG…")
+    rrg = compute_rrg()
+    print(f"  RRG: {len(rrg['sectors'])} sectors vs {rrg['benchmark']}")
     payload = {
         "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "as_of": as_of,
         "regime": regime,
         "sectors": results,
+        "rrg": rrg,
         "diagnostics": {
             "loaded": sum(1 for d in diag if d["ok"]),
             "total": len(diag),
