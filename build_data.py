@@ -572,8 +572,10 @@ def _rolling_z(series, window=26):
     return out
 
 def compute_rrg():
-    """Sector rotation vs Nifty 500 — RS-Ratio & RS-Momentum with 12-week trails."""
-    SCALE, TRAIL = 2.0, 12
+    """Sector rotation vs Nifty 500 — true RS-Ratio / RS-Momentum (de Kempenaer style).
+    RS-Ratio: 100 = matching the benchmark; >100 outperforming, <100 lagging.
+    RS-Momentum: 100 = RS-Ratio flat; >100 accelerating, <100 decelerating."""
+    TRAIL = 12
     bench = fetch("^CRSLDX"); label = "Nifty 500"
     if not bench:
         bench = fetch("^NSEI"); label = "Nifty 50"
@@ -590,12 +592,23 @@ def compute_rrg():
         rs = [m[d]/bmap[d] for d in dates if d in m and bmap.get(d)]
         if len(rs) < 40:
             continue
-        rs_s = ema(rs, 5)
-        lz = _rolling_z(rs_s, 26)
-        roc = [rs_s[i]/rs_s[i-4]-1 if i >= 4 else 0 for i in range(len(rs_s))]
-        mz = _rolling_z(roc, 26)
-        rsr = [round(100 + z*SCALE, 2) for z in lz]
-        rsm = [round(100 + z*SCALE, 2) for z in mz]
+        # RS-Ratio = current relative strength vs its own 14-wk trend, x100.
+        # 100 = strength in line with its trend; >100 gaining on Nifty 500, <100 losing.
+        N = 14
+        rsr = []
+        for i in range(len(rs)):
+            w = rs[max(0, i-N+1):i+1]
+            ma = mean(w)
+            rsr.append(100.0 * rs[i] / ma if ma else 100.0)
+        # RS-Momentum = RS-Ratio vs its own 10-wk trend (is the strength itself rising?).
+        M = 10
+        rsm = []
+        for i in range(len(rsr)):
+            w = rsr[max(0, i-M+1):i+1]
+            ma = mean(w)
+            rsm.append(100.0 * rsr[i] / ma if ma else 100.0)
+        rsr = [round(v, 2) for v in rsr]
+        rsm = [round(v, 2) for v in rsm]
         trail = [[rsr[i], rsm[i]] for i in range(len(rsr))][-TRAIL:]
         cx, cy = trail[-1]
         quad = ("Leading" if cx >= 100 and cy >= 100 else
