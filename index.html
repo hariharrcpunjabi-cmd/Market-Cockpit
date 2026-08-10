@@ -123,6 +123,12 @@
   .newbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--good); background:var(--good-dim); padding:3px 8px; border-radius:99px}
   .exitbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--bad); background:var(--bad-dim); padding:3px 8px; border-radius:99px}
   .ret{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px} .ret.pos{color:var(--good)} .ret.neg{color:var(--bad)}
+  .rrg{width:100%; height:auto; display:block; background:var(--surface); border:1px solid var(--line); border-radius:14px; margin-bottom:12px}
+  .rrgrow{display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; padding:8px 2px; border-bottom:1px solid var(--surface2)}
+  .rrgrow b{color:var(--text); font-weight:600; min-width:120px} .rrgrow:last-child{border:0}
+  .qdot{width:9px; height:9px; border-radius:50%; flex-shrink:0}
+  .rq{color:var(--muted)} .rr{margin-left:auto; color:var(--faint)}
+
 
   .tierhd{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:18px 2px 10px} .tierhd b{color:var(--gold); font-weight:600}
   details.more{margin-top:8px} details.more>summary{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); cursor:pointer; padding:11px 2px; list-style:none} details.more>summary::-webkit-details-marker{display:none}
@@ -262,6 +268,39 @@ function trackerPanel(tr){
   return note + cards + dropped;
 }
 
+function rrgPanel(rrg){
+  if(!rrg || !rrg.sectors || !rrg.sectors.length) return `<div class="miss">RRG data unavailable.</div>`;
+  const secs=rrg.sectors;
+  let dev=2; secs.forEach(s=>s.trail.forEach(p=>{dev=Math.max(dev,Math.abs(p[0]-100),Math.abs(p[1]-100));}));
+  dev=dev*1.18; const lo=100-dev, hi=100+dev, W=340,H=340,pad=36;
+  const sx=v=>pad+(v-lo)/(hi-lo)*(W-2*pad);
+  const sy=v=>H-pad-(v-lo)/(hi-lo)*(H-2*pad);
+  const qcol={Leading:'#3FD69A',Weakening:'#EBB94D',Lagging:'#F1766B',Improving:'#5B8DEF'};
+  const cx=sx(100), cy=sy(100);
+  let svg=`<svg viewBox="0 0 ${W} ${H}" class="rrg">`;
+  svg+=`<rect x="${cx}" y="${pad}" width="${W-pad-cx}" height="${cy-pad}" fill="rgba(63,214,154,.06)"/>`;
+  svg+=`<rect x="${cx}" y="${cy}" width="${W-pad-cx}" height="${H-pad-cy}" fill="rgba(235,185,77,.06)"/>`;
+  svg+=`<rect x="${pad}" y="${cy}" width="${cx-pad}" height="${H-pad-cy}" fill="rgba(241,118,107,.06)"/>`;
+  svg+=`<rect x="${pad}" y="${pad}" width="${cx-pad}" height="${cy-pad}" fill="rgba(91,141,239,.06)"/>`;
+  svg+=`<line x1="${cx}" y1="${pad}" x2="${cx}" y2="${H-pad}" stroke="#2A2F3C" stroke-width="1"/>`;
+  svg+=`<line x1="${pad}" y1="${cy}" x2="${W-pad}" y2="${cy}" stroke="#2A2F3C" stroke-width="1"/>`;
+  svg+=`<text x="${W-pad-3}" y="${pad+11}" font-size="9" fill="#3FD69A" text-anchor="end">LEADING</text>`;
+  svg+=`<text x="${W-pad-3}" y="${H-pad-5}" font-size="9" fill="#EBB94D" text-anchor="end">WEAKENING</text>`;
+  svg+=`<text x="${pad+3}" y="${H-pad-5}" font-size="9" fill="#F1766B">LAGGING</text>`;
+  svg+=`<text x="${pad+3}" y="${pad+11}" font-size="9" fill="#5B8DEF">IMPROVING</text>`;
+  secs.forEach(s=>{
+    const col=qcol[s.quadrant];
+    const pts=s.trail.map(p=>`${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ');
+    svg+=`<polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.3" opacity="0.38"/>`;
+    const last=s.trail[s.trail.length-1];
+    svg+=`<circle cx="${sx(last[0]).toFixed(1)}" cy="${sy(last[1]).toFixed(1)}" r="3.6" fill="${col}"/>`;
+    svg+=`<text x="${(sx(last[0])+5).toFixed(1)}" y="${(sy(last[1])+3).toFixed(1)}" font-size="8" fill="#8A91A0">${s.name.slice(0,9)}</text>`;
+  });
+  svg+=`</svg>`;
+  const rows=secs.map(s=>`<div class="rrgrow"><span class="qdot" style="background:${qcol[s.quadrant]}"></span><b>${s.name}</b><span class="rq">${s.quadrant}</span><span class="rr">RS ${s.rs_ratio}</span></div>`).join('');
+  return `<div class="lead">Sector rotation vs ${rrg.benchmark} \u00b7 ${rrg.trail_weeks}-week trails. Ideal path is clockwise: Improving \u2192 Leading \u2192 Weakening \u2192 Lagging.</div><div class="rrgwrap">${svg}</div><div class="rrglist">${rows}</div>`;
+}
+
 function render(macro,sect,st2){
   const upd=macro?.generated_at||sect?.generated_at||st2?.generated_at;
   document.getElementById('updated').textContent=upd?`updated ${fmtDate(upd)}`:'no data yet';
@@ -314,6 +353,10 @@ function render(macro,sect,st2){
   let panels=`<div class="panel active" id="p-ov">${ovHtml}</div>
     <div class="panel" id="p-macro"><div class="shead">Should I be in equities?</div>${macroHtml}</div>
     <div class="panel" id="p-sect"><div class="shead">Where should I be?</div>${sectHtml}</div>`;
+  if(sect && sect.rrg && sect.rrg.sectors && sect.rrg.sectors.length){
+    tabBtns+=`<button data-t="rrg">RRG</button>`;
+    panels+=`<div class="panel" id="p-rrg"><div class="shead">Sector rotation (RRG)</div>${rrgPanel(sect.rrg)}</div>`;
+  }
   order.forEach(id=>{ const sc=scn[id]; if(!sc) return;
     const lock=sc.personal?`<span class="lock">🔒</span>`:'';
     tabBtns+=`<button data-t="${id}">${sc.label}${lock}</button>`;
