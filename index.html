@@ -123,6 +123,16 @@
   .newbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--good); background:var(--good-dim); padding:3px 8px; border-radius:99px}
   .exitbadge{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--bad); background:var(--bad-dim); padding:3px 8px; border-radius:99px}
   .ret{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px} .ret.pos{color:var(--good)} .ret.neg{color:var(--bad)}
+  .introhero .ih-title{font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:700; margin-bottom:8px}
+  .introhero p{font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:18px}
+  .step{display:flex; gap:14px; align-items:flex-start; border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:14px 16px; margin-bottom:10px}
+  .stepn{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; color:var(--ink); background:var(--gold); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0}
+  .step b{color:var(--text); font-size:14px} .step p{font-size:13px; color:var(--muted); line-height:1.5; margin-top:3px} .step em{color:var(--gold); font-style:normal; font-weight:600}
+  .introhd{font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; margin:22px 2px 12px}
+  .rule{font-size:13.5px; color:var(--text); line-height:1.55; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:11px 14px; margin-bottom:8px}
+  .rcard{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:14px 16px}
+  .rcard p{font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:9px} .rcard p:last-child{margin-bottom:0} .rcard b{color:var(--text)}
+  .introfoot{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint); line-height:1.6; margin-top:20px; padding-top:14px; border-top:1px solid var(--line)}
   .rrg{width:100%; height:auto; display:block; background:var(--surface); border:1px solid var(--line); border-radius:14px; margin-bottom:12px}
   .rrgrow{display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; padding:8px 2px; border-bottom:1px solid var(--surface2)}
   .rrgrow b{color:var(--text); font-weight:600; min-width:120px} .rrgrow:last-child{border:0}
@@ -271,8 +281,8 @@ function trackerPanel(tr){
 function rrgPanel(rrg){
   if(!rrg || !rrg.sectors || !rrg.sectors.length) return `<div class="miss">RRG data unavailable.</div>`;
   const secs=rrg.sectors;
-  let dev=2; secs.forEach(s=>s.trail.forEach(p=>{dev=Math.max(dev,Math.abs(p[0]-100),Math.abs(p[1]-100));}));
-  dev=dev*1.18; const lo=100-dev, hi=100+dev, W=340,H=340,pad=36;
+  let dev=1.5; secs.forEach(s=>s.trail.forEach(p=>{dev=Math.max(dev,Math.abs(p[0]-100),Math.abs(p[1]-100));}));
+  dev=dev*1.25; const lo=100-dev, hi=100+dev, W=340,H=360,pad=40;
   const sx=v=>pad+(v-lo)/(hi-lo)*(W-2*pad);
   const sy=v=>H-pad-(v-lo)/(hi-lo)*(H-2*pad);
   const qcol={Leading:'#3FD69A',Weakening:'#EBB94D',Lagging:'#F1766B',Improving:'#5B8DEF'};
@@ -282,23 +292,23 @@ function rrgPanel(rrg){
   svg+=`<rect x="${cx}" y="${cy}" width="${W-pad-cx}" height="${H-pad-cy}" fill="rgba(235,185,77,.06)"/>`;
   svg+=`<rect x="${pad}" y="${cy}" width="${cx-pad}" height="${H-pad-cy}" fill="rgba(241,118,107,.06)"/>`;
   svg+=`<rect x="${pad}" y="${pad}" width="${cx-pad}" height="${cy-pad}" fill="rgba(91,141,239,.06)"/>`;
-  svg+=`<line x1="${cx}" y1="${pad}" x2="${cx}" y2="${H-pad}" stroke="#2A2F3C" stroke-width="1"/>`;
-  svg+=`<line x1="${pad}" y1="${cy}" x2="${W-pad}" y2="${cy}" stroke="#2A2F3C" stroke-width="1"/>`;
+  svg+=`<line x1="${cx}" y1="${pad}" x2="${cx}" y2="${H-pad}" stroke="#2A2F3C"/>`;
+  svg+=`<line x1="${pad}" y1="${cy}" x2="${W-pad}" y2="${cy}" stroke="#2A2F3C"/>`;
   svg+=`<text x="${W-pad-3}" y="${pad+11}" font-size="9" fill="#3FD69A" text-anchor="end">LEADING</text>`;
-  svg+=`<text x="${W-pad-3}" y="${H-pad-5}" font-size="9" fill="#EBB94D" text-anchor="end">WEAKENING</text>`;
-  svg+=`<text x="${pad+3}" y="${H-pad-5}" font-size="9" fill="#F1766B">LAGGING</text>`;
+  svg+=`<text x="${W-pad-3}" y="${H-pad-6}" font-size="9" fill="#EBB94D" text-anchor="end">WEAKENING</text>`;
+  svg+=`<text x="${pad+3}" y="${H-pad-6}" font-size="9" fill="#F1766B">LAGGING</text>`;
   svg+=`<text x="${pad+3}" y="${pad+11}" font-size="9" fill="#5B8DEF">IMPROVING</text>`;
-  secs.forEach(s=>{
-    const col=qcol[s.quadrant];
-    const pts=s.trail.map(p=>`${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ');
-    svg+=`<polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.3" opacity="0.38"/>`;
-    const last=s.trail[s.trail.length-1];
-    svg+=`<circle cx="${sx(last[0]).toFixed(1)}" cy="${sy(last[1]).toFixed(1)}" r="3.6" fill="${col}"/>`;
-    svg+=`<text x="${(sx(last[0])+5).toFixed(1)}" y="${(sy(last[1])+3).toFixed(1)}" font-size="8" fill="#8A91A0">${s.name.slice(0,9)}</text>`;
-  });
+  svg+=`<text x="${(W/2).toFixed(0)}" y="${H-8}" font-size="8" fill="#5B6270" text-anchor="middle">\u2190 weaker   RS vs benchmark   stronger \u2192</text>`;
+  // hidden trails (revealed on tap)
+  secs.forEach((s,i)=>{ const pts=s.trail.map(p=>`${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ');
+    svg+=`<polyline class="rtrail" data-i="${i}" points="${pts}" fill="none" stroke="${qcol[s.quadrant]}" stroke-width="1.6" opacity="0"/>`; });
+  // current dots + labels (tappable)
+  secs.forEach((s,i)=>{ const last=s.trail[s.trail.length-1]; const X=sx(last[0]), Y=sy(last[1]);
+    svg+=`<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="4" fill="${qcol[s.quadrant]}" style="cursor:pointer" onclick="rrgTog(${i})"/>`;
+    svg+=`<text x="${(X+6).toFixed(1)}" y="${(Y+3).toFixed(1)}" font-size="8" fill="#8A91A0" style="cursor:pointer" onclick="rrgTog(${i})">${s.name.slice(0,9)}</text>`; });
   svg+=`</svg>`;
   const rows=secs.map(s=>`<div class="rrgrow"><span class="qdot" style="background:${qcol[s.quadrant]}"></span><b>${s.name}</b><span class="rq">${s.quadrant}</span><span class="rr">RS ${s.rs_ratio}</span></div>`).join('');
-  return `<div class="lead">Sector rotation vs ${rrg.benchmark} \u00b7 ${rrg.trail_weeks}-week trails. Ideal path is clockwise: Improving \u2192 Leading \u2192 Weakening \u2192 Lagging.</div><div class="rrgwrap">${svg}</div><div class="rrglist">${rows}</div>`;
+  return `<div class="lead">Each dot is a sector measured against ${rrg.benchmark}. <b>100 = moving in line with the market</b> \u2014 right of centre = stronger, above centre = gaining momentum. Tap any dot to trace its last ${rrg.trail_weeks} weeks.</div><div class="rrgwrap">${svg}</div><div class="rrglist">${rows}</div>`;
 }
 
 function render(macro,sect,st2){
@@ -349,8 +359,30 @@ function render(macro,sect,st2){
 
   // build scanner tabs dynamically
   const order=['trading','accumulation','kissing','momentum'];
-  let tabBtns=`<button data-t="ov" class="active">Overview</button><button data-t="macro">Macro</button><button data-t="sect">Sectors</button>`;
-  let panels=`<div class="panel active" id="p-ov">${ovHtml}</div>
+  const startHtml=`
+    <div class="introhero"><div class="ih-title">What is this?</div>
+    <p>A weekly compass for Indian stocks. It walks you through three questions, in order, so you never buy blind.</p></div>
+    <div class="step"><span class="stepn">1</span><div><b>Should I be buying at all?</b><p>The <em>Macro</em> tab reads the market's overall mood — risk-on or risk-off — so you know if it's a green light or a time to be careful.</p></div></div>
+    <div class="step"><span class="stepn">2</span><div><b>Which parts of the market are strong?</b><p>The <em>Sectors</em> and <em>RRG</em> tabs show which areas are leading and which are fading. Fish where the fish are.</p></div></div>
+    <div class="step"><span class="stepn">3</span><div><b>Which stocks — and where do I exit?</b><p>The <em>Trading</em> tab is the buy list: strong stocks near support, each with a clear stop-loss. This is the part you act on.</p></div></div>
+    <div class="introhd">The golden rules</div>
+    <div class="rule">\u2705 <b>Buy strength near support</b> — never chase a stock that has already shot up.</div>
+    <div class="rule">\ud83d\uded1 <b>Know your exit before you enter</b> — every stock shows stop-loss levels; pick one.</div>
+    <div class="rule">\ud83d\udcc9 <b>The hard exit:</b> if a stock closes below its 150-day line at week's end, you're out — no debate.</div>
+    <div class="rule">\ud83d\uddd3\ufe0f <b>Think in weeks, not minutes</b> — check once a week. Only exits deserve daily attention.</div>
+    <div class="introhd">How to read a stock</div>
+    <div class="rcard">
+      <p><b>Grade</b> (Prime / Healthy) — how clean the entry is. Prime is freshest, best risk vs reward.</p>
+      <p><b>Three stop-losses</b> (Tight / Medium / Wide) — your safety net. Pick the one that matches your comfort: wider gives more room but a bigger loss if wrong.</p>
+      <p><b>\ud83d\udca1 line</b> — the plain-English reason the company is interesting.</p></div>
+    <div class="introhd">The other tabs</div>
+    <div class="rule"><b>Momentum</b> — stocks running hard right now (more aggressive).</div>
+    <div class="rule"><b>Tracker</b> — how long each name has held up, and its return since it appeared.</div>
+    <div class="rule"><b>Overview</b> — a quick visual snapshot of grade, size and sector mix.</div>
+    <div class="introfoot">Educational tool, not advice. Not SEBI-registered. Always do your own research and manage your own risk.</div>`;
+  let tabBtns=`<button data-t="start" class="active">Start here</button><button data-t="ov">Overview</button><button data-t="macro">Macro</button><button data-t="sect">Sectors</button>`;
+  let panels=`<div class="panel active" id="p-start">${startHtml}</div>
+    <div class="panel" id="p-ov">${ovHtml}</div>
     <div class="panel" id="p-macro"><div class="shead">Should I be in equities?</div>${macroHtml}</div>
     <div class="panel" id="p-sect"><div class="shead">Where should I be?</div>${sectHtml}</div>`;
   if(sect && sect.rrg && sect.rrg.sectors && sect.rrg.sectors.length){
@@ -379,6 +411,7 @@ function render(macro,sect,st2){
     document.querySelectorAll('.qty').forEach(q=>{const rps=parseFloat(q.dataset.rps); q.textContent=(risk>0&&rps>0)?' · qty '+Math.floor(risk/rps):'';});
   });
 }
+window.rrgTog=function(i){document.querySelectorAll('.rtrail[data-i="'+i+'"]').forEach(t=>{const on=t.getAttribute('opacity')==='0'||!t.style.opacity&&t.getAttribute('opacity')!=='0.75'; t.style.opacity=(t.style.opacity==='0.75')?'0':'0.75';});};
 load();
 </script>
 </body>
