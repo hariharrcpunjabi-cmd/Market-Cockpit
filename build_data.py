@@ -480,6 +480,12 @@ def parse_chartink_csv(path):
             ext = (close / sma150 - 1) * 100
             g = _grade(ext); t = _tier(mcap); sec = _sec_norm(r.get('Sector') or r.get('sector'))
             ema21 = _cnum(_find(r, "ema", "21"))
+            # weeks since 150-MA reclaim (from optional Chartink column: days above SMA150)
+            days_above = _cnum(_find(r, "days", "above")) or _cnum(_find(r, "above", "150")) or _cnum(_find(r, "150", "count"))
+            reclaim = None
+            if days_above is not None:
+                wks = days_above / 5.0   # trading days -> weeks
+                reclaim = ("fresh" if wks <= 6 else "established" if wks <= 26 else "extended")
             # three stops, reader picks
             stop_ma = sma150 * 0.97
             risk_ma = (close - stop_ma) / close * 100
@@ -510,10 +516,15 @@ def parse_chartink_csv(path):
                 "risk_ema": round(risk_ema, 1) if risk_ema else None,
                 "suggested": suggested, "sugg_stop": round(sugg_stop, 2),
                 "hva": hva, "hve": hve,
+                "days_above_150": int(days_above) if days_above is not None else None,
+                "reclaim": reclaim,
                 "stage2_exit": round(sma150, 2),
             })
     grank = {"Prime":0,"Healthy":1,"Late":2}
-    rows.sort(key=lambda x: (grank[x["grade"]], x["risk_ma"] if x["suggested"]=="ma" else (x["risk_atr"] or 99), x["ext_above_30wma"]))
+    rmap = {"fresh":0, "established":1, "extended":2, None:1}
+    rows.sort(key=lambda x: (grank[x["grade"]], rmap.get(x["reclaim"],1),
+                             x["risk_ma"] if x["suggested"]=="ma" else (x["risk_atr"] or 99),
+                             x["ext_above_30wma"]))
     for i, x in enumerate(rows): x["rank"] = i + 1
     return {"qualified": len(rows), "grades": gc, "tiers": tc,
             "sector_mix": sc, "stocks": rows}
@@ -619,6 +630,121 @@ def compute_rrg():
     out.sort(key=lambda x: -x["rs_ratio"])
     return {"benchmark": label, "trail_weeks": TRAIL, "sectors": out}
 
+# ------------------------------------------------------------------ TRACK RECORD LEDGER
+def compute_ledger(current_stocks, as_of):
+    """Forward-tested track record. Entry = close the week a name first appeared on the
+    Trading list. A pick CLOSES the week it drops off the list OR closes below its 150-MA
+    (whichever first); return is scored entry -> that week's close. Builds only from
+    committed weekly snapshots, so it accrues forward from the first run."""
+    import glob
+    timeline = []   # (date, {symbol: {close, sma150}})
+    for sp in sorted(glob.glob("history/stage2-*.json")):
+        try:
+            d = json.load(open(sp))
+            date = d.get("as_of") or sp.split("stage2-")[-1].replace(".json", "")
+            stocks = d.get("scanners", {}).get("trading", {}).get("stocks", []) if "scanners" in d else d.get("stocks", [])
+            smap = {s["symbol"]: {"close": s.get("close"), "sma150": s.get("stage2_exit")}
+                    for s in (stocks or []) if s.get("symbol")}
+            timeline.append((date, smap))
+        except Exception:
+            pass
+    timeline.sort()
+    cur = {s["symbol"] for s in current_stocks if s.get("symbol")}
+
+    # walk each symbol's life across snapshots
+    seen = {}   # symbol -> {entry_date, entry_close}
+    open_pos, closed = [], []
+    for di, (date, smap) in enumerate(timeline):
+        for sym, v in smap.items():
+            if sym not in seen:
+                seen[sym] = {"entry_date": date, "entry_close": v["close"]}
+    # determine status for every symbol ever seen
+    for sym, info in seen.items():
+        ec = info["entry_close"]
+        # find the last snapshot where it appeared, and whether it broke 150-MA there
+        last_seen_date, last_close, broke = None, None, False
+        for date, smap in timeline:
+            if sym in smap:
+                last_seen_date = date; last_close = smap[sym]["close"]
+                s150 = smap[sym]["sma150"]
+                broke = bool(s150 and last_close is not None and last_close < s150)
+        still_on = sym in cur
+        rec = {"symbol": sym, "entry_date": info["entry_date"], "entry_close": ec,
+               "last_close": last_close,
+               "ret_pct": round((last_close/ec - 1)*100, 1) if (ec and last_close) else None}
+        if still_on and not broke:
+            rec["status"] = "open"; open_pos.append(rec)
+        else:
+            rec["status"] = "stopped" if broke else "dropped"
+            rec["exit_date"] = last_seen_date
+            closed.append(rec)
+
+    # scoreboard from closed picks
+    rets = [c["ret_pct"] for c in closed if c["ret_pct"] is not None]
+    wins = [r for r in rets if r > 0]
+    board = {
+        "closed": len(closed), "open": len(open_pos),
+        "win_rate": round(len(wins)/len(rets)*100, 0) if rets else None,
+        "avg_ret": round(sum(rets)/len(rets), 1) if rets else None,
+        "avg_win": round(sum(wins)/len(wins), 1) if wins else None,
+        "avg_loss": round(sum(r for r in rets if r <= 0)/max(1, len(rets)-len(wins)), 1) if (len(rets)-len(wins)) else None,
+        "best": max(rets) if rets else None, "worst": min(rets) if rets else None,
+    }
+    closed.sort(key=lambda x: (x.get("exit_date") or ""), reverse=True)
+    open_pos.sort(key=lambda x: -(x["ret_pct"] or 0))
+    return {"as_of": as_of, "board": board, "open": open_pos, "closed": closed,
+            "first_run": len(timeline) <= 1}
+
+# ------------------------------------------------------------------ BREADTH + WEATHER
+def compute_breadth(sample=50):
+    """% of a liquid large/mid basket trading above its 30-week (≈150-day) MA."""
+    above, total = 0, 0
+    for tk in NIFTY200[:sample]:
+        ser = fetch(tk)
+        if not ser or len(ser) < 32:
+            continue
+        closes = [c for _, c in ser]
+        sma30 = mean(closes[-30:])
+        total += 1
+        if closes[-1] > sma30:
+            above += 1
+    return {"pct_above": round(above/total*100) if total else None, "sample": total}
+
+def compute_weather(regime, breadth, trading_grades):
+    """GO / SELECTIVE / STAND DOWN. Trend GATES the verdict; breadth, VIX and the
+    scan's own Prime/Late health fine-tune GO vs SELECTIVE."""
+    up = regime.get("trend_up")
+    vix = regime.get("vix"); band = regime.get("vix_band")
+    pa = (breadth or {}).get("pct_above")
+    g = trading_grades or {}
+    prime, late = g.get("Prime", 0), g.get("Late", 0)
+    pl = prime/late if late else (prime if prime else 0)
+
+    fine = []
+    if pa is not None:  fine.append(1 if pa >= 60 else -1 if pa <= 35 else 0)
+    if vix is not None: fine.append(1 if vix < 14 else -1 if vix > 20 else 0)
+    fine.append(1 if pl >= 1 else -1 if pl < 0.4 else 0)
+    score = sum(fine)/len(fine) if fine else 0
+
+    if not up:
+        verdict, cls = "STAND DOWN", "off"
+        action = ("Nifty is below its 30-week trend line. Preserve capital — momentum setups "
+                  "whipsaw in a downtrend. Sit out until the trend turns back up.")
+    elif score >= 0.4:
+        verdict, cls = "GO", "on"
+        action = "Trend up and conditions broad. Press your best fresh-reclaim Prime setups at full size."
+    elif score <= -0.3:
+        verdict, cls = "SELECTIVE", "neutral"
+        action = "Trend up but internals are mixed — thin breadth, high fear, or a tired list. Freshest Prime names only, half size."
+    else:
+        verdict, cls = "SELECTIVE", "neutral"
+        action = "Trend up, conditions okay but not exceptional. Be choosy — top setups only, normal size."
+
+    return {"verdict": verdict, "cls": cls, "action": action, "score": round(score, 2),
+            "trend_up": up, "pct_vs_ma": regime.get("pct_vs_ma"),
+            "pct_above": pa, "vix": vix, "vix_band": band,
+            "prime": prime, "late": late}
+
 # ------------------------------------------------------------------ MAIN
 def main():
     diag = []
@@ -677,12 +803,16 @@ def main():
     print("Building sector RRG…")
     rrg = compute_rrg()
     print(f"  RRG: {len(rrg['sectors'])} sectors vs {rrg['benchmark']}")
+    print("Measuring market breadth…")
+    breadth = compute_breadth()
+    print(f"  breadth: {breadth['pct_above']}% above 30-wk MA ({breadth['sample']} names)")
     payload = {
         "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "as_of": as_of,
         "regime": regime,
         "sectors": results,
         "rrg": rrg,
+        "breadth": breadth,
         "diagnostics": {
             "loaded": sum(1 for d in diag if d["ok"]),
             "total": len(diag),
@@ -749,10 +879,16 @@ def main():
         json.dump(stage2, f, indent=2)
     # tracker reads all snapshots (including this one)
     stage2["tracker"] = compute_tracker(scanners.get("trading", {}).get("stocks", []), as_of)
+    stage2["ledger"] = compute_ledger(scanners.get("trading", {}).get("stocks", []), as_of)
+    stage2["weather"] = compute_weather(regime, breadth, scanners.get("trading", {}).get("grades", {}))
+    print(f"  weather: {stage2['weather']['verdict']} (score {stage2['weather']['score']}, "
+          f"breadth {stage2['weather']['pct_above']}%, trend_up {stage2['weather']['trend_up']})")
     with open("stage2.json", "w") as f:
         json.dump(stage2, f, indent=2)
     print(f"  tracker: {len(stage2['tracker']['stocks'])} tracked, "
           f"{len(stage2['tracker']['dropped'])} dropped, first_run={stage2['tracker']['first_run']}")
+    b = stage2["ledger"]["board"]
+    print(f"  ledger: {b['open']} open, {b['closed']} closed, win_rate={b['win_rate']}")
 
     print(f"\nDone. as_of={as_of}  sectors_ranked={n}  "
           f"loaded={payload['diagnostics']['loaded']}/{payload['diagnostics']['total']}")
