@@ -8,7 +8,7 @@
   "signals": [
     {
       "name": "Gold vs Silver",
-      "headline": "67.6",
+      "headline": "67.7",
       "arrow": "up",
       "status": "good",
       "plain": "Gold is pulling ahead of silver \u2014 a classic fear signal. Mild caution for stocks.",
@@ -93,6 +93,6 @@
       }
     ]
   },
-  "generated_at": "2026-08-10T17:41:33Z",
+  "generated_at": "2026-08-10T17:50:21Z",
   "as_of": "2026-08-10"
 }
