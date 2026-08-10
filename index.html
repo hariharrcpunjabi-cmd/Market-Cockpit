@@ -98,6 +98,7 @@
   .stock .sname{font-size:12px; color:var(--muted); margin-top:3px}
   .stock .gpill{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:99px}
   .stock .gpill.good{color:var(--good); background:var(--good-dim)} .stock .gpill.mid{color:var(--mid); background:var(--mid-dim)} .stock .gpill.bad{color:var(--bad); background:var(--bad-dim)}
+  .stock .fresh{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--good); background:var(--good-dim); padding:3px 8px; border-radius:99px}
   .stock .chase{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--bad); background:var(--bad-dim); padding:3px 8px; border-radius:99px}
   .stock .hv{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; color:var(--gold); background:var(--mid-dim); padding:3px 8px; border-radius:99px}
   .stock .stats{display:flex; gap:15px; flex-wrap:wrap; margin-top:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted)}
@@ -133,6 +134,20 @@
   .rcard{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:14px 16px}
   .rcard p{font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:9px} .rcard p:last-child{margin-bottom:0} .rcard b{color:var(--text)}
   .introfoot{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint); line-height:1.6; margin-top:20px; padding-top:14px; border-top:1px solid var(--line)}
+  .scoregrid{display:grid; grid-template-columns:repeat(2,1fr); gap:9px; margin-bottom:16px}
+  .scoretile{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:14px 15px; text-align:center}
+  .scoretile .sv{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:var(--text)}
+  .scoretile .sv.pos{color:var(--good)} .scoretile .sv.neg{color:var(--bad)}
+  .scoretile .sl{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:4px}
+  .bwline{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); text-align:center; margin-bottom:16px}
+  .bwline b.pos{color:var(--good)} .bwline b.neg{color:var(--bad)}
+  .ledrow{display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:9px 2px; border-bottom:1px solid var(--surface2)}
+  .ledrow b{color:var(--text); font-weight:600; min-width:104px}
+  .ledrow .ed{color:var(--faint); font-size:10.5px}
+  .ledrow .lr{margin-left:auto; font-weight:600}
+  .ledrow .lr.pos{color:var(--good)} .ledrow .lr.neg{color:var(--bad)}
+  .exb{font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; padding:3px 7px; border-radius:99px}
+  .exb.stop{color:var(--bad); background:var(--bad-dim)} .exb.drop{color:var(--muted); border:1px solid var(--line)}
   .rrg{width:100%; height:auto; display:block; background:var(--surface); border:1px solid var(--line); border-radius:14px; margin-bottom:12px}
   .rrgrow{display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:12px; padding:8px 2px; border-bottom:1px solid var(--surface2)}
   .rrgrow b{color:var(--text); font-weight:600; min-width:120px} .rrgrow:last-child{border:0}
@@ -184,6 +199,20 @@ function donut(segs){
   const legend=segs.map(g=>`<div><span class="dot" style="background:${g.color}"></span><b>${g.label}</b> <span>${g.value}</span></div>`).join('');
   return `<div class="donutrow"><div class="donut" style="background:conic-gradient(${stops.join(',')})"></div><div class="dlegend">${legend}</div></div>`;
 }
+function weatherCard(w){
+  if(!w) return '';
+  const comp=[];
+  comp.push(`Trend ${w.trend_up?'up ✓':'down ✗'}${w.pct_vs_ma!=null?' ('+(w.pct_vs_ma>=0?'+':'')+w.pct_vs_ma+'%)':''}`);
+  if(w.pct_above!=null) comp.push(`Breadth ${w.pct_above}% above 150-MA`);
+  if(w.vix!=null) comp.push(`VIX ${w.vix} · ${w.vix_band}`);
+  comp.push(`List ${w.prime} Prime / ${w.late} Late`);
+  return `<div class="verdict ${w.cls}"><div class="bar"></div><div class="body">
+    <div class="label">Market weather — press, or stand down?</div>
+    <div class="big">${w.verdict}</div>
+    <div class="action">${w.action}</div>
+    <div class="meta">${comp.map(c=>`<div>${c}</div>`).join('')}</div></div></div>`;
+}
+
 function sigCard(s){
   const ar=s.arrow==='up'?'▲':s.arrow==='down'?'▼':'→';
   return `<div class="card ${s.status}"><div class="top"><div class="cname">${s.name}</div>
@@ -212,6 +241,7 @@ function buyCard(x, isMomentum){
       <span class="gpill ${gp[x.grade]}">${x.grade}</span>${chase}
       ${x.tier&&x.tier!=='\u2014'?`<span class="tierbadge">${x.tier}</span>`:''}
       ${x.sector?`<span class="tierbadge">${x.sector}</span>`:''}
+      ${x.reclaim==='fresh'?`<span class="fresh">\ud83c\udf31 fresh reclaim</span>`:''}
       <div class="sclose">${inr(x.close)}</div></div>
     ${x.name?`<div class="sname">${x.name}</div>`:''}
     ${x.fundamental?`<div class="fund">\ud83d\udca1 ${x.fundamental}</div>`:''}
@@ -311,13 +341,34 @@ function rrgPanel(rrg){
   return `<div class="lead">Each dot is a sector measured against ${rrg.benchmark}. <b>100 = moving in line with the market</b> \u2014 right of centre = stronger, above centre = gaining momentum. Tap any dot to trace its last ${rrg.trail_weeks} weeks.</div><div class="rrgwrap">${svg}</div><div class="rrglist">${rows}</div>`;
 }
 
+function recordPanel(l){
+  if(!l) return `<div class="miss">Track record unavailable.</div>`;
+  const b=l.board;
+  const firstNote = (l.first_run || (b.closed===0 && b.open===0))
+    ? `<div class="empty">Your track record starts now. As picks close in the coming weeks \u2014 hitting targets or stops \u2014 this fills with a real, forward-tested win-rate and return history. <b>Nothing here yet is normal on week one.</b></div>` : '';
+  const wr = b.win_rate!=null? b.win_rate+'%':'\u2014';
+  const ar = b.avg_ret!=null? (b.avg_ret>=0?'+':'')+b.avg_ret+'%':'\u2014';
+  const tiles=`<div class="scoregrid">
+    <div class="scoretile"><div class="sv">${wr}</div><div class="sl">Win rate</div></div>
+    <div class="scoretile"><div class="sv ${b.avg_ret>=0?'pos':'neg'}">${ar}</div><div class="sl">Avg return / pick</div></div>
+    <div class="scoretile"><div class="sv">${b.closed}</div><div class="sl">Closed picks</div></div>
+    <div class="scoretile"><div class="sv">${b.open}</div><div class="sl">Open now</div></div></div>`;
+  const bw = (b.best!=null && b.closed>0)? `<div class="bwline">Best <b class="pos">+${b.best}%</b> \u00b7 Worst <b class="neg">${b.worst}%</b> \u00b7 Avg win <b class="pos">+${b.avg_win||0}%</b> \u00b7 Avg loss <b class="neg">${b.avg_loss||0}%</b></div>`:'';
+  const openRows = l.open&&l.open.length? `<div class="tierhd"><b>Open positions</b> still on the list</div>`+l.open.map(o=>`<div class="ledrow"><b>${o.symbol}</b><span class="ed">since ${o.entry_date}</span><span class="lr ${o.ret_pct>=0?'pos':'neg'}">${o.ret_pct>=0?'+':''}${o.ret_pct}%</span></div>`).join(''):'';
+  const closedRows = l.closed&&l.closed.length? `<div class="tierhd"><b>Closed picks</b> scored entry \u2192 exit</div>`+l.closed.map(c=>`<div class="ledrow"><b>${c.symbol}</b><span class="exb ${c.status==='stopped'?'stop':'drop'}">${c.status==='stopped'?'stopped':'dropped'}</span><span class="lr ${c.ret_pct>=0?'pos':'neg'}">${c.ret_pct>=0?'+':''}${c.ret_pct}%</span></div>`).join(''):'';
+  return firstNote + tiles + bw + openRows + closedRows
+    + `<div class="note">Entry = close the week a name first appeared. A pick closes when it drops off the list or closes below its 150-MA \u2014 whichever first. Built forward from real weeks, not a backtest.</div>`;
+}
+
 function render(macro,sect,st2){
   const upd=macro?.generated_at||sect?.generated_at||st2?.generated_at;
   document.getElementById('updated').textContent=upd?`updated ${fmtDate(upd)}`:'no data yet';
   const scn=st2?.scanners||{};
 
   // summary
+  const wx=st2&&st2.weather;
   let sum='';
+  if(wx) sum+=`<span class="k">Weather</span> <b class="${wx.cls}">${wx.verdict}</b> &nbsp;\u00b7&nbsp; `;
   if(macro) sum+=`<span class="k">Backdrop</span> <b class="${macro.verdict.cls}">${macro.verdict.label}</b> `;
   if(sect){ sum+=`&nbsp;·&nbsp; <span class="k">Regime</span> <b class="${sect.regime.cls}">${sect.regime.verdict}</b>`;
     sum+=`<br><span class="k">Leaders</span> <b>${sect.sectors.slice(0,3).map(x=>x.name).join(', ')}</b>`; }
@@ -356,6 +407,8 @@ function render(macro,sect,st2){
     let secD=se.length?`<div class="donutcard" style="min-width:100%"><h3>Sector leadership</h3>${donut(se.map(([label,value],i)=>({label,value,color:PAL[i%PAL.length]})))}</div>`:'';
     ovHtml=`<div class="lead">Snapshot of this week's buy list.</div><div class="dwrap">${dd}${secD}</div>`;
   }
+
+  if(wx) ovHtml = weatherCard(wx) + ovHtml;
 
   // build scanner tabs dynamically
   const order=['trading','accumulation','kissing','momentum'];
@@ -397,6 +450,8 @@ function render(macro,sect,st2){
 
   const tr2 = st2 && st2.tracker;
   if(tr2){ tabBtns+=`<button data-t="tracker">Tracker</button>`; panels+=`<div class="panel" id="p-tracker"><div class="shead">Aging tracker</div>${trackerPanel(tr2)}</div>`; }
+  const led2 = st2 && st2.ledger;
+  if(led2){ tabBtns+=`<button data-t="record">Track record</button>`; panels+=`<div class="panel" id="p-record"><div class="shead">Track record</div>${recordPanel(led2)}</div>`; }
   document.getElementById('app').innerHTML=`<div class="summary">${sum||'No data yet — run the build.'}</div><div class="tabs">${tabBtns}</div>${panels}`;
 
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
