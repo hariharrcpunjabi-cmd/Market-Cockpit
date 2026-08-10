@@ -8,15 +8,15 @@
   "signals": [
     {
       "name": "Gold vs Silver",
-      "headline": "67.7",
+      "headline": "67.8",
       "arrow": "up",
       "status": "good",
       "plain": "Gold is pulling ahead of silver \u2014 a classic fear signal. Mild caution for stocks.",
       "why": "The gold-to-silver ratio climbs when investors turn defensive.",
       "context": "At the 12th percentile \u2014 near the bottom of its 5-year range.",
       "percentile": 12,
-      "chg13": 14.0,
-      "z": 1.73
+      "chg13": 14.1,
+      "z": 1.74
     },
     {
       "name": "Nifty 50 vs Gold",
@@ -64,7 +64,7 @@
       "context": "At the 98th percentile \u2014 near the top of its 5-year range.",
       "percentile": 98,
       "chg13": 5.3,
-      "z": 1.69
+      "z": 1.7
     }
   ],
   "diagnostics": {
@@ -93,6 +93,6 @@
       }
     ]
   },
-  "generated_at": "2026-08-10T16:48:47Z",
+  "generated_at": "2026-08-10T17:00:25Z",
   "as_of": "2026-08-10"
 }
