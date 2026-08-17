@@ -15,7 +15,7 @@
       "why": "The gold-to-silver ratio climbs when investors turn defensive.",
       "context": "At the 12th percentile \u2014 near the bottom of its 5-year range.",
       "percentile": 12,
-      "chg13": 13.8,
+      "chg13": 13.7,
       "z": 1.48
     },
     {
@@ -93,6 +93,6 @@
       }
     ]
   },
-  "generated_at": "2026-08-17T18:12:45Z",
+  "generated_at": "2026-08-17T18:26:35Z",
   "as_of": "2026-08-17"
 }
