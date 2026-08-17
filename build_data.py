@@ -460,6 +460,26 @@ def _find(row, *needles):
             return v
     return None
 
+# ---- Holdings scan: silent plumbing, never displayed --------------------
+# Chartink scan "Claude_Holdings_Scan" = Close >= SMA150 AND MktCap >= 100.
+# Its only job is to answer "is this old pick still above its 150-MA?" so the
+# ledger doesn't falsely close a name that merely left the Trading buy list.
+HOLDINGS_KEYWORDS = ["holding", "holdings_scan", "above150", "above_150"]
+
+def parse_holdings_csv(path):
+    """Light parse — we only need symbol / close / sma150."""
+    import csv
+    roster = {}
+    with open(path, encoding='utf-8-sig') as f:
+        for r in csv.DictReader(f):
+            sym = (r.get('Symbol') or r.get('symbol') or '').strip()
+            close = _cnum(r.get('close')); s150 = _cnum(r.get('sma150'))
+            if not sym or close is None:
+                continue
+            roster[sym] = {"close": round(close, 2),
+                           "sma150": round(s150, 2) if s150 is not None else None}
+    return roster
+
 # scanner routing — matched against the CSV filename (lowercased)
 SCANNERS = [
     {"id": "trading", "keywords": ["trading"], "label": "Trading", "style": "buy",
@@ -631,68 +651,95 @@ def compute_rrg():
     return {"benchmark": label, "trail_weeks": TRAIL, "sectors": out}
 
 # ------------------------------------------------------------------ TRACK RECORD LEDGER
-def compute_ledger(current_stocks, as_of):
-    """Forward-tested track record. Entry = close the week a name first appeared on the
-    Trading list. A pick CLOSES the week it drops off the list OR closes below its 150-MA
-    (whichever first); return is scored entry -> that week's close. Builds only from
-    committed weekly snapshots, so it accrues forward from the first run."""
+def compute_ledger(current_stocks, as_of, holdings_roster=None):
+    """Forward-tested track record.
+
+    ENTRY  = the close of the week a name FIRST appeared on the Trading buy list.
+    OPEN   = still visible in EITHER the Trading scan OR the Holdings scan
+             (Holdings = anything still trading above its 150-MA).
+    CLOSED = absent from BOTH scans in a week where Holdings data exists
+             — i.e. a real 150-MA break, not just a rotation off the buy list.
+
+    Data-gap guard: if a given week has no Holdings roster at all, absence from
+    Trading is treated as UNKNOWN and the position is carried forward, never
+    closed. Without this, one missing CSV would silently fake a load of exits.
+    """
     import glob
-    timeline = []   # (date, {symbol: {close, sma150}})
+    timeline = []   # (date, alive_map, has_holdings)
     for sp in sorted(glob.glob("history/stage2-*.json")):
         try:
             d = json.load(open(sp))
             date = d.get("as_of") or sp.split("stage2-")[-1].replace(".json", "")
             stocks = d.get("scanners", {}).get("trading", {}).get("stocks", []) if "scanners" in d else d.get("stocks", [])
-            smap = {s["symbol"]: {"close": s.get("close"), "sma150": s.get("stage2_exit")}
-                    for s in (stocks or []) if s.get("symbol")}
-            timeline.append((date, smap))
+            trading = {s["symbol"]: {"close": s.get("close"), "sma150": s.get("stage2_exit")}
+                       for s in (stocks or []) if s.get("symbol")}
+            hold = d.get("holdings_roster") or {}
+            alive = dict(hold)
+            alive.update(trading)          # Trading data wins where both exist
+            timeline.append((date, alive, set(trading), bool(hold)))
         except Exception:
             pass
-    timeline.sort()
-    cur = {s["symbol"] for s in current_stocks if s.get("symbol")}
+    timeline.sort(key=lambda t: t[0])
 
-    # walk each symbol's life across snapshots
-    seen = {}   # symbol -> {entry_date, entry_close}
-    open_pos, closed = [], []
-    for di, (date, smap) in enumerate(timeline):
-        for sym, v in smap.items():
+    # current week (may not be in the snapshot list yet on a fresh write)
+    cur_trading = {s["symbol"]: {"close": s.get("close"), "sma150": s.get("stage2_exit")}
+                   for s in (current_stocks or []) if s.get("symbol")}
+    cur_hold = dict(holdings_roster or {})
+    if not timeline or timeline[-1][0] != as_of:
+        alive = dict(cur_hold); alive.update(cur_trading)
+        timeline.append((as_of, alive, set(cur_trading), bool(cur_hold)))
+
+    # first appearance on the TRADING list defines an entry
+    seen = {}
+    for date, alive, trading_syms, has_hold in timeline:
+        for sym in trading_syms:
             if sym not in seen:
-                seen[sym] = {"entry_date": date, "entry_close": v["close"]}
-    # determine status for every symbol ever seen
+                seen[sym] = {"entry_date": date, "entry_close": alive[sym]["close"]}
+
+    open_pos, closed = [], []
     for sym, info in seen.items():
         ec = info["entry_close"]
-        # find the last snapshot where it appeared, and whether it broke 150-MA there
-        last_seen_date, last_close, broke = None, None, False
-        for date, smap in timeline:
-            if sym in smap:
-                last_seen_date = date; last_close = smap[sym]["close"]
-                s150 = smap[sym]["sma150"]
-                broke = bool(s150 and last_close is not None and last_close < s150)
-        still_on = sym in cur
+        last_close, last_date, exit_date = ec, info["entry_date"], None
+        started = False
+        for date, alive, trading_syms, has_hold in timeline:
+            if date < info["entry_date"]:
+                continue
+            started = True
+            if sym in alive:
+                if alive[sym].get("close") is not None:
+                    last_close = alive[sym]["close"]
+                last_date = date
+            elif has_hold:
+                exit_date = date          # off both scans, holdings data present -> real break
+                break
+            # else: no holdings data this week -> unknown, carry forward
         rec = {"symbol": sym, "entry_date": info["entry_date"], "entry_close": ec,
-               "last_close": last_close,
+               "last_close": last_close, "last_date": last_date,
                "ret_pct": round((last_close/ec - 1)*100, 1) if (ec and last_close) else None}
-        if still_on and not broke:
-            rec["status"] = "open"; open_pos.append(rec)
-        else:
-            rec["status"] = "stopped" if broke else "dropped"
-            rec["exit_date"] = last_seen_date
+        if exit_date:
+            rec["status"] = "stopped"; rec["exit_date"] = exit_date
             closed.append(rec)
+        else:
+            # still alive; flag whether it is on the buy list or just held above the MA
+            rec["status"] = "open"
+            rec["on_buylist"] = sym in cur_trading
+            open_pos.append(rec)
 
-    # scoreboard from closed picks
     rets = [c["ret_pct"] for c in closed if c["ret_pct"] is not None]
     wins = [r for r in rets if r > 0]
+    losses = [r for r in rets if r <= 0]
     board = {
         "closed": len(closed), "open": len(open_pos),
         "win_rate": round(len(wins)/len(rets)*100, 0) if rets else None,
         "avg_ret": round(sum(rets)/len(rets), 1) if rets else None,
         "avg_win": round(sum(wins)/len(wins), 1) if wins else None,
-        "avg_loss": round(sum(r for r in rets if r <= 0)/max(1, len(rets)-len(wins)), 1) if (len(rets)-len(wins)) else None,
+        "avg_loss": round(sum(losses)/len(losses), 1) if losses else None,
         "best": max(rets) if rets else None, "worst": min(rets) if rets else None,
     }
     closed.sort(key=lambda x: (x.get("exit_date") or ""), reverse=True)
     open_pos.sort(key=lambda x: -(x["ret_pct"] or 0))
     return {"as_of": as_of, "board": board, "open": open_pos, "closed": closed,
+            "holdings_seen": len(cur_hold),
             "first_run": len(timeline) <= 1}
 
 # ------------------------------------------------------------------ BREADTH + WEATHER
@@ -861,7 +908,21 @@ def main():
             print(f"  {sc['id']:<13} <- (no CSV — empty state)")
         scanners[sc["id"]] = entry
 
-    stage2 = {"scanners": scanners, "generated_at": payload["generated_at"], "as_of": as_of}
+    # ---- Holdings scan (silent plumbing): everything still above its 150-MA ----
+    holdings_roster = {}
+    hmatch = next((f for f in csv_files
+                   if any(k in f.lower() for k in HOLDINGS_KEYWORDS)), None)
+    if hmatch:
+        try:
+            holdings_roster = parse_holdings_csv(hmatch)
+            print(f"  {'holdings':<13} <- {hmatch}  ({len(holdings_roster)} names above 150-MA)")
+        except Exception as e:
+            print(f"  {'holdings':<13} skip {hmatch}: {e}")
+    else:
+        print(f"  {'holdings':<13} <- (no CSV — ledger carries open picks forward, will NOT close them)")
+
+    stage2 = {"scanners": scanners, "generated_at": payload["generated_at"], "as_of": as_of,
+              "holdings_roster": holdings_roster}
     # merge persisted Top-5 fundamental notes (written via /hariskill), if present
     if os.path.exists("fundamentals.json"):
         try:
@@ -879,7 +940,8 @@ def main():
         json.dump(stage2, f, indent=2)
     # tracker reads all snapshots (including this one)
     stage2["tracker"] = compute_tracker(scanners.get("trading", {}).get("stocks", []), as_of)
-    stage2["ledger"] = compute_ledger(scanners.get("trading", {}).get("stocks", []), as_of)
+    stage2["ledger"] = compute_ledger(scanners.get("trading", {}).get("stocks", []), as_of,
+                                      holdings_roster)
     stage2["weather"] = compute_weather(regime, breadth, scanners.get("trading", {}).get("grades", {}))
     print(f"  weather: {stage2['weather']['verdict']} (score {stage2['weather']['score']}, "
           f"breadth {stage2['weather']['pct_above']}%, trend_up {stage2['weather']['trend_up']})")
@@ -888,7 +950,8 @@ def main():
     print(f"  tracker: {len(stage2['tracker']['stocks'])} tracked, "
           f"{len(stage2['tracker']['dropped'])} dropped, first_run={stage2['tracker']['first_run']}")
     b = stage2["ledger"]["board"]
-    print(f"  ledger: {b['open']} open, {b['closed']} closed, win_rate={b['win_rate']}")
+    print(f"  ledger: {b['open']} open, {b['closed']} closed, win_rate={b['win_rate']}, "
+          f"holdings_roster={len(holdings_roster)}")
 
     print(f"\nDone. as_of={as_of}  sectors_ranked={n}  "
           f"loaded={payload['diagnostics']['loaded']}/{payload['diagnostics']['total']}")
