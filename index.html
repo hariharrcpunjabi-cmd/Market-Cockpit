@@ -177,7 +177,7 @@
     <div class="updated" id="updated">Loading…</div>
   </header>
   <div id="app"><div class="state"><div class="spinner"></div>Loading the cockpit…</div></div>
-  <footer>WCB = weekly close below · CMP = current market price · stops on a weekly-closing basis<br>
+  <footer>CMP = current market price · stops on a weekly-closing basis<br>
     Holding 15 days–3 months · book partial &amp; move SL to entry at Target 1<br>Educational only · not SEBI-registered · updated weekly</footer>
 
 <script>
@@ -247,7 +247,7 @@ function buyCard(x, isMomentum){
     ${x.fundamental?`<div class="fund">\ud83d\udca1 ${x.fundamental}</div>`:''}
     <div class="stats">${stat.map(z=>`<span>${z}</span>`).join('')}</div>
     <div class="stops"><div class="slhead">Stop-loss options (pick your risk)</div>${slrows}
-      <div class="s2exit">Full exit if weekly close below ${inr(x.stage2_exit)} (WCB)</div></div></div>`;
+      <div class="s2exit">Hard exit: 150-MA at ${inr(x.stage2_exit)}</div></div></div>`;
 }
 
 // light WATCHLIST card (Accumulation, Kissing-MA)
@@ -293,7 +293,7 @@ function trackerPanel(tr){
   if(!tr || !tr.stocks || !tr.stocks.length) return `<div class="empty">The Tracker fills in once the buy list has run at least once.</div>`;
   const note = tr.first_run
     ? `<div class="lead">Aging starts now — every name is a <b>Fresh</b> entry this week. From next week, names that stay on the list become Week 1, Week 2\u2026 so you can see how long each has held Stage 2.</div>`
-    : `<div class="lead">How long each buy-list name has held Stage 2, newest and dropped names, and return since first seen.</div>`;
+    : `<div class="lead">How long each buy-list name has held Stage 2, newest and rotated-off names, and return since first seen.</div>`;
   const cards = tr.stocks.map(s=>{
     const badges=[`<span class="agebadge">${s.age}</span>`];
     if(s.new) badges.push(`<span class="newbadge">New</span>`);
@@ -304,41 +304,17 @@ function trackerPanel(tr){
       ${s.name?`<div class="sname">${s.name}${s.sector?' \u00b7 '+s.sector:''}</div>`:''}</div>`;
   }).join('');
   const dropped = (tr.dropped && tr.dropped.length)
-    ? `<div class="tierhd"><b>Dropped this week</b></div><div class="lead">${tr.dropped.join(', ')} \u2014 fell off the buy list.</div>` : '';
+    ? `<div class="tierhd"><b>Rotated off the buy list</b></div><div class="lead">${tr.dropped.join(', ')} \u2014 no longer on the buy list. This is <b>not</b> an exit: any name still above its 150-MA stays open in Track record.</div>` : '';
   return note + cards + dropped;
 }
 
 function rrgPanel(rrg){
   if(!rrg || !rrg.sectors || !rrg.sectors.length) return `<div class="miss">RRG data unavailable.</div>`;
-  const secs=rrg.sectors;
-  let dev=1.5; secs.forEach(s=>s.trail.forEach(p=>{dev=Math.max(dev,Math.abs(p[0]-100),Math.abs(p[1]-100));}));
-  dev=dev*1.25; const lo=100-dev, hi=100+dev, W=340,H=360,pad=40;
-  const sx=v=>pad+(v-lo)/(hi-lo)*(W-2*pad);
-  const sy=v=>H-pad-(v-lo)/(hi-lo)*(H-2*pad);
   const qcol={Leading:'#3FD69A',Weakening:'#EBB94D',Lagging:'#F1766B',Improving:'#5B8DEF'};
-  const cx=sx(100), cy=sy(100);
-  let svg=`<svg viewBox="0 0 ${W} ${H}" class="rrg">`;
-  svg+=`<rect x="${cx}" y="${pad}" width="${W-pad-cx}" height="${cy-pad}" fill="rgba(63,214,154,.06)"/>`;
-  svg+=`<rect x="${cx}" y="${cy}" width="${W-pad-cx}" height="${H-pad-cy}" fill="rgba(235,185,77,.06)"/>`;
-  svg+=`<rect x="${pad}" y="${cy}" width="${cx-pad}" height="${H-pad-cy}" fill="rgba(241,118,107,.06)"/>`;
-  svg+=`<rect x="${pad}" y="${pad}" width="${cx-pad}" height="${cy-pad}" fill="rgba(91,141,239,.06)"/>`;
-  svg+=`<line x1="${cx}" y1="${pad}" x2="${cx}" y2="${H-pad}" stroke="#2A2F3C"/>`;
-  svg+=`<line x1="${pad}" y1="${cy}" x2="${W-pad}" y2="${cy}" stroke="#2A2F3C"/>`;
-  svg+=`<text x="${W-pad-3}" y="${pad+11}" font-size="9" fill="#3FD69A" text-anchor="end">LEADING</text>`;
-  svg+=`<text x="${W-pad-3}" y="${H-pad-6}" font-size="9" fill="#EBB94D" text-anchor="end">WEAKENING</text>`;
-  svg+=`<text x="${pad+3}" y="${H-pad-6}" font-size="9" fill="#F1766B">LAGGING</text>`;
-  svg+=`<text x="${pad+3}" y="${pad+11}" font-size="9" fill="#5B8DEF">IMPROVING</text>`;
-  svg+=`<text x="${(W/2).toFixed(0)}" y="${H-8}" font-size="8" fill="#5B6270" text-anchor="middle">\u2190 weaker   RS vs benchmark   stronger \u2192</text>`;
-  // hidden trails (revealed on tap)
-  secs.forEach((s,i)=>{ const pts=s.trail.map(p=>`${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ');
-    svg+=`<polyline class="rtrail" data-i="${i}" points="${pts}" fill="none" stroke="${qcol[s.quadrant]}" stroke-width="1.6" opacity="0"/>`; });
-  // current dots + labels (tappable)
-  secs.forEach((s,i)=>{ const last=s.trail[s.trail.length-1]; const X=sx(last[0]), Y=sy(last[1]);
-    svg+=`<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="4" fill="${qcol[s.quadrant]}" style="cursor:pointer" onclick="rrgTog(${i})"/>`;
-    svg+=`<text x="${(X+6).toFixed(1)}" y="${(Y+3).toFixed(1)}" font-size="8" fill="#8A91A0" style="cursor:pointer" onclick="rrgTog(${i})">${s.name.slice(0,9)}</text>`; });
-  svg+=`</svg>`;
+  const rank={Leading:0,Improving:1,Weakening:2,Lagging:3};
+  const secs=rrg.sectors.slice().sort((a,b)=>(rank[a.quadrant]-rank[b.quadrant])||(b.rs_ratio-a.rs_ratio));
   const rows=secs.map(s=>`<div class="rrgrow"><span class="qdot" style="background:${qcol[s.quadrant]}"></span><b>${s.name}</b><span class="rq">${s.quadrant}</span><span class="rr">RS ${s.rs_ratio}</span></div>`).join('');
-  return `<div class="lead">Each dot is a sector measured against ${rrg.benchmark}. <b>100 = moving in line with the market</b> \u2014 right of centre = stronger, above centre = gaining momentum. Tap any dot to trace its last ${rrg.trail_weeks} weeks.</div><div class="rrgwrap">${svg}</div><div class="rrglist">${rows}</div>`;
+  return `<div class="lead">Every sector ranked against ${rrg.benchmark}. <b>RS 100 = moving in line with the market</b> \u2014 above 100 is outperforming. <b>Leading</b> and <b>Improving</b> are where to fish; <b>Weakening</b> and <b>Lagging</b> are where to be patient.</div><div class="rrglist">${rows}</div>`;
 }
 
 function recordPanel(l){
@@ -426,8 +402,7 @@ function render(macro,sect,st2){
     <div class="introhd">How to read a stock</div>
     <div class="rcard">
       <p><b>Grade</b> (Prime / Healthy) — how clean the entry is. Prime is freshest, best risk vs reward.</p>
-      <p><b>Three stop-losses</b> (Tight / Medium / Wide) — your safety net. Pick the one that matches your comfort: wider gives more room but a bigger loss if wrong.</p>
-      <p><b>\ud83d\udca1 line</b> — the plain-English reason the company is interesting.</p></div>
+      <p><b>Three stop-losses</b> (Tight / Medium / Wide) — your safety net. Pick the one that matches your comfort: wider gives more room but a bigger loss if wrong.</p></div>
     <div class="introhd">The other tabs</div>
     <div class="rule"><b>Momentum</b> — stocks running hard right now (more aggressive).</div>
     <div class="rule"><b>Tracker</b> — how long each name has held up, and its return since it appeared.</div>
@@ -466,7 +441,6 @@ function render(macro,sect,st2){
     document.querySelectorAll('.qty').forEach(q=>{const rps=parseFloat(q.dataset.rps); q.textContent=(risk>0&&rps>0)?' · qty '+Math.floor(risk/rps):'';});
   });
 }
-window.rrgTog=function(i){document.querySelectorAll('.rtrail[data-i="'+i+'"]').forEach(t=>{const on=t.getAttribute('opacity')==='0'||!t.style.opacity&&t.getAttribute('opacity')!=='0.75'; t.style.opacity=(t.style.opacity==='0.75')?'0':'0.75';});};
 load();
 </script>
 </body>
