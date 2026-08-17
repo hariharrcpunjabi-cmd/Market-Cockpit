@@ -1,0 +1,5783 @@
+{
+  "scanners": {
+    "trading": {
+      "label": "Trading",
+      "style": "buy",
+      "personal": false,
+      "note": "Buy list \u2014 Stage 2 names near support.",
+      "qualified": 8,
+      "stocks": [
+        {
+          "symbol": "HINDCOPPER",
+          "name": "Hindustan Copper Limited",
+          "close": 572.65,
+          "pct_change": 8.24,
+          "grade": "Prime",
+          "ext_above_30wma": 6.7,
+          "mcap_cr": 51160,
+          "tier": "Large",
+          "sector": "Metals & Mining",
+          "stop_ma": 520.4,
+          "risk_ma": 9.1,
+          "stop_atr": 519.21,
+          "risk_atr": 9.3,
+          "stop_ema": 520.54,
+          "risk_ema": 9.1,
+          "suggested": "ma",
+          "sugg_stop": 520.4,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 210,
+          "reclaim": "extended",
+          "stage2_exit": 536.49,
+          "rank": 1,
+          "fundamental": "Government-owned Miniratna copper miner, holds all operating copper mining leases in India. Q1 FY27 revenue +81% to \u20b9937cr, PAT +162% to \u20b9352cr, EBITDA margin 54%. Two caveats worth weighing: sequentially profit actually fell 21% from Q4 FY26, so the YoY figure flatters; and auditors flagged governance gaps \u2014 no independent directors since Nov 2024 and no woman director since Mar 2025. Targets 4.7mt mine production in FY27. Reported talks with Codelco on Chilean supply are early-stage and unconfirmed."
+        },
+        {
+          "symbol": "EXPLEOSOL",
+          "name": "Expleo Solutions Ltd",
+          "close": 923.05,
+          "pct_change": 13.13,
+          "grade": "Healthy",
+          "ext_above_30wma": 11.4,
+          "mcap_cr": 1266,
+          "tier": "Small",
+          "sector": "I.T",
+          "stop_ma": 803.71,
+          "risk_ma": 12.9,
+          "stop_atr": 837.67,
+          "risk_atr": 9.2,
+          "stop_ema": 832.61,
+          "risk_ema": 9.8,
+          "suggested": "atr",
+          "sugg_stop": 837.67,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 29,
+          "reclaim": "fresh",
+          "stage2_exit": 828.57,
+          "rank": 2
+        },
+        {
+          "symbol": "MAXESTATES",
+          "name": "Max Estates Ltd",
+          "close": 474.35,
+          "pct_change": 7.33,
+          "grade": "Healthy",
+          "ext_above_30wma": 17.0,
+          "mcap_cr": 7226,
+          "tier": "Mid",
+          "sector": "Realty",
+          "stop_ma": 393.43,
+          "risk_ma": 17.1,
+          "stop_atr": 433.95,
+          "risk_atr": 8.5,
+          "stop_ema": 420.24,
+          "risk_ema": 11.4,
+          "suggested": "atr",
+          "sugg_stop": 433.95,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 91,
+          "reclaim": "established",
+          "stage2_exit": 405.6,
+          "rank": 3,
+          "fundamental": "NCR real-estate developer (Noida and Gurugram), wellbeing-led LiveWell/WorkWell positioning. The headline is pre-sales: ~\u20b91,093cr in Q1 FY27, over 5x YoY, with 487 units sold against 43 a year ago, and \u20b9491cr collected. ICRA assigned a first-time A+ issuer rating. Commercial portfolio is 100% leased generating \u20b9150cr+ annual rent. But reported P&L is thin and going the other way \u2014 Q1 FY27 PAT fell 30% YoY to \u20b98.35cr on revenue of \u20b952cr, with EBITDA down 42%. That gap is normal for developers, where pre-sales convert to revenue only on construction milestones, but it means the accounts will lag the story for several quarters. GDV pipeline \u20b916,150cr+."
+        },
+        {
+          "symbol": "JBCHEPHARM",
+          "name": "Jb Chemicals & Pharmaceuticals Limited",
+          "close": 2408.9,
+          "pct_change": -3.87,
+          "grade": "Healthy",
+          "ext_above_30wma": 17.7,
+          "mcap_cr": 38677,
+          "tier": "Large",
+          "sector": "Healthcare",
+          "stop_ma": 1984.99,
+          "risk_ma": 17.6,
+          "stop_atr": 2278.14,
+          "risk_atr": 5.4,
+          "stop_ema": 2361.43,
+          "risk_ema": 2.0,
+          "suggested": "atr",
+          "sugg_stop": 2278.14,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 239,
+          "reclaim": "extended",
+          "stage2_exit": 2046.38,
+          "rank": 4
+        },
+        {
+          "symbol": "MOTILALOFS",
+          "name": "Motilal Oswal Financial Services Limited",
+          "close": 955.0,
+          "pct_change": 5.68,
+          "grade": "Healthy",
+          "ext_above_30wma": 15.7,
+          "mcap_cr": 54416,
+          "tier": "Large",
+          "sector": "Financials",
+          "stop_ma": 800.57,
+          "risk_ma": 16.2,
+          "stop_atr": 898.7,
+          "risk_atr": 5.9,
+          "stop_ema": 900.0,
+          "risk_ema": 5.8,
+          "suggested": "atr",
+          "sugg_stop": 898.7,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 149,
+          "reclaim": "extended",
+          "stage2_exit": 825.33,
+          "rank": 5
+        },
+        {
+          "symbol": "IPCALAB",
+          "name": "Ipca Laboratories Limited",
+          "close": 1884.6,
+          "pct_change": 8.67,
+          "grade": "Healthy",
+          "ext_above_30wma": 19.0,
+          "mcap_cr": 43997,
+          "tier": "Large",
+          "sector": "Healthcare",
+          "stop_ma": 1536.73,
+          "risk_ma": 18.5,
+          "stop_atr": 1707.34,
+          "risk_atr": 9.4,
+          "stop_ema": 1764.74,
+          "risk_ema": 6.4,
+          "suggested": "atr",
+          "sugg_stop": 1707.34,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 190,
+          "reclaim": "extended",
+          "stage2_exit": 1584.26,
+          "rank": 6
+        },
+        {
+          "symbol": "SCHNEIDER",
+          "name": "Schneider Electric Infrastructure Limited",
+          "close": 1212.2,
+          "pct_change": -11.47,
+          "grade": "Healthy",
+          "ext_above_30wma": 11.6,
+          "mcap_cr": 32738,
+          "tier": "Large",
+          "sector": "Industrials",
+          "stop_ma": 1053.18,
+          "risk_ma": 13.1,
+          "stop_atr": 1059.22,
+          "risk_atr": 12.6,
+          "stop_ema": null,
+          "risk_ema": null,
+          "suggested": "atr",
+          "sugg_stop": 1059.22,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 187,
+          "reclaim": "extended",
+          "stage2_exit": 1085.75,
+          "rank": 7
+        },
+        {
+          "symbol": "UTTAMSUGAR",
+          "name": "Uttam Sugar Mills Limited",
+          "close": 283.0,
+          "pct_change": 7.08,
+          "grade": "Late",
+          "ext_above_30wma": 22.1,
+          "mcap_cr": 1008,
+          "tier": "Small",
+          "sector": "FMCG",
+          "stop_ma": 224.74,
+          "risk_ma": 20.6,
+          "stop_atr": 255.6,
+          "risk_atr": 9.7,
+          "stop_ema": 249.46,
+          "risk_ema": 11.9,
+          "suggested": "ema",
+          "sugg_stop": 249.46,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 88,
+          "reclaim": "established",
+          "stage2_exit": 231.69,
+          "rank": 8
+        }
+      ],
+      "grades": {
+        "Prime": 1,
+        "Healthy": 6,
+        "Late": 1
+      },
+      "tiers": {
+        "Large": 5,
+        "Mid": 1,
+        "Small": 2,
+        "Micro": 0,
+        "\u2014": 0
+      },
+      "sector_mix": {
+        "I.T": 1,
+        "Healthcare": 2,
+        "Metals & Mining": 1,
+        "Realty": 1,
+        "FMCG": 1,
+        "Financials": 1,
+        "Industrials": 1
+      }
+    },
+    "momentum": {
+      "label": "Momentum",
+      "style": "buy",
+      "personal": false,
+      "note": "Strongest active trend right now. Aggressive \u2014 a Late-grade name here is a chase, not a buy.",
+      "qualified": 29,
+      "stocks": [
+        {
+          "symbol": "PAKKA",
+          "name": "Pakka Ltd",
+          "close": 89.28,
+          "pct_change": 20.0,
+          "grade": "Prime",
+          "ext_above_30wma": 3.9,
+          "mcap_cr": 355,
+          "tier": "Micro",
+          "sector": "Building Materials",
+          "stop_ma": 83.33,
+          "risk_ma": 6.7,
+          "stop_atr": 80.9,
+          "risk_atr": 9.4,
+          "stop_ema": 74.27,
+          "risk_ema": 16.8,
+          "suggested": "ma",
+          "sugg_stop": 83.33,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 1,
+          "reclaim": "fresh",
+          "stage2_exit": 85.91,
+          "rank": 1,
+          "fundamental": "Formerly Yash Pakka \u2014 compostable and moulded-fibre food packaging (Chuk brand), based in Ayodhya. Q1 FY27 rebounded in both revenue and profit after a sharp FY26 profit decline. Two real red flags: the auditor issued a qualified opinion over uncertainty on a major overseas project, and the board has approved USD 1mn to restart US operations. Small company \u2014 revenue in the \u20b9100-500cr band with roughly flat multi-year revenue CAGR and negative EBITDA CAGR. Treat the momentum as sentiment-driven; the accounts do not yet support it."
+        },
+        {
+          "symbol": "KHAICHEM",
+          "name": "Khaitan Chemicals & Fertilizers Ltd",
+          "close": 59.75,
+          "pct_change": 14.09,
+          "grade": "Prime",
+          "ext_above_30wma": 6.5,
+          "mcap_cr": 508,
+          "tier": "Small",
+          "sector": "Chemicals",
+          "stop_ma": 54.42,
+          "risk_ma": 8.9,
+          "stop_atr": 53.59,
+          "risk_atr": 10.3,
+          "stop_ema": 51.7,
+          "risk_ema": 13.5,
+          "suggested": "ma",
+          "sugg_stop": 54.42,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 64,
+          "reclaim": "established",
+          "stage2_exit": 56.1,
+          "rank": 2,
+          "fundamental": "Single super phosphate and sulphuric acid maker across MP, UP, Rajasthan, Chhattisgarh and Gujarat. Q1 FY27 PAT \u20b910.9cr \u2014 up sharply sequentially but down 49% YoY from \u20b921.4cr, on revenue of \u20b9221cr (\u22126% YoY). The segment split is the real story: fertilisers collapsed to \u20b9112cr from \u20b9187cr while chemicals grew to \u20b9110cr from \u20b968cr. So the business is mid-rotation between segments rather than simply growing. Micro-cap, thinly traded."
+        },
+        {
+          "symbol": "UNIONBANK",
+          "name": "Union Bank Of India Ltd",
+          "close": 188.9,
+          "pct_change": 0.81,
+          "grade": "Prime",
+          "ext_above_30wma": 7.9,
+          "mcap_cr": 143038,
+          "tier": "Large",
+          "sector": "Bank",
+          "stop_ma": 169.8,
+          "risk_ma": 10.1,
+          "stop_atr": 179.46,
+          "risk_atr": 5.0,
+          "stop_ema": 178.73,
+          "risk_ema": 5.4,
+          "suggested": "ma",
+          "sugg_stop": 169.8,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 202,
+          "reclaim": "extended",
+          "stage2_exit": 175.05,
+          "rank": 3,
+          "fundamental": "PSU bank. Q1 FY27 standalone PAT +29.5% to \u20b95,332cr, gross NPA down to 2.65% from 3.52% YoY, net NPA 0.47%, capital adequacy 18.46%, provision coverage ~95%. The catch is growth: deposit growth of ~3.5% badly trails the 8-9% guidance and credit growth of 12.5% is below target, so profit is coming from asset-quality improvement more than expansion."
+        },
+        {
+          "symbol": "MAXESTATES",
+          "name": "Max Estates Ltd",
+          "close": 474.35,
+          "pct_change": 7.33,
+          "grade": "Healthy",
+          "ext_above_30wma": 17.0,
+          "mcap_cr": 7226,
+          "tier": "Mid",
+          "sector": "Realty",
+          "stop_ma": 393.43,
+          "risk_ma": 17.1,
+          "stop_atr": 433.95,
+          "risk_atr": 8.5,
+          "stop_ema": 420.24,
+          "risk_ema": 11.4,
+          "suggested": "atr",
+          "sugg_stop": 433.95,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 91,
+          "reclaim": "established",
+          "stage2_exit": 405.6,
+          "rank": 4,
+          "fundamental": "NCR real-estate developer (Noida and Gurugram), wellbeing-led LiveWell/WorkWell positioning. The headline is pre-sales: ~\u20b91,093cr in Q1 FY27, over 5x YoY, with 487 units sold against 43 a year ago, and \u20b9491cr collected. ICRA assigned a first-time A+ issuer rating. Commercial portfolio is 100% leased generating \u20b9150cr+ annual rent. But reported P&L is thin and going the other way \u2014 Q1 FY27 PAT fell 30% YoY to \u20b98.35cr on revenue of \u20b952cr, with EBITDA down 42%. That gap is normal for developers, where pre-sales convert to revenue only on construction milestones, but it means the accounts will lag the story for several quarters. GDV pipeline \u20b916,150cr+."
+        },
+        {
+          "symbol": "MUKKA",
+          "name": "Mukka Proteins Ltd",
+          "close": 27.53,
+          "pct_change": 3.89,
+          "grade": "Healthy",
+          "ext_above_30wma": 19.2,
+          "mcap_cr": 795,
+          "tier": "Small",
+          "sector": "FMCG",
+          "stop_ma": 22.41,
+          "risk_ma": 18.6,
+          "stop_atr": 24.75,
+          "risk_atr": 10.1,
+          "stop_ema": 24.19,
+          "risk_ema": 12.1,
+          "suggested": "atr",
+          "sugg_stop": 24.75,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 45,
+          "reclaim": "established",
+          "stage2_exit": 23.1,
+          "rank": 5
+        },
+        {
+          "symbol": "PTCIL",
+          "name": "PTC Industries Ltd",
+          "close": 20584.0,
+          "pct_change": 8.05,
+          "grade": "Healthy",
+          "ext_above_30wma": 18.1,
+          "mcap_cr": 28561,
+          "tier": "Large",
+          "sector": "Industrials",
+          "stop_ma": 16906.02,
+          "risk_ma": 17.9,
+          "stop_atr": 19305.14,
+          "risk_atr": 6.2,
+          "stop_ema": 18588.45,
+          "risk_ema": 9.7,
+          "suggested": "atr",
+          "sugg_stop": 19305.14,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 184,
+          "reclaim": "extended",
+          "stage2_exit": 17428.89,
+          "rank": 6,
+          "fundamental": "PTC Industries \u2014 titanium and superalloy precision castings for aerospace and defence, via subsidiary Aerolloy. Q1 FY27 revenue +98% to \u20b9192cr and PAT +466% to \u20b929cr, EBITDA margin expanding 954bps to 27.5%. Contracts with Airbus, BrahMos and the MoD point to a shift from component to systems supplier, and the UK subsidiary Trac Precision has stabilised. The catch is valuation: ~\u20b928,500cr market cap on \u20b9697cr trailing revenue and \u20b9126cr profit, trading at roughly 19x book, no dividend. Also note revenue and profit both fell sequentially from Q4 FY26."
+        },
+        {
+          "symbol": "GNFC",
+          "name": "Gujarat Narmada Valley Fertilizers And Chemicals Limited",
+          "close": 600.65,
+          "pct_change": 5.57,
+          "grade": "Late",
+          "ext_above_30wma": 24.1,
+          "mcap_cr": 8360,
+          "tier": "Mid",
+          "sector": "Chemicals",
+          "stop_ma": 469.48,
+          "risk_ma": 21.8,
+          "stop_atr": 567.15,
+          "risk_atr": 5.6,
+          "stop_ema": 539.11,
+          "risk_ema": 10.2,
+          "suggested": "ema",
+          "sugg_stop": 539.11,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 88,
+          "reclaim": "established",
+          "stage2_exit": 484.0,
+          "rank": 7
+        },
+        {
+          "symbol": "CONCORDBIO",
+          "name": "Concord Biotech Ltd",
+          "close": 1515.0,
+          "pct_change": 4.39,
+          "grade": "Late",
+          "ext_above_30wma": 24.6,
+          "mcap_cr": 15183,
+          "tier": "Mid",
+          "sector": "Healthcare",
+          "stop_ma": 1179.22,
+          "risk_ma": 22.2,
+          "stop_atr": 1404.56,
+          "risk_atr": 7.3,
+          "stop_ema": 1390.35,
+          "risk_ema": 8.2,
+          "suggested": "ema",
+          "sugg_stop": 1390.35,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 49,
+          "reclaim": "established",
+          "stage2_exit": 1215.69,
+          "rank": 8
+        },
+        {
+          "symbol": "EIMCOELECO",
+          "name": "Eimco Elecon (india) Limited",
+          "close": 2189.1,
+          "pct_change": 9.15,
+          "grade": "Late",
+          "ext_above_30wma": 31.7,
+          "mcap_cr": 1157,
+          "tier": "Small",
+          "sector": "Industrials",
+          "stop_ma": 1611.77,
+          "risk_ma": 26.4,
+          "stop_atr": 2000.56,
+          "risk_atr": 8.6,
+          "stop_ema": 1863.55,
+          "risk_ema": 14.9,
+          "suggested": "ema",
+          "sugg_stop": 1863.55,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 77,
+          "reclaim": "established",
+          "stage2_exit": 1661.62,
+          "rank": 9
+        },
+        {
+          "symbol": "RUBICON",
+          "name": "Rubicon Research Ltd",
+          "close": 1798.7,
+          "pct_change": 11.09,
+          "grade": "Late",
+          "ext_above_30wma": 73.0,
+          "mcap_cr": 26777,
+          "tier": "Large",
+          "sector": "Healthcare",
+          "stop_ma": 1008.77,
+          "risk_ma": 43.9,
+          "stop_atr": 1640.1,
+          "risk_atr": 8.8,
+          "stop_ema": 1566.92,
+          "risk_ema": 12.9,
+          "suggested": "ema",
+          "sugg_stop": 1566.92,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 102,
+          "reclaim": "established",
+          "stage2_exit": 1039.97,
+          "rank": 10
+        },
+        {
+          "symbol": "UFLEX",
+          "name": "Uflex Limited",
+          "close": 586.05,
+          "pct_change": 19.99,
+          "grade": "Late",
+          "ext_above_30wma": 32.7,
+          "mcap_cr": 3527,
+          "tier": "Small",
+          "sector": "Industrials",
+          "stop_ma": 428.28,
+          "risk_ma": 26.9,
+          "stop_atr": 533.27,
+          "risk_atr": 9.0,
+          "stop_ema": 486.84,
+          "risk_ema": 16.9,
+          "suggested": "ema",
+          "sugg_stop": 486.84,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 38,
+          "reclaim": "established",
+          "stage2_exit": 441.53,
+          "rank": 11
+        },
+        {
+          "symbol": "DHAMPURSUG",
+          "name": "Dhampur Sugar Mills Limited",
+          "close": 170.87,
+          "pct_change": 6.18,
+          "grade": "Late",
+          "ext_above_30wma": 26.1,
+          "mcap_cr": 1035,
+          "tier": "Small",
+          "sector": "FMCG",
+          "stop_ma": 131.45,
+          "risk_ma": 23.1,
+          "stop_atr": 154.91,
+          "risk_atr": 9.3,
+          "stop_ema": 152.02,
+          "risk_ema": 11.0,
+          "suggested": "ema",
+          "sugg_stop": 152.02,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 114,
+          "reclaim": "established",
+          "stage2_exit": 135.52,
+          "rank": 12
+        },
+        {
+          "symbol": "FINCABLES",
+          "name": "Finolex Cables Limited",
+          "close": 1320.85,
+          "pct_change": 5.94,
+          "grade": "Late",
+          "ext_above_30wma": 38.8,
+          "mcap_cr": 19069,
+          "tier": "Mid",
+          "sector": "Industrials",
+          "stop_ma": 922.97,
+          "risk_ma": 30.1,
+          "stop_atr": 1193.43,
+          "risk_atr": 9.6,
+          "stop_ema": 1113.46,
+          "risk_ema": 15.7,
+          "suggested": "ema",
+          "sugg_stop": 1113.46,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 121,
+          "reclaim": "established",
+          "stage2_exit": 951.52,
+          "rank": 13
+        },
+        {
+          "symbol": "ARIES",
+          "name": "Aries Agro Limited",
+          "close": 434.65,
+          "pct_change": 5.11,
+          "grade": "Late",
+          "ext_above_30wma": 26.3,
+          "mcap_cr": 538,
+          "tier": "Small",
+          "sector": "Chemicals",
+          "stop_ma": 333.71,
+          "risk_ma": 23.2,
+          "stop_atr": 391.57,
+          "risk_atr": 9.9,
+          "stop_ema": 364.01,
+          "risk_ema": 16.3,
+          "suggested": "ema",
+          "sugg_stop": 364.01,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 127,
+          "reclaim": "established",
+          "stage2_exit": 344.03,
+          "rank": 14
+        },
+        {
+          "symbol": "UTLSOLAR",
+          "name": "Fujiyama Power Systems Ltd",
+          "close": 464.4,
+          "pct_change": 9.57,
+          "grade": "Late",
+          "ext_above_30wma": 69.0,
+          "mcap_cr": 13008,
+          "tier": "Mid",
+          "sector": "Industrials",
+          "stop_ma": 266.58,
+          "risk_ma": 42.6,
+          "stop_atr": 417.34,
+          "risk_atr": 10.1,
+          "stop_ema": 393.86,
+          "risk_ema": 15.2,
+          "suggested": "ema",
+          "sugg_stop": 393.86,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 102,
+          "reclaim": "established",
+          "stage2_exit": 274.82,
+          "rank": 15
+        },
+        {
+          "symbol": "MODTHREAD",
+          "name": "Modern Threads (I) Ltd",
+          "close": 57.64,
+          "pct_change": 19.39,
+          "grade": "Late",
+          "ext_above_30wma": 26.2,
+          "mcap_cr": 168,
+          "tier": "Micro",
+          "sector": "Textiles",
+          "stop_ma": 44.32,
+          "risk_ma": 23.1,
+          "stop_atr": 51.0,
+          "risk_atr": 11.5,
+          "stop_ema": 48.36,
+          "risk_ema": 16.1,
+          "suggested": "ema",
+          "sugg_stop": 48.36,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 128,
+          "reclaim": "established",
+          "stage2_exit": 45.69,
+          "rank": 16
+        },
+        {
+          "symbol": "MOREPENLAB",
+          "name": "Morepen Laboratories Limited",
+          "close": 89.82,
+          "pct_change": 6.69,
+          "grade": "Late",
+          "ext_above_30wma": 91.6,
+          "mcap_cr": 4613,
+          "tier": "Small",
+          "sector": "Healthcare",
+          "stop_ma": 45.47,
+          "risk_ma": 49.4,
+          "stop_atr": 78.46,
+          "risk_atr": 12.6,
+          "stop_ema": 71.08,
+          "risk_ema": 20.9,
+          "suggested": "ema",
+          "sugg_stop": 71.08,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 75,
+          "reclaim": "established",
+          "stage2_exit": 46.88,
+          "rank": 17
+        },
+        {
+          "symbol": "ALPHAGEO",
+          "name": "Alphageo (india) Limited",
+          "close": 338.36,
+          "pct_change": 12.28,
+          "grade": "Late",
+          "ext_above_30wma": 58.3,
+          "mcap_cr": 192,
+          "tier": "Micro",
+          "sector": "Miscellaneous",
+          "stop_ma": 207.38,
+          "risk_ma": 38.7,
+          "stop_atr": 288.9,
+          "risk_atr": 14.6,
+          "stop_ema": 253.11,
+          "risk_ema": 25.2,
+          "suggested": "ema",
+          "sugg_stop": 253.11,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 45,
+          "reclaim": "established",
+          "stage2_exit": 213.79,
+          "rank": 18
+        },
+        {
+          "symbol": "RUDRA",
+          "name": "Rudra Global Infra Products Ltd",
+          "close": 23.8,
+          "pct_change": 5.97,
+          "grade": "Late",
+          "ext_above_30wma": 25.7,
+          "mcap_cr": 225,
+          "tier": "Micro",
+          "sector": "Metals & Mining",
+          "stop_ma": 18.37,
+          "risk_ma": 22.8,
+          "stop_atr": 20.0,
+          "risk_atr": 16.0,
+          "stop_ema": 19.16,
+          "risk_ema": 19.5,
+          "suggested": "ema",
+          "sugg_stop": 19.16,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 93,
+          "reclaim": "established",
+          "stage2_exit": 18.94,
+          "rank": 19
+        },
+        {
+          "symbol": "KEI",
+          "name": "Kei Industries Limited",
+          "close": 5873.0,
+          "pct_change": 3.04,
+          "grade": "Late",
+          "ext_above_30wma": 21.2,
+          "mcap_cr": 54492,
+          "tier": "Large",
+          "sector": "Industrials",
+          "stop_ma": 4701.62,
+          "risk_ma": 19.9,
+          "stop_atr": 5571.14,
+          "risk_atr": 5.1,
+          "stop_ema": 5430.47,
+          "risk_ema": 7.5,
+          "suggested": "ema",
+          "sugg_stop": 5430.47,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 228,
+          "reclaim": "extended",
+          "stage2_exit": 4847.03,
+          "rank": 20
+        },
+        {
+          "symbol": "TI",
+          "name": "Tilaknagar Industries Limited",
+          "close": 580.55,
+          "pct_change": 2.07,
+          "grade": "Late",
+          "ext_above_30wma": 30.1,
+          "mcap_cr": 14075,
+          "tier": "Mid",
+          "sector": "FMCG",
+          "stop_ma": 432.89,
+          "risk_ma": 25.4,
+          "stop_atr": 536.57,
+          "risk_atr": 7.6,
+          "stop_ema": 500.29,
+          "risk_ema": 13.8,
+          "suggested": "ema",
+          "sugg_stop": 500.29,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 151,
+          "reclaim": "extended",
+          "stage2_exit": 446.28,
+          "rank": 21
+        },
+        {
+          "symbol": "SENORES",
+          "name": "Senores Pharmaceuticals Ltd",
+          "close": 1545.7,
+          "pct_change": 4.6,
+          "grade": "Late",
+          "ext_above_30wma": 51.4,
+          "mcap_cr": 6805,
+          "tier": "Mid",
+          "sector": "Healthcare",
+          "stop_ma": 990.6,
+          "risk_ma": 35.9,
+          "stop_atr": 1428.8,
+          "risk_atr": 7.6,
+          "stop_ema": 1410.17,
+          "risk_ema": 8.8,
+          "suggested": "ema",
+          "sugg_stop": 1410.17,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 234,
+          "reclaim": "extended",
+          "stage2_exit": 1021.24,
+          "rank": 22
+        },
+        {
+          "symbol": "HAPPYFORGE",
+          "name": "Happy Forgings Ltd",
+          "close": 2198.1,
+          "pct_change": 5.19,
+          "grade": "Late",
+          "ext_above_30wma": 59.6,
+          "mcap_cr": 19721,
+          "tier": "Mid",
+          "sector": "Industrials",
+          "stop_ma": 1335.58,
+          "risk_ma": 39.2,
+          "stop_atr": 2027.42,
+          "risk_atr": 7.8,
+          "stop_ema": 1834.95,
+          "risk_ema": 16.5,
+          "suggested": "ema",
+          "sugg_stop": 1834.95,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 246,
+          "reclaim": "extended",
+          "stage2_exit": 1376.89,
+          "rank": 23
+        },
+        {
+          "symbol": "AVTNPL",
+          "name": "Avt Natural Products Limited",
+          "close": 88.1,
+          "pct_change": 8.43,
+          "grade": "Late",
+          "ext_above_30wma": 31.3,
+          "mcap_cr": 1237,
+          "tier": "Small",
+          "sector": "FMCG",
+          "stop_ma": 65.09,
+          "risk_ma": 26.1,
+          "stop_atr": 80.12,
+          "risk_atr": 9.1,
+          "stop_ema": 73.19,
+          "risk_ema": 16.9,
+          "suggested": "ema",
+          "sugg_stop": 73.19,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 151,
+          "reclaim": "extended",
+          "stage2_exit": 67.1,
+          "rank": 24
+        },
+        {
+          "symbol": "TDPOWERSYS",
+          "name": "Td Power Systems Limited",
+          "close": 1548.8,
+          "pct_change": 4.32,
+          "grade": "Late",
+          "ext_above_30wma": 50.4,
+          "mcap_cr": 23194,
+          "tier": "Large",
+          "sector": "Industrials",
+          "stop_ma": 998.72,
+          "risk_ma": 35.5,
+          "stop_atr": 1382.98,
+          "risk_atr": 10.7,
+          "stop_ema": 1277.37,
+          "risk_ema": 17.5,
+          "suggested": "ema",
+          "sugg_stop": 1277.37,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 250,
+          "reclaim": "extended",
+          "stage2_exit": 1029.61,
+          "rank": 25
+        },
+        {
+          "symbol": "UNIVCABLES",
+          "name": "Universal Cables Limited",
+          "close": 1724.6,
+          "pct_change": 4.88,
+          "grade": "Late",
+          "ext_above_30wma": 77.5,
+          "mcap_cr": 5705,
+          "tier": "Mid",
+          "sector": "Industrials",
+          "stop_ma": 942.64,
+          "risk_ma": 45.3,
+          "stop_atr": 1535.3,
+          "risk_atr": 11.0,
+          "stop_ema": 1475.97,
+          "risk_ema": 14.4,
+          "suggested": "ema",
+          "sugg_stop": 1475.97,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 194,
+          "reclaim": "extended",
+          "stage2_exit": 971.79,
+          "rank": 26
+        },
+        {
+          "symbol": "MANORAMA",
+          "name": "Manorama Industries Ltd",
+          "close": 1943.4,
+          "pct_change": 11.88,
+          "grade": "Late",
+          "ext_above_30wma": 34.9,
+          "mcap_cr": 10372,
+          "tier": "Mid",
+          "sector": "FMCG",
+          "stop_ma": 1397.74,
+          "risk_ma": 28.1,
+          "stop_atr": 1723.1,
+          "risk_atr": 11.3,
+          "stop_ema": 1654.05,
+          "risk_ema": 14.9,
+          "suggested": "ema",
+          "sugg_stop": 1654.05,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 158,
+          "reclaim": "extended",
+          "stage2_exit": 1440.97,
+          "rank": 27
+        },
+        {
+          "symbol": "INDSWFTLAB",
+          "name": "Ind-swift Laboratories Limited",
+          "close": 313.02,
+          "pct_change": 2.91,
+          "grade": "Late",
+          "ext_above_30wma": 93.4,
+          "mcap_cr": 2645,
+          "tier": "Small",
+          "sector": "Healthcare",
+          "stop_ma": 156.96,
+          "risk_ma": 49.9,
+          "stop_atr": 276.38,
+          "risk_atr": 11.7,
+          "stop_ema": 254.51,
+          "risk_ema": 18.7,
+          "suggested": "ema",
+          "sugg_stop": 254.51,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 209,
+          "reclaim": "extended",
+          "stage2_exit": 161.81,
+          "rank": 28
+        },
+        {
+          "symbol": "PVP",
+          "name": "Pvp Ventures Limited",
+          "close": 37.01,
+          "pct_change": 4.46,
+          "grade": "Late",
+          "ext_above_30wma": 25.7,
+          "mcap_cr": 923,
+          "tier": "Small",
+          "sector": "Realty",
+          "stop_ma": 28.57,
+          "risk_ma": 22.8,
+          "stop_atr": 32.35,
+          "risk_atr": 12.6,
+          "stop_ema": 31.84,
+          "risk_ema": 14.0,
+          "suggested": "ema",
+          "sugg_stop": 31.84,
+          "hva": false,
+          "hve": false,
+          "days_above_150": 143,
+          "reclaim": "extended",
+          "stage2_exit": 29.45,
+          "rank": 29
+        }
+      ],
+      "grades": {
+        "Prime": 3,
+        "Healthy": 3,
+        "Late": 23
+      },
+      "tiers": {
+        "Large": 5,
+        "Mid": 10,
+        "Small": 10,
+        "Micro": 4,
+        "\u2014": 0
+      },
+      "sector_mix": {
+        "Building Materials": 1,
+        "Industrials": 9,
+        "Textiles": 1,
+        "Chemicals": 3,
+        "Miscellaneous": 1,
+        "FMCG": 5,
+        "Healthcare": 5,
+        "Realty": 2,
+        "Metals & Mining": 1,
+        "Bank": 1
+      }
+    }
+  },
+  "generated_at": "2026-08-17T18:12:45Z",
+  "as_of": "2026-08-17",
+  "holdings_roster": {
+    "PAKKA": {
+      "close": 89.28,
+      "sma150": 85.91
+    },
+    "UFLEX": {
+      "close": 586.05,
+      "sma150": 441.53
+    },
+    "MODTHREAD": {
+      "close": 57.64,
+      "sma150": 45.69
+    },
+    "KHAICHEM": {
+      "close": 59.75,
+      "sma150": 56.1
+    },
+    "PREMIERPOL": {
+      "close": 83.59,
+      "sma150": 58.7
+    },
+    "ASIANENE": {
+      "close": 425.25,
+      "sma150": 317.83
+    },
+    "DOLPHIN": {
+      "close": 576.85,
+      "sma150": 409.24
+    },
+    "KAYA": {
+      "close": 336.65,
+      "sma150": 285.35
+    },
+    "EXPLEOSOL": {
+      "close": 923.05,
+      "sma150": 828.57
+    },
+    "LATTEYS": {
+      "close": 23.29,
+      "sma150": 21.49
+    },
+    "ALPHAGEO": {
+      "close": 338.36,
+      "sma150": 213.79
+    },
+    "MANORAMA": {
+      "close": 1943.4,
+      "sma150": 1440.97
+    },
+    "OSWALSEEDS": {
+      "close": 13.59,
+      "sma150": 11.99
+    },
+    "RUBICON": {
+      "close": 1798.7,
+      "sma150": 1039.97
+    },
+    "AVADHSUGAR": {
+      "close": 725.25,
+      "sma150": 452.22
+    },
+    "GKSL": {
+      "close": 151.36,
+      "sma150": 119.9
+    },
+    "LAXMIINDIA": {
+      "close": 136.56,
+      "sma150": 107.61
+    },
+    "UTLSOLAR": {
+      "close": 464.4,
+      "sma150": 274.82
+    },
+    "EIMCOELECO": {
+      "close": 2189.1,
+      "sma150": 1661.62
+    },
+    "DALMIASUG": {
+      "close": 459.6,
+      "sma150": 338.95
+    },
+    "TVSSRICHAK": {
+      "close": 4868.9,
+      "sma150": 3935.66
+    },
+    "IPCALAB": {
+      "close": 1884.6,
+      "sma150": 1584.26
+    },
+    "UCAL": {
+      "close": 151.87,
+      "sma150": 107.24
+    },
+    "AVTNPL": {
+      "close": 88.1,
+      "sma150": 67.1
+    },
+    "PICCADIL": {
+      "close": 695.45,
+      "sma150": 608.47
+    },
+    "SREEL": {
+      "close": 260.75,
+      "sma150": 202.39
+    },
+    "UGARSUGAR": {
+      "close": 52.18,
+      "sma150": 40.01
+    },
+    "DCMSRIND": {
+      "close": 45.73,
+      "sma150": 39.7
+    },
+    "HINDCOPPER": {
+      "close": 572.65,
+      "sma150": 536.49
+    },
+    "SALSTEEL": {
+      "close": 71.87,
+      "sma150": 51.5
+    },
+    "KMSUGAR": {
+      "close": 29.79,
+      "sma150": 26.86
+    },
+    "PTCIL": {
+      "close": 20584.0,
+      "sma150": 17428.89
+    },
+    "SAHYADRI": {
+      "close": 388.15,
+      "sma150": 269.67
+    },
+    "SHANTIGOLD": {
+      "close": 266.84,
+      "sma150": 209.55
+    },
+    "MAXESTATES": {
+      "close": 474.35,
+      "sma150": 405.6
+    },
+    "MAHAPEXLTD": {
+      "close": 54.09,
+      "sma150": 50.17
+    },
+    "SIGIND": {
+      "close": 71.15,
+      "sma150": 49.44
+    },
+    "MMFL": {
+      "close": 632.3,
+      "sma150": 470.39
+    },
+    "ZIMLAB": {
+      "close": 115.2,
+      "sma150": 91.55
+    },
+    "RISHABH": {
+      "close": 694.6,
+      "sma150": 495.47
+    },
+    "UTTAMSUGAR": {
+      "close": 283.0,
+      "sma150": 231.69
+    },
+    "MAWANASUG": {
+      "close": 124.06,
+      "sma150": 97.02
+    },
+    "APOLLOPIPE": {
+      "close": 545.3,
+      "sma150": 428.26
+    },
+    "AZAD": {
+      "close": 2899.9,
+      "sma150": 1932.12
+    },
+    "MOREPENLAB": {
+      "close": 89.82,
+      "sma150": 46.88
+    },
+    "ATLANTAELE": {
+      "close": 1788.2,
+      "sma150": 1387.52
+    },
+    "RATNAVEER": {
+      "close": 244.87,
+      "sma150": 164.94
+    },
+    "BECTORFOOD": {
+      "close": 255.3,
+      "sma150": 198.93
+    },
+    "DHAMPURSUG": {
+      "close": 170.87,
+      "sma150": 135.52
+    },
+    "AVALON": {
+      "close": 2059.4,
+      "sma150": 1301.49
+    },
+    "RUDRA": {
+      "close": 23.8,
+      "sma150": 18.94
+    },
+    "LMW": {
+      "close": 20047.0,
+      "sma150": 15144.65
+    },
+    "FINCABLES": {
+      "close": 1320.85,
+      "sma150": 951.52
+    },
+    "CYIENTDLM": {
+      "close": 737.45,
+      "sma150": 430.46
+    },
+    "MOTILALOFS": {
+      "close": 955.0,
+      "sma150": 825.33
+    },
+    "GNFC": {
+      "close": 600.65,
+      "sma150": 484.0
+    },
+    "RAJSREESUG": {
+      "close": 34.49,
+      "sma150": 31.18
+    },
+    "NELCO": {
+      "close": 1081.5,
+      "sma150": 732.26
+    },
+    "NRBBEARING": {
+      "close": 484.05,
+      "sma150": 332.23
+    },
+    "PAVNAIND": {
+      "close": 18.92,
+      "sma150": 18.8
+    },
+    "AVONMORE": {
+      "close": 13.01,
+      "sma150": 12.4
+    },
+    "VGUARD": {
+      "close": 343.95,
+      "sma150": 317.11
+    },
+    "HAPPYFORGE": {
+      "close": 2198.1,
+      "sma150": 1376.89
+    },
+    "REGAAL": {
+      "close": 90.46,
+      "sma150": 76.15
+    },
+    "MANINDS": {
+      "close": 630.35,
+      "sma150": 476.56
+    },
+    "ARIES": {
+      "close": 434.65,
+      "sma150": 344.03
+    },
+    "SKFINDIA": {
+      "close": 1652.8,
+      "sma150": 1645.2
+    },
+    "GOCOLORS": {
+      "close": 344.05,
+      "sma150": 330.61
+    },
+    "MAGADSUGAR": {
+      "close": 570.65,
+      "sma150": 474.35
+    },
+    "STYLEBAAZA": {
+      "close": 383.5,
+      "sma150": 318.55
+    },
+    "BHAGYANGR": {
+      "close": 382.5,
+      "sma150": 260.76
+    },
+    "RUBYMILLS": {
+      "close": 382.45,
+      "sma150": 266.31
+    },
+    "MODISONLTD": {
+      "close": 356.1,
+      "sma150": 206.34
+    },
+    "MENONBE": {
+      "close": 241.16,
+      "sma150": 147.64
+    },
+    "KOPRAN": {
+      "close": 199.71,
+      "sma150": 160.29
+    },
+    "HMVL": {
+      "close": 90.97,
+      "sma150": 74.85
+    },
+    "VALIANTLAB": {
+      "close": 86.53,
+      "sma150": 65.34
+    },
+    "SANGINITA": {
+      "close": 56.7,
+      "sma150": 28.75
+    },
+    "CALSOFT": {
+      "close": 25.83,
+      "sma150": 17.65
+    },
+    "AMANTA": {
+      "close": 164.13,
+      "sma150": 129.73
+    },
+    "UNIVASTU": {
+      "close": 168.7,
+      "sma150": 81.61
+    },
+    "ONELIFECAP": {
+      "close": 35.41,
+      "sma150": 22.92
+    },
+    "AKSHOPTFBR": {
+      "close": 6.98,
+      "sma150": 5.83
+    },
+    "BALRAMCHIN": {
+      "close": 655.75,
+      "sma150": 516.8
+    },
+    "EBGNG": {
+      "close": 593.0,
+      "sma150": 427.02
+    },
+    "GAYAPROJ": {
+      "close": 22.2,
+      "sma150": 16.07
+    },
+    "UNIVCABLES": {
+      "close": 1724.6,
+      "sma150": 971.79
+    },
+    "KRN": {
+      "close": 1539.7,
+      "sma150": 1044.61
+    },
+    "STALLION": {
+      "close": 240.9,
+      "sma150": 175.95
+    },
+    "SUMIT": {
+      "close": 53.51,
+      "sma150": 47.7
+    },
+    "MSTCLTD": {
+      "close": 653.2,
+      "sma150": 507.66
+    },
+    "PRABHA": {
+      "close": 163.38,
+      "sma150": 158.52
+    },
+    "MANAKCOAT": {
+      "close": 121.88,
+      "sma150": 114.71
+    },
+    "DCI": {
+      "close": 382.35,
+      "sma150": 279.77
+    },
+    "KANPRPLA": {
+      "close": 262.85,
+      "sma150": 193.93
+    },
+    "DWARKESH": {
+      "close": 44.94,
+      "sma150": 41.24
+    },
+    "JINDALPOLY": {
+      "close": 665.65,
+      "sma150": 647.39
+    },
+    "OBEROIRLTY": {
+      "close": 1931.0,
+      "sma150": 1654.05
+    },
+    "SENORES": {
+      "close": 1545.7,
+      "sma150": 1021.24
+    },
+    "CHENNPETRO": {
+      "close": 1382.4,
+      "sma150": 1046.73
+    },
+    "RPTECH": {
+      "close": 871.85,
+      "sma150": 530.49
+    },
+    "PVP": {
+      "close": 37.01,
+      "sma150": 29.45
+    },
+    "JNKINDIA": {
+      "close": 476.35,
+      "sma150": 343.96
+    },
+    "INTLCONV": {
+      "close": 79.06,
+      "sma150": 77.63
+    },
+    "CONCORDBIO": {
+      "close": 1515.0,
+      "sma150": 1215.69
+    },
+    "EMAMIPAP": {
+      "close": 113.91,
+      "sma150": 84.81
+    },
+    "TDPOWERSYS": {
+      "close": 1548.8,
+      "sma150": 1029.61
+    },
+    "PATELRMART": {
+      "close": 229.1,
+      "sma150": 199.46
+    },
+    "QPOWER": {
+      "close": 1302.6,
+      "sma150": 1020.79
+    },
+    "PANACEABIO": {
+      "close": 413.15,
+      "sma150": 410.08
+    },
+    "NACLIND": {
+      "close": 173.45,
+      "sma150": 165.69
+    },
+    "NETWEB": {
+      "close": 5212.4,
+      "sma150": 3902.78
+    },
+    "BLKASHYAP": {
+      "close": 53.73,
+      "sma150": 52.48
+    },
+    "TBOTEK": {
+      "close": 1700.0,
+      "sma150": 1351.41
+    },
+    "DICIND": {
+      "close": 591.95,
+      "sma150": 519.3
+    },
+    "BALUFORGE": {
+      "close": 513.35,
+      "sma150": 461.86
+    },
+    "KDDL": {
+      "close": 4084.6,
+      "sma150": 2676.97
+    },
+    "AURUM": {
+      "close": 229.12,
+      "sma150": 190.93
+    },
+    "MODIS": {
+      "close": 415.6,
+      "sma150": 342.12
+    },
+    "MUKKA": {
+      "close": 27.53,
+      "sma150": 23.1
+    },
+    "MRPL": {
+      "close": 177.15,
+      "sma150": 169.21
+    },
+    "SHAHALLOYS": {
+      "close": 74.89,
+      "sma150": 67.26
+    },
+    "KPIL": {
+      "close": 1404.2,
+      "sma150": 1225.76
+    },
+    "PURVA": {
+      "close": 226.6,
+      "sma150": 215.26
+    },
+    "GANECOS": {
+      "close": 1101.2,
+      "sma150": 935.72
+    },
+    "ALEMBICLTD": {
+      "close": 90.15,
+      "sma150": 89.49
+    },
+    "JYOTICNC": {
+      "close": 857.95,
+      "sma150": 774.26
+    },
+    "KINGFA": {
+      "close": 6087.5,
+      "sma150": 4759.3
+    },
+    "MMP": {
+      "close": 350.0,
+      "sma150": 262.33
+    },
+    "CORALFINAC": {
+      "close": 34.28,
+      "sma150": 33.31
+    },
+    "RAMANEWS": {
+      "close": 32.78,
+      "sma150": 31.18
+    },
+    "NUVAMA": {
+      "close": 1731.2,
+      "sma150": 1487.97
+    },
+    "SANGHVIMOV": {
+      "close": 506.95,
+      "sma150": 344.73
+    },
+    "KRITINUT": {
+      "close": 85.15,
+      "sma150": 78.37
+    },
+    "BAJAJHIND": {
+      "close": 17.93,
+      "sma150": 17.58
+    },
+    "SMLMAH": {
+      "close": 5321.0,
+      "sma150": 4158.13
+    },
+    "SONAMLTD": {
+      "close": 57.39,
+      "sma150": 51.13
+    },
+    "PASUPTAC": {
+      "close": 61.08,
+      "sma150": 54.34
+    },
+    "SIL": {
+      "close": 20.29,
+      "sma150": 15.56
+    },
+    "VINDHYATEL": {
+      "close": 2486.6,
+      "sma150": 1581.9
+    },
+    "KFINTECH": {
+      "close": 973.0,
+      "sma150": 927.12
+    },
+    "YASHO": {
+      "close": 4362.3,
+      "sma150": 2090.84
+    },
+    "GNA": {
+      "close": 561.55,
+      "sma150": 424.74
+    },
+    "SETL": {
+      "close": 308.7,
+      "sma150": 170.22
+    },
+    "NEUEON": {
+      "close": 17.55,
+      "sma150": 8.29
+    },
+    "SAKHTISUG": {
+      "close": 17.63,
+      "sma150": 17.13
+    },
+    "BHEL": {
+      "close": 435.95,
+      "sma150": 337.15
+    },
+    "SPMLINFRA": {
+      "close": 197.0,
+      "sma150": 189.59
+    },
+    "DYCL": {
+      "close": 465.35,
+      "sma150": 333.15
+    },
+    "SAKAR": {
+      "close": 905.35,
+      "sma150": 651.15
+    },
+    "DEEPAKNTR": {
+      "close": 1780.5,
+      "sma150": 1623.54
+    },
+    "20MICRONS": {
+      "close": 197.26,
+      "sma150": 181.29
+    },
+    "ROSSTECH": {
+      "close": 1108.9,
+      "sma150": 863.9
+    },
+    "INDOSTAR": {
+      "close": 247.15,
+      "sma150": 227.43
+    },
+    "SPORTKING": {
+      "close": 206.41,
+      "sma150": 147.17
+    },
+    "HARSHA": {
+      "close": 425.6,
+      "sma150": 390.69
+    },
+    "GODREJPROP": {
+      "close": 2054.0,
+      "sma150": 1808.38
+    },
+    "PREMEXPLN": {
+      "close": 672.65,
+      "sma150": 572.66
+    },
+    "ASHOKLEY": {
+      "close": 177.1,
+      "sma150": 172.34
+    },
+    "IGPL": {
+      "close": 472.8,
+      "sma150": 409.78
+    },
+    "CUB": {
+      "close": 215.2,
+      "sma150": 203.19
+    },
+    "OCCLLTD": {
+      "close": 156.97,
+      "sma150": 109.85
+    },
+    "MAHASTEEL": {
+      "close": 1099.1,
+      "sma150": 859.5
+    },
+    "JAGSNPHARM": {
+      "close": 233.53,
+      "sma150": 200.04
+    },
+    "NATIONALUM": {
+      "close": 387.55,
+      "sma150": 379.87
+    },
+    "RKFORGE": {
+      "close": 755.0,
+      "sma150": 567.45
+    },
+    "KEI": {
+      "close": 5873.0,
+      "sma150": 4847.03
+    },
+    "PANACHE": {
+      "close": 540.65,
+      "sma150": 357.93
+    },
+    "CENTEXT": {
+      "close": 21.93,
+      "sma150": 20.39
+    },
+    "VIDHIING": {
+      "close": 319.2,
+      "sma150": 304.08
+    },
+    "NAM-INDIA": {
+      "close": 1202.7,
+      "sma150": 1019.89
+    },
+    "PUNJABCHEM": {
+      "close": 1127.3,
+      "sma150": 1069.99
+    },
+    "NEOGEN": {
+      "close": 2270.1,
+      "sma150": 1640.64
+    },
+    "GENUSPOWER": {
+      "close": 318.25,
+      "sma150": 290.33
+    },
+    "CPCAP": {
+      "close": 130.32,
+      "sma150": 99.69
+    },
+    "DEEDEV": {
+      "close": 650.55,
+      "sma150": 447.33
+    },
+    "SIRCA": {
+      "close": 439.45,
+      "sma150": 432.94
+    },
+    "E2E": {
+      "close": 686.15,
+      "sma150": 334.39
+    },
+    "INDSWFTLAB": {
+      "close": 313.02,
+      "sma150": 161.81
+    },
+    "TNPETRO": {
+      "close": 114.16,
+      "sma150": 92.05
+    },
+    "HNDFDS": {
+      "close": 608.45,
+      "sma150": 519.64
+    },
+    "MIDHANI": {
+      "close": 428.6,
+      "sma150": 380.83
+    },
+    "GODREJAGRO": {
+      "close": 597.0,
+      "sma150": 575.66
+    },
+    "LTF": {
+      "close": 315.0,
+      "sma150": 289.0
+    },
+    "COSMOFIRST": {
+      "close": 964.85,
+      "sma150": 730.89
+    },
+    "ARTNIRMAN": {
+      "close": 42.23,
+      "sma150": 41.23
+    },
+    "ARCHIDPLY": {
+      "close": 95.91,
+      "sma150": 81.61
+    },
+    "BOSCH-HCIL": {
+      "close": 1700.4,
+      "sma150": 1372.08
+    },
+    "IBULLSLTD": {
+      "close": 27.83,
+      "sma150": 18.47
+    },
+    "GOCLCORP": {
+      "close": 408.0,
+      "sma150": 327.8
+    },
+    "SOUTHWEST": {
+      "close": 226.28,
+      "sma150": 220.42
+    },
+    "ENDURANCE": {
+      "close": 2978.2,
+      "sma150": 2554.94
+    },
+    "PSPPROJECT": {
+      "close": 947.0,
+      "sma150": 828.81
+    },
+    "IGIL": {
+      "close": 355.15,
+      "sma150": 340.36
+    },
+    "BOROLTD": {
+      "close": 244.81,
+      "sma150": 241.55
+    },
+    "HMT": {
+      "close": 60.28,
+      "sma150": 57.33
+    },
+    "GOKEX": {
+      "close": 804.1,
+      "sma150": 714.41
+    },
+    "ACE": {
+      "close": 1113.7,
+      "sma150": 919.58
+    },
+    "IFCI": {
+      "close": 78.93,
+      "sma150": 64.96
+    },
+    "APTECHT": {
+      "close": 94.78,
+      "sma150": 93.7
+    },
+    "NIACL": {
+      "close": 183.64,
+      "sma150": 158.54
+    },
+    "AHLWEST": {
+      "close": 563.95,
+      "sma150": 388.0
+    },
+    "ZEEL": {
+      "close": 104.87,
+      "sma150": 92.27
+    },
+    "SURYALAXMI": {
+      "close": 57.66,
+      "sma150": 57.26
+    },
+    "AARON": {
+      "close": 138.85,
+      "sma150": 137.82
+    },
+    "WELSPUNLIV": {
+      "close": 168.15,
+      "sma150": 139.16
+    },
+    "PRUDENT": {
+      "close": 3338.0,
+      "sma150": 2696.74
+    },
+    "POLYPLEX": {
+      "close": 1210.8,
+      "sma150": 923.88
+    },
+    "VTL": {
+      "close": 605.25,
+      "sma150": 564.37
+    },
+    "MANYAVAR": {
+      "close": 541.85,
+      "sma150": 430.15
+    },
+    "RVTH": {
+      "close": 747.7,
+      "sma150": 664.25
+    },
+    "PWL": {
+      "close": 119.97,
+      "sma150": 112.08
+    },
+    "TFCILTD": {
+      "close": 120.28,
+      "sma150": 76.1
+    },
+    "EMBDL": {
+      "close": 63.11,
+      "sma150": 60.58
+    },
+    "UNOMINDA": {
+      "close": 1269.9,
+      "sma150": 1138.92
+    },
+    "ELGIEQUIP": {
+      "close": 624.2,
+      "sma150": 536.46
+    },
+    "JKIL": {
+      "close": 509.65,
+      "sma150": 509.2
+    },
+    "KRBL": {
+      "close": 395.7,
+      "sma150": 350.52
+    },
+    "SAIL": {
+      "close": 173.6,
+      "sma150": 168.66
+    },
+    "THERMAX": {
+      "close": 4141.4,
+      "sma150": 3889.0
+    },
+    "AKUMS": {
+      "close": 744.0,
+      "sma150": 546.94
+    },
+    "GOLDIAM": {
+      "close": 374.4,
+      "sma150": 372.63
+    },
+    "CHALET": {
+      "close": 844.7,
+      "sma150": 805.32
+    },
+    "KIRLOSIND": {
+      "close": 3842.9,
+      "sma150": 3292.19
+    },
+    "TEGA": {
+      "close": 1744.0,
+      "sma150": 1698.67
+    },
+    "ANTELOPUS": {
+      "close": 800.9,
+      "sma150": 677.6
+    },
+    "ICIL": {
+      "close": 388.7,
+      "sma150": 314.55
+    },
+    "VSSL": {
+      "close": 361.55,
+      "sma150": 270.37
+    },
+    "NPST": {
+      "close": 1622.8,
+      "sma150": 1319.57
+    },
+    "KPRMILL": {
+      "close": 1135.6,
+      "sma150": 969.54
+    },
+    "TRANSWORLD": {
+      "close": 159.34,
+      "sma150": 158.89
+    },
+    "PYRAMID": {
+      "close": 166.69,
+      "sma150": 161.11
+    },
+    "BFUTILITIE": {
+      "close": 545.65,
+      "sma150": 544.57
+    },
+    "CLEAN": {
+      "close": 840.0,
+      "sma150": 774.56
+    },
+    "ARVSMART": {
+      "close": 670.35,
+      "sma150": 581.49
+    },
+    "JETFREIGHT": {
+      "close": 22.73,
+      "sma150": 19.83
+    },
+    "WENDT": {
+      "close": 8110.0,
+      "sma150": 7195.53
+    },
+    "SGMART": {
+      "close": 752.3,
+      "sma150": 534.63
+    },
+    "CRAFTSMAN": {
+      "close": 10480.0,
+      "sma150": 8353.29
+    },
+    "PANSARI": {
+      "close": 318.65,
+      "sma150": 300.96
+    },
+    "ASHIMASYN": {
+      "close": 17.51,
+      "sma150": 15.9
+    },
+    "PIXTRANS": {
+      "close": 1938.8,
+      "sma150": 1558.08
+    },
+    "VIJAYA": {
+      "close": 1506.6,
+      "sma150": 1152.1
+    },
+    "PGEL": {
+      "close": 614.0,
+      "sma150": 551.17
+    },
+    "ANGELONE": {
+      "close": 293.5,
+      "sma150": 290.42
+    },
+    "SUNDRMBRAK": {
+      "close": 899.8,
+      "sma150": 671.88
+    },
+    "PHOENIXLTD": {
+      "close": 1929.8,
+      "sma150": 1797.33
+    },
+    "AFFLE": {
+      "close": 1703.9,
+      "sma150": 1503.56
+    },
+    "SWELECTES": {
+      "close": 629.7,
+      "sma150": 599.11
+    },
+    "BIL": {
+      "close": 854.9,
+      "sma150": 755.25
+    },
+    "UNIDT": {
+      "close": 228.95,
+      "sma150": 205.28
+    },
+    "TI": {
+      "close": 580.55,
+      "sma150": 446.28
+    },
+    "USHAMART": {
+      "close": 498.05,
+      "sma150": 456.28
+    },
+    "SILINV": {
+      "close": 449.65,
+      "sma150": 434.29
+    },
+    "KCPSUGIND": {
+      "close": 31.12,
+      "sma150": 24.47
+    },
+    "LXCHEM": {
+      "close": 179.66,
+      "sma150": 148.99
+    },
+    "BCLIND": {
+      "close": 36.36,
+      "sma150": 32.49
+    },
+    "AAREYDRUGS": {
+      "close": 85.58,
+      "sma150": 76.38
+    },
+    "SYNCOMF": {
+      "close": 15.22,
+      "sma150": 13.47
+    },
+    "LYKALABS": {
+      "close": 68.03,
+      "sma150": 64.53
+    },
+    "GRPLTD": {
+      "close": 2049.2,
+      "sma150": 1838.63
+    },
+    "HINDALCO": {
+      "close": 1049.9,
+      "sma150": 985.87
+    },
+    "SANSERA": {
+      "close": 4002.0,
+      "sma150": 2585.39
+    },
+    "ENRIN": {
+      "close": 3605.7,
+      "sma150": 3088.54
+    },
+    "KIRLOSBROS": {
+      "close": 1942.9,
+      "sma150": 1695.45
+    },
+    "VIPULLTD": {
+      "close": 14.58,
+      "sma150": 11.47
+    },
+    "RAYMOND": {
+      "close": 647.85,
+      "sma150": 481.48
+    },
+    "VIJIFIN": {
+      "close": 12.63,
+      "sma150": 4.64
+    },
+    "AYMSYNTEX": {
+      "close": 271.9,
+      "sma150": 209.13
+    },
+    "GREENPLY": {
+      "close": 286.3,
+      "sma150": 253.36
+    },
+    "ABDL": {
+      "close": 610.65,
+      "sma150": 543.02
+    },
+    "SNOWMAN": {
+      "close": 38.63,
+      "sma150": 38.35
+    },
+    "REFEX": {
+      "close": 302.75,
+      "sma150": 267.93
+    },
+    "BALKRISIND": {
+      "close": 2407.2,
+      "sma150": 2278.62
+    },
+    "MACPOWER": {
+      "close": 1781.4,
+      "sma150": 1100.38
+    },
+    "CAMS": {
+      "close": 776.25,
+      "sma150": 741.46
+    },
+    "TVSMOTOR": {
+      "close": 4385.9,
+      "sma150": 3675.13
+    },
+    "PRICOLLTD": {
+      "close": 806.55,
+      "sma150": 598.72
+    },
+    "HINDOILEXP": {
+      "close": 154.89,
+      "sma150": 153.32
+    },
+    "BEML": {
+      "close": 1908.5,
+      "sma150": 1739.19
+    },
+    "PCBL": {
+      "close": 315.45,
+      "sma150": 292.91
+    },
+    "SHOPERSTOP": {
+      "close": 432.05,
+      "sma150": 348.63
+    },
+    "QUESS": {
+      "close": 343.9,
+      "sma150": 229.31
+    },
+    "AGI": {
+      "close": 716.5,
+      "sma150": 621.35
+    },
+    "IVP": {
+      "close": 177.98,
+      "sma150": 149.72
+    },
+    "IITL": {
+      "close": 150.35,
+      "sma150": 141.91
+    },
+    "DEEPINDS": {
+      "close": 680.7,
+      "sma150": 453.78
+    },
+    "ROLEXRINGS": {
+      "close": 179.46,
+      "sma150": 137.64
+    },
+    "SHRINGARMS": {
+      "close": 227.24,
+      "sma150": 216.07
+    },
+    "CEMPRO": {
+      "close": 1321.8,
+      "sma150": 916.36
+    },
+    "LUXIND": {
+      "close": 1209.0,
+      "sma150": 1175.28
+    },
+    "STEL": {
+      "close": 591.4,
+      "sma150": 497.58
+    },
+    "PDSL": {
+      "close": 376.35,
+      "sma150": 320.47
+    },
+    "EMSLIMITED": {
+      "close": 369.1,
+      "sma150": 348.85
+    },
+    "GALAPREC": {
+      "close": 1018.0,
+      "sma150": 882.92
+    },
+    "EIEL": {
+      "close": 200.16,
+      "sma150": 191.12
+    },
+    "BANSALWIRE": {
+      "close": 323.75,
+      "sma150": 294.84
+    },
+    "MGEL": {
+      "close": 14.68,
+      "sma150": 13.63
+    },
+    "AEGISLOG": {
+      "close": 1287.2,
+      "sma150": 859.89
+    },
+    "OMAXE": {
+      "close": 100.83,
+      "sma150": 79.69
+    },
+    "CAPLIPOINT": {
+      "close": 2522.0,
+      "sma150": 2022.29
+    },
+    "VISHNU": {
+      "close": 618.25,
+      "sma150": 562.38
+    },
+    "PAGEIND": {
+      "close": 37360.0,
+      "sma150": 36462.0
+    },
+    "GLOTTIS": {
+      "close": 66.1,
+      "sma150": 57.93
+    },
+    "ESAFSFB": {
+      "close": 39.26,
+      "sma150": 29.38
+    },
+    "SUBEXLTD": {
+      "close": 14.11,
+      "sma150": 10.51
+    },
+    "SONACOMS": {
+      "close": 805.1,
+      "sma150": 586.61
+    },
+    "DIFFNKG": {
+      "close": 398.4,
+      "sma150": 319.15
+    },
+    "DATAPATTNS": {
+      "close": 4528.7,
+      "sma150": 3684.53
+    },
+    "MOSCHIP": {
+      "close": 211.72,
+      "sma150": 200.55
+    },
+    "KNRCON": {
+      "close": 134.6,
+      "sma150": 130.68
+    },
+    "GHCLTEXTIL": {
+      "close": 120.08,
+      "sma150": 89.87
+    },
+    "FILATEX": {
+      "close": 82.72,
+      "sma150": 51.27
+    },
+    "SETCO": {
+      "close": 17.5,
+      "sma150": 13.13
+    },
+    "LINCOLN": {
+      "close": 623.35,
+      "sma150": 595.62
+    },
+    "KKCL": {
+      "close": 521.0,
+      "sma150": 478.64
+    },
+    "ARIS": {
+      "close": 136.25,
+      "sma150": 116.64
+    },
+    "ORIENTCER": {
+      "close": 44.08,
+      "sma150": 40.68
+    },
+    "CPEDU": {
+      "close": 208.11,
+      "sma150": 197.34
+    },
+    "HERITGFOOD": {
+      "close": 363.65,
+      "sma150": 344.59
+    },
+    "SUNFLAG": {
+      "close": 360.75,
+      "sma150": 302.68
+    },
+    "PONNIERODE": {
+      "close": 350.75,
+      "sma150": 295.07
+    },
+    "HAPPSTMNDS": {
+      "close": 426.8,
+      "sma150": 380.46
+    },
+    "EMIL": {
+      "close": 192.42,
+      "sma150": 112.91
+    },
+    "MAHSEAMLES": {
+      "close": 622.0,
+      "sma150": 586.49
+    },
+    "PCJEWELLER": {
+      "close": 9.79,
+      "sma150": 9.42
+    },
+    "JMA": {
+      "close": 89.2,
+      "sma150": 85.58
+    },
+    "GRAVITA": {
+      "close": 1821.7,
+      "sma150": 1632.07
+    },
+    "PVRINOX": {
+      "close": 1192.0,
+      "sma150": 1012.26
+    },
+    "UNITEDPOLY": {
+      "close": 33.82,
+      "sma150": 29.53
+    },
+    "JOCIL": {
+      "close": 148.5,
+      "sma150": 134.84
+    },
+    "ETHOSLTD": {
+      "close": 2788.6,
+      "sma150": 2471.92
+    },
+    "LTTS": {
+      "close": 3528.5,
+      "sma150": 3501.42
+    },
+    "SKFINDUS": {
+      "close": 2724.6,
+      "sma150": 2465.14
+    },
+    "BLUEJET": {
+      "close": 593.2,
+      "sma150": 466.26
+    },
+    "JUBLFOOD": {
+      "close": 511.5,
+      "sma150": 467.72
+    },
+    "UYFINCORP": {
+      "close": 21.39,
+      "sma150": 14.87
+    },
+    "BTML": {
+      "close": 8.95,
+      "sma150": 6.86
+    },
+    "NEULANDLAB": {
+      "close": 23661.0,
+      "sma150": 15891.1
+    },
+    "BHAGERIA": {
+      "close": 202.08,
+      "sma150": 177.39
+    },
+    "CESC": {
+      "close": 170.22,
+      "sma150": 164.64
+    },
+    "NOCIL": {
+      "close": 163.71,
+      "sma150": 159.74
+    },
+    "LANCORHOL": {
+      "close": 29.29,
+      "sma150": 24.82
+    },
+    "POLYCAB": {
+      "close": 9370.0,
+      "sma150": 8443.77
+    },
+    "INDOTECH": {
+      "close": 3608.4,
+      "sma150": 2241.51
+    },
+    "SATIN": {
+      "close": 228.73,
+      "sma150": 194.5
+    },
+    "TOTAL": {
+      "close": 65.07,
+      "sma150": 57.72
+    },
+    "TORNTPHARM": {
+      "close": 4900.0,
+      "sma150": 4405.45
+    },
+    "IMPAL": {
+      "close": 1083.1,
+      "sma150": 1054.25
+    },
+    "MEESHO": {
+      "close": 193.82,
+      "sma150": 172.13
+    },
+    "KOVAI": {
+      "close": 6122.0,
+      "sma150": 4362.6
+    },
+    "WELENT": {
+      "close": 569.4,
+      "sma150": 518.45
+    },
+    "ASAL": {
+      "close": 505.95,
+      "sma150": 479.5
+    },
+    "BHARATFORG": {
+      "close": 2093.0,
+      "sma150": 1868.68
+    },
+    "INDNIPPON": {
+      "close": 1138.5,
+      "sma150": 880.53
+    },
+    "BODALCHEM": {
+      "close": 69.41,
+      "sma150": 60.48
+    },
+    "ELGIRUBCO": {
+      "close": 59.11,
+      "sma150": 47.74
+    },
+    "GULFOILLUB": {
+      "close": 1174.6,
+      "sma150": 1026.14
+    },
+    "TAINWALCHM": {
+      "close": 208.5,
+      "sma150": 194.79
+    },
+    "OIL": {
+      "close": 474.65,
+      "sma150": 462.65
+    },
+    "NMDC": {
+      "close": 85.5,
+      "sma150": 84.61
+    },
+    "MUTHOOTCAP": {
+      "close": 258.69,
+      "sma150": 218.02
+    },
+    "LOYALTEX": {
+      "close": 221.0,
+      "sma150": 212.6
+    },
+    "GROWW": {
+      "close": 198.69,
+      "sma150": 184.92
+    },
+    "SURYODAY": {
+      "close": 154.01,
+      "sma150": 152.17
+    },
+    "KALYANIFRG": {
+      "close": 651.7,
+      "sma150": 608.53
+    },
+    "SMARTWORKS": {
+      "close": 494.95,
+      "sma150": 445.38
+    },
+    "OLAELEC": {
+      "close": 39.22,
+      "sma150": 35.38
+    },
+    "AARTIPHARM": {
+      "close": 861.95,
+      "sma150": 706.42
+    },
+    "LAURUSLABS": {
+      "close": 1809.7,
+      "sma150": 1266.79
+    },
+    "SEAMECLTD": {
+      "close": 1561.1,
+      "sma150": 1418.34
+    },
+    "SHARDAMOTR": {
+      "close": 909.5,
+      "sma150": 858.35
+    },
+    "HEIDELBERG": {
+      "close": 160.22,
+      "sma150": 158.32
+    },
+    "AJANTPHARM": {
+      "close": 3718.2,
+      "sma150": 3050.29
+    },
+    "JINDALSAW": {
+      "close": 270.4,
+      "sma150": 221.22
+    },
+    "ICICIAMC": {
+      "close": 3136.0,
+      "sma150": 3115.24
+    },
+    "BHARTIHEXA": {
+      "close": 1641.0,
+      "sma150": 1566.17
+    },
+    "TCIEXP": {
+      "close": 566.75,
+      "sma150": 530.81
+    },
+    "LLOYDSME": {
+      "close": 1942.0,
+      "sma150": 1562.42
+    },
+    "VENUSPIPES": {
+      "close": 1596.5,
+      "sma150": 1330.84
+    },
+    "MAHABANK": {
+      "close": 81.1,
+      "sma150": 75.06
+    },
+    "VENUSREM": {
+      "close": 1803.4,
+      "sma150": 1166.99
+    },
+    "SMCGLOBAL": {
+      "close": 80.41,
+      "sma150": 72.06
+    },
+    "TSFINV": {
+      "close": 420.4,
+      "sma150": 413.8
+    },
+    "PNBGILTS": {
+      "close": 80.34,
+      "sma150": 79.44
+    },
+    "AARTECH": {
+      "close": 50.82,
+      "sma150": 46.14
+    },
+    "SURAKSHA": {
+      "close": 308.45,
+      "sma150": 272.24
+    },
+    "EQUIPPP": {
+      "close": 21.75,
+      "sma150": 18.79
+    },
+    "LUMAXTECH": {
+      "close": 2049.0,
+      "sma150": 1605.7
+    },
+    "RAINBOW": {
+      "close": 1478.5,
+      "sma150": 1309.05
+    },
+    "UNIVPHOTO": {
+      "close": 478.0,
+      "sma150": 381.28
+    },
+    "CLSEL": {
+      "close": 281.6,
+      "sma150": 269.41
+    },
+    "V2RETAIL": {
+      "close": 218.85,
+      "sma150": 211.85
+    },
+    "YESBANK": {
+      "close": 22.92,
+      "sma150": 21.72
+    },
+    "PRITIKAUTO": {
+      "close": 17.49,
+      "sma150": 14.58
+    },
+    "KENNAMET": {
+      "close": 3551.7,
+      "sma150": 2824.45
+    },
+    "GRAPHITE": {
+      "close": 729.5,
+      "sma150": 667.11
+    },
+    "AMBIKCO": {
+      "close": 1615.9,
+      "sma150": 1493.33
+    },
+    "HGS": {
+      "close": 413.05,
+      "sma150": 406.67
+    },
+    "INDIGOPNTS": {
+      "close": 1161.0,
+      "sma150": 978.29
+    },
+    "INDGN": {
+      "close": 561.75,
+      "sma150": 499.58
+    },
+    "DBOL": {
+      "close": 121.08,
+      "sma150": 106.24
+    },
+    "ROSSELLIND": {
+      "close": 56.17,
+      "sma150": 51.7
+    },
+    "RAJRILTD": {
+      "close": 21.93,
+      "sma150": 21.42
+    },
+    "VIMTALABS": {
+      "close": 623.45,
+      "sma150": 505.44
+    },
+    "LORDSCHLO": {
+      "close": 139.98,
+      "sma150": 138.09
+    },
+    "JINDWORLD": {
+      "close": 35.63,
+      "sma150": 28.02
+    },
+    "UFBL": {
+      "close": 762.6,
+      "sma150": 419.58
+    },
+    "SKIPPER": {
+      "close": 530.7,
+      "sma150": 452.09
+    },
+    "VHL": {
+      "close": 3473.8,
+      "sma150": 3393.88
+    },
+    "APCOTEXIND": {
+      "close": 605.45,
+      "sma150": 448.46
+    },
+    "GLOBAL": {
+      "close": 107.47,
+      "sma150": 99.05
+    },
+    "CGPOWER": {
+      "close": 898.8,
+      "sma150": 789.49
+    },
+    "METROPOLIS": {
+      "close": 550.75,
+      "sma150": 507.43
+    },
+    "NAUKRI": {
+      "close": 1355.8,
+      "sma150": 1092.21
+    },
+    "ONWARDTEC": {
+      "close": 286.75,
+      "sma150": 272.98
+    },
+    "KMEW": {
+      "close": 2756.5,
+      "sma150": 1954.3
+    },
+    "TALBROAUTO": {
+      "close": 423.45,
+      "sma150": 319.4
+    },
+    "CUMMINSIND": {
+      "close": 5450.0,
+      "sma150": 5052.37
+    },
+    "RADICO": {
+      "close": 4693.4,
+      "sma150": 3354.43
+    },
+    "SHAILY": {
+      "close": 3396.3,
+      "sma150": 2485.41
+    },
+    "TRITURBINE": {
+      "close": 597.9,
+      "sma150": 564.46
+    },
+    "PANAMAPET": {
+      "close": 487.1,
+      "sma150": 338.74
+    },
+    "COHANCE": {
+      "close": 444.75,
+      "sma150": 395.34
+    },
+    "CDSL": {
+      "close": 1356.8,
+      "sma150": 1299.1
+    },
+    "INDIAGLYCO": {
+      "close": 1070.9,
+      "sma150": 982.25
+    },
+    "ESABINDIA": {
+      "close": 6289.0,
+      "sma150": 5793.25
+    },
+    "ALICON": {
+      "close": 726.1,
+      "sma150": 692.47
+    },
+    "DLF": {
+      "close": 671.0,
+      "sma150": 612.45
+    },
+    "MAHSCOOTER": {
+      "close": 13449.0,
+      "sma150": 12881.86
+    },
+    "ANTHEM": {
+      "close": 898.0,
+      "sma150": 726.47
+    },
+    "BALAXI": {
+      "close": 24.21,
+      "sma150": 23.49
+    },
+    "IFBAGRO": {
+      "close": 1038.15,
+      "sma150": 980.69
+    },
+    "MATRIMONY": {
+      "close": 543.05,
+      "sma150": 449.32
+    },
+    "OILCOUNTUB": {
+      "close": 59.6,
+      "sma150": 52.99
+    },
+    "MUKANDLTD": {
+      "close": 135.27,
+      "sma150": 133.35
+    },
+    "JSL": {
+      "close": 744.0,
+      "sma150": 743.15
+    },
+    "LODHA": {
+      "close": 1254.0,
+      "sma150": 981.33
+    },
+    "HSCL": {
+      "close": 787.4,
+      "sma150": 574.24
+    },
+    "UNIONBANK": {
+      "close": 188.9,
+      "sma150": 175.05
+    },
+    "PARAS": {
+      "close": 1388.5,
+      "sma150": 888.61
+    },
+    "FEDERALBNK": {
+      "close": 354.1,
+      "sma150": 300.96
+    },
+    "SWSOLAR": {
+      "close": 203.62,
+      "sma150": 201.91
+    },
+    "GMMPFAUDLR": {
+      "close": 1056.55,
+      "sma150": 885.94
+    },
+    "BERGEPAINT": {
+      "close": 549.35,
+      "sma150": 486.29
+    },
+    "CONFIPET": {
+      "close": 72.55,
+      "sma150": 54.56
+    },
+    "ABSLAMC": {
+      "close": 1019.0,
+      "sma150": 987.8
+    },
+    "SCPL": {
+      "close": 657.95,
+      "sma150": 411.53
+    },
+    "FEDFINA": {
+      "close": 152.0,
+      "sma150": 147.63
+    },
+    "MCX": {
+      "close": 2933.1,
+      "sma150": 2705.54
+    },
+    "HUHTAMAKI": {
+      "close": 279.1,
+      "sma150": 196.44
+    },
+    "LT": {
+      "close": 4086.7,
+      "sma150": 3961.3
+    },
+    "RATEGAIN": {
+      "close": 949.5,
+      "sma150": 694.33
+    },
+    "ZEEMEDIA": {
+      "close": 9.7,
+      "sma150": 8.17
+    },
+    "GUJTHEM": {
+      "close": 351.25,
+      "sma150": 345.41
+    },
+    "CONSOFINVT": {
+      "close": 271.95,
+      "sma150": 229.05
+    },
+    "MINDACORP": {
+      "close": 725.15,
+      "sma150": 593.57
+    },
+    "ASKAUTOLTD": {
+      "close": 649.2,
+      "sma150": 460.19
+    },
+    "ASHIANA": {
+      "close": 365.0,
+      "sma150": 341.87
+    },
+    "ATULAUTO": {
+      "close": 498.0,
+      "sma150": 467.23
+    },
+    "KARURVYSYA": {
+      "close": 334.0,
+      "sma150": 299.64
+    },
+    "RICOAUTO": {
+      "close": 132.9,
+      "sma150": 124.58
+    },
+    "KRONOX": {
+      "close": 151.52,
+      "sma150": 134.62
+    },
+    "IGCL": {
+      "close": 71.38,
+      "sma150": 66.02
+    },
+    "IRISDOREME": {
+      "close": 58.3,
+      "sma150": 37.61
+    },
+    "ONIDA": {
+      "close": 36.02,
+      "sma150": 34.69
+    },
+    "THEJO": {
+      "close": 2118.1,
+      "sma150": 1760.19
+    },
+    "KIRLPNU": {
+      "close": 1534.3,
+      "sma150": 1395.65
+    },
+    "DJML": {
+      "close": 107.44,
+      "sma150": 95.64
+    },
+    "JSWSTEEL": {
+      "close": 1277.8,
+      "sma150": 1238.35
+    },
+    "CENTENKA": {
+      "close": 572.6,
+      "sma150": 475.17
+    },
+    "KABRAEXTRU": {
+      "close": 520.5,
+      "sma150": 264.64
+    },
+    "GREENLAM": {
+      "close": 252.8,
+      "sma150": 239.52
+    },
+    "ALLCARGO": {
+      "close": 10.06,
+      "sma150": 8.89
+    },
+    "IVC": {
+      "close": 8.32,
+      "sma150": 7.77
+    },
+    "UNITDSPR": {
+      "close": 1545.0,
+      "sma150": 1353.08
+    },
+    "HAL": {
+      "close": 5059.0,
+      "sma150": 4321.36
+    },
+    "VEEDOL": {
+      "close": 1521.6,
+      "sma150": 1426.53
+    },
+    "UNICHEMLAB": {
+      "close": 543.3,
+      "sma150": 408.89
+    },
+    "EDELWEISS": {
+      "close": 122.67,
+      "sma150": 114.67
+    },
+    "ALIVUS": {
+      "close": 1394.4,
+      "sma150": 1040.37
+    },
+    "RAYMONDREL": {
+      "close": 581.05,
+      "sma150": 527.96
+    },
+    "GPPL": {
+      "close": 159.57,
+      "sma150": 159.1
+    },
+    "AHCL": {
+      "close": 14.51,
+      "sma150": 13.6
+    },
+    "EQUITASBNK": {
+      "close": 74.92,
+      "sma150": 69.08
+    },
+    "GLAXO": {
+      "close": 2702.9,
+      "sma150": 2426.31
+    },
+    "WELINV": {
+      "close": 1857.5,
+      "sma150": 1532.52
+    },
+    "KANSAINER": {
+      "close": 205.8,
+      "sma150": 205.51
+    },
+    "WORTHPERI": {
+      "close": 155.29,
+      "sma150": 136.44
+    },
+    "RBA": {
+      "close": 99.59,
+      "sma150": 68.15
+    },
+    "PRIMESECU": {
+      "close": 283.3,
+      "sma150": 281.12
+    },
+    "SIMPLEXINF": {
+      "close": 251.31,
+      "sma150": 226.03
+    },
+    "WEL": {
+      "close": 145.74,
+      "sma150": 116.35
+    },
+    "GLENMARK": {
+      "close": 2329.0,
+      "sma150": 2178.19
+    },
+    "WELCORP": {
+      "close": 1882.0,
+      "sma150": 1179.06
+    },
+    "GANDHAR": {
+      "close": 246.69,
+      "sma150": 165.17
+    },
+    "TREL": {
+      "close": 26.05,
+      "sma150": 25.3
+    },
+    "STEELXIND": {
+      "close": 10.92,
+      "sma150": 9.92
+    },
+    "MAHLIFE": {
+      "close": 386.65,
+      "sma150": 354.42
+    },
+    "ALGOQUANT": {
+      "close": 66.29,
+      "sma150": 59.36
+    },
+    "NOVARTIND": {
+      "close": 1589.1,
+      "sma150": 1095.98
+    },
+    "DEEPAKFERT": {
+      "close": 1502.7,
+      "sma150": 1277.92
+    },
+    "KRISHIVAL": {
+      "close": 408.3,
+      "sma150": 359.2
+    },
+    "SARLAPOLY": {
+      "close": 101.61,
+      "sma150": 91.17
+    },
+    "GANESHBE": {
+      "close": 118.13,
+      "sma150": 93.14
+    },
+    "INOXINDIA": {
+      "close": 1950.8,
+      "sma150": 1489.98
+    },
+    "ZENTEC": {
+      "close": 1864.5,
+      "sma150": 1569.13
+    },
+    "SKYGOLD": {
+      "close": 776.4,
+      "sma150": 462.21
+    },
+    "OAL": {
+      "close": 349.45,
+      "sma150": 305.08
+    },
+    "CASTROLIND": {
+      "close": 187.55,
+      "sma150": 184.53
+    },
+    "SBC": {
+      "close": 38.75,
+      "sma150": 35.14
+    },
+    "MANBA": {
+      "close": 130.52,
+      "sma150": 123.06
+    },
+    "GRANULES": {
+      "close": 861.55,
+      "sma150": 702.28
+    },
+    "BALAJITELE": {
+      "close": 92.72,
+      "sma150": 92.61
+    },
+    "BRIGADE": {
+      "close": 593.7,
+      "sma150": 547.28
+    },
+    "TARSONS": {
+      "close": 361.5,
+      "sma150": 230.98
+    },
+    "GREAVESCOT": {
+      "close": 195.01,
+      "sma150": 179.69
+    },
+    "BATAINDIA": {
+      "close": 758.1,
+      "sma150": 740.41
+    },
+    "AUROPHARMA": {
+      "close": 1627.2,
+      "sma150": 1386.18
+    },
+    "RITES": {
+      "close": 221.72,
+      "sma150": 214.2
+    },
+    "HOMEFIRST": {
+      "close": 1179.9,
+      "sma150": 1122.41
+    },
+    "GANESHHOU": {
+      "close": 838.0,
+      "sma150": 714.79
+    },
+    "KALYANKJIL": {
+      "close": 610.0,
+      "sma150": 429.72
+    },
+    "CRISIL": {
+      "close": 4488.3,
+      "sma150": 4268.57
+    },
+    "TIIL": {
+      "close": 3097.2,
+      "sma150": 2403.89
+    },
+    "JIOFIN": {
+      "close": 249.75,
+      "sma150": 247.13
+    },
+    "SHAREINDIA": {
+      "close": 174.96,
+      "sma150": 146.87
+    },
+    "DIGJAMLMTD": {
+      "close": 50.52,
+      "sma150": 46.0
+    },
+    "FINKURVE": {
+      "close": 72.93,
+      "sma150": 70.0
+    },
+    "CLEDUCATE": {
+      "close": 59.0,
+      "sma150": 54.14
+    },
+    "TITAN": {
+      "close": 5068.5,
+      "sma150": 4338.09
+    },
+    "OLECTRA": {
+      "close": 1320.1,
+      "sma150": 1201.66
+    },
+    "INNOVACAP": {
+      "close": 1038.45,
+      "sma150": 812.43
+    },
+    "BLISSGVS": {
+      "close": 520.5,
+      "sma150": 321.85
+    },
+    "FSL": {
+      "close": 267.75,
+      "sma150": 256.47
+    },
+    "MUFIN": {
+      "close": 135.87,
+      "sma150": 118.6
+    },
+    "MPSLTD": {
+      "close": 2814.8,
+      "sma150": 1866.67
+    },
+    "CHEVIOT": {
+      "close": 1161.5,
+      "sma150": 1087.9
+    },
+    "ITDC": {
+      "close": 698.3,
+      "sma150": 577.51
+    },
+    "JKPAPER": {
+      "close": 380.75,
+      "sma150": 356.27
+    },
+    "SINTERCOM": {
+      "close": 82.64,
+      "sma150": 81.5
+    },
+    "KOHINOOR": {
+      "close": 27.78,
+      "sma150": 24.57
+    },
+    "HIRECT": {
+      "close": 1258.6,
+      "sma150": 925.69
+    },
+    "BAJFINANCE": {
+      "close": 1089.3,
+      "sma150": 960.89
+    },
+    "VENKEYS": {
+      "close": 1531.0,
+      "sma150": 1460.82
+    },
+    "SANDESH": {
+      "close": 1081.85,
+      "sma150": 996.88
+    },
+    "RAJRATAN": {
+      "close": 516.8,
+      "sma150": 443.15
+    },
+    "SYRMA": {
+      "close": 1467.9,
+      "sma150": 1041.86
+    },
+    "BFINVEST": {
+      "close": 464.3,
+      "sma150": 417.39
+    },
+    "ALKYLAMINE": {
+      "close": 1920.1,
+      "sma150": 1629.11
+    },
+    "IFBIND": {
+      "close": 1386.0,
+      "sma150": 1202.89
+    },
+    "KESORAMIND": {
+      "close": 11.72,
+      "sma150": 10.6
+    },
+    "SOLARINDS": {
+      "close": 20000.0,
+      "sma150": 15840.07
+    },
+    "AEGISVOPAK": {
+      "close": 269.5,
+      "sma150": 223.36
+    },
+    "ADFFOODS": {
+      "close": 262.85,
+      "sma150": 242.75
+    },
+    "URBANCO": {
+      "close": 144.6,
+      "sma150": 127.46
+    },
+    "DHANBANK": {
+      "close": 32.39,
+      "sma150": 28.75
+    },
+    "ABB": {
+      "close": 7660.0,
+      "sma150": 6558.33
+    },
+    "NITINSPIN": {
+      "close": 553.75,
+      "sma150": 448.42
+    },
+    "HESTERBIO": {
+      "close": 2417.6,
+      "sma150": 1809.25
+    },
+    "CANHLIFE": {
+      "close": 148.9,
+      "sma150": 144.33
+    },
+    "COROMANDEL": {
+      "close": 2097.9,
+      "sma150": 2059.53
+    },
+    "JTLIND": {
+      "close": 75.33,
+      "sma150": 69.05
+    },
+    "FCL": {
+      "close": 43.41,
+      "sma150": 30.17
+    },
+    "IVALUE": {
+      "close": 279.1,
+      "sma150": 252.27
+    },
+    "MANOMAY": {
+      "close": 215.35,
+      "sma150": 205.87
+    },
+    "PATELENG": {
+      "close": 28.48,
+      "sma150": 28.14
+    },
+    "TASTYBITE": {
+      "close": 10014.5,
+      "sma150": 7803.19
+    },
+    "ASPINWALL": {
+      "close": 236.24,
+      "sma150": 230.6
+    },
+    "UDS": {
+      "close": 211.72,
+      "sma150": 171.03
+    },
+    "ANDHRSUGAR": {
+      "close": 101.98,
+      "sma150": 81.39
+    },
+    "PRINCEPIPE": {
+      "close": 284.25,
+      "sma150": 258.19
+    },
+    "MUKTAARTS": {
+      "close": 56.55,
+      "sma150": 55.75
+    },
+    "MARALOVER": {
+      "close": 53.15,
+      "sma150": 48.67
+    },
+    "SIEMENS": {
+      "close": 3943.0,
+      "sma150": 3461.96
+    },
+    "SJS": {
+      "close": 2534.5,
+      "sma150": 1929.12
+    },
+    "HAVELLS": {
+      "close": 1299.0,
+      "sma150": 1270.41
+    },
+    "NIITLTD": {
+      "close": 95.63,
+      "sma150": 80.02
+    },
+    "KIRLOSENG": {
+      "close": 2101.6,
+      "sma150": 1705.63
+    },
+    "STEELCAS": {
+      "close": 352.1,
+      "sma150": 268.13
+    },
+    "SHALPAINTS": {
+      "close": 91.45,
+      "sma150": 57.15
+    },
+    "GRASIM": {
+      "close": 3250.5,
+      "sma150": 2936.86
+    },
+    "ANANDRATHI": {
+      "close": 2176.0,
+      "sma150": 1754.56
+    },
+    "KRYSTAL": {
+      "close": 620.4,
+      "sma150": 592.34
+    },
+    "SIGNPOST": {
+      "close": 267.55,
+      "sma150": 257.9
+    },
+    "ORIENTELEC": {
+      "close": 187.42,
+      "sma150": 176.8
+    },
+    "DIVISLAB": {
+      "close": 8481.5,
+      "sma150": 6650.91
+    },
+    "BESTAGRO": {
+      "close": 18.88,
+      "sma150": 17.76
+    },
+    "SHANKARA": {
+      "close": 141.1,
+      "sma150": 118.79
+    },
+    "TEXINFRA": {
+      "close": 107.85,
+      "sma150": 100.98
+    },
+    "PNBHOUSING": {
+      "close": 1150.8,
+      "sma150": 962.18
+    },
+    "MTARTECH": {
+      "close": 7057.0,
+      "sma150": 5294.06
+    },
+    "SHRIRAMFIN": {
+      "close": 1122.0,
+      "sma150": 1006.69
+    },
+    "INDHOTEL": {
+      "close": 720.0,
+      "sma150": 675.8
+    },
+    "GOKULAGRO": {
+      "close": 231.66,
+      "sma150": 201.27
+    },
+    "MOTOGENFIN": {
+      "close": 26.07,
+      "sma150": 24.53
+    },
+    "JPPOWER": {
+      "close": 17.39,
+      "sma150": 16.99
+    },
+    "UTKARSHBNK": {
+      "close": 14.04,
+      "sma150": 13.73
+    },
+    "EMUDHRA": {
+      "close": 518.75,
+      "sma150": 474.17
+    },
+    "NIVABUPA": {
+      "close": 82.71,
+      "sma150": 79.95
+    },
+    "VARROC": {
+      "close": 847.75,
+      "sma150": 583.69
+    },
+    "SVLL": {
+      "close": 756.05,
+      "sma150": 634.52
+    },
+    "AEQUS": {
+      "close": 249.58,
+      "sma150": 179.69
+    },
+    "SAPPHIRE": {
+      "close": 234.68,
+      "sma150": 188.69
+    },
+    "SHEMAROO": {
+      "close": 129.1,
+      "sma150": 107.97
+    },
+    "CARTRADE": {
+      "close": 2796.9,
+      "sma150": 2214.53
+    },
+    "ARE&M": {
+      "close": 945.7,
+      "sma150": 846.32
+    },
+    "ZYDUSWELL": {
+      "close": 510.15,
+      "sma150": 483.47
+    },
+    "VRLLOG": {
+      "close": 296.2,
+      "sma150": 256.27
+    },
+    "SKMEGGPROD": {
+      "close": 259.42,
+      "sma150": 210.91
+    },
+    "GAEL": {
+      "close": 172.75,
+      "sma150": 150.09
+    },
+    "PRESTIGE": {
+      "close": 1591.9,
+      "sma150": 1460.23
+    },
+    "PNGJL": {
+      "close": 610.4,
+      "sma150": 588.37
+    },
+    "ABREL": {
+      "close": 1402.1,
+      "sma150": 1337.23
+    },
+    "NEWGEN": {
+      "close": 534.85,
+      "sma150": 515.0
+    },
+    "VIDYAWIRES": {
+      "close": 89.4,
+      "sma150": 74.91
+    },
+    "CHOICEIN": {
+      "close": 803.8,
+      "sma150": 731.72
+    },
+    "LUMAXIND": {
+      "close": 5792.0,
+      "sma150": 5377.9
+    },
+    "DIAMONDYD": {
+      "close": 1190.4,
+      "sma150": 1075.2
+    },
+    "EXIDEIND": {
+      "close": 475.7,
+      "sma150": 365.87
+    },
+    "DEVYANI": {
+      "close": 143.65,
+      "sma150": 117.54
+    },
+    "SUTLEJTEX": {
+      "close": 38.06,
+      "sma150": 34.19
+    },
+    "POONAWALLA": {
+      "close": 497.45,
+      "sma150": 434.09
+    },
+    "SENCO": {
+      "close": 341.55,
+      "sma150": 335.94
+    },
+    "STYRENIX": {
+      "close": 2181.6,
+      "sma150": 2134.5
+    },
+    "APLAPOLLO": {
+      "close": 2081.3,
+      "sma150": 1960.16
+    },
+    "WEWORK": {
+      "close": 707.8,
+      "sma150": 588.56
+    },
+    "JUSTDIAL": {
+      "close": 680.3,
+      "sma150": 598.22
+    },
+    "SRHHYPOLTD": {
+      "close": 496.05,
+      "sma150": 481.15
+    },
+    "ISFT": {
+      "close": 82.25,
+      "sma150": 78.68
+    },
+    "TPLPLASTEH": {
+      "close": 77.25,
+      "sma150": 68.57
+    },
+    "MANAPPURAM": {
+      "close": 348.6,
+      "sma150": 306.03
+    },
+    "ARTEMISMED": {
+      "close": 314.4,
+      "sma150": 255.3
+    },
+    "JAYBARMARU": {
+      "close": 127.72,
+      "sma150": 117.53
+    },
+    "SBFC": {
+      "close": 93.95,
+      "sma150": 93.02
+    },
+    "ATUL": {
+      "close": 6721.0,
+      "sma150": 6501.12
+    },
+    "POWERMECH": {
+      "close": 2452.3,
+      "sma150": 2359.78
+    },
+    "ICICIBANK": {
+      "close": 1415.3,
+      "sma150": 1346.72
+    },
+    "EPIGRAL": {
+      "close": 1097.1,
+      "sma150": 1077.07
+    },
+    "CGCL": {
+      "close": 226.24,
+      "sma150": 195.79
+    },
+    "LANDMARK": {
+      "close": 511.0,
+      "sma150": 426.64
+    },
+    "PRECWIRE": {
+      "close": 457.75,
+      "sma150": 349.46
+    },
+    "GULFPETRO": {
+      "close": 61.57,
+      "sma150": 36.52
+    },
+    "KAJARIACER": {
+      "close": 1251.6,
+      "sma150": 1075.71
+    },
+    "MAHLOG": {
+      "close": 404.95,
+      "sma150": 375.97
+    },
+    "NUVOCO": {
+      "close": 331.1,
+      "sma150": 324.09
+    },
+    "MUTHOOTMF": {
+      "close": 208.12,
+      "sma150": 191.31
+    },
+    "MOTHERSON": {
+      "close": 168.06,
+      "sma150": 131.86
+    },
+    "STARHEALTH": {
+      "close": 584.25,
+      "sma150": 511.57
+    },
+    "BAJAJFINSV": {
+      "close": 2005.0,
+      "sma150": 1863.9
+    },
+    "ETERNAL": {
+      "close": 318.0,
+      "sma150": 265.14
+    },
+    "IIFL": {
+      "close": 630.05,
+      "sma150": 515.7
+    },
+    "DMCC": {
+      "close": 293.65,
+      "sma150": 253.05
+    },
+    "NAHARCAP": {
+      "close": 255.62,
+      "sma150": 244.03
+    },
+    "PERSISTENT": {
+      "close": 5570.0,
+      "sma150": 5236.09
+    },
+    "GRINDWELL": {
+      "close": 2163.5,
+      "sma150": 1774.72
+    },
+    "PREMIERENE": {
+      "close": 1015.5,
+      "sma150": 932.09
+    },
+    "IIFLCAPS": {
+      "close": 334.55,
+      "sma150": 326.01
+    },
+    "MOBIKWIK": {
+      "close": 202.83,
+      "sma150": 201.96
+    },
+    "EICHERMOT": {
+      "close": 8050.0,
+      "sma150": 7368.04
+    },
+    "GMRAIRPORT": {
+      "close": 101.31,
+      "sma150": 100.06
+    },
+    "BIRLANU": {
+      "close": 1551.8,
+      "sma150": 1454.8
+    },
+    "YATHARTH": {
+      "close": 842.85,
+      "sma150": 753.94
+    },
+    "CYBERTECH": {
+      "close": 133.64,
+      "sma150": 131.55
+    },
+    "MANAKSIA": {
+      "close": 58.87,
+      "sma150": 58.78
+    },
+    "SUNDRMFAST": {
+      "close": 1214.75,
+      "sma150": 896.34
+    },
+    "EMMVEE": {
+      "close": 320.75,
+      "sma150": 266.46
+    },
+    "SUPREMEINF": {
+      "close": 90.66,
+      "sma150": 79.65
+    },
+    "KICL": {
+      "close": 5292.5,
+      "sma150": 4963.91
+    },
+    "SUPERHOUSE": {
+      "close": 169.12,
+      "sma150": 153.57
+    },
+    "FOSECOIND": {
+      "close": 5641.0,
+      "sma150": 4938.55
+    },
+    "ORISSAMINE": {
+      "close": 4871.1,
+      "sma150": 4092.25
+    },
+    "KAYNES": {
+      "close": 3651.0,
+      "sma150": 3613.04
+    },
+    "RAMCOSYS": {
+      "close": 594.2,
+      "sma150": 524.41
+    },
+    "CCL": {
+      "close": 1130.4,
+      "sma150": 1086.82
+    },
+    "JBMA": {
+      "close": 621.35,
+      "sma150": 619.0
+    },
+    "RPEL": {
+      "close": 1430.1,
+      "sma150": 921.17
+    },
+    "HCG": {
+      "close": 712.35,
+      "sma150": 613.71
+    },
+    "SGFIN": {
+      "close": 660.25,
+      "sma150": 517.41
+    },
+    "TVSELECT": {
+      "close": 450.35,
+      "sma150": 442.75
+    },
+    "BOSCHLTD": {
+      "close": 46970.0,
+      "sma150": 37406.3
+    },
+    "PETRONET": {
+      "close": 281.8,
+      "sma150": 280.08
+    },
+    "ARVEE": {
+      "close": 165.55,
+      "sma150": 161.28
+    },
+    "STOVEKRAFT": {
+      "close": 748.5,
+      "sma150": 603.43
+    },
+    "NEPHROPLUS": {
+      "close": 694.65,
+      "sma150": 597.93
+    },
+    "PDMJEPAPER": {
+      "close": 87.82,
+      "sma150": 83.76
+    },
+    "JINDRILL": {
+      "close": 586.2,
+      "sma150": 549.7
+    },
+    "M&MFIN": {
+      "close": 388.9,
+      "sma150": 336.34
+    },
+    "SPARC": {
+      "close": 197.36,
+      "sma150": 172.06
+    },
+    "GARUDA": {
+      "close": 182.48,
+      "sma150": 173.68
+    },
+    "VARDHACRLC": {
+      "close": 44.47,
+      "sma150": 39.72
+    },
+    "BAJAJ-AUTO": {
+      "close": 11663.0,
+      "sma150": 10028.96
+    },
+    "LTM": {
+      "close": 4700.0,
+      "sma150": 4547.54
+    },
+    "ASTERDM": {
+      "close": 819.75,
+      "sma150": 707.88
+    },
+    "OFSS": {
+      "close": 11789.0,
+      "sma150": 8909.31
+    },
+    "ASIANPAINT": {
+      "close": 2687.5,
+      "sma150": 2546.55
+    },
+    "ARMANFIN": {
+      "close": 1962.9,
+      "sma150": 1660.46
+    },
+    "COFORGE": {
+      "close": 1806.0,
+      "sma150": 1425.72
+    },
+    "ZYDUSLIFE": {
+      "close": 1131.5,
+      "sma150": 993.23
+    },
+    "RPSGVENT": {
+      "close": 887.25,
+      "sma150": 830.82
+    },
+    "DHARMAJ": {
+      "close": 269.25,
+      "sma150": 256.08
+    },
+    "SCHAEFFLER": {
+      "close": 4028.9,
+      "sma150": 4022.6
+    },
+    "SOFTTECH": {
+      "close": 427.05,
+      "sma150": 357.87
+    },
+    "INDOCO": {
+      "close": 218.74,
+      "sma150": 215.87
+    },
+    "TATACOMM": {
+      "close": 1711.9,
+      "sma150": 1692.61
+    },
+    "SUDEEPPHRM": {
+      "close": 1101.55,
+      "sma150": 714.76
+    },
+    "KIOCL": {
+      "close": 388.15,
+      "sma150": 370.7
+    },
+    "UJJIVANSFB": {
+      "close": 72.21,
+      "sma150": 59.86
+    },
+    "WABAG": {
+      "close": 1897.6,
+      "sma150": 1525.89
+    },
+    "REDINGTON": {
+      "close": 332.8,
+      "sma150": 255.0
+    },
+    "DBSTOCKBRO": {
+      "close": 32.51,
+      "sma150": 29.14
+    },
+    "ANANTRAJ": {
+      "close": 627.55,
+      "sma150": 531.9
+    },
+    "BHAGCHEM": {
+      "close": 288.75,
+      "sma150": 240.49
+    },
+    "HEG": {
+      "close": 698.3,
+      "sma150": 573.82
+    },
+    "MAZDOCK": {
+      "close": 2569.7,
+      "sma150": 2439.34
+    },
+    "BALAMINES": {
+      "close": 2125.2,
+      "sma150": 1564.34
+    },
+    "MONARCH": {
+      "close": 389.05,
+      "sma150": 314.85
+    },
+    "DVL": {
+      "close": 265.92,
+      "sma150": 243.63
+    },
+    "WALCHANNAG": {
+      "close": 223.91,
+      "sma150": 209.34
+    },
+    "HYUNDAI": {
+      "close": 2190.0,
+      "sma150": 2013.27
+    },
+    "IMFA": {
+      "close": 1398.7,
+      "sma150": 1358.99
+    },
+    "MOL": {
+      "close": 62.97,
+      "sma150": 51.56
+    },
+    "SPLPETRO": {
+      "close": 723.45,
+      "sma150": 686.52
+    },
+    "SURANASOL": {
+      "close": 25.49,
+      "sma150": 25.23
+    },
+    "GROBTEA": {
+      "close": 953.8,
+      "sma150": 916.29
+    },
+    "SHIVAUM": {
+      "close": 445.1,
+      "sma150": 345.12
+    },
+    "SAKSOFT": {
+      "close": 164.95,
+      "sma150": 153.7
+    },
+    "CONCOR": {
+      "close": 524.5,
+      "sma150": 490.04
+    },
+    "IGARASHI": {
+      "close": 454.9,
+      "sma150": 393.32
+    },
+    "MARKSANS": {
+      "close": 331.45,
+      "sma150": 211.86
+    },
+    "SECMARK": {
+      "close": 127.66,
+      "sma150": 119.04
+    },
+    "NINSYS": {
+      "close": 735.4,
+      "sma150": 550.26
+    },
+    "ORIENTBELL": {
+      "close": 349.05,
+      "sma150": 304.07
+    },
+    "TRAVELFOOD": {
+      "close": 1358.2,
+      "sma150": 1231.54
+    },
+    "TRUALT": {
+      "close": 479.25,
+      "sma150": 435.25
+    },
+    "SHIVATEX": {
+      "close": 161.88,
+      "sma150": 157.28
+    },
+    "CHOLAFIN": {
+      "close": 1884.7,
+      "sma150": 1655.07
+    },
+    "DREDGECORP": {
+      "close": 1160.5,
+      "sma150": 1013.97
+    },
+    "SPAL": {
+      "close": 932.45,
+      "sma150": 826.31
+    },
+    "PVSL": {
+      "close": 115.9,
+      "sma150": 101.43
+    },
+    "IKS": {
+      "close": 1830.2,
+      "sma150": 1626.15
+    },
+    "ADANIPORTS": {
+      "close": 1691.0,
+      "sma150": 1622.18
+    },
+    "MEDANTA": {
+      "close": 1415.1,
+      "sma150": 1197.74
+    },
+    "AAVAS": {
+      "close": 1389.8,
+      "sma150": 1357.15
+    },
+    "JUBLINGREA": {
+      "close": 732.8,
+      "sma150": 663.81
+    },
+    "MANCREDIT": {
+      "close": 236.73,
+      "sma150": 190.75
+    },
+    "ABBOTINDIA": {
+      "close": 26905.0,
+      "sma150": 26841.87
+    },
+    "WESTLIFE": {
+      "close": 579.6,
+      "sma150": 486.4
+    },
+    "ABCAPITAL": {
+      "close": 398.7,
+      "sma150": 358.73
+    },
+    "AARVI": {
+      "close": 152.6,
+      "sma150": 134.82
+    },
+    "DYNAMATECH": {
+      "close": 11123.0,
+      "sma150": 10189.61
+    },
+    "PNB": {
+      "close": 117.32,
+      "sma150": 113.27
+    },
+    "360ONE": {
+      "close": 1173.0,
+      "sma150": 1096.81
+    },
+    "NAVKARCORP": {
+      "close": 98.89,
+      "sma150": 98.34
+    },
+    "CARERATING": {
+      "close": 1707.0,
+      "sma150": 1632.27
+    },
+    "SBIN": {
+      "close": 1061.2,
+      "sma150": 1055.32
+    },
+    "KSHINTL": {
+      "close": 1022.35,
+      "sma150": 619.07
+    },
+    "PPL": {
+      "close": 272.65,
+      "sma150": 224.94
+    },
+    "AVANTEL": {
+      "close": 157.51,
+      "sma150": 156.2
+    },
+    "GANDHITUBE": {
+      "close": 877.25,
+      "sma150": 837.8
+    },
+    "LTFOODS": {
+      "close": 417.15,
+      "sma150": 394.15
+    },
+    "KAMATHOTEL": {
+      "close": 194.64,
+      "sma150": 181.49
+    },
+    "FLUOROCHEM": {
+      "close": 4707.5,
+      "sma150": 3647.12
+    },
+    "TTKPRESTIG": {
+      "close": 592.1,
+      "sma150": 555.77
+    },
+    "GPTINFRA": {
+      "close": 115.06,
+      "sma150": 114.84
+    },
+    "INDIGO": {
+      "close": 5275.5,
+      "sma150": 4755.48
+    },
+    "FINEORG": {
+      "close": 5110.4,
+      "sma150": 4647.91
+    },
+    "HITECHCORP": {
+      "close": 330.15,
+      "sma150": 209.42
+    },
+    "KANORICHEM": {
+      "close": 151.3,
+      "sma150": 95.73
+    },
+    "BEPL": {
+      "close": 122.89,
+      "sma150": 95.7
+    },
+    "ROTO": {
+      "close": 65.68,
+      "sma150": 61.26
+    },
+    "EPL": {
+      "close": 242.99,
+      "sma150": 219.19
+    },
+    "TMB": {
+      "close": 843.7,
+      "sma150": 700.1
+    },
+    "LAOPALA": {
+      "close": 191.22,
+      "sma150": 185.89
+    },
+    "MUNJALAU": {
+      "close": 119.72,
+      "sma150": 87.05
+    },
+    "LENSKART": {
+      "close": 607.6,
+      "sma150": 509.68
+    },
+    "MAHESHWARI": {
+      "close": 72.0,
+      "sma150": 55.75
+    },
+    "POWERINDIA": {
+      "close": 35450.0,
+      "sma150": 28754.4
+    },
+    "CREDITACC": {
+      "close": 1538.6,
+      "sma150": 1345.27
+    },
+    "IRMENERGY": {
+      "close": 292.1,
+      "sma150": 254.61
+    },
+    "JAYNECOIND": {
+      "close": 88.31,
+      "sma150": 87.36
+    },
+    "GRSE": {
+      "close": 2600.1,
+      "sma150": 2573.49
+    },
+    "WINDMACHIN": {
+      "close": 300.4,
+      "sma150": 276.21
+    },
+    "GVPTECH": {
+      "close": 7.02,
+      "sma150": 6.98
+    },
+    "SOMANYCERA": {
+      "close": 518.9,
+      "sma150": 453.4
+    },
+    "FMGOETZE": {
+      "close": 453.95,
+      "sma150": 441.49
+    },
+    "THEMISMED": {
+      "close": 104.09,
+      "sma150": 96.07
+    },
+    "SUPRAJIT": {
+      "close": 520.75,
+      "sma150": 449.75
+    },
+    "DIXON": {
+      "close": 14025.0,
+      "sma150": 11665.58
+    },
+    "POLICYBZR": {
+      "close": 1728.1,
+      "sma150": 1590.44
+    },
+    "UNIMECH": {
+      "close": 1511.3,
+      "sma150": 1015.33
+    },
+    "SAREGAMA": {
+      "close": 523.4,
+      "sma150": 399.39
+    },
+    "SIYSIL": {
+      "close": 632.6,
+      "sma150": 576.28
+    },
+    "GEECEE": {
+      "close": 368.8,
+      "sma150": 313.3
+    },
+    "IDFCFIRSTB": {
+      "close": 85.05,
+      "sma150": 75.37
+    },
+    "RADIOCITY": {
+      "close": 6.66,
+      "sma150": 6.12
+    },
+    "63MOONS": {
+      "close": 780.25,
+      "sma150": 663.65
+    },
+    "INDIQUBE": {
+      "close": 178.63,
+      "sma150": 169.25
+    },
+    "GIPCL": {
+      "close": 174.44,
+      "sma150": 150.76
+    },
+    "UMIYA-MRO": {
+      "close": 89.01,
+      "sma150": 85.95
+    },
+    "NITCO": {
+      "close": 92.54,
+      "sma150": 91.97
+    },
+    "HEROMOTOCO": {
+      "close": 5745.0,
+      "sma150": 5274.33
+    },
+    "5PAISA": {
+      "close": 380.8,
+      "sma150": 333.92
+    },
+    "SMARTLINK": {
+      "close": 223.76,
+      "sma150": 152.25
+    },
+    "ATALREAL": {
+      "close": 35.85,
+      "sma150": 27.67
+    },
+    "ALBERTDAVD": {
+      "close": 806.1,
+      "sma150": 708.77
+    },
+    "JSWENERGY": {
+      "close": 555.5,
+      "sma150": 527.49
+    },
+    "DELHIVERY": {
+      "close": 456.0,
+      "sma150": 449.69
+    },
+    "PARADEEP": {
+      "close": 146.66,
+      "sma150": 129.55
+    },
+    "STLTECH": {
+      "close": 642.45,
+      "sma150": 354.5
+    },
+    "TMCV": {
+      "close": 470.4,
+      "sma150": 428.5
+    },
+    "ADANIPOWER": {
+      "close": 203.56,
+      "sma150": 188.41
+    },
+    "GINNIFILA": {
+      "close": 44.66,
+      "sma150": 42.34
+    },
+    "GRWRHITECH": {
+      "close": 7030.0,
+      "sma150": 5038.95
+    },
+    "BAJAJHLDNG": {
+      "close": 11379.0,
+      "sma150": 10524.05
+    },
+    "MGL": {
+      "close": 1129.1,
+      "sma150": 1095.92
+    },
+    "AKSHARCHEM": {
+      "close": 303.07,
+      "sma150": 216.56
+    },
+    "MMTC": {
+      "close": 63.81,
+      "sma150": 63.78
+    },
+    "ASAHIINDIA": {
+      "close": 931.2,
+      "sma150": 887.32
+    },
+    "NRL": {
+      "close": 116.0,
+      "sma150": 68.5
+    },
+    "ADOR": {
+      "close": 1525.3,
+      "sma150": 1133.25
+    },
+    "JSWDULUX": {
+      "close": 3139.8,
+      "sma150": 3004.58
+    },
+    "THYROCARE": {
+      "close": 618.6,
+      "sma150": 467.68
+    },
+    "AEROFLEX": {
+      "close": 455.85,
+      "sma150": 324.6
+    },
+    "VINYLINDIA": {
+      "close": 236.57,
+      "sma150": 236.08
+    },
+    "JGCHEM": {
+      "close": 600.8,
+      "sma150": 403.1
+    },
+    "PAUSHAKLTD": {
+      "close": 734.2,
+      "sma150": 503.29
+    },
+    "APEX": {
+      "close": 422.55,
+      "sma150": 394.08
+    },
+    "TEXMOPIPES": {
+      "close": 45.62,
+      "sma150": 44.64
+    },
+    "BASF": {
+      "close": 4041.2,
+      "sma150": 3618.61
+    },
+    "AUBANK": {
+      "close": 1072.2,
+      "sma150": 996.03
+    },
+    "MWL": {
+      "close": 40.91,
+      "sma150": 32.34
+    },
+    "SUMICHEM": {
+      "close": 559.8,
+      "sma150": 450.24
+    },
+    "RBLBANK": {
+      "close": 381.5,
+      "sma150": 334.62
+    },
+    "JAIBALAJI": {
+      "close": 69.96,
+      "sma150": 68.22
+    },
+    "LAL": {
+      "close": 8.72,
+      "sma150": 7.77
+    },
+    "ADANIENT": {
+      "close": 3007.3,
+      "sma150": 2517.97
+    },
+    "PPLPHARMA": {
+      "close": 204.73,
+      "sma150": 166.47
+    },
+    "BOROSCI": {
+      "close": 132.69,
+      "sma150": 128.38
+    },
+    "RGL": {
+      "close": 121.9,
+      "sma150": 110.76
+    },
+    "GARFIBRES": {
+      "close": 748.45,
+      "sma150": 673.89
+    },
+    "SOTL": {
+      "close": 692.65,
+      "sma150": 449.35
+    },
+    "PFIZER": {
+      "close": 4829.1,
+      "sma150": 4737.34
+    },
+    "NORTHARC": {
+      "close": 278.7,
+      "sma150": 269.27
+    },
+    "PRIVISCL": {
+      "close": 3449.0,
+      "sma150": 3184.15
+    },
+    "GUFICBIO": {
+      "close": 418.2,
+      "sma150": 329.58
+    },
+    "WSTCSTPAPR": {
+      "close": 605.5,
+      "sma150": 477.27
+    },
+    "SUPRIYA": {
+      "close": 784.0,
+      "sma150": 755.02
+    },
+    "AGARWALEYE": {
+      "close": 501.6,
+      "sma150": 462.11
+    },
+    "MARINE": {
+      "close": 367.1,
+      "sma150": 226.67
+    },
+    "SAMBHV": {
+      "close": 119.88,
+      "sma150": 106.56
+    },
+    "RVHL": {
+      "close": 43.05,
+      "sma150": 42.58
+    },
+    "RAMCOIND": {
+      "close": 353.45,
+      "sma150": 301.98
+    },
+    "VLSFINANCE": {
+      "close": 256.6,
+      "sma150": 247.97
+    },
+    "APARINDS": {
+      "close": 16524.0,
+      "sma150": 11978.94
+    },
+    "INDUSINDBK": {
+      "close": 1010.6,
+      "sma150": 919.81
+    },
+    "EVEREADY": {
+      "close": 352.9,
+      "sma150": 329.52
+    },
+    "NAVINFLUOR": {
+      "close": 8151.0,
+      "sma150": 6827.62
+    },
+    "KTKBANK": {
+      "close": 306.5,
+      "sma150": 243.83
+    },
+    "GOODLUCK": {
+      "close": 1311.1,
+      "sma150": 1265.51
+    },
+    "SUDARCOLOR": {
+      "close": 409.1,
+      "sma150": 360.9
+    },
+    "RITCO": {
+      "close": 292.5,
+      "sma150": 244.01
+    },
+    "ENTERO": {
+      "close": 1401.6,
+      "sma150": 1181.12
+    },
+    "APLLTD": {
+      "close": 822.45,
+      "sma150": 765.39
+    },
+    "APOLLOHOSP": {
+      "close": 8825.5,
+      "sma150": 7973.42
+    },
+    "TRENT": {
+      "close": 2946.0,
+      "sma150": 2764.57
+    },
+    "KIMS": {
+      "close": 800.4,
+      "sma150": 718.71
+    },
+    "LAGNAM": {
+      "close": 77.94,
+      "sma150": 76.38
+    },
+    "KSL": {
+      "close": 829.8,
+      "sma150": 783.19
+    },
+    "ATGL": {
+      "close": 646.9,
+      "sma150": 616.31
+    },
+    "SSWL": {
+      "close": 309.5,
+      "sma150": 225.35
+    },
+    "DENORA": {
+      "close": 830.55,
+      "sma150": 750.39
+    },
+    "BLSE": {
+      "close": 310.8,
+      "sma150": 204.79
+    },
+    "LLOYDSENT": {
+      "close": 75.65,
+      "sma150": 64.85
+    },
+    "M&M": {
+      "close": 3390.4,
+      "sma150": 3256.87
+    },
+    "MASTEK": {
+      "close": 1811.8,
+      "sma150": 1717.39
+    },
+    "JSWINFRA": {
+      "close": 335.4,
+      "sma150": 283.51
+    },
+    "CORONA": {
+      "close": 2113.1,
+      "sma150": 1725.95
+    },
+    "CHEMCON": {
+      "close": 189.0,
+      "sma150": 174.55
+    },
+    "GABRIEL": {
+      "close": 1442.5,
+      "sma150": 1085.44
+    },
+    "MITCON": {
+      "close": 78.69,
+      "sma150": 70.39
+    },
+    "BHARTIARTL": {
+      "close": 1969.3,
+      "sma150": 1900.77
+    },
+    "SANDHAR": {
+      "close": 632.55,
+      "sma150": 568.67
+    },
+    "SOUTHBANK": {
+      "close": 45.22,
+      "sma150": 42.14
+    },
+    "MUNJALSHOW": {
+      "close": 136.62,
+      "sma150": 128.76
+    },
+    "GOLDTECH": {
+      "close": 48.04,
+      "sma150": 45.41
+    },
+    "RANASUG": {
+      "close": 12.9,
+      "sma150": 12.23
+    },
+    "ACUTAAS": {
+      "close": 3198.2,
+      "sma150": 2653.32
+    },
+    "ASTRAL": {
+      "close": 1538.3,
+      "sma150": 1522.07
+    },
+    "AETHER": {
+      "close": 1605.7,
+      "sma150": 1178.68
+    },
+    "NYKAA": {
+      "close": 327.05,
+      "sma150": 276.76
+    },
+    "OPTIEMUS": {
+      "close": 554.35,
+      "sma150": 445.14
+    },
+    "INDOBORAX": {
+      "close": 420.25,
+      "sma150": 309.48
+    },
+    "BIOCON": {
+      "close": 412.0,
+      "sma150": 395.14
+    },
+    "WIPL": {
+      "close": 165.97,
+      "sma150": 156.07
+    },
+    "VINCOFE": {
+      "close": 146.28,
+      "sma150": 145.71
+    },
+    "3MINDIA": {
+      "close": 34910.0,
+      "sma150": 33762.57
+    },
+    "HATSUN": {
+      "close": 968.8,
+      "sma150": 923.84
+    },
+    "MEGASTAR": {
+      "close": 311.75,
+      "sma150": 284.57
+    },
+    "SHRIPISTON": {
+      "close": 4436.6,
+      "sma150": 3488.89
+    },
+    "BORORENEW": {
+      "close": 569.9,
+      "sma150": 517.61
+    },
+    "TCPLPACK": {
+      "close": 4037.6,
+      "sma150": 2795.38
+    },
+    "PITTIENG": {
+      "close": 1046.55,
+      "sma150": 892.25
+    },
+    "BLUESTONE": {
+      "close": 834.65,
+      "sma150": 536.51
+    },
+    "TITAGARH": {
+      "close": 820.95,
+      "sma150": 783.63
+    },
+    "MOTISONS": {
+      "close": 16.54,
+      "sma150": 13.53
+    },
+    "SWANDEF": {
+      "close": 2390.5,
+      "sma150": 1854.15
+    },
+    "WHEELS": {
+      "close": 1417.5,
+      "sma150": 1201.67
+    },
+    "IMAGICAA": {
+      "close": 47.06,
+      "sma150": 46.02
+    },
+    "SHYAMMETL": {
+      "close": 986.9,
+      "sma150": 899.33
+    },
+    "KOLTEPATIL": {
+      "close": 471.65,
+      "sma150": 369.28
+    },
+    "RELAXO": {
+      "close": 391.2,
+      "sma150": 347.09
+    },
+    "EUROPRATIK": {
+      "close": 283.75,
+      "sma150": 264.72
+    },
+    "MANAKSTEEL": {
+      "close": 85.03,
+      "sma150": 66.02
+    },
+    "CIPLA": {
+      "close": 1431.5,
+      "sma150": 1362.76
+    },
+    "DIVGIITTS": {
+      "close": 1284.45,
+      "sma150": 777.88
+    },
+    "BDL": {
+      "close": 1380.0,
+      "sma150": 1322.65
+    },
+    "NITIRAJ": {
+      "close": 203.23,
+      "sma150": 199.53
+    },
+    "LAMBODHARA": {
+      "close": 110.1,
+      "sma150": 107.5
+    },
+    "PAR": {
+      "close": 100.91,
+      "sma150": 92.39
+    },
+    "SUNDROP": {
+      "close": 651.4,
+      "sma150": 649.24
+    },
+    "MHLXMIRU": {
+      "close": 186.27,
+      "sma150": 171.17
+    },
+    "BAJEL": {
+      "close": 185.87,
+      "sma150": 174.73
+    },
+    "GEOJITFSL": {
+      "close": 79.31,
+      "sma150": 70.58
+    },
+    "RRKABEL": {
+      "close": 2748.6,
+      "sma150": 1852.65
+    },
+    "RAIN": {
+      "close": 205.91,
+      "sma150": 163.67
+    },
+    "AARTIDRUGS": {
+      "close": 410.75,
+      "sma150": 379.04
+    },
+    "ASAHISONG": {
+      "close": 357.0,
+      "sma150": 251.54
+    },
+    "NBIFIN": {
+      "close": 2064.0,
+      "sma150": 1976.56
+    },
+    "TATACAP": {
+      "close": 359.25,
+      "sma150": 337.35
+    },
+    "VIYASH": {
+      "close": 252.15,
+      "sma150": 229.54
+    },
+    "TRIGYN": {
+      "close": 55.3,
+      "sma150": 55.29
+    },
+    "VOLTAMP": {
+      "close": 10001.0,
+      "sma150": 9135.36
+    },
+    "GVT&D": {
+      "close": 4290.0,
+      "sma150": 4120.13
+    },
+    "MPHASIS": {
+      "close": 2510.0,
+      "sma150": 2369.6
+    },
+    "THELEELA": {
+      "close": 503.0,
+      "sma150": 443.46
+    },
+    "AARTIIND": {
+      "close": 526.7,
+      "sma150": 451.02
+    },
+    "TECHM": {
+      "close": 1610.0,
+      "sma150": 1499.22
+    },
+    "PIDILITIND": {
+      "close": 1669.0,
+      "sma150": 1483.52
+    },
+    "PAYTM": {
+      "close": 1580.2,
+      "sma150": 1180.66
+    },
+    "SANGAMIND": {
+      "close": 592.45,
+      "sma150": 506.27
+    },
+    "ENGINERSIN": {
+      "close": 240.18,
+      "sma150": 219.91
+    },
+    "LOTUSDEV": {
+      "close": 169.97,
+      "sma150": 145.34
+    },
+    "CERA": {
+      "close": 5787.0,
+      "sma150": 5500.03
+    },
+    "CAPITALSFB": {
+      "close": 281.55,
+      "sma150": 270.48
+    },
+    "CINELINE": {
+      "close": 88.49,
+      "sma150": 83.61
+    },
+    "ADVANCE": {
+      "close": 117.06,
+      "sma150": 113.29
+    },
+    "BASML": {
+      "close": 24.38,
+      "sma150": 24.17
+    },
+    "RPGLIFE": {
+      "close": 2741.3,
+      "sma150": 2237.0
+    },
+    "TANLA": {
+      "close": 573.5,
+      "sma150": 507.35
+    },
+    "SBCL": {
+      "close": 1024.6,
+      "sma150": 600.04
+    },
+    "ORIENTHOT": {
+      "close": 122.35,
+      "sma150": 109.38
+    },
+    "FUSION": {
+      "close": 195.58,
+      "sma150": 185.91
+    },
+    "RPPL": {
+      "close": 22.98,
+      "sma150": 18.25
+    },
+    "ADANIGREEN": {
+      "close": 1327.6,
+      "sma150": 1197.07
+    },
+    "MARICO": {
+      "close": 852.05,
+      "sma150": 798.83
+    },
+    "POKARNA": {
+      "close": 937.8,
+      "sma150": 905.3
+    },
+    "EVERESTIND": {
+      "close": 449.65,
+      "sma150": 411.44
+    },
+    "INDIANB": {
+      "close": 881.2,
+      "sma150": 870.23
+    },
+    "SHILPAMED": {
+      "close": 809.3,
+      "sma150": 457.27
+    },
+    "TVSSCS": {
+      "close": 121.48,
+      "sma150": 118.0
+    },
+    "PAISALO": {
+      "close": 67.59,
+      "sma150": 48.77
+    },
+    "IKIO": {
+      "close": 201.74,
+      "sma150": 160.8
+    },
+    "RAMRAT": {
+      "close": 467.5,
+      "sma150": 372.67
+    },
+    "STLNETWORK": {
+      "close": 25.37,
+      "sma150": 23.86
+    },
+    "SADHNANIQ": {
+      "close": 3.09,
+      "sma150": 2.22
+    },
+    "DATAMATICS": {
+      "close": 852.35,
+      "sma150": 766.72
+    },
+    "GAIL": {
+      "close": 172.1,
+      "sma150": 164.22
+    },
+    "PGHL": {
+      "close": 5836.5,
+      "sma150": 5614.62
+    },
+    "ARIHANT": {
+      "close": 1031.6,
+      "sma150": 523.35
+    },
+    "HFCL": {
+      "close": 219.5,
+      "sma150": 131.22
+    },
+    "NAZARA": {
+      "close": 350.1,
+      "sma150": 280.87
+    },
+    "STYLAMIND": {
+      "close": 3582.4,
+      "sma150": 2664.44
+    },
+    "MAYURUNIQ": {
+      "close": 732.2,
+      "sma150": 645.3
+    },
+    "NDRAUTO": {
+      "close": 803.55,
+      "sma150": 771.36
+    },
+    "APOLLO": {
+      "close": 387.05,
+      "sma150": 310.73
+    },
+    "ADANIENSOL": {
+      "close": 1589.1,
+      "sma150": 1284.34
+    },
+    "THANGAMAYL": {
+      "close": 5336.5,
+      "sma150": 4480.49
+    },
+    "TTKHLTCARE": {
+      "close": 1138.4,
+      "sma150": 930.53
+    },
+    "SANATHAN": {
+      "close": 463.5,
+      "sma150": 430.89
+    },
+    "PARKHOSPS": {
+      "close": 276.65,
+      "sma150": 230.22
+    },
+    "NDGL": {
+      "close": 2878.7,
+      "sma150": 2622.79
+    },
+    "WINDLAS": {
+      "close": 933.4,
+      "sma150": 817.79
+    },
+    "SONATSOFTW": {
+      "close": 320.4,
+      "sma150": 282.93
+    },
+    "STARPAPER": {
+      "close": 145.47,
+      "sma150": 142.06
+    },
+    "NURECA": {
+      "close": 340.3,
+      "sma150": 271.85
+    },
+    "ATHERENERG": {
+      "close": 1485.2,
+      "sma150": 926.5
+    },
+    "AEROENTER": {
+      "close": 125.73,
+      "sma150": 97.43
+    },
+    "WOCKPHARMA": {
+      "close": 1898.8,
+      "sma150": 1595.04
+    },
+    "NAHARSPING": {
+      "close": 296.7,
+      "sma150": 236.96
+    },
+    "AERONEU": {
+      "close": 84.49,
+      "sma150": 80.58
+    },
+    "DPABHUSHAN": {
+      "close": 1403.8,
+      "sma150": 1140.9
+    },
+    "INDIANHUME": {
+      "close": 362.55,
+      "sma150": 347.84
+    },
+    "KRISHANA": {
+      "close": 187.27,
+      "sma150": 125.23
+    },
+    "MAZDA": {
+      "close": 230.9,
+      "sma150": 211.96
+    },
+    "GPTHEALTH": {
+      "close": 153.32,
+      "sma150": 139.88
+    },
+    "UNIPARTS": {
+      "close": 801.15,
+      "sma150": 563.24
+    },
+    "AUSOMENT": {
+      "close": 144.39,
+      "sma150": 121.5
+    },
+    "MANKIND": {
+      "close": 2380.9,
+      "sma150": 2289.17
+    },
+    "TATVA": {
+      "close": 1685.8,
+      "sma150": 1294.12
+    },
+    "OMFREIGHT": {
+      "close": 95.31,
+      "sma150": 86.39
+    },
+    "ASTRAMICRO": {
+      "close": 1707.1,
+      "sma150": 1256.47
+    },
+    "ZEELEARN": {
+      "close": 7.98,
+      "sma150": 6.67
+    },
+    "JSWCEMENT": {
+      "close": 127.6,
+      "sma150": 125.76
+    },
+    "BLUSPRING": {
+      "close": 109.0,
+      "sma150": 77.41
+    },
+    "VMART": {
+      "close": 792.3,
+      "sma150": 657.13
+    },
+    "TIMETECHNO": {
+      "close": 189.61,
+      "sma150": 183.62
+    },
+    "NESTLEIND": {
+      "close": 1470.0,
+      "sma150": 1363.73
+    },
+    "JASH": {
+      "close": 480.5,
+      "sma150": 430.16
+    },
+    "MARKOLINES": {
+      "close": 171.65,
+      "sma150": 160.18
+    },
+    "SIKKO": {
+      "close": 5.45,
+      "sma150": 4.52
+    },
+    "FAIRCHEMOR": {
+      "close": 687.4,
+      "sma150": 627.66
+    },
+    "SGIL": {
+      "close": 549.65,
+      "sma150": 542.17
+    },
+    "SCI": {
+      "close": 286.4,
+      "sma150": 273.25
+    },
+    "BLS": {
+      "close": 272.56,
+      "sma150": 265.94
+    },
+    "CHEMBONDCH": {
+      "close": 263.69,
+      "sma150": 179.03
+    },
+    "BAFNAPH": {
+      "close": 252.55,
+      "sma150": 156.51
+    },
+    "ONMOBILE": {
+      "close": 61.77,
+      "sma150": 54.66
+    },
+    "ONEPOINT": {
+      "close": 57.21,
+      "sma150": 53.71
+    },
+    "VAISHALI": {
+      "close": 8.34,
+      "sma150": 7.42
+    },
+    "RADHIKAJWE": {
+      "close": 67.9,
+      "sma150": 63.72
+    },
+    "GLAND": {
+      "close": 2910.2,
+      "sma150": 2044.12
+    },
+    "CARYSIL": {
+      "close": 1155.8,
+      "sma150": 985.32
+    },
+    "LALPATHLAB": {
+      "close": 1877.3,
+      "sma150": 1542.35
+    },
+    "CORDSCABLE": {
+      "close": 214.05,
+      "sma150": 187.69
+    },
+    "ESTER": {
+      "close": 98.96,
+      "sma150": 93.01
+    },
+    "MOLDTKPAC": {
+      "close": 680.15,
+      "sma150": 613.81
+    },
+    "SHREEPUSHK": {
+      "close": 376.35,
+      "sma150": 360.19
+    },
+    "SANSTAR": {
+      "close": 109.19,
+      "sma150": 99.3
+    },
+    "STEELCITY": {
+      "close": 81.77,
+      "sma150": 81.23
+    },
+    "AADHARHFC": {
+      "close": 487.65,
+      "sma150": 484.8
+    },
+    "SUYOG": {
+      "close": 813.85,
+      "sma150": 734.32
+    },
+    "HONAUT": {
+      "close": 36400.0,
+      "sma150": 33486.2
+    },
+    "CEATLTD": {
+      "close": 3608.5,
+      "sma150": 3557.52
+    },
+    "TIPSMUSIC": {
+      "close": 656.25,
+      "sma150": 604.29
+    },
+    "JAYAGROGN": {
+      "close": 217.68,
+      "sma150": 200.24
+    },
+    "SIGMA": {
+      "close": 45.15,
+      "sma150": 43.48
+    },
+    "ORBTEXP": {
+      "close": 230.73,
+      "sma150": 188.7
+    },
+    "AIAENG": {
+      "close": 4383.6,
+      "sma150": 4155.81
+    },
+    "MBAPL": {
+      "close": 164.73,
+      "sma150": 109.42
+    },
+    "SUDARSCHEM": {
+      "close": 1092.9,
+      "sma150": 915.39
+    },
+    "FIVESTAR": {
+      "close": 537.75,
+      "sma150": 470.42
+    },
+    "EXCELINDUS": {
+      "close": 990.55,
+      "sma150": 936.35
+    },
+    "HTMEDIA": {
+      "close": 25.77,
+      "sma150": 22.86
+    },
+    "EXICOM": {
+      "close": 148.32,
+      "sma150": 124.92
+    },
+    "COMSYN": {
+      "close": 281.69,
+      "sma150": 170.45
+    },
+    "RSWM": {
+      "close": 194.52,
+      "sma150": 168.9
+    },
+    "SAILIFE": {
+      "close": 1416.4,
+      "sma150": 1085.99
+    },
+    "DIACABS": {
+      "close": 359.9,
+      "sma150": 184.92
+    },
+    "MANALIPETC": {
+      "close": 67.64,
+      "sma150": 58.04
+    },
+    "GODREJIND": {
+      "close": 1223.0,
+      "sma150": 1066.7
+    },
+    "PRAKASH": {
+      "close": 134.43,
+      "sma150": 133.34
+    },
+    "BALPHARMA": {
+      "close": 85.0,
+      "sma150": 78.36
+    },
+    "AIIL": {
+      "close": 551.5,
+      "sma150": 508.57
+    },
+    "INDORAMA": {
+      "close": 54.76,
+      "sma150": 42.12
+    },
+    "HIKAL": {
+      "close": 212.81,
+      "sma150": 200.05
+    },
+    "KROSS": {
+      "close": 205.2,
+      "sma150": 193.27
+    },
+    "TIRUPATIFL": {
+      "close": 64.24,
+      "sma150": 47.96
+    },
+    "STYL": {
+      "close": 398.3,
+      "sma150": 282.81
+    },
+    "ACMESOLAR": {
+      "close": 364.9,
+      "sma150": 294.45
+    },
+    "IZMO": {
+      "close": 916.25,
+      "sma150": 819.55
+    },
+    "LLOYDSENGG": {
+      "close": 91.21,
+      "sma150": 64.39
+    },
+    "SUNPHARMA": {
+      "close": 1882.0,
+      "sma150": 1798.99
+    },
+    "CARBORUNIV": {
+      "close": 1122.7,
+      "sma150": 954.43
+    },
+    "ARKADE": {
+      "close": 129.99,
+      "sma150": 120.12
+    },
+    "ECLERX": {
+      "close": 1848.9,
+      "sma150": 1697.86
+    },
+    "GUJALKALI": {
+      "close": 680.45,
+      "sma150": 595.25
+    },
+    "HINDCON": {
+      "close": 22.13,
+      "sma150": 21.78
+    },
+    "AVL": {
+      "close": 608.65,
+      "sma150": 540.14
+    },
+    "GFLLIMITED": {
+      "close": 49.49,
+      "sma150": 46.91
+    },
+    "IL&FSENGG": {
+      "close": 35.79,
+      "sma150": 27.5
+    },
+    "AJAXENGG": {
+      "close": 567.25,
+      "sma150": 531.23
+    },
+    "RML": {
+      "close": 1084.7,
+      "sma150": 907.5
+    },
+    "KAMDHENU": {
+      "close": 33.85,
+      "sma150": 25.73
+    },
+    "IOLCP": {
+      "close": 161.28,
+      "sma150": 107.29
+    },
+    "PRECOT": {
+      "close": 698.45,
+      "sma150": 603.15
+    },
+    "SASKEN": {
+      "close": 1919.5,
+      "sma150": 1600.26
+    },
+    "SPECIALITY": {
+      "close": 135.98,
+      "sma150": 111.91
+    },
+    "PARACABLES": {
+      "close": 63.55,
+      "sma150": 49.32
+    },
+    "MANGLMCEM": {
+      "close": 872.55,
+      "sma150": 864.73
+    },
+    "NRAIL": {
+      "close": 509.9,
+      "sma150": 453.19
+    },
+    "NILKAMAL": {
+      "close": 1810.0,
+      "sma150": 1378.24
+    },
+    "JUBLCPL": {
+      "close": 2342.4,
+      "sma150": 1882.97
+    },
+    "SUVEN": {
+      "close": 333.05,
+      "sma150": 220.77
+    },
+    "BBOX": {
+      "close": 774.1,
+      "sma150": 702.29
+    },
+    "DDEVPLSTIK": {
+      "close": 269.3,
+      "sma150": 263.26
+    },
+    "IFGLEXPOR": {
+      "close": 218.97,
+      "sma150": 183.89
+    },
+    "IDEA": {
+      "close": 13.71,
+      "sma150": 11.86
+    },
+    "INGERRAND": {
+      "close": 4477.2,
+      "sma150": 4018.59
+    },
+    "ELECTHERM": {
+      "close": 974.8,
+      "sma150": 857.54
+    },
+    "MEDICO": {
+      "close": 44.27,
+      "sma150": 43.43
+    },
+    "AFIL": {
+      "close": 9.4,
+      "sma150": 8.35
+    },
+    "TEJASNET": {
+      "close": 522.85,
+      "sma150": 461.86
+    },
+    "FIEMIND": {
+      "close": 2281.7,
+      "sma150": 2236.09
+    },
+    "AVG": {
+      "close": 199.02,
+      "sma150": 168.42
+    },
+    "RELTD": {
+      "close": 159.87,
+      "sma150": 147.72
+    },
+    "POLYMED": {
+      "close": 1733.6,
+      "sma150": 1514.9
+    },
+    "DENTA": {
+      "close": 287.05,
+      "sma150": 284.62
+    },
+    "VMSTMT": {
+      "close": 49.85,
+      "sma150": 46.18
+    },
+    "INOXGREEN": {
+      "close": 181.54,
+      "sma150": 175.97
+    },
+    "VETO": {
+      "close": 120.21,
+      "sma150": 112.59
+    },
+    "EMCURE": {
+      "close": 1873.9,
+      "sma150": 1665.29
+    },
+    "TATATECH": {
+      "close": 841.65,
+      "sma150": 660.08
+    },
+    "DCMNVL": {
+      "close": 173.83,
+      "sma150": 139.15
+    },
+    "TBZ": {
+      "close": 243.7,
+      "sma150": 175.25
+    },
+    "NDLVENTURE": {
+      "close": 123.56,
+      "sma150": 118.02
+    },
+    "SIS": {
+      "close": 416.45,
+      "sma150": 366.02
+    },
+    "QUADFUTURE": {
+      "close": 349.35,
+      "sma150": 332.45
+    },
+    "LPDC": {
+      "close": 7.87,
+      "sma150": 6.61
+    },
+    "MANAKALUCO": {
+      "close": 38.11,
+      "sma150": 35.05
+    },
+    "IDEAFORGE": {
+      "close": 795.1,
+      "sma150": 642.63
+    },
+    "INDIANCARD": {
+      "close": 216.07,
+      "sma150": 213.93
+    },
+    "HALEOSLABS": {
+      "close": 1437.5,
+      "sma150": 1397.45
+    },
+    "RACLGEAR": {
+      "close": 1343.4,
+      "sma150": 1274.96
+    },
+    "DSSL": {
+      "close": 1158.1,
+      "sma150": 1148.03
+    },
+    "MOLDTECH": {
+      "close": 179.6,
+      "sma150": 133.06
+    },
+    "BIRLACABLE": {
+      "close": 279.14,
+      "sma150": 168.32
+    },
+    "BUTTERFLY": {
+      "close": 655.9,
+      "sma150": 648.52
+    },
+    "GTL": {
+      "close": 7.41,
+      "sma150": 7.36
+    },
+    "RBZJEWEL": {
+      "close": 136.19,
+      "sma150": 135.69
+    },
+    "SIGACHI": {
+      "close": 26.35,
+      "sma150": 22.46
+    },
+    "ARVIND": {
+      "close": 552.3,
+      "sma150": 429.69
+    },
+    "NIBE": {
+      "close": 1439.0,
+      "sma150": 1236.32
+    },
+    "SFL": {
+      "close": 675.1,
+      "sma150": 613.04
+    },
+    "EPACKPEB": {
+      "close": 221.55,
+      "sma150": 209.25
+    },
+    "LGEINDIA": {
+      "close": 1667.6,
+      "sma150": 1526.3
+    },
+    "CHEMBOND": {
+      "close": 172.41,
+      "sma150": 160.23
+    },
+    "JKIPL": {
+      "close": 97.1,
+      "sma150": 83.46
+    },
+    "VISAKAIND": {
+      "close": 92.0,
+      "sma150": 70.75
+    },
+    "YUKEN": {
+      "close": 821.95,
+      "sma150": 732.77
+    },
+    "PLASTIBLEN": {
+      "close": 191.8,
+      "sma150": 164.06
+    },
+    "SHK": {
+      "close": 164.25,
+      "sma150": 143.6
+    },
+    "TIL": {
+      "close": 229.85,
+      "sma150": 213.84
+    },
+    "NAHARINDUS": {
+      "close": 117.38,
+      "sma150": 108.24
+    },
+    "BAJAJCON": {
+      "close": 481.4,
+      "sma150": 462.79
+    },
+    "JBCHEPHARM": {
+      "close": 2408.9,
+      "sma150": 2046.38
+    },
+    "BHARATSE": {
+      "close": 238.44,
+      "sma150": 187.72
+    },
+    "AMNPLST": {
+      "close": 185.55,
+      "sma150": 177.65
+    },
+    "PGIL": {
+      "close": 2378.0,
+      "sma150": 1708.19
+    },
+    "SICAGEN": {
+      "close": 56.46,
+      "sma150": 39.75
+    },
+    "JAYSREETEA": {
+      "close": 88.32,
+      "sma150": 84.81
+    },
+    "PODDARMENT": {
+      "close": 253.45,
+      "sma150": 246.09
+    },
+    "PPAP": {
+      "close": 280.0,
+      "sma150": 229.78
+    },
+    "GALAXYSURF": {
+      "close": 2403.7,
+      "sma150": 1874.85
+    },
+    "HONASA": {
+      "close": 481.65,
+      "sma150": 361.72
+    },
+    "KECL": {
+      "close": 137.5,
+      "sma150": 107.94
+    },
+    "KNAGRI": {
+      "close": 216.19,
+      "sma150": 192.26
+    },
+    "VADILALIND": {
+      "close": 7411.0,
+      "sma150": 5308.0
+    },
+    "RANEHOLDIN": {
+      "close": 1600.9,
+      "sma150": 1386.53
+    },
+    "VERANDA": {
+      "close": 235.1,
+      "sma150": 205.53
+    },
+    "ORCHPHARMA": {
+      "close": 998.35,
+      "sma150": 758.68
+    },
+    "DHUNINV": {
+      "close": 1014.65,
+      "sma150": 909.41
+    },
+    "BBTCL": {
+      "close": 233.35,
+      "sma150": 198.55
+    },
+    "BETA": {
+      "close": 2432.9,
+      "sma150": 1606.07
+    },
+    "SEMAC": {
+      "close": 310.95,
+      "sma150": 291.7
+    },
+    "TARMAT": {
+      "close": 55.98,
+      "sma150": 52.82
+    },
+    "OMAXAUTO": {
+      "close": 195.24,
+      "sma150": 162.47
+    },
+    "INDOAMIN": {
+      "close": 123.79,
+      "sma150": 118.74
+    },
+    "LIKHITHA": {
+      "close": 206.67,
+      "sma150": 200.55
+    },
+    "J&KBANK": {
+      "close": 147.97,
+      "sma150": 134.51
+    },
+    "3IINFOLTD": {
+      "close": 25.64,
+      "sma150": 17.12
+    },
+    "GCSL": {
+      "close": 492.4,
+      "sma150": 393.71
+    },
+    "MAMATA": {
+      "close": 405.6,
+      "sma150": 396.65
+    },
+    "CENTUM": {
+      "close": 3362.6,
+      "sma150": 3025.18
+    },
+    "LOKESHMACH": {
+      "close": 329.8,
+      "sma150": 247.23
+    },
+    "PLAZACABLE": {
+      "close": 53.57,
+      "sma150": 42.32
+    },
+    "MODINATUR": {
+      "close": 380.65,
+      "sma150": 370.87
+    },
+    "VALIANTORG": {
+      "close": 308.3,
+      "sma150": 265.79
+    },
+    "SICALLOG": {
+      "close": 109.95,
+      "sma150": 80.64
+    },
+    "CPPLUS": {
+      "close": 3343.1,
+      "sma150": 2470.37
+    },
+    "SPECTRUM": {
+      "close": 2125.1,
+      "sma150": 1554.96
+    },
+    "ARROWGREEN": {
+      "close": 768.65,
+      "sma150": 537.25
+    },
+    "GVPIL": {
+      "close": 731.15,
+      "sma150": 613.14
+    },
+    "SIGMAADV": {
+      "close": 627.1,
+      "sma150": 338.47
+    },
+    "AARTISURF": {
+      "close": 625.65,
+      "sma150": 403.68
+    },
+    "JSFB": {
+      "close": 548.85,
+      "sma150": 439.02
+    },
+    "UEL": {
+      "close": 222.48,
+      "sma150": 154.3
+    },
+    "ZENITHEXPO": {
+      "close": 204.51,
+      "sma150": 203.49
+    },
+    "KILITCH": {
+      "close": 172.58,
+      "sma150": 168.34
+    },
+    "AUTOIND": {
+      "close": 93.36,
+      "sma150": 77.05
+    },
+    "TINNARUBR": {
+      "close": 1030.3,
+      "sma150": 803.67
+    },
+    "SILVERTUC": {
+      "close": 197.27,
+      "sma150": 157.79
+    },
+    "SSDL": {
+      "close": 61.38,
+      "sma150": 60.93
+    },
+    "MCLOUD": {
+      "close": 26.77,
+      "sma150": 25.93
+    },
+    "AMDIND": {
+      "close": 51.41,
+      "sma150": 44.52
+    },
+    "KOTHARIPET": {
+      "close": 133.91,
+      "sma150": 124.73
+    },
+    "BELRISE": {
+      "close": 236.09,
+      "sma150": 208.3
+    },
+    "SHREEJISPG": {
+      "close": 601.8,
+      "sma150": 444.87
+    },
+    "CUPID": {
+      "close": 267.32,
+      "sma150": 134.82
+    },
+    "PRIMO": {
+      "close": 23.28,
+      "sma150": 22.32
+    },
+    "KAPSTON": {
+      "close": 522.7,
+      "sma150": 334.71
+    },
+    "SCHNEIDER": {
+      "close": 1212.2,
+      "sma150": 1085.75
+    },
+    "THOMASCOTT": {
+      "close": 301.1,
+      "sma150": 294.43
+    },
+    "KERNEX": {
+      "close": 1751.7,
+      "sma150": 1534.42
+    },
+    "NGLFINE": {
+      "close": 2908.4,
+      "sma150": 2507.33
+    }
+  }
+}

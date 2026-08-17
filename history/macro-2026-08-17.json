@@ -1,0 +1,98 @@
+{
+  "verdict": {
+    "cls": "neutral",
+    "label": "MIXED",
+    "action": "No clear macro edge. Stay invested but selective \u2014 let the sector leaderboard pick your spots and keep sizing normal. Don't force new risk.",
+    "score": -0.08
+  },
+  "signals": [
+    {
+      "name": "Gold vs Silver",
+      "headline": "67.7",
+      "arrow": "up",
+      "status": "good",
+      "plain": "Gold is pulling ahead of silver \u2014 a classic fear signal. Mild caution for stocks.",
+      "why": "The gold-to-silver ratio climbs when investors turn defensive.",
+      "context": "At the 12th percentile \u2014 near the bottom of its 5-year range.",
+      "percentile": 12,
+      "chg13": 13.8,
+      "z": 1.48
+    },
+    {
+      "name": "Nifty 50 vs Gold",
+      "headline": "+5.3%",
+      "arrow": "up",
+      "status": "bad",
+      "plain": "Large-cap stocks are beating gold \u2014 money prefers equities over safe-havens. Good sign.",
+      "why": "Large-caps vs gold \u2014 when stocks outrun gold, risk appetite is healthy.",
+      "context": "At the 7th percentile \u2014 near the bottom of its 5-year range.",
+      "percentile": 7,
+      "chg13": 5.3,
+      "z": 0.85
+    },
+    {
+      "name": "Nifty 500 vs Gold",
+      "headline": "+7.3%",
+      "arrow": "up",
+      "status": "bad",
+      "plain": "The broad market is beating gold \u2014 risk appetite is broad-based. Good sign.",
+      "why": "Whole market vs gold \u2014 broad risk appetite across all caps.",
+      "context": "At the 9th percentile \u2014 near the bottom of its 5-year range.",
+      "percentile": 9,
+      "chg13": 7.3,
+      "z": 1.25
+    },
+    {
+      "name": "Market Breadth",
+      "headline": "+1.8%",
+      "arrow": "up",
+      "status": "good",
+      "plain": "The broader market is keeping pace with large-caps \u2014 healthy, broad participation.",
+      "why": "Nifty 500 vs Nifty 50 \u2014 broad participation signals a durable move.",
+      "context": "At the 100th percentile \u2014 near the top of its 5-year range.",
+      "percentile": 100,
+      "chg13": 1.8,
+      "z": 1.24
+    },
+    {
+      "name": "US 10-Year Yield",
+      "headline": "4.72%",
+      "arrow": "up",
+      "status": "bad",
+      "plain": "US bond yields are rising \u2014 global money gets pricier, a headwind for Indian equities.",
+      "why": "High US yields pull foreign money out of emerging markets like India.",
+      "context": "At the 99th percentile \u2014 near the top of its 5-year range.",
+      "percentile": 99,
+      "chg13": 4.7,
+      "z": 1.69
+    }
+  ],
+  "diagnostics": {
+    "loaded": 5,
+    "total": 5,
+    "detail": [
+      {
+        "name": "Gold vs Silver",
+        "ok": true
+      },
+      {
+        "name": "Nifty 50 vs Gold",
+        "ok": true
+      },
+      {
+        "name": "Nifty 500 vs Gold",
+        "ok": true
+      },
+      {
+        "name": "Market Breadth",
+        "ok": true
+      },
+      {
+        "name": "US 10-Year Yield",
+        "ok": true
+      }
+    ]
+  },
+  "generated_at": "2026-08-17T18:12:45Z",
+  "as_of": "2026-08-17"
+}
