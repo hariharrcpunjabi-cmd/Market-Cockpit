@@ -1,0 +1,115 @@
+name: Weekend build
+
+# One click does everything: refresh the price cache, then rebuild the
+# dashboard. The cache step is slow on its FIRST run only (~40 min backfill);
+# every run after that is under two minutes because it fetches only new bars.
+#
+# Nothing is scheduled. It runs when you press the button.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cache mode"
+        required: true
+        default: "incremental"
+        type: choice
+        options:
+          - incremental      # normal weekend run — only new bars
+          - smoke            # 20 symbols, ~1 min, use this the very first time
+          - backfill         # full 10-year history, ~40 min, run once
+          - skip             # dashboard only, no price cache
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120          # backfill needs headroom; normal runs exit fast
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # ---- price cache -------------------------------------------------
+      - name: Refresh OHLCV cache
+        if: ${{ inputs.mode != 'skip' }}
+        run: |
+          case "${{ inputs.mode }}" in
+            smoke)       python fetch_ohlcv.py --backfill --limit 20 ;;
+            backfill)    python fetch_ohlcv.py --backfill ;;
+            incremental) python fetch_ohlcv.py ;;
+          esac
+
+      # Commit the cache separately and immediately. If the backfill is
+      # interrupted, the symbols already fetched are saved and the next run
+      # resumes instead of starting over.
+      - name: Save cache progress
+        if: ${{ always() && inputs.mode != 'skip' }}
+        run: |
+          git config user.name  "rotation-bot"
+          git config user.email "actions@github.com"
+          git add ohlcv || true
+          if git diff --staged --quiet; then
+            echo "cache unchanged"
+          else
+            git commit -m "ohlcv cache: $(date -u +%Y-%m-%d) (${{ inputs.mode }})"
+            git pull --rebase --autostash || true
+            git push
+          fi
+
+      # ---- dashboard ---------------------------------------------------
+      - name: Build dashboard
+        run: python build_data.py
+
+      - name: Commit dashboard data
+        run: |
+          git config user.name  "rotation-bot"
+          git config user.email "actions@github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "no changes"
+          else
+            git commit -m "weekly data: $(date -u +%Y-%m-%d)"
+            git pull --rebase --autostash || true
+            git push
+          fi
+
+      # ---- plain-English summary in the run page -----------------------
+      - name: Summary
+        if: ${{ always() }}
+        run: |
+          {
+            echo "## Weekend build"
+            echo ""
+            echo "Mode: **${{ inputs.mode }}**"
+            echo ""
+            if [ -f ohlcv/_state.json ]; then
+              python - <<'PY'
+          import json, os, glob
+          st = json.load(open("ohlcv/_state.json"))
+          n  = len(st.get("last_date", {}))
+          mb = sum(os.path.getsize(p) for p in glob.glob("ohlcv/*.csv.gz")) / 1e6
+          print(f"Price cache: **{n} symbols**, {mb:.1f} MB")
+          print("")
+          PY
+            fi
+            if [ -f stage2.json ]; then
+              python - <<'PY'
+          import json
+          d = json.load(open("stage2.json"))
+          t = d["scanners"]["trading"]["qualified"]
+          h = len(d.get("holdings_roster") or {})
+          f = (d.get("freshness") or {}).get("message", "")
+          b = (d.get("ledger") or {}).get("board", {})
+          print(f"Trading list: **{t}** names")
+          print(f"Holdings roster: **{h}** above the 150-MA")
+          print(f"Ledger: **{b.get('open')} open, {b.get('closed')} closed**")
+          print(f"Freshness: {f}")
+          PY
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
