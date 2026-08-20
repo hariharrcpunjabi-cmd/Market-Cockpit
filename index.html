@@ -303,7 +303,7 @@ function freshBanner(f){
 
 function trackerPanel(tr, fresh){
   const fb = freshBanner(fresh);
-  if(!tr || !tr.stocks || !tr.stocks.length) return fb + `<div class="empty">The Tracker fills in once the buy list has run at least once.</div>`; return `<div class="empty">The Tracker fills in once the buy list has run at least once.</div>`;
+  if(!tr || !tr.stocks || !tr.stocks.length) return fb + `<div class="empty">The Tracker fills in once the buy list has run at least once.</div>`;
   const note = tr.first_run
     ? `<div class="lead">Aging starts now — every name is a <b>Fresh</b> entry this week. From next week, names that stay on the list become Week 1, Week 2\u2026 so you can see how long each has held Stage 2.</div>`
     : `<div class="lead">How long each buy-list name has held Stage 2, newest and rotated-off names, and return since first seen.</div>`;
