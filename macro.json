@@ -3,7 +3,7 @@
     "cls": "neutral",
     "label": "MIXED",
     "action": "No clear macro edge. Stay invested but selective \u2014 let the sector leaderboard pick your spots and keep sizing normal. Don't force new risk.",
-    "score": -0.08
+    "score": 0.04
   },
   "signals": [
     {
@@ -20,26 +20,26 @@
     },
     {
       "name": "Nifty 50 vs Gold",
-      "headline": "+5.2%",
+      "headline": "+5.1%",
       "arrow": "up",
       "status": "bad",
       "plain": "Large-cap stocks are beating gold \u2014 money prefers equities over safe-havens. Good sign.",
       "why": "Large-caps vs gold \u2014 when stocks outrun gold, risk appetite is healthy.",
       "context": "At the 6th percentile \u2014 near the bottom of its 5-year range.",
       "percentile": 6,
-      "chg13": 5.2,
+      "chg13": 5.1,
       "z": 0.39
     },
     {
       "name": "Nifty 500 vs Gold",
-      "headline": "+7.1%",
+      "headline": "+7.0%",
       "arrow": "up",
       "status": "bad",
       "plain": "The broad market is beating gold \u2014 risk appetite is broad-based. Good sign.",
       "why": "Whole market vs gold \u2014 broad risk appetite across all caps.",
       "context": "At the 8th percentile \u2014 near the bottom of its 5-year range.",
       "percentile": 8,
-      "chg13": 7.1,
+      "chg13": 7.0,
       "z": 0.86
     },
     {
@@ -53,22 +53,10 @@
       "percentile": 100,
       "chg13": 1.5,
       "z": 1.23
-    },
-    {
-      "name": "US 10-Year Yield",
-      "headline": "4.70%",
-      "arrow": "up",
-      "status": "bad",
-      "plain": "US bond yields are rising \u2014 global money gets pricier, a headwind for Indian equities.",
-      "why": "High US yields pull foreign money out of emerging markets like India.",
-      "context": "At the 99th percentile \u2014 near the top of its 5-year range.",
-      "percentile": 99,
-      "chg13": 4.6,
-      "z": 1.57
     }
   ],
   "diagnostics": {
-    "loaded": 5,
+    "loaded": 4,
     "total": 5,
     "detail": [
       {
@@ -89,10 +77,10 @@
       },
       {
         "name": "US 10-Year Yield",
-        "ok": true
+        "ok": false
       }
     ]
   },
-  "generated_at": "2026-08-20T18:35:37Z",
+  "generated_at": "2026-08-20T18:45:17Z",
   "as_of": "2026-08-20"
 }

@@ -4215,7 +4215,7 @@
       }
     }
   },
-  "generated_at": "2026-08-20T18:35:37Z",
+  "generated_at": "2026-08-20T18:45:17Z",
   "as_of": "2026-08-20",
   "holdings_roster": {
     "KRONOX": {
@@ -10936,20 +10936,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "RAMRAT",
+        "symbol": "CONCORDBIO",
         "entry_date": "2026-08-17",
-        "entry_close": 467.5,
-        "last_close": 486.5,
+        "entry_close": 1515.0,
+        "last_close": 1576.7,
         "last_date": "2026-08-20",
         "ret_pct": 4.1,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "CONCORDBIO",
+        "symbol": "RAMRAT",
         "entry_date": "2026-08-17",
-        "entry_close": 1515.0,
-        "last_close": 1576.7,
+        "entry_close": 467.5,
+        "last_close": 486.5,
         "last_date": "2026-08-20",
         "ret_pct": 4.1,
         "status": "open",
@@ -11006,16 +11006,6 @@
         "on_buylist": true
       },
       {
-        "symbol": "INDIAGLYCO",
-        "entry_date": "2026-08-17",
-        "entry_close": 1070.9,
-        "last_close": 1101.9,
-        "last_date": "2026-08-20",
-        "ret_pct": 2.9,
-        "status": "open",
-        "on_buylist": false
-      },
-      {
         "symbol": "HARSHA",
         "entry_date": "2026-08-17",
         "entry_close": 425.6,
@@ -11046,20 +11036,30 @@
         "on_buylist": true
       },
       {
-        "symbol": "BEML",
+        "symbol": "INDIAGLYCO",
         "entry_date": "2026-08-17",
-        "entry_close": 1908.5,
-        "last_close": 1962.8,
+        "entry_close": 1070.9,
+        "last_close": 1101.9,
         "last_date": "2026-08-20",
-        "ret_pct": 2.8,
+        "ret_pct": 2.9,
         "status": "open",
-        "on_buylist": true
+        "on_buylist": false
       },
       {
         "symbol": "APLAPOLLO",
         "entry_date": "2026-08-17",
         "entry_close": 2081.3,
         "last_close": 2140.0,
+        "last_date": "2026-08-20",
+        "ret_pct": 2.8,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "BEML",
+        "entry_date": "2026-08-17",
+        "entry_close": 1908.5,
+        "last_close": 1962.8,
         "last_date": "2026-08-20",
         "ret_pct": 2.8,
         "status": "open",
@@ -11086,14 +11086,14 @@
         "on_buylist": true
       },
       {
-        "symbol": "DCBBANK",
+        "symbol": "MINDACORP",
         "entry_date": "2026-08-17",
-        "entry_close": 184.09,
-        "last_close": 188.61,
+        "entry_close": 725.15,
+        "last_close": 743.3,
         "last_date": "2026-08-20",
         "ret_pct": 2.5,
         "status": "open",
-        "on_buylist": false
+        "on_buylist": true
       },
       {
         "symbol": "SCHNEIDER",
@@ -11106,16 +11106,6 @@
         "on_buylist": false
       },
       {
-        "symbol": "MINDACORP",
-        "entry_date": "2026-08-17",
-        "entry_close": 725.15,
-        "last_close": 743.3,
-        "last_date": "2026-08-20",
-        "ret_pct": 2.5,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "QPOWER",
         "entry_date": "2026-08-17",
         "entry_close": 1302.6,
@@ -11124,6 +11114,16 @@
         "ret_pct": 2.5,
         "status": "open",
         "on_buylist": true
+      },
+      {
+        "symbol": "DCBBANK",
+        "entry_date": "2026-08-17",
+        "entry_close": 184.09,
+        "last_close": 188.61,
+        "last_date": "2026-08-20",
+        "ret_pct": 2.5,
+        "status": "open",
+        "on_buylist": false
       },
       {
         "symbol": "SANDHAR",
@@ -11146,20 +11146,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "IDEA",
+        "symbol": "ARIS",
         "entry_date": "2026-08-17",
-        "entry_close": 13.71,
-        "last_close": 14.03,
+        "entry_close": 136.25,
+        "last_close": 139.32,
         "last_date": "2026-08-20",
         "ret_pct": 2.3,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "ARIS",
+        "symbol": "IDEA",
         "entry_date": "2026-08-17",
-        "entry_close": 136.25,
-        "last_close": 139.32,
+        "entry_close": 13.71,
+        "last_close": 14.03,
         "last_date": "2026-08-20",
         "ret_pct": 2.3,
         "status": "open",
@@ -11246,10 +11246,10 @@
         "on_buylist": true
       },
       {
-        "symbol": "OIL",
+        "symbol": "ELGIEQUIP",
         "entry_date": "2026-08-17",
-        "entry_close": 474.65,
-        "last_close": 480.9,
+        "entry_close": 624.2,
+        "last_close": 632.45,
         "last_date": "2026-08-20",
         "ret_pct": 1.3,
         "status": "open",
@@ -11276,20 +11276,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "ELGIEQUIP",
+        "symbol": "OIL",
         "entry_date": "2026-08-17",
-        "entry_close": 624.2,
-        "last_close": 632.45,
+        "entry_close": 474.65,
+        "last_close": 480.9,
         "last_date": "2026-08-20",
         "ret_pct": 1.3,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "SHYAMMETL",
+        "symbol": "DIVISLAB",
         "entry_date": "2026-08-17",
-        "entry_close": 986.9,
-        "last_close": 996.8,
+        "entry_close": 8481.5,
+        "last_close": 8570.0,
         "last_date": "2026-08-20",
         "ret_pct": 1.0,
         "status": "open",
@@ -11306,10 +11306,10 @@
         "on_buylist": true
       },
       {
-        "symbol": "DIVISLAB",
+        "symbol": "SHYAMMETL",
         "entry_date": "2026-08-17",
-        "entry_close": 8481.5,
-        "last_close": 8570.0,
+        "entry_close": 986.9,
+        "last_close": 996.8,
         "last_date": "2026-08-20",
         "ret_pct": 1.0,
         "status": "open",
@@ -11356,6 +11356,16 @@
         "on_buylist": true
       },
       {
+        "symbol": "MONARCH",
+        "entry_date": "2026-08-17",
+        "entry_close": 389.05,
+        "last_close": 391.85,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.7,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
         "symbol": "ANDHRSUGAR",
         "entry_date": "2026-08-17",
         "entry_close": 101.98,
@@ -11376,32 +11386,12 @@
         "on_buylist": true
       },
       {
-        "symbol": "MONARCH",
-        "entry_date": "2026-08-17",
-        "entry_close": 389.05,
-        "last_close": 391.85,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.7,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "YATHARTH",
         "entry_date": "2026-08-17",
         "entry_close": 842.85,
         "last_close": 847.85,
         "last_date": "2026-08-20",
         "ret_pct": 0.6,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "CASTROLIND",
-        "entry_date": "2026-08-17",
-        "entry_close": 187.55,
-        "last_close": 188.57,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.5,
         "status": "open",
         "on_buylist": true
       },
@@ -11420,6 +11410,16 @@
         "entry_date": "2026-08-17",
         "entry_close": 1401.6,
         "last_close": 1408.4,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.5,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "CASTROLIND",
+        "entry_date": "2026-08-17",
+        "entry_close": 187.55,
+        "last_close": 188.57,
         "last_date": "2026-08-20",
         "ret_pct": 0.5,
         "status": "open",
@@ -11446,10 +11446,10 @@
         "on_buylist": true
       },
       {
-        "symbol": "ADANIPORTS",
+        "symbol": "MOTISONS",
         "entry_date": "2026-08-17",
-        "entry_close": 1691.0,
-        "last_close": 1696.0,
+        "entry_close": 16.54,
+        "last_close": 16.59,
         "last_date": "2026-08-20",
         "ret_pct": 0.3,
         "status": "open",
@@ -11466,10 +11466,10 @@
         "on_buylist": true
       },
       {
-        "symbol": "MOTISONS",
+        "symbol": "ADANIPORTS",
         "entry_date": "2026-08-17",
-        "entry_close": 16.54,
-        "last_close": 16.59,
+        "entry_close": 1691.0,
+        "last_close": 1696.0,
         "last_date": "2026-08-20",
         "ret_pct": 0.3,
         "status": "open",
@@ -11482,6 +11482,16 @@
         "last_close": 2529.7,
         "last_date": "2026-08-20",
         "ret_pct": 0.3,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "CARYSIL",
+        "entry_date": "2026-08-17",
+        "entry_close": 1155.8,
+        "last_close": 1158.1,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.2,
         "status": "open",
         "on_buylist": true
       },
@@ -11506,32 +11516,12 @@
         "on_buylist": true
       },
       {
-        "symbol": "CARYSIL",
-        "entry_date": "2026-08-17",
-        "entry_close": 1155.8,
-        "last_close": 1158.1,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.2,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "GAIL",
         "entry_date": "2026-08-17",
         "entry_close": 172.1,
         "last_close": 172.5,
         "last_date": "2026-08-20",
         "ret_pct": 0.2,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "TITAN",
-        "entry_date": "2026-08-17",
-        "entry_close": 5068.5,
-        "last_close": 5068.0,
-        "last_date": "2026-08-20",
-        "ret_pct": -0.0,
         "status": "open",
         "on_buylist": true
       },
@@ -11546,12 +11536,12 @@
         "on_buylist": true
       },
       {
-        "symbol": "JNKINDIA",
-        "entry_date": "2026-08-20",
-        "entry_close": 450.35,
-        "last_close": 450.35,
+        "symbol": "TITAN",
+        "entry_date": "2026-08-17",
+        "entry_close": 5068.5,
+        "last_close": 5068.0,
         "last_date": "2026-08-20",
-        "ret_pct": 0.0,
+        "ret_pct": -0.0,
         "status": "open",
         "on_buylist": true
       },
@@ -11560,26 +11550,6 @@
         "entry_date": "2026-08-20",
         "entry_close": 114.88,
         "last_close": 114.88,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "TI",
-        "entry_date": "2026-08-20",
-        "entry_close": 582.45,
-        "last_close": 582.45,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "UNICHEMLAB",
-        "entry_date": "2026-08-20",
-        "entry_close": 516.55,
-        "last_close": 516.55,
         "last_date": "2026-08-20",
         "ret_pct": 0.0,
         "status": "open",
@@ -11596,40 +11566,20 @@
         "on_buylist": true
       },
       {
+        "symbol": "GOODLUCK",
+        "entry_date": "2026-08-20",
+        "entry_close": 1439.4,
+        "last_close": 1439.4,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
         "symbol": "SJS",
         "entry_date": "2026-08-20",
         "entry_close": 2497.9,
         "last_close": 2497.9,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "MUKANDLTD",
-        "entry_date": "2026-08-20",
-        "entry_close": 136.96,
-        "last_close": 136.96,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "VIJAYA",
-        "entry_date": "2026-08-20",
-        "entry_close": 1498.4,
-        "last_close": 1498.4,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "TALBROAUTO",
-        "entry_date": "2026-08-20",
-        "entry_close": 412.0,
-        "last_close": 412.0,
         "last_date": "2026-08-20",
         "ret_pct": 0.0,
         "status": "open",
@@ -11646,80 +11596,10 @@
         "on_buylist": true
       },
       {
-        "symbol": "COSMOFIRST",
-        "entry_date": "2026-08-20",
-        "entry_close": 938.45,
-        "last_close": 938.45,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "GOODLUCK",
-        "entry_date": "2026-08-20",
-        "entry_close": 1439.4,
-        "last_close": 1439.4,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "HINDOILEXP",
-        "entry_date": "2026-08-20",
-        "entry_close": 158.2,
-        "last_close": 158.2,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "BALUFORGE",
-        "entry_date": "2026-08-20",
-        "entry_close": 546.75,
-        "last_close": 546.75,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "POLYPLEX",
-        "entry_date": "2026-08-20",
-        "entry_close": 1170.9,
-        "last_close": 1170.9,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "LICI",
         "entry_date": "2026-08-20",
         "entry_close": 419.0,
         "last_close": 419.0,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "THYROCARE",
-        "entry_date": "2026-08-20",
-        "entry_close": 566.7,
-        "last_close": 566.7,
-        "last_date": "2026-08-20",
-        "ret_pct": 0.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "GODREJAGRO",
-        "entry_date": "2026-08-20",
-        "entry_close": 581.65,
-        "last_close": 581.65,
         "last_date": "2026-08-20",
         "ret_pct": 0.0,
         "status": "open",
@@ -11736,6 +11616,56 @@
         "on_buylist": true
       },
       {
+        "symbol": "ASAHIINDIA",
+        "entry_date": "2026-08-20",
+        "entry_close": 951.55,
+        "last_close": 951.55,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "POLYPLEX",
+        "entry_date": "2026-08-20",
+        "entry_close": 1170.9,
+        "last_close": 1170.9,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "COSMOFIRST",
+        "entry_date": "2026-08-20",
+        "entry_close": 938.45,
+        "last_close": 938.45,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "MUKANDLTD",
+        "entry_date": "2026-08-20",
+        "entry_close": 136.96,
+        "last_close": 136.96,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "GODREJAGRO",
+        "entry_date": "2026-08-20",
+        "entry_close": 581.65,
+        "last_close": 581.65,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
         "symbol": "HDFCAMC",
         "entry_date": "2026-08-20",
         "entry_close": 2624.0,
@@ -11746,10 +11676,80 @@
         "on_buylist": true
       },
       {
-        "symbol": "ASAHIINDIA",
+        "symbol": "UNICHEMLAB",
         "entry_date": "2026-08-20",
-        "entry_close": 951.55,
-        "last_close": 951.55,
+        "entry_close": 516.55,
+        "last_close": 516.55,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "VIJAYA",
+        "entry_date": "2026-08-20",
+        "entry_close": 1498.4,
+        "last_close": 1498.4,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "HINDOILEXP",
+        "entry_date": "2026-08-20",
+        "entry_close": 158.2,
+        "last_close": 158.2,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "TALBROAUTO",
+        "entry_date": "2026-08-20",
+        "entry_close": 412.0,
+        "last_close": 412.0,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "THYROCARE",
+        "entry_date": "2026-08-20",
+        "entry_close": 566.7,
+        "last_close": 566.7,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "BALUFORGE",
+        "entry_date": "2026-08-20",
+        "entry_close": 546.75,
+        "last_close": 546.75,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "JNKINDIA",
+        "entry_date": "2026-08-20",
+        "entry_close": 450.35,
+        "last_close": 450.35,
+        "last_date": "2026-08-20",
+        "ret_pct": 0.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "TI",
+        "entry_date": "2026-08-20",
+        "entry_close": 582.45,
+        "last_close": 582.45,
         "last_date": "2026-08-20",
         "ret_pct": 0.0,
         "status": "open",
@@ -11776,20 +11776,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "LUMAXTECH",
+        "symbol": "VRLLOG",
         "entry_date": "2026-08-17",
-        "entry_close": 2049.0,
-        "last_close": 2043.7,
+        "entry_close": 296.2,
+        "last_close": 295.45,
         "last_date": "2026-08-20",
         "ret_pct": -0.3,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "VRLLOG",
+        "symbol": "LUMAXTECH",
         "entry_date": "2026-08-17",
-        "entry_close": 296.2,
-        "last_close": 295.45,
+        "entry_close": 2049.0,
+        "last_close": 2043.7,
         "last_date": "2026-08-20",
         "ret_pct": -0.3,
         "status": "open",
@@ -11816,16 +11816,6 @@
         "on_buylist": true
       },
       {
-        "symbol": "RAIN",
-        "entry_date": "2026-08-17",
-        "entry_close": 205.91,
-        "last_close": 204.92,
-        "last_date": "2026-08-20",
-        "ret_pct": -0.5,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "PIDILITIND",
         "entry_date": "2026-08-17",
         "entry_close": 1669.0,
@@ -11836,10 +11826,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "MEDANTA",
+        "symbol": "NATIONALUM",
         "entry_date": "2026-08-17",
-        "entry_close": 1415.1,
-        "last_close": 1408.2,
+        "entry_close": 387.55,
+        "last_close": 385.6,
+        "last_date": "2026-08-20",
+        "ret_pct": -0.5,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "RAIN",
+        "entry_date": "2026-08-17",
+        "entry_close": 205.91,
+        "last_close": 204.92,
         "last_date": "2026-08-20",
         "ret_pct": -0.5,
         "status": "open",
@@ -11856,10 +11856,10 @@
         "on_buylist": true
       },
       {
-        "symbol": "NATIONALUM",
+        "symbol": "MEDANTA",
         "entry_date": "2026-08-17",
-        "entry_close": 387.55,
-        "last_close": 385.6,
+        "entry_close": 1415.1,
+        "last_close": 1408.2,
         "last_date": "2026-08-20",
         "ret_pct": -0.5,
         "status": "open",
@@ -11906,16 +11906,6 @@
         "on_buylist": true
       },
       {
-        "symbol": "APOLLOHOSP",
-        "entry_date": "2026-08-17",
-        "entry_close": 8825.5,
-        "last_close": 8735.0,
-        "last_date": "2026-08-20",
-        "ret_pct": -1.0,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "ONEPOINT",
         "entry_date": "2026-08-17",
         "entry_close": 57.21,
@@ -11946,6 +11936,16 @@
         "on_buylist": true
       },
       {
+        "symbol": "APOLLOHOSP",
+        "entry_date": "2026-08-17",
+        "entry_close": 8825.5,
+        "last_close": 8735.0,
+        "last_date": "2026-08-20",
+        "ret_pct": -1.0,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
         "symbol": "SILVERTUC",
         "entry_date": "2026-08-17",
         "entry_close": 197.27,
@@ -11962,6 +11962,16 @@
         "last_close": 305.15,
         "last_date": "2026-08-20",
         "ret_pct": -1.1,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "HAL",
+        "entry_date": "2026-08-17",
+        "entry_close": 5059.0,
+        "last_close": 4998.0,
+        "last_date": "2026-08-20",
+        "ret_pct": -1.2,
         "status": "open",
         "on_buylist": true
       },
@@ -12006,12 +12016,12 @@
         "on_buylist": true
       },
       {
-        "symbol": "HAL",
+        "symbol": "AARTIIND",
         "entry_date": "2026-08-17",
-        "entry_close": 5059.0,
-        "last_close": 4998.0,
+        "entry_close": 526.7,
+        "last_close": 520.05,
         "last_date": "2026-08-20",
-        "ret_pct": -1.2,
+        "ret_pct": -1.3,
         "status": "open",
         "on_buylist": true
       },
@@ -12026,12 +12036,12 @@
         "on_buylist": true
       },
       {
-        "symbol": "AARTIIND",
+        "symbol": "SOMANYCERA",
         "entry_date": "2026-08-17",
-        "entry_close": 526.7,
-        "last_close": 520.05,
+        "entry_close": 518.9,
+        "last_close": 511.1,
         "last_date": "2026-08-20",
-        "ret_pct": -1.3,
+        "ret_pct": -1.5,
         "status": "open",
         "on_buylist": true
       },
@@ -12046,32 +12056,12 @@
         "on_buylist": false
       },
       {
-        "symbol": "SOMANYCERA",
-        "entry_date": "2026-08-17",
-        "entry_close": 518.9,
-        "last_close": 511.1,
-        "last_date": "2026-08-20",
-        "ret_pct": -1.5,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "BHARATFORG",
         "entry_date": "2026-08-17",
         "entry_close": 2093.0,
         "last_close": 2062.0,
         "last_date": "2026-08-20",
         "ret_pct": -1.5,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
-        "symbol": "SIEMENS",
-        "entry_date": "2026-08-17",
-        "entry_close": 3943.0,
-        "last_close": 3880.0,
-        "last_date": "2026-08-20",
-        "ret_pct": -1.6,
         "status": "open",
         "on_buylist": true
       },
@@ -12086,12 +12076,12 @@
         "on_buylist": true
       },
       {
-        "symbol": "ARVSMART",
+        "symbol": "SIEMENS",
         "entry_date": "2026-08-17",
-        "entry_close": 670.35,
-        "last_close": 659.1,
+        "entry_close": 3943.0,
+        "last_close": 3880.0,
         "last_date": "2026-08-20",
-        "ret_pct": -1.7,
+        "ret_pct": -1.6,
         "status": "open",
         "on_buylist": true
       },
@@ -12100,6 +12090,16 @@
         "entry_date": "2026-08-17",
         "entry_close": 1478.5,
         "last_close": 1453.5,
+        "last_date": "2026-08-20",
+        "ret_pct": -1.7,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
+        "symbol": "ARVSMART",
+        "entry_date": "2026-08-17",
+        "entry_close": 670.35,
+        "last_close": 659.1,
         "last_date": "2026-08-20",
         "ret_pct": -1.7,
         "status": "open",
@@ -12116,20 +12116,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "SUPRAJIT",
+        "symbol": "MRPL",
         "entry_date": "2026-08-17",
-        "entry_close": 520.75,
-        "last_close": 511.35,
+        "entry_close": 177.15,
+        "last_close": 173.98,
         "last_date": "2026-08-20",
         "ret_pct": -1.8,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "MRPL",
+        "symbol": "SUPRAJIT",
         "entry_date": "2026-08-17",
-        "entry_close": 177.15,
-        "last_close": 173.98,
+        "entry_close": 520.75,
+        "last_close": 511.35,
         "last_date": "2026-08-20",
         "ret_pct": -1.8,
         "status": "open",
@@ -12146,16 +12146,6 @@
         "on_buylist": true
       },
       {
-        "symbol": "MIDHANI",
-        "entry_date": "2026-08-17",
-        "entry_close": 428.6,
-        "last_close": 420.5,
-        "last_date": "2026-08-20",
-        "ret_pct": -1.9,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "HINDALCO",
         "entry_date": "2026-08-17",
         "entry_close": 1049.9,
@@ -12166,20 +12156,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "ATULAUTO",
+        "symbol": "MIDHANI",
         "entry_date": "2026-08-17",
-        "entry_close": 498.0,
-        "last_close": 487.35,
+        "entry_close": 428.6,
+        "last_close": 420.5,
         "last_date": "2026-08-20",
-        "ret_pct": -2.1,
+        "ret_pct": -1.9,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "TATATECH",
+        "symbol": "ATULAUTO",
         "entry_date": "2026-08-17",
-        "entry_close": 841.65,
-        "last_close": 823.95,
+        "entry_close": 498.0,
+        "last_close": 487.35,
         "last_date": "2026-08-20",
         "ret_pct": -2.1,
         "status": "open",
@@ -12206,6 +12196,16 @@
         "on_buylist": true
       },
       {
+        "symbol": "TATATECH",
+        "entry_date": "2026-08-17",
+        "entry_close": 841.65,
+        "last_close": 823.95,
+        "last_date": "2026-08-20",
+        "ret_pct": -2.1,
+        "status": "open",
+        "on_buylist": true
+      },
+      {
         "symbol": "HINDCOPPER",
         "entry_date": "2026-08-17",
         "entry_close": 572.65,
@@ -12216,20 +12216,20 @@
         "on_buylist": false
       },
       {
-        "symbol": "ARVIND",
+        "symbol": "GIPCL",
         "entry_date": "2026-08-17",
-        "entry_close": 552.3,
-        "last_close": 539.0,
+        "entry_close": 174.44,
+        "last_close": 170.18,
         "last_date": "2026-08-20",
         "ret_pct": -2.4,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "GIPCL",
+        "symbol": "ARVIND",
         "entry_date": "2026-08-17",
-        "entry_close": 174.44,
-        "last_close": 170.18,
+        "entry_close": 552.3,
+        "last_close": 539.0,
         "last_date": "2026-08-20",
         "ret_pct": -2.4,
         "status": "open",
@@ -12246,20 +12246,20 @@
         "on_buylist": true
       },
       {
-        "symbol": "ANTHEM",
+        "symbol": "LLOYDSME",
         "entry_date": "2026-08-17",
-        "entry_close": 898.0,
-        "last_close": 874.5,
+        "entry_close": 1942.0,
+        "last_close": 1891.4,
         "last_date": "2026-08-20",
         "ret_pct": -2.6,
         "status": "open",
         "on_buylist": true
       },
       {
-        "symbol": "LLOYDSME",
+        "symbol": "ANTHEM",
         "entry_date": "2026-08-17",
-        "entry_close": 1942.0,
-        "last_close": 1891.4,
+        "entry_close": 898.0,
+        "last_close": 874.5,
         "last_date": "2026-08-20",
         "ret_pct": -2.6,
         "status": "open",
@@ -12306,16 +12306,6 @@
         "on_buylist": false
       },
       {
-        "symbol": "VENUSPIPES",
-        "entry_date": "2026-08-17",
-        "entry_close": 1596.5,
-        "last_close": 1540.9,
-        "last_date": "2026-08-20",
-        "ret_pct": -3.5,
-        "status": "open",
-        "on_buylist": true
-      },
-      {
         "symbol": "STEELXIND",
         "entry_date": "2026-08-17",
         "entry_close": 10.92,
@@ -12324,6 +12314,16 @@
         "ret_pct": -3.5,
         "status": "open",
         "on_buylist": false
+      },
+      {
+        "symbol": "VENUSPIPES",
+        "entry_date": "2026-08-17",
+        "entry_close": 1596.5,
+        "last_close": 1540.9,
+        "last_date": "2026-08-20",
+        "ret_pct": -3.5,
+        "status": "open",
+        "on_buylist": true
       },
       {
         "symbol": "WOCKPHARMA",
@@ -12448,16 +12448,6 @@
         "exit_date": "2026-08-20"
       },
       {
-        "symbol": "CESC",
-        "entry_date": "2026-08-17",
-        "entry_close": 170.22,
-        "last_close": 170.22,
-        "last_date": "2026-08-18",
-        "ret_pct": 0.0,
-        "status": "stopped",
-        "exit_date": "2026-08-20"
-      },
-      {
         "symbol": "GVT&D",
         "entry_date": "2026-08-17",
         "entry_close": 4290.0,
@@ -12476,6 +12466,16 @@
         "ret_pct": 0.0,
         "status": "stopped",
         "exit_date": "2026-08-20"
+      },
+      {
+        "symbol": "CESC",
+        "entry_date": "2026-08-17",
+        "entry_close": 170.22,
+        "last_close": 170.22,
+        "last_date": "2026-08-18",
+        "ret_pct": 0.0,
+        "status": "stopped",
+        "exit_date": "2026-08-20"
       }
     ],
     "holdings_seen": 1185,
@@ -12487,7 +12487,7 @@
     "action": "Trend up, conditions okay but not exceptional. Be choosy \u2014 top setups only, normal size.",
     "score": 0.33,
     "trend_up": true,
-    "pct_vs_ma": 0.57,
+    "pct_vs_ma": 0.58,
     "pct_above": 59,
     "vix": 10.76,
     "vix_band": "very low",

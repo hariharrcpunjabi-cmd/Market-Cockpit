@@ -1,184 +1,54 @@
 {
-  "generated_at": "2026-08-20T18:35:37Z",
+  "generated_at": "2026-08-20T18:45:17Z",
   "as_of": "2026-08-20",
   "regime": {
     "cls": "strong",
     "verdict": "STRONG",
     "note": "Trust the ranking, but sub-11 VIX means stay alert for profit-booking.",
-    "pct_vs_ma": 0.57,
+    "pct_vs_ma": 0.58,
     "trend_up": true,
     "vix": 10.76,
     "vix_band": "very low"
   },
   "sectors": [
     {
-      "name": "Auto",
+      "name": "IT",
       "proxy": false,
-      "level_z": 2.873,
-      "mom_z": 1.751,
-      "blend": 2.424,
+      "level_z": 0.593,
+      "mom_z": 1.023,
+      "blend": 0.765,
       "rank": 1,
       "arrow": "up",
       "tag": "OVERWEIGHT"
     },
     {
-      "name": "Realty",
-      "proxy": false,
-      "level_z": 2.49,
-      "mom_z": 1.799,
-      "blend": 2.213,
-      "rank": 2,
-      "arrow": "up",
-      "tag": "OVERWEIGHT"
-    },
-    {
-      "name": "Consumption",
-      "proxy": true,
-      "level_z": 1.982,
-      "mom_z": 1.504,
-      "blend": 1.791,
-      "rank": 3,
-      "arrow": "up",
-      "tag": "OVERWEIGHT"
-    },
-    {
-      "name": "Media",
-      "proxy": false,
-      "level_z": 1.835,
-      "mom_z": 0.12,
-      "blend": 1.149,
-      "rank": 4,
-      "arrow": "flat",
-      "tag": "OVERWEIGHT"
-    },
-    {
-      "name": "IT",
-      "proxy": false,
-      "level_z": 0.575,
-      "mom_z": 1.161,
-      "blend": 0.809,
-      "rank": 5,
-      "arrow": "up",
-      "tag": "HOLDING"
-    },
-    {
       "name": "Pharma",
       "proxy": false,
-      "level_z": 1.482,
-      "mom_z": -0.64,
-      "blend": 0.633,
-      "rank": 6,
+      "level_z": 1.484,
+      "mom_z": -0.592,
+      "blend": 0.654,
+      "rank": 2,
       "arrow": "down",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "Healthcare",
-      "proxy": true,
-      "level_z": 1.366,
-      "mom_z": -0.74,
-      "blend": 0.524,
-      "rank": 7,
-      "arrow": "down",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "Fin Services",
-      "proxy": false,
-      "level_z": 1.095,
-      "mom_z": -0.468,
-      "blend": 0.47,
-      "rank": 8,
-      "arrow": "down",
-      "tag": "HOLDING"
+      "tag": "OVERWEIGHT"
     },
     {
       "name": "Bank",
       "proxy": false,
-      "level_z": 0.787,
-      "mom_z": -0.207,
-      "blend": 0.39,
-      "rank": 9,
+      "level_z": 0.788,
+      "mom_z": -0.218,
+      "blend": 0.385,
+      "rank": 3,
       "arrow": "flat",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "Pvt Bank",
-      "proxy": true,
-      "level_z": 0.483,
-      "mom_z": -1.215,
-      "blend": -0.197,
-      "rank": 10,
-      "arrow": "down",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "Metal",
-      "proxy": false,
-      "level_z": 0.561,
-      "mom_z": -1.378,
-      "blend": -0.215,
-      "rank": 11,
-      "arrow": "down",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "Infra",
-      "proxy": false,
-      "level_z": 0.568,
-      "mom_z": -1.975,
-      "blend": -0.449,
-      "rank": 12,
-      "arrow": "down",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "Energy",
-      "proxy": false,
-      "level_z": 0.429,
-      "mom_z": -1.995,
-      "blend": -0.541,
-      "rank": 13,
-      "arrow": "down",
-      "tag": "HOLDING"
-    },
-    {
-      "name": "PSU Bank",
-      "proxy": false,
-      "level_z": -0.735,
-      "mom_z": -0.682,
-      "blend": -0.713,
-      "rank": 14,
-      "arrow": "down",
-      "tag": "AVOID"
+      "tag": "OVERWEIGHT"
     },
     {
       "name": "Oil & Gas",
       "proxy": true,
-      "level_z": -1.415,
-      "mom_z": -0.19,
-      "blend": -0.925,
-      "rank": 15,
+      "level_z": -1.414,
+      "mom_z": -0.179,
+      "blend": -0.92,
+      "rank": 4,
       "arrow": "flat",
-      "tag": "AVOID"
-    },
-    {
-      "name": "PSE",
-      "proxy": false,
-      "level_z": -0.754,
-      "mom_z": -1.491,
-      "blend": -1.049,
-      "rank": 16,
-      "arrow": "down",
-      "tag": "AVOID"
-    },
-    {
-      "name": "FMCG",
-      "proxy": false,
-      "level_z": -1.41,
-      "mom_z": -1.39,
-      "blend": -1.402,
-      "rank": 17,
-      "arrow": "down",
       "tag": "AVOID"
     }
   ],
@@ -187,180 +57,9 @@
     "trail_weeks": 12,
     "sectors": [
       {
-        "name": "Realty",
-        "rs_ratio": 107.5,
-        "rs_mom": 101.82,
-        "quadrant": "Leading",
-        "trail": [
-          [
-            104.88,
-            107.38
-          ],
-          [
-            99.15,
-            100.82
-          ],
-          [
-            101.23,
-            102.16
-          ],
-          [
-            102.39,
-            102.37
-          ],
-          [
-            101.34,
-            100.39
-          ],
-          [
-            100.61,
-            98.98
-          ],
-          [
-            103.23,
-            101.21
-          ],
-          [
-            104.51,
-            102.17
-          ],
-          [
-            110.31,
-            106.99
-          ],
-          [
-            114.09,
-            109.52
-          ],
-          [
-            110.52,
-            105.52
-          ],
-          [
-            107.5,
-            101.82
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "Auto",
-        "rs_ratio": 107.12,
-        "rs_mom": 106.5,
-        "quadrant": "Leading",
-        "trail": [
-          [
-            100.66,
-            102.08
-          ],
-          [
-            98.87,
-            100.55
-          ],
-          [
-            98.52,
-            99.91
-          ],
-          [
-            99.89,
-            101.12
-          ],
-          [
-            100.39,
-            101.4
-          ],
-          [
-            100.53,
-            101.25
-          ],
-          [
-            99.14,
-            100.05
-          ],
-          [
-            100.7,
-            101.38
-          ],
-          [
-            99.93,
-            100.3
-          ],
-          [
-            99.25,
-            99.46
-          ],
-          [
-            100.38,
-            100.62
-          ],
-          [
-            107.12,
-            106.5
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "Media",
-        "rs_ratio": 106.75,
-        "rs_mom": 103.99,
-        "quadrant": "Leading",
-        "trail": [
-          [
-            103.12,
-            101.11
-          ],
-          [
-            102.64,
-            100.38
-          ],
-          [
-            97.95,
-            96.07
-          ],
-          [
-            100.2,
-            98.38
-          ],
-          [
-            107.1,
-            104.59
-          ],
-          [
-            104.74,
-            102.05
-          ],
-          [
-            103.64,
-            100.66
-          ],
-          [
-            102.92,
-            99.84
-          ],
-          [
-            101.88,
-            99.05
-          ],
-          [
-            99.64,
-            97.32
-          ],
-          [
-            101.72,
-            99.49
-          ],
-          [
-            106.75,
-            103.99
-          ]
-        ],
-        "proxy": false
-      },
-      {
         "name": "IT",
-        "rs_ratio": 103.58,
-        "rs_mom": 103.14,
+        "rs_ratio": 103.42,
+        "rs_mom": 102.85,
         "quadrant": "Leading",
         "trail": [
           [
@@ -392,89 +91,32 @@
             106.18
           ],
           [
-            105.08,
-            109.3
+            107.07,
+            111.14
           ],
           [
-            106.59,
-            109.69
+            106.42,
+            109.32
           ],
           [
-            106.12,
-            108.21
+            105.96,
+            107.86
           ],
           [
-            103.49,
-            104.42
+            103.34,
+            104.1
           ],
           [
-            103.58,
-            103.14
+            103.42,
+            102.85
           ]
         ],
         "proxy": false
       },
       {
-        "name": "Consumption",
-        "rs_ratio": 102.38,
-        "rs_mom": 101.04,
-        "quadrant": "Leading",
-        "trail": [
-          [
-            99.57,
-            99.62
-          ],
-          [
-            99.09,
-            99.26
-          ],
-          [
-            100.09,
-            100.23
-          ],
-          [
-            100.26,
-            100.34
-          ],
-          [
-            101.04,
-            101.05
-          ],
-          [
-            100.41,
-            100.43
-          ],
-          [
-            100.16,
-            100.18
-          ],
-          [
-            101.87,
-            101.75
-          ],
-          [
-            102.61,
-            102.17
-          ],
-          [
-            102.06,
-            101.33
-          ],
-          [
-            102.41,
-            101.39
-          ],
-          [
-            102.38,
-            101.04
-          ]
-        ],
-        "proxy": true
-      },
-      {
         "name": "Pharma",
-        "rs_ratio": 102.08,
-        "rs_mom": 98.83,
+        "rs_ratio": 102.1,
+        "rs_mom": 98.87,
         "quadrant": "Weakening",
         "trail": [
           [
@@ -506,146 +148,32 @@
             100.38
           ],
           [
-            104.41,
-            101.03
+            104.16,
+            100.81
           ],
           [
-            102.69,
-            99.44
+            102.71,
+            99.48
           ],
           [
-            102.31,
-            99.15
+            102.33,
+            99.19
           ],
           [
-            102.49,
-            99.36
+            102.51,
+            99.4
           ],
           [
-            102.08,
-            98.83
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "Healthcare",
-        "rs_ratio": 101.34,
-        "rs_mom": 98.85,
-        "quadrant": "Weakening",
-        "trail": [
-          [
-            102.64,
-            100.17
-          ],
-          [
-            102.48,
-            100.29
-          ],
-          [
-            100.78,
-            98.51
-          ],
-          [
-            102.75,
-            100.07
-          ],
-          [
-            104.96,
-            101.8
-          ],
-          [
-            103.58,
-            100.29
-          ],
-          [
-            102.55,
-            99.3
-          ],
-          [
-            103.47,
-            100.5
-          ],
-          [
-            103.51,
-            100.63
-          ],
-          [
-            101.53,
-            98.74
-          ],
-          [
-            100.76,
-            98.17
-          ],
-          [
-            101.34,
-            98.85
-          ]
-        ],
-        "proxy": true
-      },
-      {
-        "name": "PSU Bank",
-        "rs_ratio": 99.82,
-        "rs_mom": 102.75,
-        "quadrant": "Improving",
-        "trail": [
-          [
-            92.09,
-            92.2
-          ],
-          [
-            90.96,
-            92.63
-          ],
-          [
-            90.9,
-            93.83
-          ],
-          [
-            93.49,
-            97.58
-          ],
-          [
-            96.49,
-            101.17
-          ],
-          [
-            99.63,
-            104.41
-          ],
-          [
-            99.83,
-            104.6
-          ],
-          [
-            99.58,
-            104.16
-          ],
-          [
-            96.75,
-            101.38
-          ],
-          [
-            97.56,
-            101.91
-          ],
-          [
-            97.43,
-            101.22
-          ],
-          [
-            99.82,
-            102.75
+            102.1,
+            98.87
           ]
         ],
         "proxy": false
       },
       {
         "name": "Bank",
-        "rs_ratio": 99.22,
-        "rs_mom": 98.72,
+        "rs_ratio": 99.2,
+        "rs_mom": 98.68,
         "quadrant": "Lagging",
         "trail": [
           [
@@ -677,32 +205,32 @@
             100.39
           ],
           [
-            99.57,
-            98.81
+            99.8,
+            99.02
           ],
           [
-            99.29,
-            98.31
+            99.28,
+            98.27
           ],
           [
-            99.22,
-            98.19
+            99.2,
+            98.15
           ],
           [
-            99.48,
-            98.74
+            99.46,
+            98.7
           ],
           [
-            99.22,
-            98.72
+            99.2,
+            98.68
           ]
         ],
         "proxy": false
       },
       {
         "name": "Oil & Gas",
-        "rs_ratio": 99.12,
-        "rs_mom": 101.7,
+        "rs_ratio": 99.09,
+        "rs_mom": 101.64,
         "quadrant": "Improving",
         "trail": [
           [
@@ -738,422 +266,23 @@
             101.19
           ],
           [
-            97.82,
-            100.73
+            98.24,
+            101.12
           ],
           [
-            97.77,
-            100.6
+            97.74,
+            100.53
           ],
           [
-            97.79,
-            100.6
+            97.76,
+            100.53
           ],
           [
-            99.12,
-            101.7
+            99.09,
+            101.64
           ]
         ],
         "proxy": true
-      },
-      {
-        "name": "Pvt Bank",
-        "rs_ratio": 98.69,
-        "rs_mom": 98.01,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            99.38,
-            101.8
-          ],
-          [
-            103.76,
-            105.57
-          ],
-          [
-            102.47,
-            103.84
-          ],
-          [
-            103.87,
-            104.59
-          ],
-          [
-            102.59,
-            102.83
-          ],
-          [
-            101.74,
-            101.43
-          ],
-          [
-            103.08,
-            102.01
-          ],
-          [
-            100.36,
-            99.0
-          ],
-          [
-            98.76,
-            97.36
-          ],
-          [
-            97.77,
-            96.44
-          ],
-          [
-            97.6,
-            96.44
-          ],
-          [
-            98.69,
-            98.01
-          ]
-        ],
-        "proxy": true
-      },
-      {
-        "name": "Metal",
-        "rs_ratio": 98.49,
-        "rs_mom": 98.64,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            104.75,
-            98.4
-          ],
-          [
-            108.36,
-            101.9
-          ],
-          [
-            106.48,
-            100.16
-          ],
-          [
-            106.7,
-            100.37
-          ],
-          [
-            105.04,
-            98.78
-          ],
-          [
-            101.06,
-            95.53
-          ],
-          [
-            99.53,
-            94.69
-          ],
-          [
-            95.21,
-            91.62
-          ],
-          [
-            95.49,
-            92.86
-          ],
-          [
-            96.03,
-            94.27
-          ],
-          [
-            94.41,
-            93.63
-          ],
-          [
-            98.49,
-            98.64
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "Fin Services",
-        "rs_ratio": 98.01,
-        "rs_mom": 98.62,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            96.18,
-            97.79
-          ],
-          [
-            96.51,
-            98.54
-          ],
-          [
-            97.18,
-            99.48
-          ],
-          [
-            97.0,
-            99.46
-          ],
-          [
-            97.2,
-            99.79
-          ],
-          [
-            100.28,
-            102.65
-          ],
-          [
-            99.97,
-            102.28
-          ],
-          [
-            101.41,
-            103.44
-          ],
-          [
-            101.02,
-            102.76
-          ],
-          [
-            100.65,
-            101.93
-          ],
-          [
-            101.1,
-            101.88
-          ],
-          [
-            98.01,
-            98.62
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "Infra",
-        "rs_ratio": 97.27,
-        "rs_mom": 98.06,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            100.03,
-            98.9
-          ],
-          [
-            100.67,
-            99.66
-          ],
-          [
-            100.4,
-            99.51
-          ],
-          [
-            100.29,
-            99.56
-          ],
-          [
-            99.35,
-            98.92
-          ],
-          [
-            99.38,
-            99.16
-          ],
-          [
-            99.91,
-            99.74
-          ],
-          [
-            99.56,
-            99.44
-          ],
-          [
-            99.04,
-            99.04
-          ],
-          [
-            98.52,
-            98.8
-          ],
-          [
-            98.13,
-            98.6
-          ],
-          [
-            97.27,
-            98.06
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "FMCG",
-        "rs_ratio": 93.89,
-        "rs_mom": 96.45,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            100.14,
-            100.57
-          ],
-          [
-            102.34,
-            102.44
-          ],
-          [
-            100.09,
-            100.17
-          ],
-          [
-            98.44,
-            98.55
-          ],
-          [
-            97.29,
-            97.58
-          ],
-          [
-            97.96,
-            98.41
-          ],
-          [
-            97.4,
-            97.85
-          ],
-          [
-            97.46,
-            97.99
-          ],
-          [
-            98.19,
-            99.07
-          ],
-          [
-            96.76,
-            98.12
-          ],
-          [
-            95.92,
-            97.69
-          ],
-          [
-            93.89,
-            96.45
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "Energy",
-        "rs_ratio": 93.31,
-        "rs_mom": 93.71,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            106.09,
-            98.52
-          ],
-          [
-            105.27,
-            97.91
-          ],
-          [
-            104.73,
-            97.92
-          ],
-          [
-            105.3,
-            98.81
-          ],
-          [
-            103.96,
-            97.89
-          ],
-          [
-            100.02,
-            94.82
-          ],
-          [
-            100.64,
-            95.81
-          ],
-          [
-            98.39,
-            94.37
-          ],
-          [
-            96.44,
-            93.63
-          ],
-          [
-            96.42,
-            94.79
-          ],
-          [
-            96.48,
-            95.75
-          ],
-          [
-            93.31,
-            93.71
-          ]
-        ],
-        "proxy": false
-      },
-      {
-        "name": "PSE",
-        "rs_ratio": 93.16,
-        "rs_mom": 97.29,
-        "quadrant": "Lagging",
-        "trail": [
-          [
-            101.24,
-            96.93
-          ],
-          [
-            101.31,
-            97.58
-          ],
-          [
-            99.26,
-            96.53
-          ],
-          [
-            97.81,
-            95.91
-          ],
-          [
-            97.27,
-            96.07
-          ],
-          [
-            95.25,
-            94.91
-          ],
-          [
-            96.12,
-            96.34
-          ],
-          [
-            94.6,
-            95.63
-          ],
-          [
-            94.84,
-            96.74
-          ],
-          [
-            94.25,
-            96.97
-          ],
-          [
-            95.0,
-            98.38
-          ],
-          [
-            93.16,
-            97.29
-          ]
-        ],
-        "proxy": false
       }
     ]
   },
@@ -1162,7 +291,7 @@
     "sample": 49
   },
   "diagnostics": {
-    "loaded": 19,
+    "loaded": 6,
     "total": 19,
     "detail": [
       {
@@ -1188,7 +317,7 @@
       {
         "name": "Auto",
         "ticker": "^CNXAUTO",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
@@ -1200,73 +329,73 @@
       {
         "name": "FMCG",
         "ticker": "^CNXFMCG",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Metal",
         "ticker": "^CNXMETAL",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Realty",
         "ticker": "^CNXREALTY",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Energy",
         "ticker": "^CNXENERGY",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Media",
         "ticker": "^CNXMEDIA",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "PSU Bank",
         "ticker": "^CNXPSUBANK",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Infra",
         "ticker": "^CNXINFRA",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Fin Services",
         "ticker": "NIFTY_FIN_SERVICE.NS",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "PSE",
         "ticker": "^CNXPSE",
-        "ok": true,
+        "ok": false,
         "proxy": false
       },
       {
         "name": "Consumption",
         "ticker": "CONSUMBEES.NS",
-        "ok": true,
+        "ok": false,
         "proxy": true
       },
       {
         "name": "Pvt Bank",
         "ticker": "PVTBANIETF.NS",
-        "ok": true,
+        "ok": false,
         "proxy": true
       },
       {
         "name": "Healthcare",
         "ticker": "HEALTHIETF.NS",
-        "ok": true,
+        "ok": false,
         "proxy": true
       },
       {
